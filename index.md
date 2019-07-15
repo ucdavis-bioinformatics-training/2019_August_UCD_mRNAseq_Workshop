@@ -1,5 +1,5 @@
 ---
-title: March 2019 mRNA-Seq Workshop Home
+title: August 2019 mRNA-Seq Workshop Home
 ---
 
 #### UC Davis Genome Center [*Bioinformatics Core*](http://bioinformatics.ucdavis.edu/)
