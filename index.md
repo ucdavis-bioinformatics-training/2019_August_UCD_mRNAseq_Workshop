@@ -1,64 +1,86 @@
 ---
-title: August 2019 mRNA-Seq Workshop Home
+layout: default
 ---
 
-#### UC Davis Genome Center [*Bioinformatics Core*](http://bioinformatics.ucdavis.edu/)
+# Quick Intro to the Workshop and Core
 
-[Welcome](welcome.md)
+__Welcome to the UC Davis Bioinformatics Core's August 2019 RNA-Seq Workshop! The mission of the Bioinformatics Core facility is to facilitate outstanding omics-scale research through these activities:__
 
-[What is Bioinformatics](pdfs/Genomics_a_perspective_March2019.pdf)
+ <img src="base_figures/welcome_figure1.png" alt="welcome_figure1" width="600px"/>
 
-## Introductory Command line and cluster
-* [Logging In and transferring files](cli/logging-in.md)
-* [Intro to command-line](cli/command-line-intro.md)
-* [Running jobs on the Cluster and using modules](cli/cluster.md)
+## Staff
+
+ <img src="base_figures/welcome_figure2.png" alt="welcome_figure2" width="600px"/>
+
+## Contacts
+
+* Bioinformatics related questions, include but not limited to bioinformatic methods questions, software use, data questions.
+  * bioinformatics.core@ucdavis.edu
+* Computing Issues, include but not limited to user account questions, equipment failure/malfunction, software install, software failures (not related to use)
+  * helpdesk@genomecenter.ucdavis.edu
+* Training courses information
+  * training.bioinformatics@ucdavis.edu
+
+## Workshop Goals
+
+* End to End understanding of RNAseq differential
+  * Discussions/lectures
+  * Technologies
+  * Experimental design
+  * Cost estimation
+  * Workflow
+  * mRNA gene expression analysis
+* To work through a complete experiment, starting from raw data to completion, including making a few figures.
+* Goal is 30-40% lecture/discussion 60-70% hands-on
+
+## Internet
+
+You will need to access the UCD wireless via your laptop to participate in the hands-on exercises. Please review https://itcatalog.ucdavis.edu/service/ucd-guest-wireless for access instructions.
+
+Many academic (and some non-academic) institutions are part of Eduroam. (See "List of Institutions" under
+"Members" at https://www.eduroam.us/ to find out if your institution is a member.) Please make sure you
+can log into Eduroam with your device at your home institution, which will make things easier once you come to UCD.
+
+If your institution is not a member of Eduroam, you can still access the open wireless through "ucd-guest".
+
+## Workshop Materials
+
+Workshop materials are all posted on github, and publicly available
+
+http://bioinformatics.ucdavis.edu/training/events/
+
+* Github main page:
+
+	https://github.com/ucdavis-bioinformatics-training
+* This RNAseq Workshop
+
+  https://ucdavis-bioinformatics-training.github.io/2019_August_UCD_mRNAseq_Workshop_test/  
+
+  https://github.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop_test/
+
+## Computing Cluster
+
+Course will be conducted on our servers and compute cluster .  
+tadpole.genomecenter.ucdavis.edu
+
+Everyone should get an account.  
+https://computing.genomecenter.ucdavis.edu	 
+
+Request an account -> sponsor "Bioinformatics Core Workshop"
+
+If you already have an account on our systems, then please tell us your username.
+
+Cluster usage will be under the slurm reservation  ‘workshop’
+
+Reservation will last 1 full week after the workshop and allow you to practice or run analyze your own data.
+
+**workshop       ACTIVE  2019-03-09T10:46:16  2019-03-22T00:00:00  12-12:13:44  drove-[4,13,18]**
+
+## Industry Sponsored Lunch and Learns
+
+* [Lexogen](https://www.lexogen.com/)
+* [Qiagen](https://www.qiagen.com/us/)
+* [Illumina](https://www.illumina.com/)
+* [10X * Genomics](https://www.10xgenomics.com/)
 
 
-[Intro to Sequencing](pdfs/erics_talk.pdf) (talk)  
-[Experimental Design and Cost Estimation](pdfs/ExperimentalDesign.pdf) (talk)
-
-
-## Data Reduction
-* [Files and Filetypes for RNA-Seq](data_reduction/filetypes.md)
-* [Project Setup](data_reduction/project_setup.md)
-* [Preprocessing Data](data_reduction/preproc_htstream.md)
-* [Aligners](data_reduction/alignment.md)
-* [Generating Summarized Counts](data_reduction/counts.md)
-
-## Intro to R and Rstudio
-* [Getting Started](intro2R/RStudio.md)
-* [Intro to R](intro2R/Intro2R.md)
-### EXTRA
-* [Prepare Data in R](intro2R/data_in_R_prepare.md)
-* [Data in R](intro2R/orig_data_in_R.md)
-
-## Differential Expression and Pathway Analysis
-* [Prepare Differential Expression Analysis](differential_expression/de_analysis_prepare.md)
-* [Get Gene Annotation](differential_expression/annotation.md)
-* [Differential Expression Analysis](differential_expression/orig_DE_Analysis.md)
-
-* [Pathway Analysis](differential_expression/enrichment.md)
-
-<!--
-
-* [DE Analysis: counts to lists of DE genes](thursday/DE.html)
-  * [The R Markdown file](thursday/DE.Rmd)
-* [Gene Ontology and KEGG Pathway Enrichment Analyses](friday/enrichment.html)
-  * [The R Markdown file](friday/enrichment.Rmd)
-* [Generating figures](friday/script_plots.md)
-  * [The R Markdown file](friday/script_plots.Rmd)
-  * [I5_v_C_time6.txt](friday/I5_v_C_time6.txt)
-  * [I5_v_C_time6_KEGG.txt](friday/I5_v_C_time6_KEGG.txt)
-  * [metafile](friday/metafile.txt)
-  * [all_counts.txt](friday/all_counts.txt)
-  * [all files for plots](friday/files_for_plots.zip)
--->
-
-[Closing thoughts](closing.md)
-
-
-## Cheat Sheets
-[Cheat Sheets](cheatSheetIndex.md)
-
-## Lunch and Learns
-[Lexogen](https://www.lexogen.com/), [Qiagen](https://www.qiagen.com/us/), [Illumina](https://www.illumina.com/), [10X Genomics](https://www.10xgenomics.com/)

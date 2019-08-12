@@ -1,4 +1,4 @@
-# Data Setup
+# Project Setup
 
 Let's set up a project directory for the week, and talk a bit about project philosophy..
 
