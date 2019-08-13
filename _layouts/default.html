@@ -116,9 +116,9 @@
                               {% continue %}
                             {% endif %}
                             {% if nav.url contains "://" %}
-                              <tr><th><a href="{{ nav.url }}" onclick="getOffset()">{{ nav.title }}</a></th></tr>
+                              <tr><th><a href="{{ nav.url }}">{{ nav.title }}</a></th></tr>
                             {% else %}
-                              <tr><th><a href="{{ nav.url | relative_url }}" onclick="getOffset()">{{ nav.title }}</a></th></tr>
+                              <tr><th><a href="{{ nav.url | relative_url }}">{{ nav.title }}</a></th></tr>
                             {% endif %}
                         {% endfor %}
                     </table>
@@ -174,34 +174,22 @@ function closeNav() {
 }
 
 var navopen=1;
-var scrollOffset;
 function doNav() {
   if (navopen == 1) {
     document.getElementById("mySidenav").style.width = "0px";
     document.getElementById("main").style.marginLeft = "0px";
     document.getElementById("myHeader").style.marginLeft = "0px";
     navopen = 0;
-    scrollOffset = document.getElementById("mySidenav").scrollTop;
   } else {
     document.getElementById("mySidenav").style.width = "400px";
     document.getElementById("main").style.marginLeft = "400px";
     document.getElementById("myHeader").style.marginLeft = "400px";
     navopen = 1;
-    document.getElementById("mySidenav").scrollTop = scrollOffset;
   }
-}
-
-function getOffset() {
-  scrollOffset = document.getElementById("mySidenav").scrollTop;
-}
-
-function setOffset() {
-  document.getElementById("mySidenav").scrollTop = scrollOffset;
 }
 
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction()};
-window.onload = function() {setOffset()};
 
 // Get the header
 var header = document.getElementById("myHeader");
