@@ -190,13 +190,13 @@ function doNav() {
 
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction()};
-window.onload = function() {document.getElementById("mySidenav").scrollTop = 100;}
+window.onload = function() {document.getElementById("mySidenav").scrollTop = scrollpos;}
 
 // Get the header
 var header = document.getElementById("myHeader");
 
 var scrollpos;
-sn.onscroll = function() {scrollpos = document.getElementById("mySidenav").scrollTop;}
+document.getElementById("mySidenav").onscroll = function() {scrollpos = document.getElementById("mySidenav").scrollTop;}
 
 // Get the offset position of the navbar
 var sticky = header.offsetTop;
