@@ -3,11 +3,15 @@ title: 'UC Davis Bioinformatics Core August 2019 RNA-Seq Workshop @ UCD'
 show_downloads: True
 google_analytics: True
 navigation:
+  - title: Home
+    url: /
   - heading: Introduction
   - title: Intro to the Workshop and Core
-    url: /
+    url: welcome
   - title: What is Bioinformatics?
     url: pdfs/Genomics_a_perspective_March2019.pdf
+  - title: Experimental Design and Cost Estimation
+    url: pdfs/ExperimentalDesign.pdf
   - heading: Command-Line and the Cluster
   - title: Logging in and Transferring Files
     url: cli/logging-in
@@ -17,8 +21,6 @@ navigation:
     url: cli/advanced-command-line
   - title: Running jobs on the Cluster and using modules
     url: cli/cluster
-  - title: Experimental Design and Cost Estimation
-    url: pdfs/ExperimentalDesign.pdf
   - heading: Data Reduction
   - title: Files and Filetypes for RNA-Seq
     url: data_reduction/filetypes
@@ -54,8 +56,6 @@ navigation:
   - title: Cheat Sheets
     url: cheatSheetIndex
   - title: Github
-    url: https://github.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop_test2
-
-
-
-
+    url: https://github.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop
+  - title: Biocore website
+    url: http://bioinformatics.ucdavis.edu
