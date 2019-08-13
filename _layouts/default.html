@@ -116,7 +116,7 @@
                               {% continue %}
                             {% endif %}
                             {% if nav.url contains "://" %}
-                              <tr><th><a href="{{ nav.url }}">{{ nav.title }}</a></th></tr>
+                              <tr><th><a href="{{ nav.url }}" onclick="setOffset()">{{ nav.title }}</a></th></tr>
                             {% else %}
                               <tr><th><a href="{{ nav.url | relative_url }}">{{ nav.title }}</a></th></tr>
                             {% endif %}
@@ -191,9 +191,13 @@ function doNav() {
   }
 }
 
+function setOffset() {
+  document.getElementById("mySidenav").scrollTop = scrollOffset;
+}
+
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction()};
-window.onload = function() {document.getElementById("mySidenav").scrollTop = scrollOffset;}
+window.onload = function() {setOffset()};
 
 // Get the header
 var header = document.getElementById("myHeader");
