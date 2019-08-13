@@ -196,7 +196,7 @@ window.onload = function() {document.getElementById("mySidenav").scrollTop = scr
 var header = document.getElementById("myHeader");
 
 var scrollpos;
-document.getElementById("mySidenav").onscroll = function() {scrollpos = document.getElementById("mySidenav").scrollTop;}
+document.getElementById("mySidenav").onclick = function() {scrollpos = document.getElementById("mySidenav").scrollTop;}
 
 // Get the offset position of the navbar
 var sticky = header.offsetTop;
