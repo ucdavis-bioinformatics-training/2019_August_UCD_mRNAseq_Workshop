@@ -10,6 +10,8 @@ navigation:
     url: welcome
   - title: What is Bioinformatics?
     url: pdfs/Genomics_a_perspective_March2019.pdf
+  - title: Experimental Design and Cost Estimation
+    url: pdfs/ExperimentalDesign.pdf
   - heading: Command-Line and the Cluster
   - title: Logging in and Transferring Files
     url: cli/logging-in
@@ -19,8 +21,6 @@ navigation:
     url: cli/advanced-command-line
   - title: Running jobs on the Cluster and using modules
     url: cli/cluster
-  - title: Experimental Design and Cost Estimation
-    url: pdfs/ExperimentalDesign.pdf
   - heading: Data Reduction
   - title: Files and Filetypes for RNA-Seq
     url: data_reduction/filetypes
