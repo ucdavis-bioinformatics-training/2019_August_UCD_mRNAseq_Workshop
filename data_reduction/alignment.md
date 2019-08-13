@@ -4,9 +4,9 @@ This document assumes [preproc htstream](./preproc_htstream.md) has been complet
 
 **IF** for some reason it didn't finish, is corrupted or you missed the session, you can copy over a completed copy
 
-    cp -r /share/biocore/workshops/2019_March_RNAseq/HTS_testing /share/workshop/$USER/rnaseq_example/.
-    cp -r /share/biocore/workshops/2019_March_RNAseq/01-HTS_Preproc /share/workshop/$USER/rnaseq_example/.
-    cp  /share/biocore/workshops/2019_March_RNAseq/summary_hts.txt /share/workshop/$USER/rnaseq_example/.
+    cp -r /share/biocore/workshops/2019_August_RNAseq/HTS_testing /share/workshop/$USER/rnaseq_example/.
+    cp -r /share/biocore/workshops/2019_August_RNAseq/01-HTS_Preproc /share/workshop/$USER/rnaseq_example/.
+    cp  /share/biocore/workshops/2019_August_RNAseq/summary_hts.txt /share/workshop/$USER/rnaseq_example/.
 
 ## Alignment vs Assembly
 
@@ -146,7 +146,7 @@ We need to first get the url for the genome fasta.
 
 **2\.** We are going to use an aligner called ['STAR'](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3530905/) to align the data, but first we need to index the genome for STAR. Lets pull down a slurm script to index the human GENCODE version of the genome.
 
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_March_UCSF_mRNAseq_Workshop/master/scripts/star_index.slurm
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/scripts/star_index.slurm
     less star_index.slurm
 
  When you are done, type "q" to exit.
@@ -204,16 +204,17 @@ We need to first get the url for the genome fasta.
 1. The script uses wget to download the fasta and GTF files from GENCODE using the links you found earlier.
 1. Uncompresses them using gunzip.
 1. Creates the star index directory [star.overlap100.gencode.v29].
-1. Change directory into the new star index directory. we run the star indexing command from inside the directory, for some reason star fails if you try to run it outside this directory.
+1. Change directory into the new star index directory. We run the star indexing command from inside the directory, for some reason star fails if you try to run it outside this directory.
 1. Run star in mode genomeGenerate.
-
+    ```
     sbatch star_index.slurm
+    ```
 
 This step will take a couple hours. You can look at the [STAR documentation](https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf) while you wait. All of the output files will be written to the star_index directory.
 
 **IF** for some reason it didn't finish, is corrupted, or you missed the session, you can copy over a completed copy.
 
-    cp -r /share/biocore/workshops/2019_March_RNAseq/References/star.overlap100.gencode.v29 /share/workshop/$USER/rnaseq_example/References/.
+    cp -r /share/biocore/workshops/2019_August_RNAseq/References/star.overlap100.gencode.v29 /share/workshop/$USER/rnaseq_example/References/.
 
 ## Alignments
 
@@ -273,7 +274,7 @@ We need to index the BAM file:
 
 **IF** for some reason it didn't finish, is corrupted or you missed the session, you can copy over a completed copy
 
-    cp -r /share/biocore/workshops/2019_March_RNAseq/HTS_testing/SampleAC1.streamed_Aligned.sortedByCoord.out.bam* /share/workshop/$USER/rnaseq_example/HTS_testing
+    cp -r /share/biocore/workshops/2019_August_RNAseq/HTS_testing/SampleAC1.streamed_Aligned.sortedByCoord.out.bam* /share/workshop/$USER/rnaseq_example/HTS_testing
 
 ---
 **2\.** Transfer SampleAC1.streamed_Aligned.sortedByCoord.out.bam and SampleAC1.streamed_Aligned.sortedByCoord.out.bam (the index file) to your computer using scp or winSCP, or copy/paste from cat [sometimes doesn't work].
@@ -292,6 +293,7 @@ Its ok of the mkdir command fails ("File exists") because we aleady created the 
 <img src="alignment_figures/index_igv1.png" alt="index_igv1" width="600px"/>
 
 And then navigate to the download page, [IGV download](http://software.broadinstitute.org/software/igv/download)
+
 <img src="alignment_figures/index_igv2.png" alt="index_igv2" width="600px"/>
 
 Here you can download IGV for your respective platform (Window, Mac OSX, Linux), but we are going to use the web application they supply, [IGV web app](https://igv.org/app/).
@@ -355,7 +357,7 @@ Reset the window by searching for HBB again. And zoom in 1 step.
 **1\.** We can now run STAR across all samples on the real data using a SLURM script, [star.slurm](../scripts/star.slurm), that we should take a look at now.
 
     cd /share/workshop/$USER/rnaseq_example  # We'll run this from the main directory
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_March_UCSF_mRNAseq_Workshop/master/scripts/star.slurm
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/scripts/star.slurm
     less star.slurm
 
  When you are done, type "q" to exit.
@@ -421,7 +423,7 @@ We can watch the progress of our task array using the 'squeue' command. Takes ab
 **1\.** Once your jobs have finished successfully (check the error and out logs like we did in the previous exercise), use a script of ours, [star_stats.sh](../scripts/star_stats.sh) to collect the alignment stats. Don't worry about the script's contents at the moment; you'll use very similar commands to create a counts table in the next section. For now:
 
     cd /share/workshop/$USER/rnaseq_example  # We'll run this from the main directory
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_March_UCSF_mRNAseq_Workshop/master/scripts/star_stats.sh
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/scripts/star_stats.sh
     bash star_stats.sh
 
 **2\.** Transfer summary_alignments.txt to your computer using scp or winSCP, or copy/paste from cat [sometimes doesn't work],  

@@ -347,7 +347,7 @@ We can use the 'grep' command to search for matches to patterns. 'grep' comes fr
 
     grep -c '>' phix.fa
 
-Only one FASTA sequence entry, since only one header line ('>gi|somethingsomething...')
+Only one FASTA sequence entry, since only one header line ('>gi\|somethingsomething...')
 
     cat phix.fa
 

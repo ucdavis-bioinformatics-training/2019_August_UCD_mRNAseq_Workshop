@@ -4,8 +4,8 @@ This document assumes [preproc htstream](./preproc_htstream.md) has been complet
 
 **IF** for some reason it didn't finish, is corrupted or you missed the session, you can copy over a completed copy
 
-    cp -r /share/biocore/workshops/2019_March_RNAseq/02-STAR_alignment /share/workshop/$USER/rnaseq_example/.
-    cp  /share/biocore/workshops/2019_March_RNAseq/summary_alignments.txt /share/workshop/$USER/rnaseq_example/.
+    cp -r /share/biocore/workshops/2019_August_RNAseq/02-STAR_alignment /share/workshop/$USER/rnaseq_example/.
+    cp  /share/biocore/workshops/2019_August_RNAseq/summary_alignments.txt /share/workshop/$USER/rnaseq_example/.
 
 In this section, we will collate all of the count data into one file for analysis in R.
 

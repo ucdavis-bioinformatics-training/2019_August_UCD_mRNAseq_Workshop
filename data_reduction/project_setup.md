@@ -14,7 +14,7 @@ Let's set up a project directory for the week, and talk a bit about project phil
     cd /share/workshop/$USER/rnaseq_example
     mkdir 00-RawData
     cd 00-RawData/
-    ln -s /share/biocore/workshops/2019_March_RNAseq/00-RawData/* .
+    ln -s /share/biocore/workshops/2019_August_RNAseq/00-RawData/* .
 
 This directory now contains a folder for each sample and the fastq files for each sample are in the sample folders.
 

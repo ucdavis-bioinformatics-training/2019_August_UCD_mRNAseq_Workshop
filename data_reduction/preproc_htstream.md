@@ -556,7 +556,7 @@ Note the patterns:
 **6\.** We can now run the preprocessing routine across all samples on the real data using a SLURM script, [hts_preproc.slurm](../scripts/hts_preproc.slurm), that we should take a look at now.
 
     cd /share/workshop/$USER/rnaseq_example  # We'll run this from the main directory
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_March_UCSF_mRNAseq_Workshop/master/scripts/hts_preproc.slurm
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/scripts/hts_preproc.slurm
     less hts_preproc.slurm
 
  When you are done, type "q" to exit.
@@ -655,9 +655,9 @@ If, for some reason, your jobs did not finish or something else went wrong, plea
 
 **IF** for some reason it didn't finish, is corrupted or you missed the session, you can copy over a completed copy
 
-    cp -r /share/biocore/workshops/2019_March_RNAseq/HTS_testing /share/workshop/$USER/rnaseq_example/.
-    cp -r /share/biocore/workshops/2019_March_RNAseq/01-HTS_Preproc /share/workshop/$USER/rnaseq_example/.
-    cp  /share/biocore/workshops/2019_March_RNAseq/summary_hts.txt /share/workshop/$USER/rnaseq_example/.
+    cp -r /share/biocore/workshops/2019_August_RNAseq/HTS_testing /share/workshop/$USER/rnaseq_example/.
+    cp -r /share/biocore/workshops/2019_August_RNAseq/01-HTS_Preproc /share/workshop/$USER/rnaseq_example/.
+    cp  /share/biocore/workshops/2019_August_RNAseq/summary_hts.txt /share/workshop/$USER/rnaseq_example/.
 
 
 ---
@@ -689,7 +689,7 @@ Lets grep for the sequence and count occurrences
 I've created a small R script to read in each json file, pull out some relevant stats and write out a table for all samples.
 
     cd /share/workshop/$USER/rnaseq_example  # We'll run this from the main directory
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_March_UCSF_mRNAseq_Workshop/master/scripts/summarize_stats.R
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/scripts/summarize_stats.R
 
     R CMD BATCH summarize_stats.R
     cat summary_hts.txt

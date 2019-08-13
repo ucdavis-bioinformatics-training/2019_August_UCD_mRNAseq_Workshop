@@ -72,7 +72,7 @@ getwd()
 ```
 
 ```
-## [1] "/Users/mattsettles/projects/src/github.com-ucdavis-bioinformatics-training/2019_March_UCSF_mRNAseq_Workshop/intro2R"
+## [1] "/Users/mattsettles/projects/src/github.com-ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/intro2R"
 ```
 
 ```r
@@ -720,10 +720,10 @@ The gridExtra package is great for plotting multiple object in one plot.
 
 
 ```r
-include_graphics("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_March_UCSF_mRNAseq_Workshop/master/intro2R/Data_in_R_figures/grid_plot.png")
+include_graphics("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/intro2R/Data_in_R_figures/grid_plot.png")
 ```
 
-![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_March_UCSF_mRNAseq_Workshop/master/intro2R/Data_in_R_figures/grid_plot.png)<!-- -->
+![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/intro2R/Data_in_R_figures/grid_plot.png)<!-- -->
 
 
 ```r

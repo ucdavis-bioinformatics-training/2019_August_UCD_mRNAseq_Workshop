@@ -365,17 +365,17 @@ library(RColorBrewer)
 In the R console run the following command
 
 ```r
-download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_March_UCSF_mRNAseq_Workshop/master/differential_expression/DE_Analysis.Rmd", "DE_Analysis.Rmd")
+download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/differential_expression/DE_Analysis.Rmd", "DE_Analysis.Rmd")
 ```
 
 ### Download the data file for the workshop document and preview/open it
 
-This is the the counts file generated after running [Generating Summarized Counts](https://ucdavis-bioinformatics-training.github.io/2019_March_UCSF_mRNAseq_Workshop/data_reduction/counts.html). I've also uploaded to the github pages 
+This is the the counts file generated after running [Generating Summarized Counts](https://ucdavis-bioinformatics-training.github.io/2019_August_UCD_mRNAseq_Workshop/data_reduction/counts.html). I've also uploaded to the github pages 
 
 In the R console run the following command.
 
 ```r
-download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_March_UCSF_mRNAseq_Workshop/master/differential_expression/de_data/rnaseq_workshop_counts.txt", "rnaseq_workshop_counts.txt")
+download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/differential_expression/de_data/rnaseq_workshop_counts.txt", "rnaseq_workshop_counts.txt")
 ```
 
 ### Edit the file YAML portion
