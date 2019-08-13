@@ -193,7 +193,7 @@ function doNav() {
 
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction()};
-window.onload = {document.getElementById("mySidenav").scrollTop = scrollOffset;}
+window.onload = function() {document.getElementById("mySidenav").scrollTop = scrollOffset;}
 
 // Get the header
 var header = document.getElementById("myHeader");
