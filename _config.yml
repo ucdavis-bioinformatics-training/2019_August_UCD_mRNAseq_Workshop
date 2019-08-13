@@ -3,9 +3,11 @@ title: 'UC Davis Bioinformatics Core August 2019 RNA-Seq Workshop @ UCD'
 show_downloads: True
 google_analytics: True
 navigation:
+  - title: Home
+    url: /
   - heading: Introduction
   - title: Intro to the Workshop and Core
-    url: /
+    url: welcome
   - title: What is Bioinformatics?
     url: pdfs/Genomics_a_perspective_March2019.pdf
   - heading: Command-Line and the Cluster
