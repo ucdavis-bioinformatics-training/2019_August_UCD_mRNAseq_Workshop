@@ -116,7 +116,7 @@
                               {% continue %}
                             {% endif %}
                             {% if nav.url contains "://" %}
-                              <tr><th><a href="{{ nav.url }}" onclick="setOffset()">{{ nav.title }}</a></th></tr>
+                              <tr><th><a href="{{ nav.url }}" onclick="getOffset()">{{ nav.title }}</a></th></tr>
                             {% else %}
                               <tr><th><a href="{{ nav.url | relative_url }}">{{ nav.title }}</a></th></tr>
                             {% endif %}
@@ -189,6 +189,10 @@ function doNav() {
     navopen = 1;
     document.getElementById("mySidenav").scrollTop = scrollOffset;
   }
+}
+
+function getOffset() {
+  scrollOffset = document.getElementById("mySidenav").scrollTop;
 }
 
 function setOffset() {
