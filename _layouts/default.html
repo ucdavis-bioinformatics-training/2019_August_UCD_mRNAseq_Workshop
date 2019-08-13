@@ -174,17 +174,20 @@ function closeNav() {
 }
 
 var navopen=1;
+var scrollOffest;
 function doNav() {
   if (navopen == 1) {
     document.getElementById("mySidenav").style.width = "0px";
     document.getElementById("main").style.marginLeft = "0px";
     document.getElementById("myHeader").style.marginLeft = "0px";
     navopen = 0;
+    scrollOffest = document.getElementById("mySidenav").scrollTop;
   } else {
     document.getElementById("mySidenav").style.width = "400px";
     document.getElementById("main").style.marginLeft = "400px";
     document.getElementById("myHeader").style.marginLeft = "400px";
     navopen = 1;
+    document.getElementById("mySidenav").scrollTop = scrollOffest;
   }
 }
 
