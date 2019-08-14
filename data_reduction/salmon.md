@@ -91,7 +91,7 @@ Press 'q' to exit.
 > #!/bin/bash<br>
 >
 > #SBATCH --array=1-16<br>
-> #SBATCH --job-name=star # Job name<br>
+> #SBATCH --job-name=salmon # Job name<br>
 > #SBATCH --nodes=1<br>
 > #SBATCH --ntasks=8<br>
 > #SBATCH --time=1440<br>
@@ -99,8 +99,8 @@ Press 'q' to exit.
 > #SBATCH --partition=production<br>
 > #SBATCH --reservation=workshop<br>
 > #SBATCH --account=workshop<br>
-> #SBATCH --output=slurmout/star_%A_%a.out # File to which STDOUT will be written<br>
-> #SBATCH --error=slurmout/star_%A_%a.err # File to which STDERR will be written<br>
+> #SBATCH --output=slurmout/salmon_%A_%a.out # File to which STDOUT will be written<br>
+> #SBATCH --error=slurmout/salmon_%A_%a.err # File to which STDERR will be written<br>
 >
 >
 > start=\`date +%s\`<br>
