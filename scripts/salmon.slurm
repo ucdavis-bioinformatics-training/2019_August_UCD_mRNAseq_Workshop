@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --array=1-16
-#SBATCH --job-name=star # Job name
+#SBATCH --job-name=salmon # Job name
 #SBATCH --nodes=1
 #SBATCH --ntasks=8
 #SBATCH --time=1440
@@ -9,8 +9,8 @@
 #SBATCH --partition=production
 #SBATCH --reservation=workshop
 #SBATCH --account=workshop
-#SBATCH --output=slurmout/star_%A_%a.out # File to which STDOUT will be written
-#SBATCH --error=slurmout/star_%A_%a.err # File to which STDERR will be written
+#SBATCH --output=slurmout/salmon_%A_%a.out # File to which STDOUT will be written
+#SBATCH --error=slurmout/salmon_%A_%a.err # File to which STDERR will be written
 
 
 start=`date +%s`
