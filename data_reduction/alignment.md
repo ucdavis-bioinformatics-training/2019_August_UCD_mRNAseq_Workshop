@@ -151,7 +151,7 @@ We need to first get the url for the genome fasta.
 
  When you are done, type "q" to exit.
 
- ```bash
+<blockquote>
  #!/bin/bash
 
  #SBATCH --job-name=star_index # Job name
@@ -199,7 +199,7 @@ We need to first get the url for the genome fasta.
  end=`date +%s`
  runtime=$((end-start))
  echo $runtime
- ```
+ </blockquote>
 
 1. The script uses wget to download the fasta and GTF files from GENCODE using the links you found earlier.
 1. Uncompresses them using gunzip.
