@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --array=1-16  # NEED TO CHANGE THIS!
+#SBATCH --array=1-16
 #SBATCH --job-name=star # Job name
 #SBATCH --nodes=1
 #SBATCH --ntasks=8
