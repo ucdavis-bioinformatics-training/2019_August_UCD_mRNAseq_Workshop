@@ -18,7 +18,7 @@ Let's set up a project directory for the week, and talk a bit about project phil
 
 This directory now contains a folder for each sample and the fastq files for each sample are in the sample folders.
 
-**2b\.** lets create a sample sheet for the project, store sample names in a file called samples.txt
+**2b\.** Let's create a sample sheet for the project and store sample names in a file called samples.txt
 
     ls > ../samples.txt
     cat ../samples.txt
