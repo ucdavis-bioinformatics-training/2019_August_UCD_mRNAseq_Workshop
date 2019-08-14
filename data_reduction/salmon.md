@@ -88,51 +88,51 @@ This step will take about 11 minutes to complete after the job actually starts r
 
 Press 'q' to exit.
 
-#!/bin/bash
+> #!/bin/bash<br>
 
-#SBATCH --array=1-16
-#SBATCH --job-name=star # Job name
-#SBATCH --nodes=1
-#SBATCH --ntasks=8
-#SBATCH --time=1440
-#SBATCH --mem=20000 # Memory pool for all cores (see also --mem-per-cpu)
-#SBATCH --partition=production
-#SBATCH --reservation=workshop
-#SBATCH --account=workshop
-#SBATCH --output=slurmout/star_%A_%a.out # File to which STDOUT will be written
-#SBATCH --error=slurmout/star_%A_%a.err # File to which STDERR will be written
+> #SBATCH --array=1-16<br>
+> #SBATCH --job-name=star # Job name<br>
+> #SBATCH --nodes=1<br>
+> #SBATCH --ntasks=8<br>
+> #SBATCH --time=1440<br>
+> #SBATCH --mem=20000 # Memory pool for all cores (see also --mem-per-cpu)<br>
+> #SBATCH --partition=production<br>
+> #SBATCH --reservation=workshop<br>
+> #SBATCH --account=workshop<br>
+> #SBATCH --output=slurmout/star_%A_%a.out # File to which STDOUT will be written<br>
+> #SBATCH --error=slurmout/star_%A_%a.err # File to which STDERR will be written
+>
+>
+> start=`date +%s`<br>
+> hostname
+>
+> outdir="02-Salmon"<br>
+> sampfile="samples.txt"<br>
+> REF="References/salmon_index"<br>
+> GTF="References/gencode.v29.primary_assembly.annotation.gtf"
+>
+> SAMPLE=`head -n ${SLURM_ARRAY_TASK_ID} $sampfile | tail -1`<br>
+> R1="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R1.fastq.gz"<br>
+> R2="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R2.fastq.gz"
+>
+> echo $SAMPLE
+>
+> if [ ! -e $outdir ]; then<br>
+>   mkdir $outdir<br>
+> fi
 
-
-start=\date +%s\`
-hostname
-
-outdir="02-Salmon"
-sampfile="samples.txt"
-REF="References/salmon_index"
-GTF="References/gencode.v29.primary_assembly.annotation.gtf"
-
-SAMPLE=\`head -n ${SLURM_ARRAY_TASK_ID} $sampfile | tail -1\`
-R1="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R1.fastq.gz"
-R2="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R2.fastq.gz"
-
-echo $SAMPLE
-
-if [ ! -e $outdir ]; then
-    mkdir $outdir
-fi
-
-module load salmon
-call="salmon quant -p 8 -i $REF -l A \
---validateMappings -g $GTF \
--1 $R1 -2 $R2 \
--o $outdir/$SAMPLE"
-
-echo $call
-eval $call
-
-end=`date +%s`
-runtime=$((end-start))
-echo Runtime: $runtime seconds
+> module load salmon<br>
+> call="salmon quant -p 8 -i $REF -l A \<br>
+> --validateMappings -g $GTF \<br>
+> -1 $R1 -2 $R2 \<br>
+> -o $outdir/$SAMPLE"
+>
+> echo $call<br>
+> eval $call
+>
+> end=`date +%s`<br>
+> runtime=$((end-start))<br>
+> echo Runtime: $runtime seconds
 
 1. The script specifies the output directory (02-Salmon), the samples file (samples.txt), the reference that we just indexed, and the annotation that we downloaded when we ran STAR.
 1. It then defines the filenames for the forward and reverse reads (R1 and R2).
