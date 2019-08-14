@@ -38,26 +38,26 @@ Press 'q' to exit.
 > #SBATCH --reservation=workshop<br>
 > #SBATCH --account=workshop<br>
 > #SBATCH --output=slurmout/salmon-index_%A.out # File to which STDOUT will be written<br>
-> #SBATCH --error=slurmout/salmon-index_%A.err # File to which STDERR will be written
+> #SBATCH --error=slurmout/salmon-index_%A.err # File to which STDERR will be written<br>
 >
 > start=\`date +%s\`<br>
-> echo $HOSTNAME
+> echo $HOSTNAME<br>
 >
-> outpath="References"
+> outpath="References"<br>
 >
 > cd ${outpath}<br>
 > wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.transcripts.fa.gz<br>
-> gunzip gencode.v29.transcripts.fa.gz
+> gunzip gencode.v29.transcripts.fa.gz<br>
 >
 > module load salmon<br>
-> call="salmon index -i salmon_index -p 8 -t gencode.v29.transcripts.fa --gencode"
+> call="salmon index -i salmon_index -p 8 -t gencode.v29.transcripts.fa --gencode"<br>
 >
 > echo $call<br>
-> eval $call
+> eval $call<br>
 >
 > end=\`date +%s\`<br>
 > runtime=$((end-start))<br>
-> echo $runtime
+> echo $runtime<br>
 
 1. The script changes into the References directory.
 1. It uses wget to download the transcript fasta file from GENCODE.
@@ -89,7 +89,7 @@ This step will take about 11 minutes to complete after the job actually starts r
 Press 'q' to exit.
 
 > #!/bin/bash<br>
-
+>
 > #SBATCH --array=1-16<br>
 > #SBATCH --job-name=star # Job name<br>
 > #SBATCH --nodes=1<br>
@@ -100,39 +100,39 @@ Press 'q' to exit.
 > #SBATCH --reservation=workshop<br>
 > #SBATCH --account=workshop<br>
 > #SBATCH --output=slurmout/star_%A_%a.out # File to which STDOUT will be written<br>
-> #SBATCH --error=slurmout/star_%A_%a.err # File to which STDERR will be written
+> #SBATCH --error=slurmout/star_%A_%a.err # File to which STDERR will be written<br>
 >
 >
 > start=\`date +%s\`<br>
-> hostname
+> hostname<br>
 >
 > outdir="02-Salmon"<br>
 > sampfile="samples.txt"<br>
 > REF="References/salmon_index"<br>
-> GTF="References/gencode.v29.primary_assembly.annotation.gtf"
+> GTF="References/gencode.v29.primary_assembly.annotation.gtf"<br>
 >
 > SAMPLE=\`head -n ${SLURM_ARRAY_TASK_ID} $sampfile | tail -1\`<br>
 > R1="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R1.fastq.gz"<br>
-> R2="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R2.fastq.gz"
+> R2="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R2.fastq.gz"<br>
 >
-> echo $SAMPLE
+> echo $SAMPLE<br>
 >
 > if [ ! -e $outdir ]; then<br>
 >   mkdir $outdir<br>
-> fi
+> fi<br>
 
 > module load salmon<br>
 > call="salmon quant -p 8 -i $REF -l A \<br>
 > --validateMappings -g $GTF \<br>
 > -1 $R1 -2 $R2 \<br>
-> -o $outdir/$SAMPLE"
+> -o $outdir/$SAMPLE"<br>
 >
 > echo $call<br>
-> eval $call
+> eval $call<br>
 >
 > end=\`date +%s\`<br>
 > runtime=$((end-start))<br>
-> echo Runtime: $runtime seconds
+> echo Runtime: $runtime seconds<br>
 
 1. The script specifies the output directory (02-Salmon), the samples file (samples.txt), the reference that we just indexed, and the annotation that we downloaded when we ran STAR.
 1. It then defines the filenames for the forward and reverse reads (R1 and R2).
