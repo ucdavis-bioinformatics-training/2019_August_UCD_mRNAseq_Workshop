@@ -195,7 +195,9 @@ function setScroll() {
 
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction()};
-window.onload = function() {setScroll();}
+// window.onload = function() {setScroll();}
+
+window.onload = function() {console.log(document.getElementById("mySidenav").scrollTop);}
 
 // Get the header
 var header = document.getElementById("myHeader");
