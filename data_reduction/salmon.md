@@ -30,33 +30,33 @@ Press 'q' to exit.
 > #!/bin/bash
 >
 > #SBATCH --job-name=salmon_index # Job name<br>
-> #SBATCH --nodes=1
-> #SBATCH --ntasks=8
-> #SBATCH --time=60
-> #SBATCH --mem=15000 # Memory pool for all cores (see also --mem-per-cpu)
-> #SBATCH --partition=production
-> #SBATCH --reservation=workshop
-> #SBATCH --account=workshop
-> #SBATCH --output=slurmout/salmon-index_%A.out # File to which STDOUT will be written
+> #SBATCH --nodes=1<br>
+> #SBATCH --ntasks=8<br>
+> #SBATCH --time=60<br>
+> #SBATCH --mem=15000 # Memory pool for all cores (see also --mem-per-cpu)<br>
+> #SBATCH --partition=production<br>
+> #SBATCH --reservation=workshop<br>
+> #SBATCH --account=workshop<br>
+> #SBATCH --output=slurmout/salmon-index_%A.out # File to which STDOUT will be written<br>
 > #SBATCH --error=slurmout/salmon-index_%A.err # File to which STDERR will be written
 >
-> start=`date +%s`
+> start=`date +%s`<br>
 > echo $HOSTNAME
 >
 > outpath="References"
 >
-> cd ${outpath}
-> wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.transcripts.fa.gz
+> cd ${outpath}<br>
+> wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.transcripts.fa.gz<br>
 > gunzip gencode.v29.transcripts.fa.gz
 >
-> module load salmon
+> module load salmon<br>
 > call="salmon index -i salmon_index -p 8 -t gencode.v29.transcripts.fa --gencode"
 >
-> echo $call
+> echo $call<br>
 > eval $call
 >
-> end=`date +%s`
-> runtime=$((end-start))
+> end=`date +%s`<br>
+> runtime=$((end-start))<br>
 > echo $runtime
 
 1. The script changes into the References directory.
