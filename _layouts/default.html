@@ -116,9 +116,9 @@
                               {% continue %}
                             {% endif %}
                             {% if nav.url contains "://" %}
-                              <tr><th><a href="{{ nav.url }}" onclick="setScrollPos();">{{ nav.title }}</a></th></tr>
+                              <tr><th><a href="{{ nav.url }}" id="{{ nav.url }}">{{ nav.title }}</a></th></tr>
                             {% else %}
-                              <tr><th><a href="{{ nav.url | relative_url }}" onclick="setScrollPos();">{{ nav.title }}</a></th></tr>
+                              <tr><th><a href="{{ nav.url | relative_url }}" id="{{ relative_url }}">{{ nav.title }}</a></th></tr>
                             {% endif %}
                         {% endfor %}
                     </table>
@@ -188,17 +188,17 @@ function doNav() {
   }
 }
 
+function setScroll() {
+  var element_to_scroll_to = document.getElementById(window.location.href);
+  element_to_scroll_to.scrollIntoView();
+}
+
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction()};
-window.onload = function() {document.getElementById("mySidenav").scrollTop = scrollpos;}
+window.onload = function() {setScroll();}
 
 // Get the header
 var header = document.getElementById("myHeader");
-
-var scrollpos;
-function setScrollPos() {
-  scrollpos = document.getElementById("mySidenav").scrollTop;
-}
 
 // Get the offset position of the navbar
 var sticky = header.offsetTop;
