@@ -150,3 +150,12 @@ This will run a job for every sample... each job should only take around 3 minut
 **IF** for some reason it didn't finish, is corrupted, or you missed the session, you can copy over a completed copy.
 
 	cp -r /share/biocore/workshops/2019_August_RNAseq/02-Salmon /share/workshop/$USER/rnaseq_example/
+
+-----
+
+**7\.** Once the jobs finish, take a look at one of the output files:
+
+	cd 02-Salmon/SampleAC1
+	less quant.genes.sf
+
+These are the gene-level counts rolled up from the transcript counts. Take a look at the [Salmon output file format documentation](https://salmon.readthedocs.io/en/latest/file_formats.html#fileformats) to understand each of the columns. Press 'q' to exit. We will be comparing the counts from Salmon to the counts from STAR, to see their differences, if any.
