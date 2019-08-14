@@ -91,15 +91,15 @@ We take the samples.txt file and pipe that to the sort (to ensure they are in th
 
 > msettles@tadpole:/share/workshop/msettles/rnaseq_example$ head 03-Counts/rnaseq_workshop_counts.txt<br>
 > SampleAC1	SampleAC2	SampleAC3	SampleAC4	SampleAD1	SampleAD2	SampleAD3	SampleAD4	SampleBC1	SampleBC2	SampleBC3	SampleBC4	SampleBD1	SampleBD2	SampleBD3	SampleBD4<br>
-> ENSG00000223972.5	3	1	0	0	0	0	0	0	2	0	0	0	0	5	0	0<br>
-> ENSG00000227232.5	20	7	15	10	7	9	15	26	6	10	6	6	14	10	4	4<br>
-> ENSG00000278267.1	1	2	1	1	0	1	2	4	0	0	0	0	0	0	1	0<br>
-> ENSG00000243485.5	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0<br>
-> ENSG00000284332.1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0<br>
-> ENSG00000237613.2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0<br>
-> ENSG00000268020.3	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0<br>
-> ENSG00000240361.2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0<br>
-> ENSG00000186092.6	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0<br>
+> ENSG00000223972.5	3	1	0	0	0	0	0	0	2	0	0	0	0	5	0	0
+> ENSG00000227232.5	20	7	15	10	7	9	15	26	6	10	6	6	14	10	4	4
+> ENSG00000278267.1	1	2	1	1	0	1	2	4	0	0	0	0	0	0	1	0
+> ENSG00000243485.5	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0
+> ENSG00000284332.1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+> ENSG00000237613.2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+> ENSG00000268020.3	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+> ENSG00000240361.2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+> ENSG00000186092.6	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 
 
 And now you have a raw counts file that has a count for every gene, per sample. You will use this file for the next step, which is analysis in R.
