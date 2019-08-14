@@ -122,9 +122,9 @@ Press 'q' to exit.
 > fi<br>
 >
 > module load salmon<br>
-> call="salmon quant -p 8 -i $REF -l A \<br>
-> --validateMappings -g $GTF \<br>
-> -1 $R1 -2 $R2 \<br>
+> call="salmon quant -p 8 -i $REF -l A \\<br>
+> --validateMappings -g $GTF \\<br>
+> -1 $R1 -2 $R2 \\<br>
 > -o $outdir/$SAMPLE"<br>
 >
 > echo $call<br>
