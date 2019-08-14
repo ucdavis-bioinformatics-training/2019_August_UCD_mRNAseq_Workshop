@@ -149,4 +149,4 @@ This will run a job for every sample... each job should only take around 3 minut
 
 **IF** for some reason it didn't finish, is corrupted, or you missed the session, you can copy over a completed copy.
 
-	cp -r /share/biocore/workshops/2019_August_RNAseq/02-Salmon /share/workshop/$USER/rnaseq_example
+	cp -r /share/biocore/workshops/2019_August_RNAseq/02-Salmon /share/workshop/$USER/rnaseq_example/
