@@ -110,16 +110,15 @@
                   <a href="javascript:void(0)" class="closebtn" onclick="doNav()">&times;</a>
 
                     <table>
-                        {% for i in (1..site.navigation.size) %}
-                            {% nav = site.navigation[i-1] %}
+                        {% for nav in site.navigation %}
                             {% if nav.heading %}
                               <th style="font-size:30px;">{{ nav.heading }}</th>
                               {% continue %}
                             {% endif %}
                             {% if nav.url contains "://" %}
-                              <tr><th><a href="{{ nav.url }}" id="i">{{ nav.title }}</a></th></tr>
+                              <tr><th><a href="{{ nav.url }}">{{ nav.title }}</a></th></tr>
                             {% else %}
-                              <tr><th><a href="{{ nav.url | relative_url }}" id="i">{{ nav.title }}</a></th></tr>
+                              <tr><th><a href="{{ nav.url | relative_url }}">{{ nav.title }}</a></th></tr>
                             {% endif %}
                         {% endfor %}
                     </table>
