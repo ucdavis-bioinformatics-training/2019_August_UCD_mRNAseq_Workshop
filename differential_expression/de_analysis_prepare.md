@@ -6,6 +6,8 @@ output:
       keep_md: TRUE
 ---
 
+# Prepare the DE analysis
+
 ### Create a new RStudio project
 
 Open RStudio and create a new project, for more info see <https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects>
