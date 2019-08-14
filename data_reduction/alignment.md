@@ -151,55 +151,53 @@ We need to first get the url for the genome fasta.
 
  When you are done, type "q" to exit.
 
-<blockquote>
- #!/bin/bash<br>
-
- #SBATCH --job-name=star_index # Job name
- #SBATCH --nodes=1
- #SBATCH --ntasks=8
- #SBATCH --time=120
- #SBATCH --mem=40000 # Memory pool for all cores (see also --mem-per-cpu)
- #SBATCH --partition=production
- #SBATCH --reservation=workshop
- #SBATCH --account=workshop
- #SBATCH --output=slurmout/star-index_%A.out # File to which STDOUT will be written
- #SBATCH --error=slurmout/star-index_%A.err # File to which STDERR will be written
-
- start=`date +%s`
- echo $HOSTNAME
-
- outpath="References"
- [[ -d ${outpath} ]] || mkdir ${outpath}
-
- cd ${outpath}
- wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/GRCh38.primary_assembly.genome.fa.gz
- gunzip GRCh38.primary_assembly.genome.fa.gz
- FASTA="../GRCh38.primary_assembly.genome.fa"
-
- wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.primary_assembly.annotation.gtf.gz
- gunzip gencode.v29.primary_assembly.annotation.gtf.gz
- GTF="../gencode.v29.primary_assembly.annotation.gtf"
-
- mkdir star.overlap100.gencode.v29
- cd star.overlap100.gencode.v29
-
- module load star/2.7.0e
-
- call="STAR
-      --runThreadN 8 \
-      --runMode genomeGenerate \
-      --genomeDir . \
-      --sjdbOverhang 100 \
-      --sjdbGTFfile ${GTF} \
-      --genomeFastaFiles ${FASTA}"
-
- echo $call
- eval $call
-
- end=`date +%s`
- runtime=$((end-start))
- echo $runtime
-</blockquote>
+> #!/bin/bash<br>
+> <br>
+> #SBATCH --job-name=star_index # Job name<br>
+> #SBATCH --nodes=1<br>
+> #SBATCH --ntasks=8<br>
+> #SBATCH --time=120<br>
+> #SBATCH --mem=40000 # Memory pool for all cores (see also --mem-per-cpu)<br>
+> #SBATCH --partition=production<br>
+> #SBATCH --reservation=workshop<br>
+> #SBATCH --account=workshop<br>
+> #SBATCH --output=slurmout/star-index_%A.out # File to which STDOUT will be written<br>
+> #SBATCH --error=slurmout/star-index_%A.err # File to which STDERR will be written<br>
+> <br>
+> start=\`date +%s\`<br>
+> echo $HOSTNAME<br>
+> <br>
+> outpath="References"<br>
+> [[ -d ${outpath} ]] || mkdir ${outpath}<br>
+> <br>
+> cd ${outpath}<br>
+> wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/GRCh38.primary_assembly.genome.fa.gz<br>
+> gunzip GRCh38.primary_assembly.genome.fa.gz<br>
+> FASTA="../GRCh38.primary_assembly.genome.fa"<br>
+> <br>
+> wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.primary_assembly.annotation.gtf.gz<br>
+> gunzip gencode.v29.primary_assembly.annotation.gtf.gz<br>
+> GTF="../gencode.v29.primary_assembly.annotation.gtf"<br>
+> <br>
+> mkdir star.overlap100.gencode.v29<br>
+> cd star.overlap100.gencode.v29<br>
+> <br>
+> module load star/2.7.0e<br>
+> <br>
+> call="STAR<br>
+>     --runThreadN 8 \\<br>
+>     --runMode genomeGenerate \\<br>
+>     --genomeDir . \\<br>
+>     --sjdbOverhang 100 \\<br>
+>     --sjdbGTFfile ${GTF} \\<br>
+>     --genomeFastaFiles ${FASTA}"<br>
+> <br>
+> echo $call<br>
+> eval $call<br>
+> <br>
+> end=\`date +%s\`<br>
+> runtime=$((end-start))<br>
+> echo $runtime<br>
 
 1. The script uses wget to download the fasta and GTF files from GENCODE using the links you found earlier.
 1. Uncompresses them using gunzip.
