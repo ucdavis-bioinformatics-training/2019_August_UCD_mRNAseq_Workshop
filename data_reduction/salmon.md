@@ -120,7 +120,7 @@ Press 'q' to exit.
 > if [ ! -e $outdir ]; then<br>
 >   mkdir $outdir<br>
 > fi<br>
-
+>
 > module load salmon<br>
 > call="salmon quant -p 8 -i $REF -l A \<br>
 > --validateMappings -g $GTF \<br>
