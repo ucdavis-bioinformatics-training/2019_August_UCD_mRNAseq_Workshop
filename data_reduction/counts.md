@@ -89,8 +89,8 @@ We take the samples.txt file and pipe that to the sort (to ensure they are in th
     head 03-Counts/rnaseq_workshop_counts.txt
 
 
-> msettles@tadpole:/share/workshop/msettles/rnaseq_example$ head 03-Counts/rnaseq_workshop_counts.txt<br>
-> SampleAC1	SampleAC2	SampleAC3	SampleAC4	SampleAD1	SampleAD2	SampleAD3	SampleAD4	SampleBC1	SampleBC2	SampleBC3	SampleBC4	SampleBD1	SampleBD2	SampleBD3	SampleBD4<br>
+> msettles@tadpole:/share/workshop/msettles/rnaseq_example$ head 03-Counts/rnaseq_workshop_counts.txt
+> SampleAC1	SampleAC2	SampleAC3	SampleAC4	SampleAD1	SampleAD2	SampleAD3	SampleAD4	SampleBC1	SampleBC2	SampleBC3	SampleBC4	SampleBD1	SampleBD2	SampleBD3	SampleBD4
 > ENSG00000223972.5	3	1	0	0	0	0	0	0	2	0	0	0	0	5	0	0
 > ENSG00000227232.5	20	7	15	10	7	9	15	26	6	10	6	6	14	10	4	4
 > ENSG00000278267.1	1	2	1	1	0	1	2	4	0	0	0	0	0	0	1	0
