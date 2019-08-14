@@ -135,7 +135,7 @@ You can think of paths like addresses. You can tell your friend how to go to a p
 
     cd ~  # let's start at home
 
-**relative* (start here, take two steps up, then down through share and workshop)
+**relative** (start here, take two steps up, then down through share and workshop)
 
     cd ../../share/workshop/
     pwd
@@ -310,7 +310,7 @@ list files in Illumina sub-directory of any directory ending in 'hiX'
 
     ls PhiX/Illumina/RTA/Sequence/*/*.fa
 
-list all .fa files a few directories down. So, '?' fills in for zero or one character, '*' fills in for zero or more characters. find can be used to locate files of a server form.
+list all .fa files a few directories down. So, '?' fills in for zero or one character, '\*' fills in for zero or more characters. find can be used to locate files of a server form.
 
     find . -name "*.f*"
     find . -name "*.f?"
@@ -357,7 +357,7 @@ This may not be useful for anything larger than a virus! Let's look at start cod
 
 '.' characters are the single-character wildcards for grep
 
-Use the --color  '-o' option to **o*nly print the pattern matches, one per line
+Use the --color  '-o' option to **o**nly print the pattern matches, one per line
 
     grep -o "ATG......" phix.fa
 
@@ -446,9 +446,9 @@ To restart the last command in the background
 
     jobs
 
-```    
-[1]+  Running                 sleep 1000000 &
-```
+
+> [1]+  Running                 sleep 1000000 &<br>
+
 
 We can also start a job in the background in one step, without having to suspend then resume it, using the '&' character at the end of the command:
 
@@ -457,30 +457,35 @@ We can also start a job in the background in one step, without having to suspend
 If we want to delete these jobs for any reason, we can kill them using the numbering that 'jobs' reveals:
 
     jobs
-    # [1]-  Running                 sleep 1000000 &
-    # [2]+  Running                 sleep 5000000 &
+
+> [1]-  Running                 sleep 1000000 &<br>
+> [2]+  Running                 sleep 5000000 &<br>
+
     kill %1
     jobs
-    # [1]-  Terminated              sleep 1000000
-    # [2]+  Running                 sleep 5000000 &
+
+> [1]-  Terminated              sleep 1000000<br>
+> [2]+  Running                 sleep 5000000 &<br>
+
     kill %2
     jobs
-    # [2]+  Terminated              sleep 5000000
+
+> [2]+  Terminated              sleep 5000000<br>
 
 Finally, the 'nohup' command (from 'no hangup'!) makes jobs extra resistant to lost connections or terminal problems. In other words, even jobs running in the background can be terminated if one's shell dies. 'nohup' separates the running job from the shell, so it'll keep running until it dies or is actively killed by you.
 
     nohup sleep 1000000 &
 
-```
-[1] 34993
-username@c4-0:~/CLB$ nohup: ignoring input and appending output to nohup.out
-```
+
+> [1] 34993<br>
+> username@c4-0:~/CLB$ nohup: ignoring input and appending output to nohup.out<br>
+
 
     jobs
 
-```
-[1]+  Running                 nohup sleep 1000000 &
-```
+
+> [1]+  Running                 nohup sleep 1000000 &<br>
+
 
 output is dumped into the 'nohup.out' file unless specifically redirected in your command
 
@@ -520,34 +525,34 @@ Though there are ways to run the commands in test.sh right now, it's generally u
 
     ls -lh test.sh
 
-```
--rw-rw-r-- 1 msettles workshop 90 Mar 10 14:19 test.sh
-```
+
+> -rw-rw-r-- 1 msettles workshop 90 Mar 10 14:19 test.sh<br>
+
 
 The first '-' becomes a 'd' if the 'file' is actually a directory. The next three characters represent **r**ead, **w**rite, and e**x**ecute permissions for the file owner (you), followed by three characters for users in the owner's group, followed by three characters for all other users. Run the 'chmod' command to change permissions for the 'test.sh' file, adding execute permissions ('+x') for the user (you) and your group ('ug'):
 
     chmod ug+x test.sh
     ls -lh test.sh
 
-```
--rwxr-xr-- 1 jfass biocore 79 Aug 19 15:05 test.sh*
-```
+
+> -rwxr-xr-- 1 jfass biocore 79 Aug 19 15:05 test.sh\*<br>
+
 
 OK! So let's run this script, feeding it the phiX genome. When we put the genome file 1st after the name of the script, this filename becomes variable '1', which the script can access by specifying '$1'. We have to provide a relative reference to the script './' because its not our our "PATH".
 
     ./test.sh genome.fa
 
-```
-msettles@tadpole:/share/workshop/msettles/cli$ ./test.sh genome.fa
-    1686 T
-    1292 A
-    1253 G
-    1155 C
-       1 x
-       1 p
-       1 i
-       1 h
-       1 >
-```       
+
+> msettles@tadpole:/share/workshop/msettles/cli$ ./test.sh genome.fa<br>
+>     1686 T<br>
+>     1292 A<br>
+>     1253 G<br>
+>     1155 C<br>
+>        1 x<br>
+>        1 p<br>
+>        1 i<br>
+>        1 h<br>
+>        1 ><br>
+
 
 The script's grep command splits out every character in the file on a separate line, then sorts them so it can count the occurrences of every unique character and show the most frequent characters first ... a quick and dirty way to get at GC content.
