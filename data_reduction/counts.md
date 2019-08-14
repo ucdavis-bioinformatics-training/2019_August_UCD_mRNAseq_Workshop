@@ -24,16 +24,16 @@ Take a look at the beginning of one of these files:
 
 
 > msettles@tadpole:/share/workshop/msettles/rnaseq_example$ head 02-STAR_alignment/SampleAC1/SampleAC1_ReadsPerGene.out.tab<br>
-> N_unmapped	95519	95519	95519<br>
-> N_multimapping	213548	213548	213548<br>
-> N_noFeature	641702	2690321	682539<br>
-> N_ambiguous	211202	4942	94753<br>
-> ENSG00000223972.5	3	0	3<br>
-> ENSG00000227232.5	20	0	20<br>
-> ENSG00000278267.1	1	0	1<br>
-> ENSG00000243485.5	0	0	0<br>
-> ENSG00000284332.1	0	0	0<br>
-> ENSG00000237613.2	0	0	0<br>
+> N_unmapped	95519	95519	95519
+> N_multimapping	213548	213548	213548
+> N_noFeature	641702	2690321	682539
+> N_ambiguous	211202	4942	94753
+> ENSG00000223972.5	3	0	3
+> ENSG00000227232.5	20	0	20
+> ENSG00000278267.1	1	0	1
+> ENSG00000243485.5	0	0	0
+> ENSG00000284332.1	0	0	0
+> ENSG00000237613.2	0	0	0
 
 
 The columns are ID, reads map to either strand, reads mapped to forward strand, and reads mapped to the reverse strand and the first four lines are category totals. In this experiment, it looks like the reads are from the reverse strand, due to the much higher mapping numbers in that column and they similar to reads mapped to either strands. So what we want is just that column of numbers (minus the first four lines), for every one of these files.
