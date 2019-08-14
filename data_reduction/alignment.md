@@ -152,7 +152,7 @@ We need to first get the url for the genome fasta.
  When you are done, type "q" to exit.
 
 > #!/bin/bash<br>
-> <br>
+>
 > #SBATCH --job-name=star_index # Job name<br>
 > #SBATCH --nodes=1<br>
 > #SBATCH --ntasks=8<br>
@@ -163,27 +163,27 @@ We need to first get the url for the genome fasta.
 > #SBATCH --account=workshop<br>
 > #SBATCH --output=slurmout/star-index_%A.out # File to which STDOUT will be written<br>
 > #SBATCH --error=slurmout/star-index_%A.err # File to which STDERR will be written<br>
-> <br>
+>
 > start=\`date +%s\`<br>
 > echo $HOSTNAME<br>
-> <br>
+>
 > outpath="References"<br>
 > [[ -d ${outpath} ]] || mkdir ${outpath}<br>
-> <br>
+>
 > cd ${outpath}<br>
 > wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/GRCh38.primary_assembly.genome.fa.gz<br>
 > gunzip GRCh38.primary_assembly.genome.fa.gz<br>
 > FASTA="../GRCh38.primary_assembly.genome.fa"<br>
-> <br>
+>
 > wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.primary_assembly.annotation.gtf.gz<br>
 > gunzip gencode.v29.primary_assembly.annotation.gtf.gz<br>
 > GTF="../gencode.v29.primary_assembly.annotation.gtf"<br>
-> <br>
+>
 > mkdir star.overlap100.gencode.v29<br>
 > cd star.overlap100.gencode.v29<br>
-> <br>
+>
 > module load star/2.7.0e<br>
-> <br>
+>
 > call="STAR<br>
 >     --runThreadN 8 \\<br>
 >     --runMode genomeGenerate \\<br>
@@ -191,10 +191,10 @@ We need to first get the url for the genome fasta.
 >     --sjdbOverhang 100 \\<br>
 >     --sjdbGTFfile ${GTF} \\<br>
 >     --genomeFastaFiles ${FASTA}"<br>
-> <br>
+>
 > echo $call<br>
 > eval $call<br>
-> <br>
+>
 > end=\`date +%s\`<br>
 > runtime=$((end-start))<br>
 > echo $runtime<br>
