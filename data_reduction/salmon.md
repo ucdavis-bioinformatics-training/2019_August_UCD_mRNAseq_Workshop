@@ -40,7 +40,7 @@ Press 'q' to exit.
 > #SBATCH --output=slurmout/salmon-index_%A.out # File to which STDOUT will be written<br>
 > #SBATCH --error=slurmout/salmon-index_%A.err # File to which STDERR will be written
 >
-> start=`date +%s`<br>
+> start=\`date +%s\`<br>
 > echo $HOSTNAME
 >
 > outpath="References"
@@ -55,7 +55,7 @@ Press 'q' to exit.
 > echo $call<br>
 > eval $call
 >
-> end=`date +%s`<br>
+> end=\`date +%s\`<br>
 > runtime=$((end-start))<br>
 > echo $runtime
 
@@ -103,7 +103,7 @@ Press 'q' to exit.
 > #SBATCH --error=slurmout/star_%A_%a.err # File to which STDERR will be written
 >
 >
-> start=`date +%s`<br>
+> start=\`date +%s\`<br>
 > hostname
 >
 > outdir="02-Salmon"<br>
@@ -111,7 +111,7 @@ Press 'q' to exit.
 > REF="References/salmon_index"<br>
 > GTF="References/gencode.v29.primary_assembly.annotation.gtf"
 >
-> SAMPLE=`head -n ${SLURM_ARRAY_TASK_ID} $sampfile | tail -1`<br>
+> SAMPLE=\`head -n ${SLURM_ARRAY_TASK_ID} $sampfile | tail -1\`<br>
 > R1="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R1.fastq.gz"<br>
 > R2="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R2.fastq.gz"
 >
@@ -130,7 +130,7 @@ Press 'q' to exit.
 > echo $call<br>
 > eval $call
 >
-> end=`date +%s`<br>
+> end=\`date +%s\`<br>
 > runtime=$((end-start))<br>
 > echo Runtime: $runtime seconds
 
