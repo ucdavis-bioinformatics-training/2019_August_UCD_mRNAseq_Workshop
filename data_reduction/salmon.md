@@ -112,8 +112,8 @@ Press 'q' to exit.
 > GTF="References/gencode.v29.primary_assembly.annotation.gtf"<br>
 >
 > SAMPLE=\`head -n ${SLURM_ARRAY_TASK_ID} $sampfile | tail -1\`<br>
-> R1="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R1.fastq.gz"<br>
-> R2="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R2.fastq.gz"<br>
+> R1="01-HTS_Preproc/$SAMPLE/${SAMPLE}\_R1.fastq.gz"<br>
+> R2="01-HTS_Preproc/$SAMPLE/${SAMPLE}\_R2.fastq.gz"<br>
 >
 > echo $SAMPLE<br>
 >
