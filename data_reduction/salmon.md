@@ -134,7 +134,7 @@ Press 'q' to exit.
 	runtime=$((end-start))
 	echo Runtime: $runtime seconds
 
-1. The script specifies the output directory (02-Salmon), the samples file, the reference that we just indexed, and the annotation that we downloaded when we ran STAR.
+1. The script specifies the output directory (02-Salmon), the samples file (samples.txt), the reference that we just indexed, and the annotation that we downloaded when we ran STAR.
 1. It then defines the filenames for the forward and reverse reads (R1 and R2).
 1. Creates the output directory.
 1. Loads the salmon module and then runs salmon in "quant" mode to quantify (i.e. count) the reads aligning to transcripts. Salmon uses the annotation GTF file to roll up the transcript counts into gene-level counts.
