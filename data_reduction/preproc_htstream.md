@@ -82,50 +82,47 @@ So we zcat (uncompress and send to screen), pipe to head (param -400000) then pi
     module load htstream/1.0.0
     hts_Stats --help
 
-```bash
-# msettles@tadpole:/share/workshop/msettles/rnaseq_example/HTS_testing$ hts_Stats --help
-# HTStream <https://github.com/ibest/HTStream> application: hts_Stats
-# Version: 1.0.0-release
-# The hts_Stats app produce basic statistics about the reads in a dataset.
-#   Including the basepair composition and number of bases Q30.
-#
-# Standard Options:
-#   -v [ --version ]                      Version print
-#   -h [ --help ]                         Prints help documentation
-#   -N [ --notes ] arg                    Notes for the stats JSON
-#   -L [ --stats-file ] arg (=stats.log)  String for output stats file name
-#   -A [ --append-stats-file ]            Append to stats file
-#
-# Input Options:
-#   -1 [ --read1-input ] arg              Read 1 paired end fastq input <space
-#                                         seperated for multiple files>
-#   -2 [ --read2-input ] arg              Read 2 paired end fastq input <space
-#                                         seperated for multiple files>
-#   -U [ --singleend-input ] arg          Single end read fastq input <space
-#                                         seperated for multiple files>
-#   -T [ --tab-input ] arg                Tab input <space seperated for multiple
-#                                         files>
-#   -I [ --interleaved-input ] arg        Interleaved fastq input <space
-#                                         seperated for multiple files>
-#   -S [ --from-stdin ]                   STDIN input <MUST BE TAB DELIMITED
-#                                         INPUT>
-#
-# Output Options:
-#   -F [ --force ]                        Forces overwrite of files
-#   -p [ --prefix ] arg (=hts_Stats)      Prefix for output files
-#   -g [ --gzip-output ]                  Output gzipped files
-#   -f [ --fastq-output ]                 Output to Fastq format <PE AND/OR SE
-#                                         files>
-#   -t [ --tab-output ]                   Output to tab-delimited file format
-#   -i [ --interleaved-output ]           Output to interleaved fastq file <PE
-#                                         ONLY>
-#   -u [ --unmapped-output ]              Output to unmapped sam file format
-#   -O [ --to-stdout ]                    Output to STDOUT in tab-delimited file
-#                                         format
-#
-#
-# Please report any issues, request for enhancement, or comments to <https://github.com/ibest/HTStream/issues>
-```
+
+> msettles@tadpole:/share/workshop/msettles/rnaseq_example/HTS_testing$ hts_Stats --help<br>
+> HTStream <https://github.com/ibest/HTStream> application: hts_Stats<br>
+> Version: 1.0.0-release<br>
+> The hts_Stats app produce basic statistics about the reads in a dataset.<br>
+> Including the basepair composition and number of bases Q30.<br>
+>
+> Standard Options:<br>
+>   -v [ --version ]                      Version print<br>
+>   -h [ --help ]                         Prints help documentation<br>
+>   -N [ --notes ] arg                    Notes for the stats JSON<br>
+>   -L [ --stats-file ] arg (=stats.log)  String for output stats file name<br>
+>   -A [ --append-stats-file ]            Append to stats file<br>
+> Input Options:<br>
+>   -1 [ --read1-input ] arg              Read 1 paired end fastq input <space<br>
+>                                         seperated for multiple files><br>
+>   -2 [ --read2-input ] arg              Read 2 paired end fastq input <space<br>
+>                                         seperated for multiple files><br>
+>   -U [ --singleend-input ] arg          Single end read fastq input <space<br>
+>                                         seperated for multiple files><br>
+>   -T [ --tab-input ] arg                Tab input <space seperated for multiple<br>
+>                                         files><br>
+>   -I [ --interleaved-input ] arg        Interleaved fastq input <space<br>
+>                                         seperated for multiple files><br>
+>   -S [ --from-stdin ]                   STDIN input <MUST BE TAB DELIMITED<br>
+>                                         INPUT><br>
+> Output Options:<br>
+>   -F [ --force ]                        Forces overwrite of files<br>
+>   -p [ --prefix ] arg (=hts_Stats)      Prefix for output files<br>
+>   -g [ --gzip-output ]                  Output gzipped files<br>
+>   -f [ --fastq-output ]                 Output to Fastq format <PE AND/OR SE<br>
+>                                         files><br>
+>   -t [ --tab-output ]                   Output to tab-delimited file format<br>
+>   -i [ --interleaved-output ]           Output to interleaved fastq file <PE<br>
+>                                         ONLY><br>
+>   -u [ --unmapped-output ]              Output to unmapped sam file format<br>
+>   -O [ --to-stdout ]                    Output to STDOUT in tab-delimited file<br>
+>                                         format<br>
+>
+> Please report any issues, request for enhancement, or comments to <https://github.com/ibest/HTStream/issues><br>
+
 
 So now lets run hts_Stats and look at the output.
 
@@ -139,18 +136,18 @@ Lets take a look at the output of stats
 
     ls -lah
 
-```bash
-# msettles@tadpole:/share/workshop/msettles/rnaseq_example/HTS_testing$ls -lah
-# total 29M
-# drwxrwsr-x 2 msettles workshop    8 Mar  9 10:46 .
-# drwxrwsr-x 5 msettles workshop    6 Mar  9 10:42 ..
-# -rw-rw-r-- 1 msettles workshop    0 Mar  9 10:45 C61.stats.log
-# -rw-rw-r-- 1 msettles workshop  660 Mar  9 10:46 SampleAC1.stats.log
-# -rw-rw-r-- 1 msettles workshop 6.8M Mar  9 10:46 SampleAC1.stats_R1.fastq.gz
-# -rw-rw-r-- 1 msettles workshop 7.5M Mar  9 10:46 SampleAC1.stats_R2.fastq.gz
-# -rw-rw-r-- 1 msettles workshop 6.8M Mar  9 10:42 SampleAC1.subset_R1.fastq.gz
-# -rw-rw-r-- 1 msettles workshop 7.5M Mar  9 10:42 SampleAC1.subset_R2.fastq.gz
-```
+
+> msettles@tadpole:/share/workshop/msettles/rnaseq_example/HTS_testing$ls -lah<br>
+> total 29M<br>
+> drwxrwsr-x 2 msettles workshop    8 Mar  9 10:46 .<br>
+> drwxrwsr-x 5 msettles workshop    6 Mar  9 10:42 ..<br>
+> -rw-rw-r-- 1 msettles workshop    0 Mar  9 10:45 C61.stats.log<br>
+> -rw-rw-r-- 1 msettles workshop  660 Mar  9 10:46 SampleAC1.stats.log<br>
+> -rw-rw-r-- 1 msettles workshop 6.8M Mar  9 10:46 SampleAC1.stats_R1.fastq.gz<br>
+> -rw-rw-r-- 1 msettles workshop 7.5M Mar  9 10:46 SampleAC1.stats_R2.fastq.gz<br>
+> -rw-rw-r-- 1 msettles workshop 6.8M Mar  9 10:42 SampleAC1.subset_R1.fastq.gz<br>
+> -rw-rw-r-- 1 msettles workshop 7.5M Mar  9 10:42 SampleAC1.subset_R2.fastq.gz<br>
+
 
 *Which files were generated from hts\_Stats?*
 
@@ -160,37 +157,37 @@ Lets take a look at the output of stats
 
 The logs generated by htstream are in [json](https://en.wikipedia.org/wiki/JSON) format, like a database format but meant to be readable.
 
-```json
-{ "hts_Stats_63322": {
-    "Notes": "",
-    "totalFragmentsInput": 100000,
-    "totalFragmentsOutput": 100000,
-    "R1_readlength_histogram": [ [151,100000] ],
-    "R2_readlength_histogram": [ [151,100000] ],
-    "Base_composition": {
-        "A": 7410244,
-        "C": 7646646,
-        "G": 7854214,
-        "T": 7286488,
-        "N": 2408
-    },
-    "Single_end": {
-        "SE_in": 0,
-        "SE_out": 0,
-        "SE_bpLen": 0,
-        "SE_bQ30": 0
-    },
-    "Paired_end": {
-        "PE_in": 100000,
-        "PE_out": 100000,
-        "R1_bpLen": 15100000,
-        "R1_bQ30": 14481157,
-        "R2_bpLen": 15100000,
-        "R2_bQ30": 13852279
-    }
-  }
-}
-```
+
+> { "hts_Stats_63322": {<br>
+>     "Notes": "",<br>
+>     "totalFragmentsInput": 100000,<br>
+>     "totalFragmentsOutput": 100000,<br>
+>     "R1_readlength_histogram": [ [151,100000] ],<br>
+>     "R2_readlength_histogram": [ [151,100000] ],<br>
+>     "Base_composition": {<br>
+>         "A": 7410244,<br>
+>         "C": 7646646,<br>
+>         "G": 7854214,<br>
+>         "T": 7286488,<br>
+>         "N": 2408<br>
+>     },<br>
+>     "Single_end": {<br>
+>         "SE_in": 0,<br>
+>         "SE_out": 0,<br>
+>         "SE_bpLen": 0,<br>
+>         "SE_bQ30": 0<br>
+>     },<br>
+>     "Paired_end": {<br>
+>         "PE_in": 100000,<br>
+>         "PE_out": 100000,<br>
+>         "R1_bpLen": 15100000,<br>
+>         "R1_bQ30": 14481157,<br>
+>         "R2_bpLen": 15100000,<br>
+>         "R2_bQ30": 13852279<br>
+>     }<br>
+>   }<br>
+> }<br>
+
 
 ---
 **2.** Next we are going to screen from ribosomal RNA (rRNA).
@@ -250,72 +247,72 @@ First, view the help documentation for hts_SeqScreener
     cd /share/workshop/$USER/rnaseq_example/HTS_testing
     hts_SeqScreener -h
 
-```bash
-# msettles@tadpole:/share/workshop/msettles/rnaseq_example/HTS_testing$hts_SeqScreener -h
-# HTStream <https://github.com/ibest/HTStream> application: hts_SeqScreener
-# Version: 1.0.0-release
-# hts_SeqScreener identifies and removes any reads which appear to have originated
-#   from a contaminant DNA source. Because bacteriophage Phi-X is common spiked
-#   into Illumina runs for QC purposes, sequences originating from Phi-X are removed
-#   by default. If other contaminants are suspected their sequence can be supplied
-#   as a fasta file <seq>, however the algorithm has been tuned for short contaminant
-#   sequences, and may not work well with sequences significantly longer than Phi-X (5Kb).
-#
-#
-# Standard Options:
-#   -v [ --version ]                      Version print
-#   -h [ --help ]                         Prints help documentation
-#   -N [ --notes ] arg                    Notes for the stats JSON
-#   -L [ --stats-file ] arg (=stats.log)  String for output stats file name
-#   -A [ --append-stats-file ]            Append to stats file
-#
-# Input Options:
-#   -1 [ --read1-input ] arg              Read 1 paired end fastq input <space
-#                                         seperated for multiple files>
-#   -2 [ --read2-input ] arg              Read 2 paired end fastq input <space
-#                                         seperated for multiple files>
-#   -U [ --singleend-input ] arg          Single end read fastq input <space
-#                                         seperated for multiple files>
-#   -T [ --tab-input ] arg                Tab input <space seperated for multiple
-#                                         files>
-#   -I [ --interleaved-input ] arg        Interleaved fastq input <space
-#                                         seperated for multiple files>
-#   -S [ --from-stdin ]                   STDIN input <MUST BE TAB DELIMITED
-#                                         INPUT>
-#
-# Output Options:
-#   -F [ --force ]                        Forces overwrite of files
-#   -p [ --prefix ] arg (=hts_SeqScreener)
-#                                         Prefix for output files
-#   -g [ --gzip-output ]                  Output gzipped files
-#   -f [ --fastq-output ]                 Output to Fastq format <PE AND/OR SE
-#                                         files>
-#   -t [ --tab-output ]                   Output to tab-delimited file format
-#   -i [ --interleaved-output ]           Output to interleaved fastq file <PE
-#                                         ONLY>
-#   -u [ --unmapped-output ]              Output to unmapped sam file format
-#   -O [ --to-stdout ]                    Output to STDOUT in tab-delimited file
-#                                         format
-#
-# Application Specific Options:
-#   -s [ --seq ] arg                      Please supply a fasta file - default -
-#                                         Phix Sequence - default
-#                                         https://www.ncbi.nlm.nih.gov/nuccore/96
-#                                         26372
-#   -C [ --check-read-2 ]                 Check R2 as well as R1 (pe)
-#   -k [ --kmer ] arg (=12)               Kmer size of the lookup table (min 5,
-#                                         max 256)
-#   -x [ --percentage-hits ] arg (=0.25)  Proportion of kmer percentage-hits to
-#                                         sequence need to happen to discard (min
-#                                         0.0, max 1.0)
-#   -n [ --inverse ]                      Output reads that are ABOVE the kmer
-#                                         hit threshold
-#   -r [ --record ]                       Only record the reads that pass the
-#                                         kmer hit threshold, output all reads
-#
-#
-# Please report any issues, request for enhancement, or comments to <https://github.com/ibest/HTStream/issues>
-```
+
+> msettles@tadpole:/share/workshop/msettles/rnaseq_example/HTS_testing$hts_SeqScreener -h<br>
+> HTStream <https://github.com/ibest/HTStream> application: hts_SeqScreener<br>
+> Version: 1.0.0-release<br>
+> hts_SeqScreener identifies and removes any reads which appear to have originated<br>
+>   from a contaminant DNA source. Because bacteriophage Phi-X is common spiked<br>
+>   into Illumina runs for QC purposes, sequences originating from Phi-X are removed<br>
+>   by default. If other contaminants are suspected their sequence can be supplied<br>
+>   as a fasta file <seq>, however the algorithm has been tuned for short contaminant<br>
+>   sequences, and may not work well with sequences significantly longer than Phi-X (5Kb).<br>
+>
+>
+> Standard Options:<br>
+>   -v [ --version ]                      Version print<br>
+>   -h [ --help ]                         Prints help documentation<br>
+>   -N [ --notes ] arg                    Notes for the stats JSON<br>
+>   -L [ --stats-file ] arg (=stats.log)  String for output stats file name<br>
+>   -A [ --append-stats-file ]            Append to stats file<br>
+>
+> Input Options:<br>
+>   -1 [ --read1-input ] arg              Read 1 paired end fastq input <space<br>
+>                                         seperated for multiple files><br>
+>   -2 [ --read2-input ] arg              Read 2 paired end fastq input <space<br>
+>                                         seperated for multiple files><br>
+>   -U [ --singleend-input ] arg          Single end read fastq input <space<br>
+>                                         seperated for multiple files><br>
+>   -T [ --tab-input ] arg                Tab input <space seperated for multiple<br>
+>                                         files><br>
+>   -I [ --interleaved-input ] arg        Interleaved fastq input <space<br>
+>                                         seperated for multiple files><br>
+>   -S [ --from-stdin ]                   STDIN input <MUST BE TAB DELIMITED<br>
+>                                         INPUT><br>
+>
+> Output Options:<br>
+>   -F [ --force ]                        Forces overwrite of files<br>
+>   -p [ --prefix ] arg (=hts_SeqScreener)<br>
+>                                         Prefix for output files<br>
+>   -g [ --gzip-output ]                  Output gzipped files<br>
+>   -f [ --fastq-output ]                 Output to Fastq format <PE AND/OR SE<br>
+>                                         files><br>
+>   -t [ --tab-output ]                   Output to tab-delimited file format<br>
+>   -i [ --interleaved-output ]           Output to interleaved fastq file <PE<br>
+>                                         ONLY><br>
+>   -u [ --unmapped-output ]              Output to unmapped sam file format<br>
+>   -O [ --to-stdout ]                    Output to STDOUT in tab-delimited file<br>
+>                                         format<br>
+>
+> Application Specific Options:<br>
+>   -s [ --seq ] arg                      Please supply a fasta file - default -<br>
+>                                         Phix Sequence - default<br>
+>                                         https://www.ncbi.nlm.nih.gov/nuccore/96<br>
+>                                         26372<br>
+>   -C [ --check-read-2 ]                 Check R2 as well as R1 (pe)<br>
+>   -k [ --kmer ] arg (=12)               Kmer size of the lookup table (min 5,<br>
+>                                         max 256)<br>
+>   -x [ --percentage-hits ] arg (=0.25)  Proportion of kmer percentage-hits to<br>
+>                                         sequence need to happen to discard (min<br>
+>                                         0.0, max 1.0)<br>
+>   -n [ --inverse ]                      Output reads that are ABOVE the kmer<br>
+>                                         hit threshold<br>
+>   -r [ --record ]                       Only record the reads that pass the<br>
+>                                         kmer hit threshold, output all reads<br>
+>
+>
+> Please report any issues, request for enhancement, or comments to <https://github.com/ibest/HTStream/issues><br>
+
 
 *What parameters are needed to 1) provide a reference to hts_SeqScreener and 2) count, and not screen occurrences?*
 
@@ -327,30 +324,30 @@ First, view the help documentation for hts_SeqScreener
 
 *Lets look at the file SampleAC1.rrna.log?*
 
-```json
-{ "hts_SeqScreener_56678": {
-    "Notes": "",
-    "totalFragmentsInput": 100000,
-    "totalFragmentsOutput": 100000,
-    "inverse": 0,
-    "record": 1,
-    "Screen_info": {
-        "screenBP": 107854,
-        "lookupKmers": 16954
-    },
-    "Single_end": {
-        "SE_in": 0,
-        "SE_out": 0,
-        "SE_hits": 0
-    },
-    "Paired_end": {
-        "PE_in": 100000,
-        "PE_out": 100000,
-        "PE_hits": 3221
-    }
-  }
-}
-```
+
+> { "hts_SeqScreener_56678": {<br>
+>     "Notes": "",<br>
+>     "totalFragmentsInput": 100000,<br>
+>     "totalFragmentsOutput": 100000,<br>
+>     "inverse": 0,<br>
+>     "record": 1,<br>
+>     "Screen_info": {<br>
+>         "screenBP": 107854,<br>
+>         "lookupKmers": 16954<br>
+>     },<br>
+>     "Single_end": {<br>
+>         "SE_in": 0,<br>
+>         "SE_out": 0,<br>
+>         "SE_hits": 0<br>
+>     },<br>
+>     "Paired_end": {<br>
+>         "PE_in": 100000,<br>
+>         "PE_out": 100000,<br>
+>         "PE_hits": 3221<br>
+>     }<br>
+>   }<br>
+> }<br>
+
 
 *What do you notice about the SampleAC1.rrna.log?*
 
@@ -386,57 +383,57 @@ Note the pipe between the two applications!
 
 *Lets look at the file SampleAC1.streamed.log?*
 
-```json
-{ "hts_Stats_61829": {
-    "Notes": "",
-    "totalFragmentsInput": 100000,
-    "totalFragmentsOutput": 100000,
-    "R1_readlength_histogram": [ [151,100000] ],
-    "R2_readlength_histogram": [ [151,100000] ],
-    "Base_composition": {
-        "A": 7410244,
-        "C": 7646646,
-        "G": 7854214,
-        "T": 7286488,
-        "N": 2408
-    },
-    "Single_end": {
-        "SE_in": 0,
-        "SE_out": 0,
-        "SE_bpLen": 0,
-        "SE_bQ30": 0
-    },
-    "Paired_end": {
-        "PE_in": 100000,
-        "PE_out": 100000,
-        "R1_bpLen": 15100000,
-        "R1_bQ30": 14481157,
-        "R2_bpLen": 15100000,
-        "R2_bQ30": 13852279
-    }
-  }, "hts_SeqScreener_61830": {
-    "Notes": "",
-    "totalFragmentsInput": 100000,
-    "totalFragmentsOutput": 100000,
-    "inverse": 0,
-    "record": 1,
-    "Screen_info": {
-        "screenBP": 107854,
-        "lookupKmers": 16954
-    },
-    "Single_end": {
-        "SE_in": 0,
-        "SE_out": 0,
-        "SE_hits": 0
-    },
-    "Paired_end": {
-        "PE_in": 100000,
-        "PE_out": 100000,
-        "PE_hits": 3221
-    }
-  }
-}
-```
+
+> { "hts_Stats_61829": {<br>
+>     "Notes": "",<br>
+>     "totalFragmentsInput": 100000,<br>
+>     "totalFragmentsOutput": 100000,<br>
+>     "R1_readlength_histogram": [ [151,100000] ],<br>
+>     "R2_readlength_histogram": [ [151,100000] ],<br>
+>     "Base_composition": {<br>
+>         "A": 7410244,<br>
+>         "C": 7646646,<br>
+>         "G": 7854214,<br>
+>         "T": 7286488,<br>
+>         "N": 2408<br>
+>     },<br>
+>     "Single_end": {<br>
+>         "SE_in": 0,<br>
+>         "SE_out": 0,<br>
+>         "SE_bpLen": 0,<br>
+>         "SE_bQ30": 0<br>
+>     },<br>
+>     "Paired_end": {<br>
+>         "PE_in": 100000,<br>
+>         "PE_out": 100000,<br>
+>         "R1_bpLen": 15100000,<br>
+>         "R1_bQ30": 14481157,<br>
+>         "R2_bpLen": 15100000,<br>
+>         "R2_bQ30": 13852279<br>
+>     }<br>
+>   }, "hts_SeqScreener_61830": {<br>
+>     "Notes": "",<br>
+>     "totalFragmentsInput": 100000,<br>
+>     "totalFragmentsOutput": 100000,<br>
+>     "inverse": 0,<br>
+>     "record": 1,<br>
+>     "Screen_info": {<br>
+>         "screenBP": 107854,<br>
+>         "lookupKmers": 16954<br>
+>     },<br>
+>     "Single_end": {<br>
+>         "SE_in": 0,<br>
+>         "SE_out": 0,<br>
+>         "SE_hits": 0<br>
+>     },<br>
+>     "Paired_end": {<br>
+>         "PE_in": 100000,<br>
+>         "PE_out": 100000,<br>
+>         "PE_hits": 3221<br>
+>     }<br>
+>   }<br>
+> }<br>
+
 
 **4\.** A RNAseq preprocessing pipeline
 
@@ -561,52 +558,52 @@ Note the patterns:
 
  When you are done, type "q" to exit.
 
-```bash
-#!/bin/bash
 
-#SBATCH --job-name=htstream # Job name
-#SBATCH --nodes=1
-#SBATCH --ntasks=9
-#SBATCH --time=60
-#SBATCH --mem=3000 # Memory pool for all cores (see also --mem-per-cpu)
-#SBATCH --partition=production
-#SBATCH --reservation=workshop
-#SBATCH --account=workshop
-#SBATCH --array=1-16
-#SBATCH --output=slurmout/htstream_%A_%a.out # File to which STDOUT will be written
-#SBATCH --error=slurmout/htstream_%A_%a.err # File to which STDERR will be written
+> #!/bin/bash<br>
+>
+> #SBATCH --job-name=htstream # Job name<br>
+> #SBATCH --nodes=1<br>
+> #SBATCH --ntasks=9<br>
+> #SBATCH --time=60<br>
+> #SBATCH --mem=3000 # Memory pool for all cores (see also --mem-per-cpu)<br>
+> #SBATCH --partition=production<br>
+> #SBATCH --reservation=workshop<br>
+> #SBATCH --account=workshop<br>
+> #SBATCH --array=1-16<br>
+> #SBATCH --output=slurmout/htstream_%A_%a.out # File to which STDOUT will be written<br>
+> #SBATCH --error=slurmout/htstream_%A_%a.err # File to which STDERR will be written<br>
+>
+> start=\`date +%s\`<br>
+> echo $HOSTNAME<br>
+> echo "My SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID<br>
+>
+> sample=\`sed "${SLURM_ARRAY_TASK_ID}q;d" samples.txt\`<br>
+>
+> outpath='01-HTS_Preproc'<br>
+> [[ -d ${outpath} ]] || mkdir ${outpath}<br>
+> [[ -d ${outpath}/${sample} ]] || mkdir ${outpath}/${sample}<br>
+>
+> echo "SAMPLE: ${sample}"<br>
+>
+> module load htstream<br>
+>
+> call="hts_Stats -O -L ${outpath}/${sample}/${sample}\_htsStats.log -1 00-RawData/${sample}/\*R1\* -2 00-RawData/${sample}/\*R2\* \| \\<br>
+>       hts_SeqScreener -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log \| \\<br>
+>       hts_SeqScreener -s References/human_rrna.fasta -r -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log \| \\<br>
+>       hts_SuperDeduper -e 250000 -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log \| \\<br>
+>       hts_AdapterTrimmer -n -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log \| \\<br>
+>       hts_QWindowTrim -n -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log \| \\<br>
+>       hts_NTrimmer -n -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log \| \\<br>
+>       hts_CutTrim -n -m 50 -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log \| \\<br>
+>       hts_Stats -S -A -L ${outpath}/${sample}/${sample}_htsStats.log -g -p ${outpath}/${sample}/${sample}"<br>
+>
+> echo $call<br>
+> eval $call<br>
+>
+> end=\`date +%s\`<br>
+> runtime=$((end-start))<br>
+> echo $runtime<br>
 
-start=`date +%s`
-echo $HOSTNAME
-echo "My SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
-
-sample=`sed "${SLURM_ARRAY_TASK_ID}q;d" samples.txt`
-
-outpath='01-HTS_Preproc'
-[[ -d ${outpath} ]] || mkdir ${outpath}
-[[ -d ${outpath}/${sample} ]] || mkdir ${outpath}/${sample}
-
-echo "SAMPLE: ${sample}"
-
-module load htstream
-
-call="hts_Stats -O -L ${outpath}/${sample}/${sample}_htsStats.log -1 00-RawData/${sample}/*R1* -2 00-RawData/${sample}/*R2* | \
-      hts_SeqScreener -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_SeqScreener -s References/human_rrna.fasta -r -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_SuperDeduper -e 250000 -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_AdapterTrimmer -n -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_QWindowTrim -n -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_NTrimmer -n -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_CutTrim -n -m 50 -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_Stats -S -A -L ${outpath}/${sample}/${sample}_htsStats.log -g -p ${outpath}/${sample}/${sample}"
-
-echo $call
-eval $call
-
-end=`date +%s`
-runtime=$((end-start))
-echo $runtime
-```
 
 After looking at the script, lets make a slurmout directory for the output to go and let's run it.
 
