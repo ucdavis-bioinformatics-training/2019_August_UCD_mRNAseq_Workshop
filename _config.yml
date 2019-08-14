@@ -30,6 +30,8 @@ navigation:
     url: data_reduction/preproc_htstream
   - title: Aligners
     url: data_reduction/alignment
+  - title: Salmon
+    url: data_reduction/salmon
   - title: Generating Summarized Counts
     url: data_reduction/counts
   - heading: Intro to R and Rstudio
