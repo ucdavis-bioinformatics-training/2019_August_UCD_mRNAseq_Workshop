@@ -73,9 +73,9 @@ code, pre {
 
 pre {
   padding:8px 15px;
-  background: #f8f8f8;
+  background: #dddddd;
   border-radius:5px;
-  border:1px solid #e5e5e5;
+  border:1px solid #000000;
   overflow-x: auto;
 }
 
