@@ -110,7 +110,8 @@
                   <a href="javascript:void(0)" class="closebtn" onclick="doNav()">&times;</a>
 
                     <table>
-                        {% for nav in site.navigation %}
+                        {% for i in (1..site.navigation.size) %}
+                            {% nav = site.navigation[i-1] %}
                             {% if nav.heading %}
                               <th style="font-size:30px;">{{ nav.heading }}</th>
                               {% continue %}
