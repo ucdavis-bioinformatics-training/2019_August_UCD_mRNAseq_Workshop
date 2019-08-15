@@ -57,11 +57,10 @@ In order to do the counting, we first need to sort the data and then send it to 
 
     ls /home | cut -c1 | sort | uniq -c
 
-You'll notice there might be a letter missing... why would that be?
 
 Now let's look at some fastq files. Link a few files into the advanced directory:
 
-    ln -s /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/C61_S67_L006/C61_S67_L006_R*_001.fastq.gz .
+    ln -s /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*/*.fastq.gz .
     
 Since the files are gzipped files we need to use "zcat" to look at them. zcat is just like cat except for gzipped files:
 
@@ -71,7 +70,7 @@ Notice that each header line has the barcode for that read at the end of the lin
 
     zcat C61_S67_L006_R1_001.fastq.gz | sed -n '1~4p' | head
 
-By default sed prints every line. In this case we are giving the "-n" option to sed which will **not** print every line. Instead, we are giving it the argument "1~4p", which means to print the first line, then skip 4 lines and print again, and then continue to do that.
+By default sed prints every line. In this case we are giving the "-n" option to sed which will **not** print every line. Instead, we are giving it the argument "1\~4p", which means to print the first line, then skip 4 lines and print again, and then continue to do that.
 
 Now that we have a way to get just the headers, we need to isolate the part of the header that is the barcode. There are multiple ways to do this... we will use the cut command:
 
@@ -87,7 +86,8 @@ Now you have a list of how many reads were categorized into each barcode. Here i
 
 One final thing to know is that if a program does not take input from STDIN (which is needed to use it in a pipe), but instead wants a filename, you can use a single dash by itself in place of the filename and the shell will interpret that to be input from STDIN. So it would look something like this:
 
-    cat FILENAME | COMMAND -f - -otheroptions | ....
+<div class="output">cat FILENAME | COMMAND -f - -otheroptions | ....
+</div>
 
 **CHALLENGE:**
 Find the distribution of the first 5 bases of all the reads in C61_S67_L006_R1_001.fastq.gz. I.e., count the number of times the first 5 bases of every read occurs across all reads.
@@ -95,8 +95,9 @@ Find the distribution of the first 5 bases of all the reads in C61_S67_L006_R1_0
 Process substitution
 ---------------------
 
-Next, we will cover process substitution. Process substitution is a way of using the output of some software as the input file to another software without having to create intermediate files. Let's use the sickle program we compiled earlier (and should already be in our PATH). We want to do adapter trimming on one of our fastq.gz files, but we need to give sickle an uncompressed file as input. In order to do that, we use the "gunzip" command with the "-c" option. This unzips the file and sends the output to STDOUT, instead of unzipping the file in place which is the default (This will take a few minutes to run):
+Next, we will cover process substitution. Process substitution is a way of using the output of some software as the input file to another software without having to create intermediate files. We will use a quality-based trimmer called "sickle". We want to do quality-based read trimming on one of our fastq.gz files, but we need to give sickle an uncompressed file as input. In order to do that, we use the "gunzip" command with the "-c" option. This unzips the file and sends the output to STDOUT, instead of unzipping the file in place which is the default (This will take a few minutes to run):
 
+    module load sickle
     sickle se -f <(gunzip -c C61_S67_L006_R1_001.fastq.gz) -t sanger -o trimmed.fa
 
 So we are putting the gunzip command inside parentheses with a less-than symbol like so: <(COMMAND). When we do this, the output of the COMMAND gets manipulated by the shell so that sickle thinks it is a file. Sickle then uses this "file" as the input file. Take a look at the output file:
@@ -123,50 +124,54 @@ The list can be a sequence of numbers or letters, or a group of files specified 
 
     for i in {3,2,1,liftoff}; do echo $i; done  # needs more excitement!
     for i in {3,2,1,"liftoff!"}; do echo $i; done  # exclamation point will confuse the shell unless quoted
-    # Now imagine you have 20 sequence files, in a 'fastqs' directory:
-    bwa index reference.fa
-    for sample in fastqs/*.fastq; do
-        bwa mem reference.fa $sample 1> $sample.sam 2> $sample.err
-    done
-    # this would produce, for example, ./fastqs/sample1.fastq.sam and ./fastqs/sample1.fastq.err, etc.
 
-Sometimes a "while" loop is more convenient than a "for" loop ... if you don't readily know how many iterations of the loop you want:
+ A "while" loop is more convenient than a "for" loop ... if you don't readily know how many iterations of the loop you want:
 
 <div class="output">while {condition}; do
     commands
 done
 </div>
 
-Or, imagining a file that contains the filenames (one per line) of samples' sequence data:
+Now, let's do some bioinformatics-y things with loops and pipes. First, let's write a command to get the nucleotide count of the first 10,000 reads in a file. Use zcat and sed to get only the read lines of a file, and then only take the first 10,000:
 
-<div class="output">cat file-of-filenames.txt | while read sample; do
-    bwa mem reference.fa $sample 1> $sample.sam 2> $sample.err
-done
+    zcat C61_S67_L006_R1_001.fastq.gz | sed -n '2~4p' | head -10000 | less
+
+Use grep's "-o" option to get each nucleotide on a separate line (take a look at the man page for grep to understand how this works):
+
+    zcat C61_S67_L006_R1_001.fastq.gz | sed -n '2~4p' | head -10000 | grep -o . | less
+
+Finally, use sort and uniq to get the counts:
+
+    zcat C61_S67_L006_R1_001.fastq.gz | sed -n '2~4p' | head -10000 | grep -o . | sort | uniq -c
+
+<div class="output"> 264012 A
+ 243434 C
+ 215045 G
+    278 N
+ 277231 T
 </div>
 
-Now, let's use a for loop on some fastq files. You can specify all the parts of the for loop on one line, separated by semi-colons. First let's just echo all the names of the fastq files in a directory:
+And, voila, we have the per nucleotide count for these reads!
 
-    for x in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*/*; do echo $x; done
+We just did this for one file, but what if we wanted to do it for all of our files. We certainly don't want to type the command by hand dozens of times. So we'll use a while loop. You can pipe a command into a while loop and it will iterate through each line of the input. First, get a listing of all your files:
 
-Now, let's use the "basename" command to get just the filename for each file:
+    ls -1 *.fastq.gz
 
-    for x in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*/*; do basename $x; done
+Pipe that into a while loop and read in the lines into a variable called "x". We use "$x" to get the value of the variable in that iteration of the loop:
 
-We can also assign the output of a command to a new variable by using the backtick character (\`). We put the command we want inside backticks and then assign it to the variable NAME. Then we can use $NAME in the next command:
+    ls -1 *.fastq.gz | while read x; do echo $x is being processed...; done
 
-    for x in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*/*; do NAME=`basename $x`; echo $NAME is a file; done
+Add the command we created above into the loop, placing $x where the filename would be and semi-colons inbetween commands:
 
-We can also use the backticks to generate the list for the for loop. Let's say we wanted to iterate over just the sample names in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData. First, let's generate a list of the sample names and put them in a file:
+    ls -1 *.fastq.gz | while read x; do echo $x is being processed...; zcat $x | sed -n '2~4p' | head -10000 | grep -o . | sort | uniq -c; done
 
-    ls -d /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*_L006 | cut -f7 -d/ > samples.txt
+When this runs it will print the name of every single file being processed and the nucleotide count for the reads from those files.
 
-This command gets the directories ending in "\_L006" and then cuts out the 7th field using the "/" as the delimiter. Take a look at the file:
+Now, let's say you wanted to write the output of each command to a separate file. We would redirect the output to a filename, but we need to create a different file name for each command and we want the file name to reflect its contents, i.e. the output file name should be based on the input file name. So we use "parameter expansion", which is fancy way of saying substitution:
 
-    cat samples.txt
+    ls -1 *.fastq.gz | while read x; do echo $x is being processed...; zcat $x | sed -n '2~4p' | head -10000 | grep -o . | sort | uniq -c > ${x%.fastq.gz}.nucl_count.txt; done
 
-Now, we will use this file to generate the list in the for loop by using the backticks:
-
-    for x in `cat samples.txt`; do echo $x ; Do something with $x; done
+This will put the output of the counting command into a file whose name is the prefix of the input file plus ".nucl_count.txt". It will do this for every input file.
 
 **HARD CHALLENGE:**
 Use the "find" command to find all the files ending in ".pm" in the /software/perl-libs directory. Then, pipe that to a while loop to grep for all occurences (case insensitive) of the word "blast" in those files. The grep should also output the file name. You will probably have to look at the man page for grep.
