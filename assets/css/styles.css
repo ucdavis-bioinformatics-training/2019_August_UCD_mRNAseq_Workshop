@@ -88,10 +88,15 @@ pre {
   overflow-x: auto;
 }
 
-table.table1, tr, td, th {
+table.table1 {
   border:1px solid black;
   font-size: 30px;
   width:900px;
+}
+
+table.table1 tr {
+  border:1px solid black;
+  font-size: 30px;
 }
 
 table {
