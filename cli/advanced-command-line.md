@@ -222,7 +222,7 @@ Make it executable:
 
 And now we can execute the entire loop using the script. Note that there is only one argument now, the number of reads to use:
 
-    get_nucl_counts_loop.sh 100
+    ./get_nucl_counts_loop.sh 100
 
 Find
 -----
