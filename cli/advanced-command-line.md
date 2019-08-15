@@ -199,6 +199,31 @@ Now, we can run this script giving it different arguments every time. The first 
     ./get_nucl_counts.sh C64_S70_L006_R2_001.fastq.gz 555
     ./get_nucl_counts.sh <(gzip -c BSD) 10
 
+We can also put loops into a script. We'll take the loop we created earlier and put it into a file, breaking it up for readability and using backslashes for line continuation:
+
+    nano get_nucl_counts_loop.sh
+
+Put this in the file and save it:
+
+<div class="output">#!/bin/bash
+
+ls -1 *.fastq.gz | \
+while read x; do \
+    echo $x is being processed...; \
+    zcat $x | sed -n '2~4p' | head -$1 | \
+        grep -o . | sort | uniq -c > ${x%.fastq.gz}.nucl_count.txt; \
+done
+</div>
+
+
+Make it executable:
+
+    chmod a+x get_nucl_counts_loop.sh
+
+And now we can execute the entire loop using the script. Note that there is only one argument now, the number of reads to use:
+
+    get_nucl_counts_loop.sh 100
+
 Find
 -----
 
