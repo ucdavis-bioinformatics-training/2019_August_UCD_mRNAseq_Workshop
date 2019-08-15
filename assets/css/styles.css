@@ -7,7 +7,7 @@ body {
 
 .output {
   border-left:5px solid #999999;
-  margin:40px 0px 20px 0px;
+  margin:20px 0px 30px 0px;
   padding:0px 0px 0px 20px;
   font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
   white-space: pre;
