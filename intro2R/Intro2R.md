@@ -6,7 +6,7 @@ output:
       keep_md: TRUE
 ---
 
-R for Biologist - An Introduction to R (Beginner)
+R for Biologists - An Introduction to R (Beginner)
 ========================================================
 
 Topics covered in this introduction to R
