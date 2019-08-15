@@ -57,11 +57,10 @@ In order to do the counting, we first need to sort the data and then send it to 
 
     ls /home | cut -c1 | sort | uniq -c
 
-You'll notice there might be a letter missing... why would that be?
 
 Now let's look at some fastq files. Link a few files into the advanced directory:
 
-    ln -s /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/C61_S67_L006/C61_S67_L006_R*_001.fastq.gz .
+    ln -s /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*/*.fastq.gz .
     
 Since the files are gzipped files we need to use "zcat" to look at them. zcat is just like cat except for gzipped files:
 
@@ -71,7 +70,7 @@ Notice that each header line has the barcode for that read at the end of the lin
 
     zcat C61_S67_L006_R1_001.fastq.gz | sed -n '1~4p' | head
 
-By default sed prints every line. In this case we are giving the "-n" option to sed which will **not** print every line. Instead, we are giving it the argument "1~4p", which means to print the first line, then skip 4 lines and print again, and then continue to do that.
+By default sed prints every line. In this case we are giving the "-n" option to sed which will **not** print every line. Instead, we are giving it the argument "1\~4p", which means to print the first line, then skip 4 lines and print again, and then continue to do that.
 
 Now that we have a way to get just the headers, we need to isolate the part of the header that is the barcode. There are multiple ways to do this... we will use the cut command:
 
@@ -87,7 +86,8 @@ Now you have a list of how many reads were categorized into each barcode. Here i
 
 One final thing to know is that if a program does not take input from STDIN (which is needed to use it in a pipe), but instead wants a filename, you can use a single dash by itself in place of the filename and the shell will interpret that to be input from STDIN. So it would look something like this:
 
-    cat FILENAME | COMMAND -f - -otheroptions | ....
+<div class="output">cat FILENAME | COMMAND -f - -otheroptions | ....
+</div>
 
 **CHALLENGE:**
 Find the distribution of the first 5 bases of all the reads in C61_S67_L006_R1_001.fastq.gz. I.e., count the number of times the first 5 bases of every read occurs across all reads.
@@ -95,8 +95,9 @@ Find the distribution of the first 5 bases of all the reads in C61_S67_L006_R1_0
 Process substitution
 ---------------------
 
-Next, we will cover process substitution. Process substitution is a way of using the output of some software as the input file to another software without having to create intermediate files. Let's use the sickle program we compiled earlier (and should already be in our PATH). We want to do adapter trimming on one of our fastq.gz files, but we need to give sickle an uncompressed file as input. In order to do that, we use the "gunzip" command with the "-c" option. This unzips the file and sends the output to STDOUT, instead of unzipping the file in place which is the default (This will take a few minutes to run):
+Next, we will cover process substitution. Process substitution is a way of using the output of some software as the input file to another software without having to create intermediate files. We will use a quality-based trimmer called "sickle". We want to do quality-based read trimming on one of our fastq.gz files, but we need to give sickle an uncompressed file as input. In order to do that, we use the "gunzip" command with the "-c" option. This unzips the file and sends the output to STDOUT, instead of unzipping the file in place which is the default (This will take a few minutes to run):
 
+    module load sickle
     sickle se -f <(gunzip -c C61_S67_L006_R1_001.fastq.gz) -t sanger -o trimmed.fa
 
 So we are putting the gunzip command inside parentheses with a less-than symbol like so: <(COMMAND). When we do this, the output of the COMMAND gets manipulated by the shell so that sickle thinks it is a file. Sickle then uses this "file" as the input file. Take a look at the output file:
@@ -114,101 +115,114 @@ Loops are useful for quickly telling the shell to perform one operation after an
 
 The general form is:
 
-> for name in {list}; do<br>
->     commands<br>
-> done<br>
+<div class="output">for name in {list}; do
+    commands
+done
+</div>
 
 The list can be a sequence of numbers or letters, or a group of files specified with wildcard characters:
 
     for i in {3,2,1,liftoff}; do echo $i; done  # needs more excitement!
     for i in {3,2,1,"liftoff!"}; do echo $i; done  # exclamation point will confuse the shell unless quoted
-    # Now imagine you have 20 sequence files, in a 'fastqs' directory:
-    bwa index reference.fa
-    for sample in fastqs/*.fastq; do
-        bwa mem reference.fa $sample 1> $sample.sam 2> $sample.err
-    done
-    # this would produce, for example, ./fastqs/sample1.fastq.sam and ./fastqs/sample1.fastq.err, etc.
 
-Sometimes a "while" loop is more convenient than a "for" loop ... if you don't readily know how many iterations of the loop you want:
+ A "while" loop is more convenient than a "for" loop ... if you don't readily know how many iterations of the loop you want:
 
-> while {condition}; do<br>
->     commands<br>
-> done<br>
+<div class="output">while {condition}; do
+    commands
+done
+</div>
 
-Or, imagining a file that contains the filenames (one per line) of samples' sequence data:
+Now, let's do some bioinformatics-y things with loops and pipes. First, let's write a command to get the nucleotide count of the first 10,000 reads in a file. Use zcat and sed to get only the read lines of a file, and then only take the first 10,000:
 
-> cat file-of-filenames.txt | while read sample; do<br>
->     bwa mem reference.fa $sample 1> $sample.sam 2> $sample.err<br>
-> done<br>
+    zcat C61_S67_L006_R1_001.fastq.gz | sed -n '2~4p' | head -10000 | less
 
-Now, let's use a for loop on some fastq files. You can specify all the parts of the for loop on one line, separated by semi-colons. First let's just echo all the names of the fastq files in a directory:
+Use grep's "-o" option to get each nucleotide on a separate line (take a look at the man page for grep to understand how this works):
 
-    for x in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*/*; do echo $x; done
+    zcat C61_S67_L006_R1_001.fastq.gz | sed -n '2~4p' | head -10000 | grep -o . | less
 
-Now, let's use the "basename" command to get just the filename for each file:
+Finally, use sort and uniq to get the counts:
 
-    for x in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*/*; do basename $x; done
+    zcat C61_S67_L006_R1_001.fastq.gz | sed -n '2~4p' | head -10000 | grep -o . | sort | uniq -c
 
-We can also assign the output of a command to a new variable by using the backtick character (\`). We put the command we want inside backticks and then assign it to the variable NAME. Then we can use $NAME in the next command:
+<div class="output"> 264012 A
+ 243434 C
+ 215045 G
+    278 N
+ 277231 T
+</div>
 
-    for x in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*/*; do NAME=`basename $x`; echo $NAME is a file; done
+And, voila, we have the per nucleotide count for these reads!
 
-We can also use the backticks to generate the list for the for loop. Let's say we wanted to iterate over just the sample names in /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData. First, let's generate a list of the sample names and put them in a file:
+We just did this for one file, but what if we wanted to do it for all of our files? We certainly don't want to type the command by hand dozens of times. So we'll use a while loop. You can pipe a command into a while loop and it will iterate through each line of the input. First, get a listing of all your files:
 
-    ls -d /share/biocore-archive/Leveau_J_UCD/RNASeq_Arabidopsis_2016/00-RawData/*_L006 | cut -f7 -d/ > samples.txt
+    ls -1 *.fastq.gz
 
-This command gets the directories ending in "\_L006" and then cuts out the 7th field using the "/" as the delimiter. Take a look at the file:
+Pipe that into a while loop and read in the lines into a variable called "x". We use "$x" to get the value of the variable in that iteration of the loop:
 
-    cat samples.txt
+    ls -1 *.fastq.gz | while read x; do echo $x is being processed...; done
 
-Now, we will use this file to generate the list in the for loop by using the backticks:
+Add the command we created above into the loop, placing $x where the filename would be and semi-colons inbetween commands:
 
-    for x in `cat samples.txt`; do echo $x ; Do something with $x; done
+    ls -1 *.fastq.gz | while read x; do echo $x is being processed...; zcat $x | sed -n '2~4p' | head -10000 | grep -o . | sort | uniq -c; done
 
-**HARD CHALLENGE:**
-Use the "find" command to find all the files ending in ".pm" in the /software/perl-libs directory. Then, pipe that to a while loop to grep for all occurences (case insensitive) of the word "blast" in those files. The grep should also output the file name. You will probably have to look at the man page for grep.
+When this runs it will print the name of every single file being processed and the nucleotide count for the reads from those files.
+
+Now, let's say you wanted to write the output of each command to a separate file. We would redirect the output to a filename, but we need to create a different file name for each command and we want the file name to reflect its contents, i.e. the output file name should be based on the input file name. So we use "parameter expansion", which is fancy way of saying substitution:
+
+    ls -1 *.fastq.gz | while read x; do echo $x is being processed...; zcat $x | sed -n '2~4p' | head -10000 | grep -o . | sort | uniq -c > ${x%.fastq.gz}.nucl_count.txt; done
+
+This will put the output of the counting command into a file whose name is the prefix of the input file plus ".nucl_count.txt". It will do this for every input file.
 
 
 Bash Scripts
 ---------------
 
-Let's imagine we have three samples: control, strain A, and strain B, and each has a (potentially) different genome sequence. If we had a series of many steps to perform on each sample's genome, we could put all the steps into a script, and run the script once for each sample (possible even in a for-loop, as above). So let's prepare a "pretend" genome sequence for each sample. The control sample will have the same sequence as the reference (our phiX genome), so:
+A script is a set of commands that are written into a file. This file can then be "run" as a program and it will simply execute all of the commands in it. Open a new text file using the text editor "nano":
 
-    cd /share/workshop/$USER/advanced/  # just making sure we're in the same place; use your home if necessary
-    cp ../CLI/genome.fa control.fa
+    nano get_nucl_counts.sh
 
-Strain A will have mutated, due to selective pressure:
+Copy and Paste the following into the file:
 
-    cat ../CLI/genome.fa | sed 's/ATGCC/ATACC/g' > strainA.fa  # G's to A's, in a particular motif
+<div class="output">#!/bin/bash
 
-And strain B will have different mutations:
+zcat $1 | sed -n '2~4p' | head -$2 | grep -o . | sort | uniq -c
+</div>
 
-    cat ../CLI/genome.fa | sed 's/GCCTG/GCCCTG/g' > strainB.fa  # C insertions, in a particular motif
+Save the file and exit. Change the permissions on the file to make it executable:
 
-Now that we've got our genome sequences, let's create a script to align a genome sequence to the phiX reference genome. Do this using the nano text editor ... open nano to edit a file genome-align.sh like this:
+    chmod a+x get_nucl_counts.sh
 
-    nano genome-align.sh
+Now, we can run this script giving it different arguments every time. The first argument (i.e. the first text after the script name when it is run) will get put into the variable "$1". The second argument (delimited by spaces) will get put into "$2". In this case, "$1" is the file name, and "$2" is the number of reads we want to count. So, then we can run the script over and over again using different values and the command will run based on those values:
 
-Once in nano, type (or copy) away: what you type is what you see is what you get. Special commands are listed along the bottom of the screen. Make your script look like this:
+    ./get_nucl_counts.sh I593_S85_L006_R1_001.fastq.gz 1000
+    ./get_nucl_counts.sh I593_S85_L006_R1_001.fastq.gz 10000
+    ./get_nucl_counts.sh C64_S70_L006_R2_001.fastq.gz 555
+    ./get_nucl_counts.sh <(gzip -c BSD) 10
 
-> #!/bin/bash<br>
-> echo "Running $0 to align $2 to the $1 reference, using fake parameter value $3"<br>
-> reference=$1  # assume this has been indexed using 'bwa index'<br>
-> sample=$2<br>
-> fakeParam=$3<br>
-> bwa mem ${reference} ${sample} 1> ${sample}.sam 2> ${sample}.err<br>
+We can also put loops into a script. We'll take the loop we created earlier and put it into a file, breaking it up for readability and using backslashes for line continuation:
 
-Then save your file (\<control-o\><enter>) and exit nano (\<control-x\>). In our script, $0 is replaced by the name of the script, $1 is replaced by the first word *after* the script name (when the script is run), $2 is replaced by the second word, and so on. So we can run our script by first giving ourselves execute permissions, then running it over all samples with the following loop:
+    nano get_nucl_counts_loop.sh
 
-    ls -l genome-align.sh  # what permissions do you have?
-    chmod u+x genome-align.sh  # u=user ... you! and +x means add execute permission
-    ls -l genome-align.sh  # what's changed?
-    # here's the loop:
-    for i in {"control.fa","strainA.fa","strainB.fa"}; do
-    ./genome-align.sh ../CLI/genome.fa $i 700
-    done
+Put this in the file and save it:
 
-What is the value '700' used for in our script? Do you see how the output files got the names they have? Finally, do the alignments in SAM format make sense?
+<div class="output">#!/bin/bash
+
+ls -1 *.fastq.gz | \
+while read x; do \
+    echo $x is being processed...; \
+    zcat $x | sed -n '2~4p' | head -$1 | \
+        grep -o . | sort | uniq -c > ${x%.fastq.gz}.nucl_count.txt; \
+done
+</div>
+
+
+Make it executable:
+
+    chmod a+x get_nucl_counts_loop.sh
+
+And now we can execute the entire loop using the script. Note that there is only one argument now, the number of reads to use:
+
+    ./get_nucl_counts_loop.sh 100
 
 Find
 -----
@@ -230,6 +244,9 @@ One of the most powerful uses of find is to execute commands on every file it fi
     find /share/biocore/joshi/projects/genomes -name "*.fa" -exec wc -l {} \;
 
 You will probably want to Ctrl-C out of this because it will take a long time to go through them all.
+
+**HARD CHALLENGE:**
+Use the "find" command to find all the files ending in ".pm" in the /software/perl-libs directory. Then, pipe that to a while loop to grep for all occurences (case insensitive) of the word "blast" in those files. The grep should also output the file name. You will probably have to look at the man page for grep.
 
 Xargs
 ------
@@ -329,8 +346,7 @@ Awk
 
 Awk is a simple programming language that can be used to do more complex filtering of data. Awk has many capabilities, and we are only going to touch on one of them here. One really useful thing is to filter lines of a file based on the value in a column. Let's get a file with some data:
 
-    wget https://ucdavis-bioinformatics-training.github.io/2018-September-Bioinformatics-Prerequisites/wednesday/DMR.GBM2.vs.NB1.bed
-
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/cli/DMR.GBM2.vs.NB1.bed
 Take a look at the beginning of the file:
 
     head DMR.GBM2.vs.NB1.bed

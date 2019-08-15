@@ -151,53 +151,54 @@ We need to first get the url for the genome fasta.
 
  When you are done, type "q" to exit.
 
-> #!/bin/bash<br>
->
-> #SBATCH --job-name=star_index # Job name<br>
-> #SBATCH --nodes=1<br>
-> #SBATCH --ntasks=8<br>
-> #SBATCH --time=120<br>
-> #SBATCH --mem=40000 # Memory pool for all cores (see also --mem-per-cpu)<br>
-> #SBATCH --partition=production<br>
-> #SBATCH --reservation=workshop<br>
-> #SBATCH --account=workshop<br>
-> #SBATCH --output=slurmout/star-index_%A.out # File to which STDOUT will be written<br>
-> #SBATCH --error=slurmout/star-index_%A.err # File to which STDERR will be written<br>
->
-> start=\`date +%s\`<br>
-> echo $HOSTNAME<br>
->
-> outpath="References"<br>
-> [[ -d ${outpath} ]] || mkdir ${outpath}<br>
->
-> cd ${outpath}<br>
-> wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/GRCh38.primary_assembly.genome.fa.gz<br>
-> gunzip GRCh38.primary_assembly.genome.fa.gz<br>
-> FASTA="../GRCh38.primary_assembly.genome.fa"<br>
->
-> wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.primary_assembly.annotation.gtf.gz<br>
-> gunzip gencode.v29.primary_assembly.annotation.gtf.gz<br>
-> GTF="../gencode.v29.primary_assembly.annotation.gtf"<br>
->
-> mkdir star.overlap100.gencode.v29<br>
-> cd star.overlap100.gencode.v29<br>
->
-> module load star/2.7.0e<br>
->
-> call="STAR<br>
->     --runThreadN 8 \\<br>
->     --runMode genomeGenerate \\<br>
->     --genomeDir . \\<br>
->     --sjdbOverhang 100 \\<br>
->     --sjdbGTFfile ${GTF} \\<br>
->     --genomeFastaFiles ${FASTA}"<br>
->
-> echo $call<br>
-> eval $call<br>
->
-> end=\`date +%s\`<br>
-> runtime=$((end-start))<br>
-> echo $runtime<br>
+<div class="output">#!/bin/bash
+
+#SBATCH --job-name=star_index # Job name
+#SBATCH --nodes=1
+#SBATCH --ntasks=8
+#SBATCH --time=120
+#SBATCH --mem=40000 # Memory pool for all cores (see also --mem-per-cpu)
+#SBATCH --partition=production
+#SBATCH --reservation=workshop
+#SBATCH --account=workshop
+#SBATCH --output=slurmout/star-index_%A.out # File to which STDOUT will be written
+#SBATCH --error=slurmout/star-index_%A.err # File to which STDERR will be written
+
+start=`date +%s`
+echo $HOSTNAME
+
+outpath="References"
+[[ -d ${outpath} ]] || mkdir ${outpath}
+
+cd ${outpath}
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/GRCh38.primary_assembly.genome.fa.gz
+gunzip GRCh38.primary_assembly.genome.fa.gz
+FASTA="../GRCh38.primary_assembly.genome.fa"
+
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.primary_assembly.annotation.gtf.gz
+gunzip gencode.v29.primary_assembly.annotation.gtf.gz
+GTF="../gencode.v29.primary_assembly.annotation.gtf"
+
+mkdir star.overlap100.gencode.v29
+cd star.overlap100.gencode.v29
+
+module load star/2.7.0e
+
+call="STAR
+     --runThreadN 8 \
+     --runMode genomeGenerate \
+     --genomeDir . \
+     --sjdbOverhang 100 \
+     --sjdbGTFfile ${GTF} \
+     --genomeFastaFiles ${FASTA}"
+
+echo $call
+eval $call
+
+end=`date +%s`
+runtime=$((end-start))
+echo $runtime
+</div>
 
 1. The script uses wget to download the fasta and GTF files from GENCODE using the links you found earlier.
 1. Uncompresses them using gunzip.
@@ -226,13 +227,13 @@ and let's run STAR (via srun) on the pair of streamed test files we created earl
 
 Once you've been given an interactive session we can run STAR. You can ignore the two warnings/errors and you know your on a cluster node because your server will change. Here you see I'm on tadpole, then after the srun command is successful, I am now on drove-13.
 
-> msettles@tadpole:/share/workshop/msettles/rnaseq_example/> HTS_testing$ srun --time=15:00:00 -n 8 --mem=32g --reservation=workshop --account=workshop --pty /bin/bash<br>
-> srun: job 29372920 queued and waiting for resources<br>
-> srun: job 29372920 has been allocated resources<br>
-> groups: cannot find name for group ID 2020<br>
-> bash: /home/msettles/.bashrc: Permission denied<br>
-> msettles@drove-13:/share/workshop/msettles/rnaseq_example/> HTS_testing$<br>
-
+<div class="output">msettles@tadpole:/share/workshop/msettles/rnaseq_example/> HTS_testing$ srun --time=15:00:00 -n 8 --mem=32g --reservation=workshop --account=workshop --pty /bin/bash
+srun: job 29372920 queued and waiting for resources
+srun: job 29372920 has been allocated resources
+groups: cannot find name for group ID 2020
+bash: /home/msettles/.bashrc: Permission denied
+msettles@drove-13:/share/workshop/msettles/rnaseq_example/> HTS_testing$
+</div>
 
 Then run the star commands
 
@@ -250,11 +251,10 @@ In the command, we are telling star to count reads on a gene level ('--quantMode
 
 Once finished please 'exit' the srun session. You'll know you were successful when your back on tadpole
 
-
-> msettles@drove-13:/share/workshop/msettles/rnaseq_example/HTS_testing$ exit<br>
-> exit<br>
-> msettles@tadpole:/share/workshop/msettles/rnaseq_example/HTS_testing$<br>
-
+<div class="output">msettles@drove-13:/share/workshop/msettles/rnaseq_example/HTS_testing$ exit
+exit
+msettles@tadpole:/share/workshop/msettles/rnaseq_example/HTS_testing$
+</div>
 
 ##  Now let's take a look at an alignment in IGV.
 
@@ -359,51 +359,52 @@ Reset the window by searching for HBB again. And zoom in 1 step.
 
  When you are done, type "q" to exit.
 
-> #!/bin/bash<br>
->
-> #SBATCH --job-name=star # Job name<br>
-> #SBATCH --nodes=1<br>
-> #SBATCH --ntasks=8<br>
-> #SBATCH --time=60<br>
-> #SBATCH --mem=32000 # Memory pool for all cores (see also --mem-per-cpu)<br>
-> #SBATCH --partition=production<br>
-> #SBATCH --reservation=workshop<br>
-> #SBATCH --account=workshop<br>
-> #SBATCH --array=1-16<br>
-> #SBATCH --output=slurmout/star_%A_%a.out # File to which STDOUT will be written<br>
-> #SBATCH --error=slurmout/star_%A_%a.err # File to which STDERR will be written<br>
->
-> start=\`date +%s\`<br>
-> echo $HOSTNAME<br>
-> echo "My SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID<br>
->
-> sample=\`sed "${SLURM_ARRAY_TASK_ID}q;d" samples.txt\`<br>
-> REF="References/star.overlap100.gencode.v29"<br>
->
-> outpath='02-STAR_alignment'<br>
-> [[ -d ${outpath} ]] || mkdir ${outpath}<br>
-> [[ -d ${outpath}/${sample} ]] || mkdir ${outpath}/${sample}<br>
->
-> echo "SAMPLE: ${sample}"<br>
->
-> module load star/2.7.0e<br>
->
-> call="STAR<br>
->  --runThreadN 8 \\<br>
->  --genomeDir $REF \\<br>
->  --outSAMtype BAM SortedByCoordinate \\<br>
->  --readFilesCommand zcat \\<br>
->  --readFilesIn 01-HTS_Preproc/${sample}/${sample}\_R1.fastq.gz 01-HTS_Preproc/${sample}/${sample}\_R2.fastq.gz \\<br>
->  --quantMode GeneCounts \\<br>
->  --outFileNamePrefix ${outpath}/${sample}/${sample}_ \\<br>
->  ${outpath}/${sample}/${sample}-STAR.stdout 2> ${outpath}/${sample}/${sample}-STAR.stderr"<br>
->
-> echo $call<br>
-> eval $call<br>
->
-> end=\`date +%s\`<br>
-> runtime=$((end-start))<br>
-> echo $runtime<br>
+<div class="output">#!/bin/bash
+
+#SBATCH --job-name=star # Job name
+#SBATCH --nodes=1
+#SBATCH --ntasks=8
+#SBATCH --time=60
+#SBATCH --mem=32000 # Memory pool for all cores (see also --mem-per-cpu)
+#SBATCH --partition=production
+#SBATCH --reservation=workshop
+#SBATCH --account=workshop
+#SBATCH --array=1-16
+#SBATCH --output=slurmout/star_%A_%a.out # File to which STDOUT will be written
+#SBATCH --error=slurmout/star_%A_%a.err # File to which STDERR will be written
+
+start=`date +%s`
+echo $HOSTNAME
+echo "My SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
+
+sample=`sed "${SLURM_ARRAY_TASK_ID}q;d" samples.txt`
+REF="References/star.overlap100.gencode.v29"
+
+outpath='02-STAR_alignment'
+[[ -d ${outpath} ]] || mkdir ${outpath}
+[[ -d ${outpath}/${sample} ]] || mkdir ${outpath}/${sample}
+
+echo "SAMPLE: ${sample}"
+
+module load star/2.7.0e
+
+call="STAR
+     --runThreadN 8 \
+     --genomeDir $REF \
+     --outSAMtype BAM SortedByCoordinate \
+     --readFilesCommand zcat \
+     --readFilesIn 01-HTS_Preproc/${sample}/${sample}_R1.fastq.gz 01-HTS_Preproc/${sample}/${sample}_R2.fastq.gz \
+     --quantMode GeneCounts \
+     --outFileNamePrefix ${outpath}/${sample}/${sample}_ \
+     ${outpath}/${sample}/${sample}-STAR.stdout 2> ${outpath}/${sample}/${sample}-STAR.stderr"
+
+echo $call
+eval $call
+
+end=`date +%s`
+runtime=$((end-start))
+echo $runtime
+</div>
 
 
 After looking at the script, lets run it.

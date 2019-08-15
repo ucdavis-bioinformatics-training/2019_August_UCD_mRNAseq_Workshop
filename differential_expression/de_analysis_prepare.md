@@ -29,9 +29,8 @@ if (!any(rownames(installed.packages()) == "edgeR")){
 library(edgeR)
 ```
 
-```
-## Loading required package: limma
-```
+<div class="output">Loading required package: limma
+</div>
 
 ```r
 if (!any(rownames(installed.packages()) == "topGO")){
@@ -41,159 +40,131 @@ if (!any(rownames(installed.packages()) == "topGO")){
 }
 ```
 
-```
-## Bioconductor version 3.8 (BiocManager 1.30.4), R 3.5.2 (2018-12-20)
-```
+<div class="output">Bioconductor version 3.8 (BiocManager 1.30.4), R 3.5.2 (2018-12-20)
+</div>
 
-```
-## Installing package(s) 'topGO'
-```
+<div class="output">Installing package(s) 'topGO'
+</div>
 
-```
-## also installing the dependencies 'graph', 'SparseM'
-```
+<div class="output">also installing the dependencies 'graph', 'SparseM'
+</div>
 
-```
-## Update old packages: 'BiocParallel', 'caTools', 'class', 'codetools',
-##   'dplyr', 'evaluate', 'flexmix', 'forcats', 'formatR', 'GenomeInfoDb',
-##   'gplots', 'haven', 'Hmisc', 'igraph', 'irlba', 'knitr', 'later',
-##   'Matrix', 'metap', 'mgcv', 'modelr', 'mvtnorm', 'openssl', 'pbapply',
-##   'processx', 'proxy', 'purrr', 'R.utils', 'R6', 'RCurl', 'readxl',
-##   'reticulate', 'Rsamtools', 'stringi', 'stringr', 'sys', 'tidyr',
-##   'vegan', 'xfun'
-```
+<div class="output">Update old packages: 'BiocParallel', 'caTools', 'class', 'codetools',
+  'dplyr', 'evaluate', 'flexmix', 'forcats', 'formatR', 'GenomeInfoDb',
+  'gplots', 'haven', 'Hmisc', 'igraph', 'irlba', 'knitr', 'later',
+  'Matrix', 'metap', 'mgcv', 'modelr', 'mvtnorm', 'openssl', 'pbapply',
+  'processx', 'proxy', 'purrr', 'R.utils', 'R6', 'RCurl', 'readxl',
+  'reticulate', 'Rsamtools', 'stringi', 'stringr', 'sys', 'tidyr',
+  'vegan', 'xfun'
+</div>
 
 ```r
 library(topGO)
 ```
 
-```
-## Loading required package: BiocGenerics
-```
+<div class="output">Loading required package: BiocGenerics
+</div>
 
-```
-## Loading required package: parallel
-```
+<div class="output">Loading required package: parallel
+</div>
 
-```
-## 
-## Attaching package: 'BiocGenerics'
-```
+<div class="output">
+Attaching package: 'BiocGenerics'
+</div>
 
-```
-## The following objects are masked from 'package:parallel':
-## 
-##     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
-##     clusterExport, clusterMap, parApply, parCapply, parLapply,
-##     parLapplyLB, parRapply, parSapply, parSapplyLB
-```
+<div class="output">The following objects are masked from 'package:parallel':
 
-```
-## The following object is masked from 'package:limma':
-## 
-##     plotMA
-```
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+</div>
 
-```
-## The following objects are masked from 'package:stats':
-## 
-##     IQR, mad, sd, var, xtabs
-```
+<div class="output">The following object is masked from 'package:limma':
 
-```
-## The following objects are masked from 'package:base':
-## 
-##     anyDuplicated, append, as.data.frame, basename, cbind,
-##     colMeans, colnames, colSums, dirname, do.call, duplicated,
-##     eval, evalq, Filter, Find, get, grep, grepl, intersect,
-##     is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
-##     paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
-##     Reduce, rowMeans, rownames, rowSums, sapply, setdiff, sort,
-##     table, tapply, union, unique, unsplit, which, which.max,
-##     which.min
-```
+    plotMA
+</div>
 
-```
-## Loading required package: graph
-```
+<div class="output">The following objects are masked from 'package:stats':
 
-```
-## Loading required package: Biobase
-```
+    IQR, mad, sd, var, xtabs
+</div>
 
-```
-## Welcome to Bioconductor
-## 
-##     Vignettes contain introductory material; view with
-##     'browseVignettes()'. To cite Bioconductor, see
-##     'citation("Biobase")', and for packages 'citation("pkgname")'.
-```
+<div class="output">The following objects are masked from 'package:base':
 
-```
-## Loading required package: GO.db
-```
+    anyDuplicated, append, as.data.frame, basename, cbind,
+    colMeans, colnames, colSums, dirname, do.call, duplicated,
+    eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rowMeans, rownames, rowSums, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which, which.max,
+    which.min
+</div>
 
-```
-## Loading required package: AnnotationDbi
-```
+<div class="output">Loading required package: graph
+</div>
 
-```
-## Loading required package: stats4
-```
+<div class="output">Loading required package: Biobase
+</div>
 
-```
-## Loading required package: IRanges
-```
+<div class="output">Welcome to Bioconductor
 
-```
-## Loading required package: S4Vectors
-```
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+</div>
 
-```
-## 
-## Attaching package: 'S4Vectors'
-```
+<div class="output">Loading required package: GO.db
+</div>
 
-```
-## The following object is masked from 'package:base':
-## 
-##     expand.grid
-```
+<div class="output">Loading required package: AnnotationDbi
+</div>
 
-```
-## 
-```
+<div class="output">Loading required package: stats4
+</div>
 
-```
-## Loading required package: SparseM
-```
+<div class="output">Loading required package: IRanges
+</div>
 
-```
-## 
-## Attaching package: 'SparseM'
-```
+<div class="output">Loading required package: S4Vectors
+</div>
 
-```
-## The following object is masked from 'package:base':
-## 
-##     backsolve
-```
+<div class="output">
+Attaching package: 'S4Vectors'
+</div>
 
-```
-## 
-## groupGOTerms: 	GOBPTerm, GOMFTerm, GOCCTerm environments built.
-```
+<div class="output">The following object is masked from 'package:base':
 
-```
-## 
-## Attaching package: 'topGO'
-```
+    expand.grid
+</div>
 
-```
-## The following object is masked from 'package:IRanges':
-## 
-##     members
-```
+<div class="output">
+</div>
+
+<div class="output">Loading required package: SparseM
+</div>
+
+<div class="output">
+Attaching package: 'SparseM'
+</div>
+
+<div class="output">The following object is masked from 'package:base':
+
+    backsolve
+</div>
+
+<div class="output">
+groupGOTerms: 	GOBPTerm, GOMFTerm, GOCCTerm environments built.
+</div>
+
+<div class="output">
+Attaching package: 'topGO'
+</div>
+
+<div class="output">The following object is masked from 'package:IRanges':
+
+    members
+</div>
 
 ```r
 if (!any(rownames(installed.packages()) == "KEGGREST")){
@@ -203,23 +174,20 @@ if (!any(rownames(installed.packages()) == "KEGGREST")){
 }
 ```
 
-```
-## Bioconductor version 3.8 (BiocManager 1.30.4), R 3.5.2 (2018-12-20)
-```
+<div class="output">Bioconductor version 3.8 (BiocManager 1.30.4), R 3.5.2 (2018-12-20)
+</div>
 
-```
-## Installing package(s) 'KEGGREST'
-```
+<div class="output">Installing package(s) 'KEGGREST'
+</div>
 
-```
-## Update old packages: 'BiocParallel', 'caTools', 'class', 'codetools',
-##   'dplyr', 'evaluate', 'flexmix', 'forcats', 'formatR', 'GenomeInfoDb',
-##   'gplots', 'haven', 'Hmisc', 'igraph', 'irlba', 'knitr', 'later',
-##   'Matrix', 'metap', 'mgcv', 'modelr', 'mvtnorm', 'openssl', 'pbapply',
-##   'processx', 'proxy', 'purrr', 'R.utils', 'R6', 'RCurl', 'readxl',
-##   'reticulate', 'Rsamtools', 'stringi', 'stringr', 'sys', 'tidyr',
-##   'vegan', 'xfun'
-```
+<div class="output">Update old packages: 'BiocParallel', 'caTools', 'class', 'codetools',
+  'dplyr', 'evaluate', 'flexmix', 'forcats', 'formatR', 'GenomeInfoDb',
+  'gplots', 'haven', 'Hmisc', 'igraph', 'irlba', 'knitr', 'later',
+  'Matrix', 'metap', 'mgcv', 'modelr', 'mvtnorm', 'openssl', 'pbapply',
+  'processx', 'proxy', 'purrr', 'R.utils', 'R6', 'RCurl', 'readxl',
+  'reticulate', 'Rsamtools', 'stringi', 'stringr', 'sys', 'tidyr',
+  'vegan', 'xfun'
+</div>
 
 ```r
 library(KEGGREST)
@@ -231,59 +199,50 @@ if (!any(rownames(installed.packages()) == "Rgraphviz")){
 }
 ```
 
-```
-## Bioconductor version 3.8 (BiocManager 1.30.4), R 3.5.2 (2018-12-20)
-```
+<div class="output">Bioconductor version 3.8 (BiocManager 1.30.4), R 3.5.2 (2018-12-20)
+</div>
 
-```
-## Installing package(s) 'Rgraphviz'
-```
+<div class="output">Installing package(s) 'Rgraphviz'
+</div>
 
-```
-## Update old packages: 'BiocParallel', 'caTools', 'class', 'codetools',
-##   'dplyr', 'evaluate', 'flexmix', 'forcats', 'formatR', 'GenomeInfoDb',
-##   'gplots', 'haven', 'Hmisc', 'igraph', 'irlba', 'knitr', 'later',
-##   'Matrix', 'metap', 'mgcv', 'modelr', 'mvtnorm', 'openssl', 'pbapply',
-##   'processx', 'proxy', 'purrr', 'R.utils', 'R6', 'RCurl', 'readxl',
-##   'reticulate', 'Rsamtools', 'stringi', 'stringr', 'sys', 'tidyr',
-##   'vegan', 'xfun'
-```
+<div class="output">Update old packages: 'BiocParallel', 'caTools', 'class', 'codetools',
+  'dplyr', 'evaluate', 'flexmix', 'forcats', 'formatR', 'GenomeInfoDb',
+  'gplots', 'haven', 'Hmisc', 'igraph', 'irlba', 'knitr', 'later',
+  'Matrix', 'metap', 'mgcv', 'modelr', 'mvtnorm', 'openssl', 'pbapply',
+  'processx', 'proxy', 'purrr', 'R.utils', 'R6', 'RCurl', 'readxl',
+  'reticulate', 'Rsamtools', 'stringi', 'stringr', 'sys', 'tidyr',
+  'vegan', 'xfun'
+</div>
 
 ```r
 library(Rgraphviz)
 ```
 
-```
-## Loading required package: grid
-```
+<div class="output">Loading required package: grid
+</div>
 
-```
-## 
-## Attaching package: 'grid'
-```
+<div class="output">
+Attaching package: 'grid'
+</div>
 
-```
-## The following object is masked from 'package:topGO':
-## 
-##     depth
-```
+<div class="output">The following object is masked from 'package:topGO':
 
-```
-## 
-## Attaching package: 'Rgraphviz'
-```
+    depth
+</div>
 
-```
-## The following objects are masked from 'package:IRanges':
-## 
-##     from, to
-```
+<div class="output">
+Attaching package: 'Rgraphviz'
+</div>
 
-```
-## The following objects are masked from 'package:S4Vectors':
-## 
-##     from, to
-```
+<div class="output">The following objects are masked from 'package:IRanges':
+
+    from, to
+</div>
+
+<div class="output">The following objects are masked from 'package:S4Vectors':
+
+    from, to
+</div>
 
 ```r
 if (!any(rownames(installed.packages()) == "org.Hs.eg.db")){
@@ -293,35 +252,30 @@ if (!any(rownames(installed.packages()) == "org.Hs.eg.db")){
 }
 ```
 
-```
-## Bioconductor version 3.8 (BiocManager 1.30.4), R 3.5.2 (2018-12-20)
-```
+<div class="output">Bioconductor version 3.8 (BiocManager 1.30.4), R 3.5.2 (2018-12-20)
+</div>
 
-```
-## Installing package(s) 'org.Hs.eg.db'
-```
+<div class="output">Installing package(s) 'org.Hs.eg.db'
+</div>
 
-```
-## installing the source package 'org.Hs.eg.db'
-```
+<div class="output">installing the source package 'org.Hs.eg.db'
+</div>
 
-```
-## Update old packages: 'BiocParallel', 'caTools', 'class', 'codetools',
-##   'dplyr', 'evaluate', 'flexmix', 'forcats', 'formatR', 'GenomeInfoDb',
-##   'gplots', 'haven', 'Hmisc', 'igraph', 'irlba', 'knitr', 'later',
-##   'Matrix', 'metap', 'mgcv', 'modelr', 'mvtnorm', 'openssl', 'pbapply',
-##   'processx', 'proxy', 'purrr', 'R.utils', 'R6', 'RCurl', 'readxl',
-##   'reticulate', 'Rsamtools', 'stringi', 'stringr', 'sys', 'tidyr',
-##   'vegan', 'xfun'
-```
+<div class="output">Update old packages: 'BiocParallel', 'caTools', 'class', 'codetools',
+  'dplyr', 'evaluate', 'flexmix', 'forcats', 'formatR', 'GenomeInfoDb',
+  'gplots', 'haven', 'Hmisc', 'igraph', 'irlba', 'knitr', 'later',
+  'Matrix', 'metap', 'mgcv', 'modelr', 'mvtnorm', 'openssl', 'pbapply',
+  'processx', 'proxy', 'purrr', 'R.utils', 'R6', 'RCurl', 'readxl',
+  'reticulate', 'Rsamtools', 'stringi', 'stringr', 'sys', 'tidyr',
+  'vegan', 'xfun'
+</div>
 
 ```r
 library(org.Hs.eg.db)
 ```
 
-```
-## 
-```
+<div class="output">
+</div>
 
 ```r
 library(edgeR)
@@ -331,28 +285,24 @@ install.packages("gplots")
 library(gplots)
 ```
 
-```
-## 
-## Attaching package: 'gplots'
-```
+<div class="output">
+Attaching package: 'gplots'
+</div>
 
-```
-## The following object is masked from 'package:IRanges':
-## 
-##     space
-```
+<div class="output">The following object is masked from 'package:IRanges':
 
-```
-## The following object is masked from 'package:S4Vectors':
-## 
-##     space
-```
+    space
+</div>
 
-```
-## The following object is masked from 'package:stats':
-## 
-##     lowess
-```
+<div class="output">The following object is masked from 'package:S4Vectors':
+
+    space
+</div>
+
+<div class="output">The following object is masked from 'package:stats':
+
+    lowess
+</div>
 
 ```r
 if (!any(rownames(installed.packages()) == "RColorBrewer")){

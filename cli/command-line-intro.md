@@ -283,7 +283,7 @@ Tape archives, or .tar files, are one way to compress entire folders and all con
 
 The .tar.gz and .tgz are *commonly used* extensions for compressed tar files, when gzip compression is used. The application tar is used to uncompress .tar files
 
-    tar -xzvf PhiX_Illumina_RTA.tar.gz  #
+    tar -xzvf PhiX_Illumina_RTA.tar.gz
 
 Here -x = extract, -z = use gzip/gunzip, -v = verbose (show each file in archive), -f filename
 
@@ -436,7 +436,7 @@ Sometimes it's useful to continue working on the command line, even after you've
 
     sleep 1000000
 
-Cntr-Z to pause (stop) the command
+Ctrl-Z to pause (stop) the command
 
     bg
 
@@ -446,9 +446,8 @@ To restart the last command in the background
 
     jobs
 
-
-> [1]+  Running                 sleep 1000000 &<br>
-
+<div class="output">[1]+  Running                 sleep 1000000 &
+</div>
 
 We can also start a job in the background in one step, without having to suspend then resume it, using the '&' character at the end of the command:
 
@@ -458,34 +457,35 @@ If we want to delete these jobs for any reason, we can kill them using the numbe
 
     jobs
 
-> [1]-  Running                 sleep 1000000 &<br>
-> [2]+  Running                 sleep 5000000 &<br>
+<div class="output">[1]-  Running                 sleep 1000000 &
+[2]+  Running                 sleep 5000000 &
+</div>
 
     kill %1
     jobs
 
-> [1]-  Terminated              sleep 1000000<br>
-> [2]+  Running                 sleep 5000000 &<br>
+<div class="output">[1]-  Terminated              sleep 1000000
+[2]+  Running                 sleep 5000000 &
+</div>
 
     kill %2
     jobs
 
-> [2]+  Terminated              sleep 5000000<br>
+<div class="output">[2]+  Terminated              sleep 5000000
+</div>
 
 Finally, the 'nohup' command (from 'no hangup'!) makes jobs extra resistant to lost connections or terminal problems. In other words, even jobs running in the background can be terminated if one's shell dies. 'nohup' separates the running job from the shell, so it'll keep running until it dies or is actively killed by you.
 
     nohup sleep 1000000 &
 
-
-> [1] 34993<br>
-> username@c4-0:~/CLB$ nohup: ignoring input and appending output to nohup.out<br>
-
+<div class="output">[1] 34993
+username@c4-0:~/CLB$ nohup: ignoring input and appending output to nohup.out
+</div>
 
     jobs
 
-
-> [1]+  Running                 nohup sleep 1000000 &<br>
-
+<div class="output">[1]+  Running                 nohup sleep 1000000 &
+</div>
 
 output is dumped into the 'nohup.out' file unless specifically redirected in your command
 
@@ -511,11 +511,12 @@ nano now occupies the whole screen; see commands at the bottom
 type/paste in the following ...
 (note that '#!' is an interpreted command to the shell, not a comment)
 
-    #!/bin/bash
-    grep -o . $1 | \
-        sort | \
-        uniq -c | \
-        sort -rn -k1,1
+<div class="output">#!/bin/bash
+grep -o . $1 | \
+    sort | \
+    uniq -c | \
+    sort -rn -k1,1
+</div>
 
 Cntrl-X top exit first saving the document. Follow the instruction at the bottom of the screen
 
@@ -525,8 +526,8 @@ Though there are ways to run the commands in test.sh right now, it's generally u
 
     ls -lh test.sh
 
-
-> -rw-rw-r-- 1 msettles workshop 90 Mar 10 14:19 test.sh<br>
+<div class="output">-rw-rw-r-- 1 msettles biocore 79 Aug 19 15:05 test.sh
+</div>
 
 
 The first '-' becomes a 'd' if the 'file' is actually a directory. The next three characters represent **r**ead, **w**rite, and e**x**ecute permissions for the file owner (you), followed by three characters for users in the owner's group, followed by three characters for all other users. Run the 'chmod' command to change permissions for the 'test.sh' file, adding execute permissions ('+x') for the user (you) and your group ('ug'):
@@ -534,25 +535,23 @@ The first '-' becomes a 'd' if the 'file' is actually a directory. The next thre
     chmod ug+x test.sh
     ls -lh test.sh
 
-
-> -rwxr-xr-- 1 jfass biocore 79 Aug 19 15:05 test.sh\*<br>
-
+<div class="output">-rwxr-xr-- 1 msettles biocore 79 Aug 19 15:05 test.sh
+</div>
 
 OK! So let's run this script, feeding it the phiX genome. When we put the genome file 1st after the name of the script, this filename becomes variable '1', which the script can access by specifying '$1'. We have to provide a relative reference to the script './' because its not our our "PATH".
 
     ./test.sh genome.fa
 
-
-> msettles@tadpole:/share/workshop/msettles/cli$ ./test.sh genome.fa<br>
->     1686 T<br>
->     1292 A<br>
->     1253 G<br>
->     1155 C<br>
->        1 x<br>
->        1 p<br>
->        1 i<br>
->        1 h<br>
->        1 ><br>
-
+<div class="output">msettles@tadpole:/share/workshop/msettles/cli$ ./test.sh genome.fa
+    1686 T
+    1292 A
+    1253 G
+    1155 C
+       1 x
+       1 p
+       1 i
+       1 h
+       1 >
+</div>
 
 The script's grep command splits out every character in the file on a separate line, then sorts them so it can count the occurrences of every unique character and show the most frequent characters first ... a quick and dirty way to get at GC content.
