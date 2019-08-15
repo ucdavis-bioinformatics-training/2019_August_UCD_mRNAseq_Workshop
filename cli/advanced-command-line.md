@@ -173,51 +173,31 @@ Now, let's say you wanted to write the output of each command to a separate file
 
 This will put the output of the counting command into a file whose name is the prefix of the input file plus ".nucl_count.txt". It will do this for every input file.
 
-**HARD CHALLENGE:**
-Use the "find" command to find all the files ending in ".pm" in the /software/perl-libs directory. Then, pipe that to a while loop to grep for all occurences (case insensitive) of the word "blast" in those files. The grep should also output the file name. You will probably have to look at the man page for grep.
-
 
 Bash Scripts
 ---------------
 
-Let's imagine we have three samples: control, strain A, and strain B, and each has a (potentially) different genome sequence. If we had a series of many steps to perform on each sample's genome, we could put all the steps into a script, and run the script once for each sample (possible even in a for-loop, as above). So let's prepare a "pretend" genome sequence for each sample. The control sample will have the same sequence as the reference (our phiX genome), so:
+A script is a set of commands that are written into a file. This file can then be "run" as a program and it will simply execute all of the commands in it. Open a new text file using the text editor "nano":
 
-    cd /share/workshop/$USER/advanced/  # just making sure we're in the same place; use your home if necessary
-    cp ../CLI/genome.fa control.fa
+    nano get_nucl_counts.sh
 
-Strain A will have mutated, due to selective pressure:
-
-    cat ../CLI/genome.fa | sed 's/ATGCC/ATACC/g' > strainA.fa  # G's to A's, in a particular motif
-
-And strain B will have different mutations:
-
-    cat ../CLI/genome.fa | sed 's/GCCTG/GCCCTG/g' > strainB.fa  # C insertions, in a particular motif
-
-Now that we've got our genome sequences, let's create a script to align a genome sequence to the phiX reference genome. Do this using the nano text editor ... open nano to edit a file genome-align.sh like this:
-
-    nano genome-align.sh
-
-Once in nano, type (or copy) away: what you type is what you see is what you get. Special commands are listed along the bottom of the screen. Make your script look like this:
+Copy and Paste the following into the file:
 
 <div class="output">#!/bin/bash
-echo "Running $0 to align $2 to the $1 reference, using fake parameter value $3"
-reference=$1  # assume this has been indexed using 'bwa index'
-sample=$2
-fakeParam=$3
-bwa mem ${reference} ${sample} 1> ${sample}.sam 2> ${sample}.err
+
+zcat $1 | sed -n '2~4p' | head -$2 | grep -o . | sort | uniq -c
 </div>
 
-Then save your file (\<control-o\><enter>) and exit nano (\<control-x\>). In our script, $0 is replaced by the name of the script, $1 is replaced by the first word *after* the script name (when the script is run), $2 is replaced by the second word, and so on. So we can run our script by first giving ourselves execute permissions, then running it over all samples with the following loop:
+Save the file and exit. Change the permissions on the file to make it executable:
 
-    ls -l genome-align.sh  # what permissions do you have?
-    chmod u+x genome-align.sh  # u=user ... you! and +x means add execute permission
-    ls -l genome-align.sh  # what's changed?
-    # here's the loop:
-    for i in {"control.fa","strainA.fa","strainB.fa"}; do
-    ./genome-align.sh ../CLI/genome.fa $i 700
-    done
+    chmod a+x get_nucl_counts.sh
 
-What is the value '700' used for in our script? Do you see how the output files got the names they have? Finally, do the alignments in SAM format make sense?
+Now, we can run this script giving it different arguments every time. The first argument (i.e. the first text after the script name when it is run) will get put into the variable "$1". The second argument (delimited by spaces) will get put into "$2". In this case, "$1" is the file name, and "$2" is the number of reads we want to count. So, then we can run the script over and over again using different values and the command will run based on those values:
+
+    ./get_nucl_counts.sh I593_S85_L006_R1_001.fastq.gz 1000
+    ./get_nucl_counts.sh I593_S85_L006_R1_001.fastq.gz 10000
+    ./get_nucl_counts.sh C64_S70_L006_R2_001.fastq.gz 555
+    ./get_nucl_counts.sh <(gzip -c BSD) 10
 
 Find
 -----
@@ -239,6 +219,9 @@ One of the most powerful uses of find is to execute commands on every file it fi
     find /share/biocore/joshi/projects/genomes -name "*.fa" -exec wc -l {} \;
 
 You will probably want to Ctrl-C out of this because it will take a long time to go through them all.
+
+**HARD CHALLENGE:**
+Use the "find" command to find all the files ending in ".pm" in the /software/perl-libs directory. Then, pipe that to a while loop to grep for all occurences (case insensitive) of the word "blast" in those files. The grep should also output the file name. You will probably have to look at the man page for grep.
 
 Xargs
 ------
