@@ -542,8 +542,7 @@ OK! So let's run this script, feeding it the phiX genome. When we put the genome
 
     ./test.sh genome.fa
 
-<div class="output">
-msettles@tadpole:/share/workshop/msettles/cli$ ./test.sh genome.fa
+<div class="output">msettles@tadpole:/share/workshop/msettles/cli$ ./test.sh genome.fa
     1686 T
     1292 A
     1253 G
