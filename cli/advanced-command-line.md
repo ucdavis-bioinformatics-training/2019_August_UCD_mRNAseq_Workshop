@@ -321,8 +321,7 @@ Awk
 
 Awk is a simple programming language that can be used to do more complex filtering of data. Awk has many capabilities, and we are only going to touch on one of them here. One really useful thing is to filter lines of a file based on the value in a column. Let's get a file with some data:
 
-    wget https://ucdavis-bioinformatics-training.github.io/2018-September-Bioinformatics-Prerequisites/wednesday/DMR.GBM2.vs.NB1.bed
-
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/cli/DMR.GBM2.vs.NB1.bed
 Take a look at the beginning of the file:
 
     head DMR.GBM2.vs.NB1.bed
