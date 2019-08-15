@@ -114,9 +114,10 @@ Loops are useful for quickly telling the shell to perform one operation after an
 
 The general form is:
 
-> for name in {list}; do<br>
->     commands<br>
-> done<br>
+<div class="output">for name in {list}; do
+    commands
+done
+</div>
 
 The list can be a sequence of numbers or letters, or a group of files specified with wildcard characters:
 
@@ -131,15 +132,17 @@ The list can be a sequence of numbers or letters, or a group of files specified 
 
 Sometimes a "while" loop is more convenient than a "for" loop ... if you don't readily know how many iterations of the loop you want:
 
-> while {condition}; do<br>
->     commands<br>
-> done<br>
+<div class="output">while {condition}; do
+    commands
+done
+</div>
 
 Or, imagining a file that contains the filenames (one per line) of samples' sequence data:
 
-> cat file-of-filenames.txt | while read sample; do<br>
->     bwa mem reference.fa $sample 1> $sample.sam 2> $sample.err<br>
-> done<br>
+<div class="output">cat file-of-filenames.txt | while read sample; do
+    bwa mem reference.fa $sample 1> $sample.sam 2> $sample.err
+done
+</div>
 
 Now, let's use a for loop on some fastq files. You can specify all the parts of the for loop on one line, separated by semi-colons. First let's just echo all the names of the fastq files in a directory:
 
@@ -191,12 +194,13 @@ Now that we've got our genome sequences, let's create a script to align a genome
 
 Once in nano, type (or copy) away: what you type is what you see is what you get. Special commands are listed along the bottom of the screen. Make your script look like this:
 
-> #!/bin/bash<br>
-> echo "Running $0 to align $2 to the $1 reference, using fake parameter value $3"<br>
-> reference=$1  # assume this has been indexed using 'bwa index'<br>
-> sample=$2<br>
-> fakeParam=$3<br>
-> bwa mem ${reference} ${sample} 1> ${sample}.sam 2> ${sample}.err<br>
+<div class="output">#!/bin/bash
+echo "Running $0 to align $2 to the $1 reference, using fake parameter value $3"
+reference=$1  # assume this has been indexed using 'bwa index'
+sample=$2
+fakeParam=$3
+bwa mem ${reference} ${sample} 1> ${sample}.sam 2> ${sample}.err
+</div>
 
 Then save your file (\<control-o\><enter>) and exit nano (\<control-x\>). In our script, $0 is replaced by the name of the script, $1 is replaced by the first word *after* the script name (when the script is run), $2 is replaced by the second word, and so on. So we can run our script by first giving ourselves execute permissions, then running it over all samples with the following loop:
 
