@@ -1361,7 +1361,7 @@ source("http://bioconductor.org/biocLite.R")
 
 If it's the first time you invoke the above "source" command, you should see a very similar screen as in the following picture:
 
-<img src="Intro2R_Figures/sourcebiocLite.png" alt="sourcebiocLite" width="600px"/>
+<img src="Intro2R_figures/sourcebiocLite.png" alt="sourcebiocLite" width="600px"/>
 
 
 
