@@ -6,7 +6,7 @@
 * The user interface that accepts the typed responses and displays the data on the screen is called a shell: bash, tcsh…
 * An all-text display (most of the time your mouse doesn't work)
 
-<img src="figures/cli_figure1.png" alt="cli_figure1" width="600px"/>
+<img src="figures/cli_figure1.png" alt="cli_figure1" width="800px"/>
 
 After opening, system messages are often displayed, followed by the "prompt".
 A prompt is a short text message at the start of the command line and ends with '$' in bash shell, commands are typed after the prompt.
@@ -40,7 +40,7 @@ The tilde (~) is a short form of a user’s home directory.
 * A command plus the required parameters/arguments
 * The separator used in issuing a command is space, number of spaces does not matter
 
-<img src="figures/cli_figure3.png" alt="cli_figure3" width="600px"/>
+<img src="figures/cli_figure3.png" alt="cli_figure3" width="800px"/>
 
 ## Logging into a remote server
 
@@ -56,7 +56,7 @@ Once you're done working on the command line, you can exit. Anything that follow
 
     exit  # kills the current shell!
 
-<img src="figures/cli_figure4.png" alt="cli_figure4" width="600px"/>
+<img src="figures/cli_figure4.png" alt="cli_figure4" width="800px"/>
 
 Go ahead and log back into the server.
 
@@ -93,11 +93,19 @@ Navigate like in 'less' (up,down,pgup,pgdn,g,G,/pattern,n,N,q), look up and try 
     ls -l -a
     ls -la  # option 'smushing' ... when no values need specifying
     ls -ltrha
-    ls -ltrha --color  # single letter (smushed) vs word options
+    
+And finally adding color: 
+
+    ls -ltrha --color  # single letter (smushed) vs word options (Linux)
+    
+**OR**
+
+    ls -ltrhaG  # (MacOS)
+
 
 Quick aside: what if I want to use same options repeatedly? and be lazy? You can create a shortcut to another command using 'alias'.
 
-    alias ll='ls -lah --color'
+    alias ll='ls -lah'
     ll
 
 Because one of the first things that's good to know is *how to escape once you've started something you don't want*.
@@ -125,7 +133,7 @@ The filesystem you're working on is like the branching root system of a tree. Th
     cd ..  # '..' always means *one directory up*
     pwd
 
-<img src="figures/cli_figure5.png" alt="cli_figure5" width="600px"/>
+<img src="figures/cli_figure5.png" alt="cli_figure5" width="800px"/>
 
 You should also notice the location changes in your prompt.
 
@@ -261,10 +269,6 @@ As file sizes get large, you'll often see compressed files, or whole compressed 
     gzip test.txt
     cat test.txt.gz
 
-Should now be binary, 'zcat' can be used to uncompress and cat
-
-    zcat test.txt.gz
-
 To uncompress a file
 
     gunzip -c test.txt.gz
@@ -273,13 +277,9 @@ The '-c' leaves the original file alone, but dumps expanded output to screen
 
     gunzip test.txt.gz  # now the file should change back to uncompressed test.txt
 
-Tape archives, or .tar files, are one way to compress entire folders and all contained folders into one file. When they're further compressed they're called 'tarballs'. We can use wget (web get) and curl (Client URL) to retrieve files from the internet.
+Tape archives, or .tar files, are one way to compress entire folders and all contained folders into one file. When they're further compressed they're called 'tarballs'. We can use wget (web get).
 
     wget ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/PhiX/Illumina/RTA/PhiX_Illumina_RTA.tar.gz
-
-**OR**
-
-    curl ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/PhiX/Illumina/RTA/PhiX_Illumina_RTA.tar.gz > PhiX_Illumina_RTA.tar.gz
 
 The .tar.gz and .tgz are *commonly used* extensions for compressed tar files, when gzip compression is used. The application tar is used to uncompress .tar files
 
@@ -497,7 +497,7 @@ If you used bg to send a process to the background you can use 'disown' to "nohu
 
 The 'top' command prints a self-updating table of running processes and system stats. Use 'q' to exit top, 'z' to toggle better color contrast, 'M' to sort by memory use, 'P' to sort by processor use, and 'c' to toggle display of the full commands. Hit '1' to toggle display of all processors, and hit 'u' followed by typing in a username in order to only show processes (jobs) owned by that user.
 
-<img src="figures/cli_figure6.png" alt="cli_figure6" width="600px"/>
+<img src="figures/cli_figure6.png" alt="cli_figure6" width="800px"/>
 
 ## Shell Scripts, File Permissions
 
@@ -505,7 +505,7 @@ Often it's useful to define a whole string of commands to run on some input, so 
 
     nano test.sh
 
-<img src="figures/cli_figure7.png" alt="cli_figure7" width="600px"/>
+<img src="figures/cli_figure7.png" alt="cli_figure7" width="800px"/>
 
 nano now occupies the whole screen; see commands at the bottom
 type/paste in the following ...
