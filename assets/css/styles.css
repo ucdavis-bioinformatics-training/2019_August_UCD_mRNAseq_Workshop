@@ -88,6 +88,12 @@ pre {
   overflow-x: auto;
 }
 
+table.table1, tr, td, th {
+  border:1px solid black;
+  font-size: 30px;
+  width:900px;
+}
+
 table {
   width:100%;
   border-collapse:collapse;

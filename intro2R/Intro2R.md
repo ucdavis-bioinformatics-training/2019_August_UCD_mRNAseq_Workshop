@@ -292,7 +292,7 @@ my_friends[has_child == "TRUE"]
 *** NOTE: a vector can only hold elements of the same type.
 
 
-## Matrices: A matrix is like and Excel sheet containing multiple rows and columns. It is used to combine vectors of the same type.
+## Matrices: A matrix is like an Excel sheet containing multiple rows and columns. It is used to combine vectors of the same type.
 
 
 ```r
@@ -447,7 +447,7 @@ colSums(my_matrix)
   21   57  331
 </div>
 
-It is also possible to use the function apply() to apply any statistical functions to rows/columns of matrices. The advantage of using apply() is that it can take a function created by user.
+It is also possible to use the function apply() to apply any statistical functions to rows/columns of matrices. The advantage of using apply() is that it can take a function created by the user.
 
 The simplified format of apply() is as following:
 
@@ -590,7 +590,7 @@ Anna Anna  26 FALSE
 Cora Cora  32  TRUE
 </div>
 
-To check whether a data is a data frame, use the function is.data.frame().
+To check whether an object is a data frame, use the function is.data.frame().
 
 
 ```r
@@ -703,7 +703,7 @@ Ella Ella  27  TRUE
 Cora Cora  32  TRUE
 </div>
 
-Function subset() can also be used to get a subset of a data frame.
+The function subset() can also be used to get a subset of a data frame.
 
 
 ```r
@@ -1045,7 +1045,7 @@ str(data2)
 #### To check the syntax of using lapply():
 
 ```r
-#?lapply()
+#?lapply
 
 data <- as.data.frame(matrix(rnorm(49), ncol=7), stringsAsFactors=F)
 dim(data)
@@ -1193,19 +1193,19 @@ Warning in FUN(X[[i]], ...): NaNs produced
 Topic 4. Basic statistics in R
 ====================================================
 
-
-             Description                 R_function 
---------------------------------------  ------------
-                 Mean                      mean()   
-          Standard deviation                sd()    
-               Variance                    var()    
-               Minimum                     min()    
-               Maximum                     max()    
-                Median                    median()  
- Range of values: minimum and maximum     range()   
-           Sample quantiles              quantile() 
-           Generic function              summary()  
-         Interquartile range               IQR()    
+<table class="table1">
+<th>Description</th><th>R function</th>
+<tr><td>Mean</td><td>mean()</td></tr>
+<tr><td>Standard deviation</td><td>sd()</td></tr>
+<tr><td>Variance</td><td>var()</td></tr>
+<tr><td>Minimum</td><td>min()</td></tr>
+<tr><td>Maximum</td><td>max()</td></tr>
+<tr><td>Median</td><td>median()</td></tr>
+<tr><td>Range of values: min and max</td><td>range()</td></tr>
+<tr><td>Sample quantiles</td><td>quantile()</td></tr>
+<tr><td>Generic function</td><td>summary()</td></tr>
+<tr><td>Interquartile range</td><td>IQR()</td></tr>   
+</table>
 
 Calculate the mean expression for each sample.
 
