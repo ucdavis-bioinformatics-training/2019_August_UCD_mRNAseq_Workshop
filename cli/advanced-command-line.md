@@ -153,7 +153,7 @@ Finally, use sort and uniq to get the counts:
 
 And, voila, we have the per nucleotide count for these reads!
 
-We just did this for one file, but what if we wanted to do it for all of our files. We certainly don't want to type the command by hand dozens of times. So we'll use a while loop. You can pipe a command into a while loop and it will iterate through each line of the input. First, get a listing of all your files:
+We just did this for one file, but what if we wanted to do it for all of our files? We certainly don't want to type the command by hand dozens of times. So we'll use a while loop. You can pipe a command into a while loop and it will iterate through each line of the input. First, get a listing of all your files:
 
     ls -1 *.fastq.gz
 
