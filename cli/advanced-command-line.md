@@ -183,8 +183,8 @@ A script is a set of commands that are written into a file. This file can then b
 
 Copy and Paste the following into the file:
 
-<div class="output">#!/bin/bash
-
+<div class="script">
+#!/bin/bash
 zcat $1 | sed -n '2~4p' | head -$2 | grep -o . | sort | uniq -c
 </div>
 
@@ -205,8 +205,8 @@ We can also put loops into a script. We'll take the loop we created earlier and 
 
 Put this in the file and save it:
 
-<div class="output">#!/bin/bash
-
+<div class="script">
+#!/bin/bash
 ls -1 *.fastq.gz | \
 while read x; do \
     echo $x is being processed...; \

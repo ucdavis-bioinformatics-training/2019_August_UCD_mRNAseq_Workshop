@@ -564,7 +564,7 @@ Note the patterns:
  When you are done, type "q" to exit.
 
 
-<div class="output">#!/bin/bash
+<div class="script">#!/bin/bash
 
 #SBATCH --job-name=htstream # Job name
 #SBATCH --nodes=1
