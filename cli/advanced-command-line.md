@@ -339,7 +339,8 @@ Nohup
 
 The nohup (short for "no hangup") command is useful for running a job from a terminal and then wanting to exit the terminal. When you run a job, even if you put it in the background (i.e. by using "&"), the job is tied to the terminal you are running on. When you log out of that terminal, any job tied to that terminal will be killed. This is not desirable, so you can use the nohup command which will disconnect the proccess from the terminal. Simply put "nohup" in front of the command, and you will probably want to add the "&" at the end to put it in the background so you can get your prompt back. It would look something like this:
 
-    nohup YOUR COMMAND &
+<div class="output">nohup YOUR COMMAND &
+</div>
 
 Awk
 ----
