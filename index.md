@@ -29,12 +29,17 @@ Lectures throughout the week will include topics such as:
 
 ### Industry Sponsors
 
-| Monday | <img src="base_figures/kapa.jpeg" alt="kapa" width="150px"/> |  
-| Monday Evening Social |  <img src="base_figures/illumina.png" alt="illumina" width="150px"/> |  
-| Tuesday | <img src="base_figures/agilant.png" alt="agilant" width="150px"/> |  
-| Wednesday | <img src="base_figures/lexogen.jpeg" alt="lexogen" width="150px"/> |  
-| Thursday | <img src="base_figures/takara.png" alt="takara" width="150px"/> |  
-| Friday | <img src="base_figures/10x.png" alt="10x genomics" width="150px"/> |  
+| Monday | <img src="base_figures/kapa.jpeg" alt="kapa" width="150px"/> |  |  
+
+| Monday Evening Social |  <img src="base_figures/illumina.png" alt="illumina" width="150px"/> |    |  
+
+| Tuesday | <img src="base_figures/agilant.png" alt="agilant" width="150px"/> |    |  
+
+| Wednesday | <img src="base_figures/lexogen.jpeg" alt="lexogen" width="150px"/> |    |  
+
+| Thursday | <img src="base_figures/takara.png" alt="takara" width="150px"/> |    |  
+
+| Friday | <img src="base_figures/10x.png" alt="10x genomics" width="150px"/> |    |  
 
 ### FAQ
 
