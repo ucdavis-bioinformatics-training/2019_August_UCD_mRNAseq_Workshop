@@ -27,8 +27,8 @@
 
 Press 'q' to exit.
 
-<div class="output">#!/bin/bash
-
+<div class="script">
+#!/bin/bash
 #SBATCH --job-name=salmon_index # Job name
 #SBATCH --nodes=1
 #SBATCH --ntasks=8
@@ -89,8 +89,8 @@ This step will take about 11 minutes to complete after the job actually starts r
 
 Press 'q' to exit.
 
-<div class="output">#!/bin/bash
-
+<div class="script">
+#!/bin/bash
 #SBATCH --array=1-16  # NEED TO CHANGE THIS!
 #SBATCH --job-name=star # Job name
 #SBATCH --nodes=1

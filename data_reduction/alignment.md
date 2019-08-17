@@ -151,7 +151,7 @@ We need to first get the url for the genome fasta.
 
  When you are done, type "q" to exit.
 
-<div class="output">#!/bin/bash
+<div class="script">#!/bin/bash
 
 #SBATCH --job-name=star_index # Job name
 #SBATCH --nodes=1
@@ -359,7 +359,7 @@ Reset the window by searching for HBB again. And zoom in 1 step.
 
  When you are done, type "q" to exit.
 
-<div class="output">#!/bin/bash
+<div class="script">#!/bin/bash
 
 #SBATCH --job-name=star # Job name
 #SBATCH --nodes=1

@@ -1,12 +1,12 @@
 # Annotation via biomart
 
-Annotation from [BioMart](https://www.ensembl.org/biomart) with Ensembl names is most flexible way to retrieve tabular annotation for an organism.
+Annotation from [BioMart](https://uswest.ensembl.org/biomart/martview/) with Ensembl names is most flexible way to retrieve tabular annotation for an organism.
 
-**1\.** The [Biomart](https://www.ensembl.org/biomart) start page should look like ...
+**1\.** The [Biomart](https://uswest.ensembl.org/biomart/martview/) start page should look like ...
 
 <img src="annotation_figures/annotation_figures1.png" alt="annotation_figures1" width="600px"/>
 
-**2\.** First select the dataset, for gene expression experiment select Ensembl Genes 95 (version 95).
+**2\.** First select the dataset, for gene expression experiment select Ensembl Genes 97 (version 97).
 
 <img src="annotation_figures/annotation_figures2.png" alt="annotation_figures2" width="600px"/>
 

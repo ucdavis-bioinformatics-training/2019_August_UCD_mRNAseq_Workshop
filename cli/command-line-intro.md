@@ -262,6 +262,51 @@ pipes cat to cut to sort (-r means reverse order sort), and then grep searches f
 
 This is a great way to build up a set of operations while inspecting the output of each step in turn. We'll do more of this in a bit.
 
+## History Repeats Itself
+
+Linux remembers everything you've done (at least in the current shell session), which allows you to pull steps from your history, potentially modify them, and redo them. This can obviously save a lot of time and typing.
+
+    <up arrow>  # last command
+    <up>  # next-to-last command
+    <down>  # last command, again
+    <down>  # current command, empty or otherwise
+    history  # usually too much for one screen, so ...
+    history | head
+    history | tail
+    history | tail -n 30
+    history | less
+    cat test.txt | cut -c 1-3 | sort -r | grep s > reallyImportantResult.txt
+    rm reallyImportantResult.txt  # whoops! didn't mean to do that!
+    history | tail
+    !560  # re-executes 560th command (yours will have different numbers; choose the one that recreates your really important result!)
+
+You can also search your history from the command line:
+
+    <ctrl-r>fir  # should find most recent command containing 'fir' string: echo 'first' > test.txt
+    <enter>  # to run command
+    <ctrl-c>  # get out of recursive search
+    <ctr-r>  # repeat <ctrl-r> to find successively older string matches
+
+### CHALLENGE
+
+What's the first command you executed today? How many times have you used the 'man' command today? Whatever that number is, it should be more! Just kidding. Sort of.
+
+### CHALLENGE
+
+The 'head' and 'tail' commands view the first 10 (by default) lines of a file and last 10 lines of a file (type 'man head' or 'man tail' to consult their manuals). How would you create a second text file - let's say 'test2.txt' - with the line that says 'third' *before* the line that says 'second'? Without directly editing the file with a text editor, of course ..
+
+## Editing Yourself
+Here are some more ways to make editing previous commands, or novel commands that you're building up, easier:
+
+    <up><up>  # go to some previous command, just to have something to work on
+    <ctrl-a>  # go to the beginning of the line
+    <ctrl-e>  # go to the end of the line
+    # now use left and right to move to a single word (surrounded by whitespace: spaces or tabs)
+    <ctrl-k>  # delete from here to end of line
+    <ctrl-w>  # delete from here to beginning of preceeding word
+    blah blah blah<ctrl-w><ctrl-w>  # leaves you with only one 'blah'
+
+
 ## Compression and Archives
 
 As file sizes get large, you'll often see compressed files, or whole compressed folders.
@@ -330,6 +375,11 @@ However, some commands try to be 'smarter' about this behavior, so it's a little
     echo `$VRBL`  # tries to execute a command with the name *someText*
     newVRBL=`echo $VRBL`
     echo $newVRBL
+
+### CHALLENGE
+
+Many programs and data archives contain files named something like 'readme' or 'README' that contains important information for the user. How many of these files are there in the PhiX directory tree? How would you look at their contents? BONUS: Can you find out how many times the Illumina Adapter sequence (AGATCGGAAGAG) appears in fasta files?
+
 
 ## Manipulation of a FASTA File
 
@@ -511,7 +561,8 @@ nano now occupies the whole screen; see commands at the bottom
 type/paste in the following ...
 (note that '#!' is an interpreted command to the shell, not a comment)
 
-<div class="output">#!/bin/bash
+<div class="script">
+#!/bin/bash
 grep -o . $1 | \
     sort | \
     uniq -c | \
