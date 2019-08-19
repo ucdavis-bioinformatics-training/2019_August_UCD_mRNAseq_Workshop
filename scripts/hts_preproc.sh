@@ -13,15 +13,15 @@ do
   [[ -d ${outpath}/${sample} ]] || mkdir ${outpath}/${sample}
   echo "SAMPLE: ${sample}"
 
-  call="hts_Stats -O -L ${outpath}/${sample}/${sample}_htsStats.log -1 00-RawData/${sample}/*R1* -2 00-RawData/${sample}/*R2* | \
-        hts_SeqScreener -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-        hts_SeqScreener -s References/human_rrna.fasta -r -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-        hts_SuperDeduper -e 250000 -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-        hts_AdapterTrimmer -n -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-        hts_QWindowTrim -n -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-        hts_NTrimmer -n -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-        hts_CutTrim -n -m 50 -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-        hts_Stats -S -A -L ${outpath}/${sample}/${sample}_htsStats.log -g -p ${outpath}/${sample}/${sample}"
+  call="hts_Stats -L ${outpath}/${sample}/${sample}_htsStats.log -1 00-RawData/${sample}/*R1* -2 00-RawData/${sample}/*R2* | \
+        hts_SeqScreener -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+        hts_SeqScreener -s References/human_rrna.fasta -r -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+        hts_SuperDeduper -e 250000 -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+        hts_AdapterTrimmer -n -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+        hts_QWindowTrim -n -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+        hts_NTrimmer -n -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+        hts_CutTrim -n -m 50 -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+        hts_Stats -A -L ${outpath}/${sample}/${sample}_htsStats.log -f ${outpath}/${sample}/${sample}"
 
   echo $call
   eval $call

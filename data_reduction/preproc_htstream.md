@@ -79,13 +79,12 @@ So we zcat (uncompress and send to screen), pipe to head (param -400000) then pi
 **1b\.** Now we'll run our first preprocessing step ... hts_Stats, first loading the module and then looking at help.
 
     cd /share/workshop/$USER/rnaseq_example/HTS_testing
-    module load htstream/1.0.0
+    module load htstream/1.1.0
     hts_Stats --help
 
 
-<div class="output">msettles@tadpole:/share/workshop/msettles/rnaseq_example/HTS_testing$ hts_Stats --help
-HTStream <https://github.com/ibest/HTStream> application: hts_Stats
-Version: 1.0.0-release
+<div class="output">HTStream <https://github.com/ibest/HTStream> application: hts_Stats
+Version: 1.1.0-release
 The hts_Stats app produce basic statistics about the reads in a dataset.
   Including the basepair composition and number of bases Q30.
 
@@ -96,32 +95,31 @@ Standard Options:
   -L [ --stats-file ] arg (=stats.log)  String for output stats file name
   -A [ --append-stats-file ]            Append to stats file
 
-Input Options:
-  -1 [ --read1-input ] arg              Read 1 paired end fastq input < space 
-                                        seperated for multiple files>
-  -2 [ --read2-input ] arg              Read 2 paired end fastq input < space 
-                                        seperated for multiple files>
-  -U [ --singleend-input ] arg          Single end read fastq input < space 
-                                        seperated for multiple files>
-  -T [ --tab-input ] arg                Tab input < space seperated for multiple
-                                        files>
-  -I [ --interleaved-input ] arg        Interleaved fastq input < space 
-                                        seperated for multiple files>
-  -S [ --from-stdin ]                   STDIN input < MUST BE TAB DELIMITED 
-                                        INPUT>
+Input Options [default: tab6 format on stdin]:
+  -1 [ --read1-input ] arg              Read 1 paired end fastq input <space
+                                        separated for multiple files>
+  -2 [ --read2-input ] arg              Read 2 paired end fastq input <space
+                                        separated for multiple files>
+  -U [ --singleend-input ] arg          Single end read fastq input <space
+                                        separated for multiple files>
+  -T [ --tab-input ] arg                Tab-delimited (tab6) input <space
+                                        separated for multiple files>
+  -I [ --interleaved-input ] arg        Interleaved fastq input <space
+                                        separated for multiple files>
+  -S [ --from-stdin ]                   DEPRECATED PARAMETER
 
-Output Options:
+Output Options [default: tab6 format to stdout]:
   -F [ --force ]                        Forces overwrite of files
-  -p [ --prefix ] arg (=hts_Stats)      Prefix for output files
-  -g [ --gzip-output ]                  Output gzipped files
-  -f [ --fastq-output ]                 Output to Fastq format < PE AND/OR SE 
+  -u [ --uncompressed ]                 Output uncompressed (not gzipped) files
+  -f [ --fastq-output ] arg             Output to Fastq files <PE AND/OR SE
                                         files>
-  -t [ --tab-output ]                   Output to tab-delimited file format
-  -i [ --interleaved-output ]           Output to interleaved fastq file < PE 
-                                        ONLY>
-  -u [ --unmapped-output ]              Output to unmapped sam file format
-  -O [ --to-stdout ]                    Output to STDOUT in tab-delimited file 
-                                        format
+  -i [ --interleaved-output ] arg       Output to interleaved fastq files
+                                        <INTERLEAVED PE AND/OR SE files>
+  -t [ --tab-output ] arg               Output to tab-delimited (tab6) file
+  -z [ --unmapped-output ] arg          Output to unmapped sam file
+  -p [ --prefix ]                       DEPRECATED PARAMETER
+  -g [ --gzip-output ]                  DEPRECATED PARAMETER
+  -O [ --to-stdout ]                    DEPRECATED PARAMETER
 
 
 Please report any issues, request for enhancement, or comments to <https://github.com/ibest/HTStream/issues>
@@ -132,7 +130,7 @@ So now lets run hts_Stats and look at the output.
 
     hts_Stats -1 SampleAC1.subset_R1.fastq.gz \
               -2 SampleAC1.subset_R2.fastq.gz \
-              -L SampleAC1.stats.log -f -g -p SampleAC1.stats
+              -L SampleAC1.stats.log -f SampleAC1.stats
 
 *What parameters did we use, what do they do?*
 
@@ -250,14 +248,13 @@ First, view the help documentation for hts_SeqScreener
     hts_SeqScreener -h
 
 
-<div class="output">msettles@tadpole:/share/workshop/msettles/rnaseq_example/HTS_testing$hts_SeqScreener -h
-HTStream <https://github.com/ibest/HTStream> application: hts_SeqScreener
-Version: 1.0.0-release
+<div class="output">HTStream <https://github.com/ibest/HTStream> application: hts_SeqScreener
+Version: 1.1.0-release
 hts_SeqScreener identifies and removes any reads which appear to have originated
   from a contaminant DNA source. Because bacteriophage Phi-X is common spiked
   into Illumina runs for QC purposes, sequences originating from Phi-X are removed
   by default. If other contaminants are suspected their sequence can be supplied
-  as a fasta file < seq >, however the algorithm has been tuned for short contaminant
+  as a fasta file <seq>, however the algorithm has been tuned for short contaminant
   sequences, and may not work well with sequences significantly longer than Phi-X (5Kb).
 
 
@@ -268,48 +265,46 @@ Standard Options:
   -L [ --stats-file ] arg (=stats.log)  String for output stats file name
   -A [ --append-stats-file ]            Append to stats file
 
-Input Options:
-  -1 [ --read1-input ] arg              Read 1 paired end fastq input < space 
-                                        seperated for multiple files>
-  -2 [ --read2-input ] arg              Read 2 paired end fastq input < space 
-                                        seperated for multiple files>
-  -U [ --singleend-input ] arg          Single end read fastq input < space 
-                                        seperated for multiple files>
-  -T [ --tab-input ] arg                Tab input < space seperated for multiple
-                                        files>
-  -I [ --interleaved-input ] arg        Interleaved fastq input < space 
-                                        seperated for multiple files>
-  -S [ --from-stdin ]                   STDIN input < MUST BE TAB DELIMITED 
-                                        INPUT>
+Input Options [default: tab6 format on stdin]:
+  -1 [ --read1-input ] arg              Read 1 paired end fastq input <space
+                                        separated for multiple files>
+  -2 [ --read2-input ] arg              Read 2 paired end fastq input <space
+                                        separated for multiple files>
+  -U [ --singleend-input ] arg          Single end read fastq input <space
+                                        separated for multiple files>
+  -T [ --tab-input ] arg                Tab-delimited (tab6) input <space
+                                        separated for multiple files>
+  -I [ --interleaved-input ] arg        Interleaved fastq input <space
+                                        separated for multiple files>
+  -S [ --from-stdin ]                   DEPRECATED PARAMETER
 
-Output Options:
+Output Options [default: tab6 format to stdout]:
   -F [ --force ]                        Forces overwrite of files
-  -p [ --prefix ] arg (=hts_SeqScreener)
-                                        Prefix for output files
-  -g [ --gzip-output ]                  Output gzipped files
-  -f [ --fastq-output ]                 Output to Fastq format < PE AND/OR SE 
+  -u [ --uncompressed ]                 Output uncompressed (not gzipped) files
+  -f [ --fastq-output ] arg             Output to Fastq files <PE AND/OR SE
                                         files>
-  -t [ --tab-output ]                   Output to tab-delimited file format
-  -i [ --interleaved-output ]           Output to interleaved fastq file < PE 
-                                        ONLY>
-  -u [ --unmapped-output ]              Output to unmapped sam file format
-  -O [ --to-stdout ]                    Output to STDOUT in tab-delimited file 
-                                        format
+  -i [ --interleaved-output ] arg       Output to interleaved fastq files
+                                        <INTERLEAVED PE AND/OR SE files>
+  -t [ --tab-output ] arg               Output to tab-delimited (tab6) file
+  -z [ --unmapped-output ] arg          Output to unmapped sam file
+  -p [ --prefix ]                       DEPRECATED PARAMETER
+  -g [ --gzip-output ]                  DEPRECATED PARAMETER
+  -O [ --to-stdout ]                    DEPRECATED PARAMETER
 
 Application Specific Options:
-  -s [ --seq ] arg                      Please supply a fasta file - default - 
-                                        Phix Sequence - default 
+  -s [ --seq ] arg                      Please supply a fasta file - default -
+                                        Phix Sequence - default
                                         https://www.ncbi.nlm.nih.gov/nuccore/96
                                         26372
   -C [ --check-read-2 ]                 Check R2 as well as R1 (pe)
-  -k [ --kmer ] arg (=12)               Kmer size of the lookup table (min 5, 
+  -k [ --kmer ] arg (=12)               Kmer size of the lookup table (min 5,
                                         max 256)
-  -x [ --percentage-hits ] arg (=0.25)  Proportion of kmer percentage-hits to 
+  -x [ --percentage-hits ] arg (=0.25)  Proportion of kmer percentage-hits to
                                         sequence need to happen to discard (min
                                         0.0, max 1.0)
-  -n [ --inverse ]                      Output reads that are ABOVE the kmer 
+  -n [ --inverse ]                      Output reads that are ABOVE the kmer
                                         hit threshold
-  -r [ --record ]                       Only record the reads that pass the 
+  -r [ --record ]                       Only record the reads that pass the
                                         kmer hit threshold, output all reads
 
 
@@ -321,7 +316,7 @@ Please report any issues, request for enhancement, or comments to <https://githu
 
     hts_SeqScreener -1 SampleAC1.subset_R1.fastq.gz \
                     -2 SampleAC1.subset_R2.fastq.gz \
-                    -s ../References/human_rrna.fasta -r -L SampleAC1.rrna.log -A -f -g -p SampleAC1.rrna
+                    -s ../References/human_rrna.fasta -r -L SampleAC1.rrna.log -f SampleAC1.rrna
 
 *Which files were generated from hts\_SeqScreener?*
 
@@ -375,9 +370,9 @@ So lets first run hts_Stats and then hts_SeqScreener in a streamed fashion.
 
     hts_Stats -1 SampleAC1.subset_R1.fastq.gz \
               -2 SampleAC1.subset_R2.fastq.gz \
-              -L SampleAC1.streamed.log -O |
-    hts_SeqScreener -S -A -L SampleAC1.streamed.log \
-              -r -s ../References/human_rrna.fasta -f -g -p SampleAC1.streamed
+              -L SampleAC1.streamed.log |
+    hts_SeqScreener -A -L SampleAC1.streamed.log \
+              -r -s ../References/human_rrna.fasta -f SampleAC1.streamed
 
 Note the pipe between the two applications!
 
@@ -526,20 +521,19 @@ Comparing star mapping with raw and preprocessed reads
 
 **5.** Lets put it all together
 
-    hts_Stats -O -L SampleAC1_htsStats.log -1 SampleAC1.subset_R1.fastq.gz -2 SampleAC1.subset_R2.fastq.gz | \
-    hts_SeqScreener -S -O -A -L SampleAC1_htsStats.log | \
-    hts_SeqScreener -s ../References/human_rrna.fasta -r -S -O -A -L SampleAC1_htsStats.log | \
-    hts_SuperDeduper -e 25000 -S -O -A -L SampleAC1_htsStats.log | \
-    hts_AdapterTrimmer -n -S -O -A -L SampleAC1_htsStats.log | \
-    hts_QWindowTrim -n -S -O -A -L SampleAC1_htsStats.log | \
-    hts_NTrimmer -n -S -O -A -L SampleAC1_htsStats.log | \
-    hts_CutTrim -n -m 50 -S -O -A -L SampleAC1_htsStats.log | \
-    hts_Stats -S -A -L SampleAC1_htsStats.log -g -p SampleAC1.htstream
+    hts_Stats -L SampleAC1_htsStats.log -1 SampleAC1.subset_R1.fastq.gz -2 SampleAC1.subset_R2.fastq.gz | \
+    hts_SeqScreener -A -L SampleAC1_htsStats.log | \
+    hts_SeqScreener -s ../References/human_rrna.fasta -r -A -L SampleAC1_htsStats.log | \
+    hts_SuperDeduper -e 25000 -A -L SampleAC1_htsStats.log | \
+    hts_AdapterTrimmer -n -A -L SampleAC1_htsStats.log | \
+    hts_QWindowTrim -n -A -L SampleAC1_htsStats.log | \
+    hts_NTrimmer -n -A -L SampleAC1_htsStats.log | \
+    hts_CutTrim -n -m 50 -A -L SampleAC1_htsStats.log | \
+    hts_Stats -A -L SampleAC1_htsStats.log -f SampleAC1.htstream
 
 Note the patterns:
-* In the first routine we use -1 and -2 to specify the original reads and -O to output to standard output.
-* In the middle routines we use -S to read in from standard input and -O to write out to standard output.
-* In the final routine we use -S to read in from standard input and -g (gzipped output) and -p fastq prefix to write out new preprocessed reads.
+* In the first routine we use -1 and -2 to specify the original reads.
+* In the final routine -f fastq prefix to write out new preprocessed reads.
 * For the log, we specify -L with the same log file name for all routines, and use -A for the second routine onward to append log output, generating a single log file at the end.
 * All other parameters are algorithm specific, can review using --help
 
@@ -565,7 +559,6 @@ Note the patterns:
 
 
 <div class="script">#!/bin/bash
-
 #SBATCH --job-name=htstream # Job name
 #SBATCH --nodes=1
 #SBATCH --ntasks=9
@@ -590,17 +583,17 @@ outpath='01-HTS_Preproc'
 
 echo "SAMPLE: ${sample}"
 
-module load htstream
+module load htstream/1.1.0
 
-call="hts_Stats -O -L ${outpath}/${sample}/${sample}_htsStats.log -1 00-RawData/${sample}/*R1* -2 00-RawData/${sample}/*R2* | \
-      hts_SeqScreener -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_SeqScreener -s References/human_rrna.fasta -r -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_SuperDeduper -e 250000 -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_AdapterTrimmer -n -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_QWindowTrim -n -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_NTrimmer -n -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_CutTrim -n -m 50 -S -O -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
-      hts_Stats -S -A -L ${outpath}/${sample}/${sample}_htsStats.log -g -p ${outpath}/${sample}/${sample}"
+call="hts_Stats -L ${outpath}/${sample}/${sample}_htsStats.log -1 00-RawData/${sample}/*R1* -2 00-RawData/${sample}/*R2* | \
+      hts_SeqScreener -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+      hts_SeqScreener -s References/human_rrna.fasta -r -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+      hts_SuperDeduper -e 250000 -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+      hts_AdapterTrimmer -n -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+      hts_QWindowTrim -n -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+      hts_NTrimmer -n -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+      hts_CutTrim -n -m 50 -A -L ${outpath}/${sample}/${sample}_htsStats.log | \
+      hts_Stats -A -L ${outpath}/${sample}/${sample}_htsStats.log -f ${outpath}/${sample}/${sample}"
 
 echo $call
 eval $call
