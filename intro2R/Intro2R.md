@@ -5,7 +5,6 @@ date: "2019-08-19"
 output:
   html_document:
     keep_md: yes
-  pdf_document: default
 ---
 
 <style type="text/css">
