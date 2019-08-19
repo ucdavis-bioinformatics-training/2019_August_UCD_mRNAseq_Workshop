@@ -83,7 +83,7 @@ So we zcat (uncompress and send to screen), pipe to head (param -400000) then pi
     hts_Stats --help
 
 
-<div class="output">HTStream < https://github.com/ibest/HTStream> application: hts_Stats
+<div class="output">HTStream < https://github.com/ibest/HTStream > application: hts_Stats
 Version: 1.1.0-release
 The hts_Stats app produce basic statistics about the reads in a dataset.
   Including the basepair composition and number of bases Q30.
@@ -96,25 +96,25 @@ Standard Options:
   -A [ --append-stats-file ]            Append to stats file
 
 Input Options [default: tab6 format on stdin]:
-  -1 [ --read1-input ] arg              Read 1 paired end fastq input <space
-                                        separated for multiple files>
-  -2 [ --read2-input ] arg              Read 2 paired end fastq input <space
-                                        separated for multiple files>
-  -U [ --singleend-input ] arg          Single end read fastq input <space
-                                        separated for multiple files>
-  -T [ --tab-input ] arg                Tab-delimited (tab6) input <space
-                                        separated for multiple files>
-  -I [ --interleaved-input ] arg        Interleaved fastq input <space
-                                        separated for multiple files>
+  -1 [ --read1-input ] arg              Read 1 paired end fastq input < space
+                                        separated for multiple files >
+  -2 [ --read2-input ] arg              Read 2 paired end fastq input < space
+                                        separated for multiple files >
+  -U [ --singleend-input ] arg          Single end read fastq input < space
+                                        separated for multiple files >
+  -T [ --tab-input ] arg                Tab-delimited (tab6) input < space
+                                        separated for multiple files >
+  -I [ --interleaved-input ] arg        Interleaved fastq input < space
+                                        separated for multiple files >
   -S [ --from-stdin ]                   DEPRECATED PARAMETER
 
 Output Options [default: tab6 format to stdout]:
   -F [ --force ]                        Forces overwrite of files
   -u [ --uncompressed ]                 Output uncompressed (not gzipped) files
   -f [ --fastq-output ] arg             Output to Fastq files < PE AND/OR SE
-                                        files>
+                                        files >
   -i [ --interleaved-output ] arg       Output to interleaved fastq files
-                                        < INTERLEAVED PE AND/OR SE files>
+                                        < INTERLEAVED PE AND/OR SE files >
   -t [ --tab-output ] arg               Output to tab-delimited (tab6) file
   -z [ --unmapped-output ] arg          Output to unmapped sam file
   -p [ --prefix ]                       DEPRECATED PARAMETER
@@ -122,7 +122,7 @@ Output Options [default: tab6 format to stdout]:
   -O [ --to-stdout ]                    DEPRECATED PARAMETER
 
 
-Please report any issues, request for enhancement, or comments to < https://github.com/ibest/HTStream/issues>
+Please report any issues, request for enhancement, or comments to < https://github.com/ibest/HTStream/issues >
 </div>
 
 
@@ -248,7 +248,7 @@ First, view the help documentation for hts_SeqScreener
     hts_SeqScreener -h
 
 
-<div class="output">HTStream < https://github.com/ibest/HTStream> application: hts_SeqScreener
+<div class="output">HTStream < https://github.com/ibest/HTStream > application: hts_SeqScreener
 Version: 1.1.0-release
 hts_SeqScreener identifies and removes any reads which appear to have originated
   from a contaminant DNA source. Because bacteriophage Phi-X is common spiked
@@ -266,25 +266,25 @@ Standard Options:
   -A [ --append-stats-file ]            Append to stats file
 
 Input Options [default: tab6 format on stdin]:
-  -1 [ --read1-input ] arg              Read 1 paired end fastq input <space
-                                        separated for multiple files>
-  -2 [ --read2-input ] arg              Read 2 paired end fastq input <space
-                                        separated for multiple files>
-  -U [ --singleend-input ] arg          Single end read fastq input <space
-                                        separated for multiple files>
-  -T [ --tab-input ] arg                Tab-delimited (tab6) input <space
-                                        separated for multiple files>
-  -I [ --interleaved-input ] arg        Interleaved fastq input <space
-                                        separated for multiple files>
+  -1 [ --read1-input ] arg              Read 1 paired end fastq input < space
+                                        separated for multiple files >
+  -2 [ --read2-input ] arg              Read 2 paired end fastq input < space
+                                        separated for multiple files >
+  -U [ --singleend-input ] arg          Single end read fastq input < space
+                                        separated for multiple files >
+  -T [ --tab-input ] arg                Tab-delimited (tab6) input < space
+                                        separated for multiple files >
+  -I [ --interleaved-input ] arg        Interleaved fastq input < space
+                                        separated for multiple files >
   -S [ --from-stdin ]                   DEPRECATED PARAMETER
 
 Output Options [default: tab6 format to stdout]:
   -F [ --force ]                        Forces overwrite of files
   -u [ --uncompressed ]                 Output uncompressed (not gzipped) files
   -f [ --fastq-output ] arg             Output to Fastq files < PE AND/OR SE
-                                        files>
+                                        files >
   -i [ --interleaved-output ] arg       Output to interleaved fastq files
-                                        < INTERLEAVED PE AND/OR SE files>
+                                        < INTERLEAVED PE AND/OR SE files >
   -t [ --tab-output ] arg               Output to tab-delimited (tab6) file
   -z [ --unmapped-output ] arg          Output to unmapped sam file
   -p [ --prefix ]                       DEPRECATED PARAMETER
@@ -308,7 +308,7 @@ Application Specific Options:
                                         kmer hit threshold, output all reads
 
 
-Please report any issues, request for enhancement, or comments to < https://github.com/ibest/HTStream/issues>
+Please report any issues, request for enhancement, or comments to < https://github.com/ibest/HTStream/issues >
 </div>
 
 
