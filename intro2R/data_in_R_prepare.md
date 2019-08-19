@@ -95,7 +95,7 @@ When you click the **preview** or **Knit** button a document will be generated t
 print('hello world!')
 ```</code></pre>
 
-Review the R Markdown page and R Markdown cheat sheets.
+Review the [R Markdown page]<https://rmarkdown.rstudio.com> and [R Markdown cheat sheets] <https://rmarkdown.rstudio.com/lesson-15.html>.
 
 Try 'knitting' to html, pdf, and doc as well as previewing the notebook. Open the resulting documents.
 
