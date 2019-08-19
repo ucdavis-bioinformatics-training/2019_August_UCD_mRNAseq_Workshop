@@ -111,10 +111,10 @@ Input Options [default: tab6 format on stdin]:
 Output Options [default: tab6 format to stdout]:
   -F [ --force ]                        Forces overwrite of files
   -u [ --uncompressed ]                 Output uncompressed (not gzipped) files
-  -f [ --fastq-output ] arg             Output to Fastq files <PE AND/OR SE
+  -f [ --fastq-output ] arg             Output to Fastq files < PE AND/OR SE
                                         files>
   -i [ --interleaved-output ] arg       Output to interleaved fastq files
-                                        <INTERLEAVED PE AND/OR SE files>
+                                        < INTERLEAVED PE AND/OR SE files>
   -t [ --tab-output ] arg               Output to tab-delimited (tab6) file
   -z [ --unmapped-output ] arg          Output to unmapped sam file
   -p [ --prefix ]                       DEPRECATED PARAMETER
@@ -122,8 +122,7 @@ Output Options [default: tab6 format to stdout]:
   -O [ --to-stdout ]                    DEPRECATED PARAMETER
 
 
-Please report any issues, request for enhancement, or comments to <https://github.com/ibest/HTStream/issues>
-
+Please report any issues, request for enhancement, or comments to < https://github.com/ibest/HTStream/issues>
 </div>
 
 
@@ -282,10 +281,10 @@ Input Options [default: tab6 format on stdin]:
 Output Options [default: tab6 format to stdout]:
   -F [ --force ]                        Forces overwrite of files
   -u [ --uncompressed ]                 Output uncompressed (not gzipped) files
-  -f [ --fastq-output ] arg             Output to Fastq files <PE AND/OR SE
+  -f [ --fastq-output ] arg             Output to Fastq files < PE AND/OR SE
                                         files>
   -i [ --interleaved-output ] arg       Output to interleaved fastq files
-                                        <INTERLEAVED PE AND/OR SE files>
+                                        < INTERLEAVED PE AND/OR SE files>
   -t [ --tab-output ] arg               Output to tab-delimited (tab6) file
   -z [ --unmapped-output ] arg          Output to unmapped sam file
   -p [ --prefix ]                       DEPRECATED PARAMETER
@@ -309,7 +308,7 @@ Application Specific Options:
                                         kmer hit threshold, output all reads
 
 
-Please report any issues, request for enhancement, or comments to <https://github.com/ibest/HTStream/issues>
+Please report any issues, request for enhancement, or comments to < https://github.com/ibest/HTStream/issues>
 </div>
 
 
