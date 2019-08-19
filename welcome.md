@@ -31,13 +31,17 @@ __The mission of the Bioinformatics Core facility is to facilitate outstanding o
 
 ## Internet
 
-You will need to access the UCSF wireless via your laptop to participate in the hands-on exercises. Please review https://it.ucsf.edu/services/wireless-service for access instructions.
+You will need to access the UCD wireless via your laptop to participate in the hands-on exercises.
 
-Many academic (and some non-academic) institutions are part of Eduroam. (See "List of Institutions" under
+### Eduroam
+
+Many academic institutions are part of Eduroam. (See "List of Institutions" under
 "Members" at https://www.eduroam.us/ to find out if your institution is a member.) Please make sure you
-can log into Eduroam with your device at your home institution, which will make things easier once you come to UCSF.
+can log into Eduroam with your device at your home institution, which will make things easier once you come to UCD.
 
-If your institution is not a member of Eduroam, you can still access the open wireless through "UCSFguest".
+### UCD Guest wireless
+
+You will need to access the UCD wireless via your laptop to participate in the hands-on exercises. Please review [http://itcatalog.ucdavis.edu/service/wireless-guest-access](http://itcatalog.ucdavis.edu/service/wireless-guest-access) for access instructions.
 
 ## Workshop Materials
 
@@ -48,11 +52,12 @@ http://bioinformatics.ucdavis.edu/training/events/
 * Github main page:
 
 	https://github.com/ucdavis-bioinformatics-training
+
 * This RNAseq Workshop
 
-  https://ucdavis-bioinformatics-training.github.io/2018-June-RNA-Seq-Workshop/  
+  https://ucdavis-bioinformatics-training.github.io/2019_August_UCD_mRNAseq_Workshop/  
 
-  https://github.com/ucdavis-bioinformatics-training/2018-June-RNA-Seq-Workshop
+  https://github.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop
 
 ## Computing Cluster
 
@@ -70,11 +75,4 @@ Cluster usage will be under the slurm reservation  ‘workshop’
 
 Reservation will last 1 full week after the workshop and allow you to practice or run analyze your own data.
 
-**workshop       ACTIVE  2019-03-09T10:46:16  2019-03-22T00:00:00  12-12:13:44  drove-[4,13,18]**
-
-## Industry Sponsor Lunch and Learns
-
-* [Lexogen](https://www.lexogen.com/)
-* [Qiagen](https://www.qiagen.com/us/)
-* [Illumina](https://www.illumina.com/)
-* [10X * Genomics](https://www.10xgenomics.com/)
+**workshop       ACTIVE  2019-08-19T00:00:00  2019-08-31T00:00:00  12-00:00:00  rafter-[0,2,8,14,18]**

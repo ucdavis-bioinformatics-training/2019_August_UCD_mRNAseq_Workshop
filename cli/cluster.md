@@ -84,7 +84,7 @@ The first line tells sbatch what scripting language (bash here) the rest of the 
 
 
     cd /share/workshop/$USER/cli
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_March_UCSF_mRNAseq_Workshop/master/cli/templates/template.slurm
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/cli/templates/template.slurm
     cat template.slurm
     sbatch template.slurm
 

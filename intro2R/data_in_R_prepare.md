@@ -138,4 +138,4 @@ output:
 
 We will recreate some of the plots generated with plot-bamstats on the same file
 
-You can view the output of plot-bamstats -> <https://rawgit.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/intro2R/Data_in_R_files/bwa_mem_Stats/bwa_mem_Stats.html>
+You can view the output of plot-bamstats -> [bwa_mem_stats.html](Data_in_R_files/bwa_mem_Stats/bwa_mem_Stats.html)
