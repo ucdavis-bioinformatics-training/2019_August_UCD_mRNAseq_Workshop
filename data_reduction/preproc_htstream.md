@@ -232,7 +232,7 @@ Now, make a directory in your "rnaseq_example" directory called "References":
 
     mkdir /share/workshop/$USER/rnaseq_example/References
 
-Upload your human_rrna.fasta file **to the 'References' directory** on the cluster using either **scp** or FileZilla. Or if you feel like 'cheating', just copy/paste the contents of human_rrna.fa using nano into a file named /share/workshop/$USER/rnaseq_example/References/humna_rrna.fasta
+Upload your human_rrna.fasta file **to the 'References' directory** on the cluster using either **scp** or FileZilla. Or if you feel like 'cheating', just copy/paste the contents of human_rrna.fa using nano into a file named /share/workshop/$USER/rnaseq_example/References/human_rrna.fasta
 
     nano /share/workshop/$USER/rnaseq_example/References/human_rrna.fasta
 
@@ -254,7 +254,7 @@ hts_SeqScreener identifies and removes any reads which appear to have originated
   from a contaminant DNA source. Because bacteriophage Phi-X is common spiked
   into Illumina runs for QC purposes, sequences originating from Phi-X are removed
   by default. If other contaminants are suspected their sequence can be supplied
-  as a fasta file <seq>, however the algorithm has been tuned for short contaminant
+  as a fasta file < seq>, however the algorithm has been tuned for short contaminant
   sequences, and may not work well with sequences significantly longer than Phi-X (5Kb).
 
 
