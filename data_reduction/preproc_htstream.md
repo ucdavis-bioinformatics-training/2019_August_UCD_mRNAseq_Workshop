@@ -83,7 +83,7 @@ So we zcat (uncompress and send to screen), pipe to head (param -400000) then pi
     hts_Stats --help
 
 
-<div class="output">HTStream <https://github.com/ibest/HTStream> application: hts_Stats
+<div class="output">HTStream < https://github.com/ibest/HTStream> application: hts_Stats
 Version: 1.1.0-release
 The hts_Stats app produce basic statistics about the reads in a dataset.
   Including the basepair composition and number of bases Q30.
@@ -248,7 +248,7 @@ First, view the help documentation for hts_SeqScreener
     hts_SeqScreener -h
 
 
-<div class="output">HTStream <https://github.com/ibest/HTStream> application: hts_SeqScreener
+<div class="output">HTStream < https://github.com/ibest/HTStream> application: hts_SeqScreener
 Version: 1.1.0-release
 hts_SeqScreener identifies and removes any reads which appear to have originated
   from a contaminant DNA source. Because bacteriophage Phi-X is common spiked
