@@ -4,8 +4,7 @@ author: "Bioinformatics Core"
 date: "`r format(Sys.Date())`"
 output:
   html_document:
-    keep_md: yes
-  pdf_document: default
+    keep_md: TRUE
 ---
 
 ```{css echo=FALSE}
