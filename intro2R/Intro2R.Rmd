@@ -824,5 +824,8 @@ Challenge
 Read in the reference fasta file for PhiX that you have downloaded this morning and find out the length of PhiX genome and GC content.
 
 `r colFmt("Hint: please look into bioconductor package ShortRead.", 'blue')`
+`r colFmt("The PhiX genome can be downloaded by following the instruction in Intro to Command-Line session. The link for the data is at ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/PhiX/Illumina/RTA/PhiX_Illumina_RTA.tar.gz", 'blue')`
+
+
 
 

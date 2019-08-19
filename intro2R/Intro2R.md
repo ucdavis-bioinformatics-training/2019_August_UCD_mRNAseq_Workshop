@@ -1385,25 +1385,25 @@ lapply(1:dim(data)[1], function(x){sum(data[x,])})
 
 ```
 ## [[1]]
-## [1] 0.7618294
+## [1] 1.482389
 ## 
 ## [[2]]
-## [1] 1.918892
+## [1] -0.7360648
 ## 
 ## [[3]]
-## [1] 6.164308
+## [1] -0.05000692
 ## 
 ## [[4]]
-## [1] 0.4878681
+## [1] -4.158094
 ## 
 ## [[5]]
-## [1] -0.3800851
+## [1] 1.202058
 ## 
 ## [[6]]
-## [1] -0.6322298
+## [1] 2.217831
 ## 
 ## [[7]]
-## [1] 0.5050553
+## [1] 1.490628
 ```
 
 ```{.r .colsel}
@@ -1411,8 +1411,8 @@ apply(data, MARGIN=1, sum)
 ```
 
 ```
-## [1]  0.7618294  1.9188918  6.1643084  0.4878681 -0.3800851 -0.6322298
-## [7]  0.5050553
+## [1]  1.48238882 -0.73606482 -0.05000692 -4.15809371  1.20205771  2.21783092
+## [7]  1.49062804
 ```
 
 ```{.r .colsel}
@@ -1423,29 +1423,31 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] -0.1181423
+## [1] 0.1709621
 ## 
 ## [[2]]
-## [1] 0.2830505
+## [1] NaN
 ## 
 ## [[3]]
-## [1] 0.7898844
+## [1] NaN
 ## 
 ## [[4]]
-## [1] -0.3116976
+## [1] NaN
 ## 
 ## [[5]]
-## [1] NaN
+## [1] 0.07992532
 ## 
 ## [[6]]
-## [1] NaN
+## [1] 0.3459284
 ## 
 ## [[7]]
-## [1] -0.2966611
+## [1] 0.1733693
 ```
 
 #### The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
@@ -1462,11 +1464,13 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
-## [1] -0.1181423  0.2830505  0.7898844 -0.3116976        NaN        NaN
-## [7] -0.2966611
+## [1] 0.17096213        NaN        NaN        NaN 0.07992532 0.34592843
+## [7] 0.17336929
 ```
 
 #### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
@@ -1479,29 +1483,31 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
+
+## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] -0.1181423
+## [1] 0.1709621
 ## 
 ## [[2]]
-## [1] 0.2830505
+## [1] NaN
 ## 
 ## [[3]]
-## [1] 0.7898844
+## [1] NaN
 ## 
 ## [[4]]
-## [1] -0.3116976
+## [1] NaN
 ## 
 ## [[5]]
-## [1] NaN
+## [1] 0.07992532
 ## 
 ## [[6]]
-## [1] NaN
+## [1] 0.3459284
 ## 
 ## [[7]]
-## [1] -0.2966611
+## [1] 0.1733693
 ```
 
 ---
@@ -1569,9 +1575,9 @@ apply(data, 2, mean)
 
 ```
 ##          V1          V2          V3          V4          V5          V6 
-##  0.31148421  0.37575128  0.21348418 -0.14391468  0.48241970  0.01040887 
+##  0.13843222  0.43992683 -0.39160423  0.09214633  0.09822332 -0.41352873 
 ##          V7 
-##  0.01117190
+##  0.24336712
 ```
 
 Calculate the range of expression for each sample.
@@ -1582,12 +1588,12 @@ apply(data, 2, range)
 ```
 
 ```
-##              V1        V2         V3        V4         V5        V6
-## [1,] -0.8395742 -1.118189 -1.1158741 -1.722555 -0.7122432 -1.422444
-## [2,]  2.1547111  1.444797  0.9754519  1.128266  2.0441697  1.682170
-##              V7
-## [1,] -0.9024570
-## [2,]  0.9596193
+##             V1        V2        V3         V4        V5         V6
+## [1,] -1.647372 -0.303384 -1.903058 -1.0638724 -2.346844 -1.3254445
+## [2,]  1.963267  1.009349  1.476747  0.8054583  1.667355  0.6278053
+##             V7
+## [1,] -1.561045
+## [2,]  1.512408
 ```
 
 Calculate the quantiles of each samples.
@@ -1598,18 +1604,18 @@ apply(data, 2, quantile)
 ```
 
 ```
-##              V1          V2         V3         V4         V5         V6
-## 0%   -0.8395742 -1.11818855 -1.1158741 -1.7225551 -0.7122432 -1.4224444
-## 25%  -0.1981171 -0.08692682 -0.3135561 -1.0254690 -0.4192401 -0.8236415
-## 50%   0.1383496  0.34440397  0.7072559  0.3906054  0.5619450 -0.2822469
-## 75%   0.5615686  1.06655012  0.7773339  0.6236095  1.1607733  0.8713333
-## 100%  2.1547111  1.44479694  0.9754519  1.1282657  2.0441697  1.6821698
-##                V7
-## 0%   -0.902456966
-## 25%  -0.418497211
-## 50%   0.003243442
-## 75%   0.427395955
-## 100%  0.959619346
+##              V1          V2         V3          V4         V5         V6
+## 0%   -1.6473717 -0.30338402 -1.9030584 -1.06387238 -2.3468445 -1.3254445
+## 25%  -0.5805599  0.08087213 -0.7313804  0.00616005 -0.1142347 -0.7203270
+## 50%   0.3030817  0.60696256 -0.4411305  0.04163321  0.1936823 -0.4652249
+## 75%   0.7555841  0.80240820 -0.2055137  0.42474255  0.7009200 -0.1455914
+## 100%  1.9632671  1.00934861  1.4767474  0.80545829  1.6673547  0.6278053
+##              V7
+## 0%   -1.5610450
+## 25%  -0.2858075
+## 50%   0.3244020
+## 75%   0.9997098
+## 100%  1.5124084
 ```
 
 ---
@@ -1781,5 +1787,8 @@ Challenge
 Read in the reference fasta file for PhiX that you have downloaded this morning and find out the length of PhiX genome and GC content.
 
 <font color='blue'>Hint: please look into bioconductor package ShortRead.</font>
+<font color='blue'>The PhiX genome can be downloaded by following the instruction in Intro to Command-Line session. The link for the data is at ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/PhiX/Illumina/RTA/PhiX_Illumina_RTA.tar.gz</font>
+
+
 
 
