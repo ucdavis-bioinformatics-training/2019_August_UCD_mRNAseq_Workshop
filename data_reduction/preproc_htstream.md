@@ -331,7 +331,7 @@ Please report any issues, request for enhancement, or comments to < https://gith
     "record": 1,
     "Screen_info": {
         "screenBP": 107854,
-        "lookupKmers": 16954
+        "lookupKmers": 16765
     },
     "Single_end": {
         "SE_in": 0,
@@ -418,7 +418,7 @@ Note the pipe between the two applications!
     "record": 1,
     "Screen_info": {
         "screenBP": 107854,
-        "lookupKmers": 16954
+        "lookupKmers": 16765
     },
     "Single_end": {
         "SE_in": 0,
