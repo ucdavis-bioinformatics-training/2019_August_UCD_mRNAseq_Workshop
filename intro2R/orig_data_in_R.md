@@ -58,7 +58,7 @@ Attaching package: 'gridExtra'
     combine
 </div>
 
-This document assumes you have the file 'bwa.samtools.stats' in your current working directory, lets test to make sure it is.
+This document assumes you have the file 'bwa_mem_Stats.log' in your current working directory, lets test to make sure it is.
 
 ```r
 getwd()
@@ -71,19 +71,11 @@ getwd()
 dir()
 ```
 
-<div class="output"> [1] "bwa_mem_Stats.log"      "Data_in_R_figures"     
- [3] "Data_in_R_files"        "data_in_R_prepare.html"
- [5] "data_in_R_prepare.md"   "data_in_R_prepare.Rmd" 
- [7] "data_in_R.Rmd"          "Intro2R_figures"       
- [9] "Intro2R_files"          "Intro2R.html"          
-[11] "Intro2R.md"             "Intro2R.Rmd"           
-[13] "multi_plot.pdf"         "multi_plot.png"        
-[15] "orig_data_in_R.Rmd"     "output.txt"            
-[17] "RStudio_figures"        "RStudio.md"
+<div class="output">[1] "bwa_mem_Stats.log"    "Data_in_R_Test.Rproj"     "data_in_R.Rmd" 
 </div>
 
 ```r
-file.exists("Data_in_R_files/bwa.samtools.stats")
+file.exists("bwa_mem_Stats.log")
 ```
 
 <div class="output">[1] TRUE
@@ -94,7 +86,7 @@ If it returned TRUE, great! If not return to the Prepare data_in_R doc and follo
 So lets read in the file and view the first few lines and get the length
 
 ```r
-data <- readLines("Data_in_R_files/bwa.samtools.stats")
+data <- readLines("bwa_mem_Stats.log")
 head(data)
 ```
 
@@ -110,11 +102,11 @@ head(data)
 tail(data)
 ```
 
-<div class="output">[1] "GCD\t19.0\t58.824\t0.007\t0.007\t0.007\t0.007\t0.007" 
-[2] "GCD\t36.0\t70.588\t0.007\t0.007\t0.007\t0.007\t0.007" 
-[3] "GCD\t38.0\t76.471\t0.007\t0.007\t0.007\t0.007\t0.007" 
-[4] "GCD\t41.0\t82.353\t0.007\t0.007\t0.007\t0.007\t0.007" 
-[5] "GCD\t42.0\t88.235\t0.007\t0.007\t0.007\t0.007\t0.007" 
+<div class="output">[1] "GCD\t19.0\t58.824\t0.007\t0.007\t0.007\t0.007\t0.007"
+[2] "GCD\t36.0\t70.588\t0.007\t0.007\t0.007\t0.007\t0.007"
+[3] "GCD\t38.0\t76.471\t0.007\t0.007\t0.007\t0.007\t0.007"
+[4] "GCD\t41.0\t82.353\t0.007\t0.007\t0.007\t0.007\t0.007"
+[5] "GCD\t42.0\t88.235\t0.007\t0.007\t0.007\t0.007\t0.007"
 [6] "GCD\t48.0\t100.000\t0.007\t0.007\t0.007\t0.007\t0.007"
 </div>
 
@@ -140,7 +132,7 @@ There are many sections to the samtools stats output, each section begins with a
 * Coverage distribution -> COV
 * Coverage distribution -> GCD
 
-With the exception of Summary Numbers, most sections are tables of data, the file explains the format of the 
+With the exception of Summary Numbers, most sections are tables of data, the file explains the format of the
 data tables, open the log file (in Rstudio is fine) and search for the term 'grep'.
 
 Lets take a quick look at the comments in the file
@@ -192,15 +184,15 @@ reads duplicated:                          0
 reads MQ0:                                 439677889    
 reads QC failed:                           0            
 non-primary alignments:                    290462657    
-total length:                              127407018699 
+total length:                              127407018699
 total first fragment length:               58451965568  
 total last fragment length:                68955053131  
-bases mapped:                              111789284981 
+bases mapped:                              111789284981
 bases mapped (cigar):                      53892754351  
 bases trimmed:                             0            
 bases duplicated:                          0            
 mismatches:                                1041917776   
-error rate:                                1.933317e-02 
+error rate:                                1.933317e-02
 average length:                            139          
 average first fragment length:             128          
 average last fragment length:              151          
@@ -358,7 +350,7 @@ GC Coverage data
   * separate by the tab character "\t"
   * and remove the first column '[,-1]', the GCD
 
-### Some Summary stats with 
+### Some Summary stats with
 
 
 ```r
@@ -444,7 +436,7 @@ Ok, now lets add some labels to the plot
 
 
 ```r
-g + geom_line( aes(x=get("insert size"), y=get("all pairs"))) + 
+g + geom_line( aes(x=get("insert size"), y=get("all pairs"))) +
   labs( x = "insert size", y = "all pairs", title ="Mapped insert sizes", subtitle = "All Pairs", caption = "all pairs insert size")
 ```
 
@@ -456,7 +448,7 @@ Ok, what about plotting multiple data objects on the same plot (multiple lines),
 ```r
 g <- ggplot(data = is, aes(x=get("insert size")))
 g + geom_line(aes(y=get("inward")),color="blue") +  
-    geom_line(aes(y=get("outward")),color="orange") + 
+    geom_line(aes(y=get("outward")),color="orange") +
     labs( x = "insert size", y = "all pairs", title ="Mapped insert sizes", subtitle = "All Pairs", caption = "all pairs insert size")
 ```
 
@@ -467,7 +459,7 @@ lets try adjusting the x/y limits to 0,600 and 0,20000 respectively.
 
 ```r
 g + geom_line(aes(y=get("inward")),color="blue") +
-  geom_line(aes(y=get("outward")),color="orange") + 
+  geom_line(aes(y=get("outward")),color="orange") +
   coord_cartesian(xlim=c(0,500), ylim=c(0,600000))
 ```
 
@@ -486,7 +478,7 @@ g <- g + geom_line(aes(y=get("all pairs")), color="black") +
     geom_line(aes(y=get("inward")),color="blue") +  
     geom_line(aes(y=get("outward")),color="orange") +
     geom_line(aes(y=get("other")), color="green")
-g <- g + 
+g <- g +
     labs( x = "insert size", y = "all pairs", title ="Mapped insert sizes", subtitle = "All Pairs", caption = "all pairs insert size")
 g <- g + coord_cartesian(xlim=c(0,500), ylim=c(0,600000))
 g <- g + theme_light()
@@ -570,7 +562,7 @@ Take a look at the new object
 
 
 ```r
-j <- ggplot(fqm, aes(Cycle, variable)) 
+j <- ggplot(fqm, aes(Cycle, variable))
 j + geom_tile(aes(fill = as.numeric(value)))
 ```
 
@@ -585,7 +577,7 @@ Now lets try changing the gradient colors and modify the legend, add labels. The
 
 
 ```r
-j = j + geom_tile(aes(fill = as.numeric(value))) + 
+j = j + geom_tile(aes(fill = as.numeric(value))) +
   scale_fill_gradient(low = "red", high = "green") +
   ylab("Cycle") +
   xlab("Quality") +
@@ -630,7 +622,7 @@ k
 Tweek the grid elments using theme
 
 ```r
-k <- k + theme(panel.grid.minor = element_blank(), 
+k <- k + theme(panel.grid.minor = element_blank(),
   panel.grid.major = element_line(color = "gray50", size = 0.5),
   panel.grid.major.x = element_blank())
 k
@@ -667,7 +659,7 @@ l
 Tweek the grid
 
 ```r
-l <- l + theme(panel.grid.minor = element_blank(), 
+l <- l + theme(panel.grid.minor = element_blank(),
   panel.grid.major = element_line(color = "gray50", size = 0.5),
   panel.grid.major.x = element_blank())
 l
@@ -707,7 +699,7 @@ include_graphics("https://raw.githubusercontent.com/ucdavis-bioinformatics-train
 
 ```r
 full <- grid.arrange(
-  g, h, i, i2, 
+  g, h, i, i2,
   widths = c(2, 1, 1),
   layout_matrix = rbind(c(1, 2, NA),
                         c(3, 3, 4))
@@ -734,7 +726,7 @@ Saving plots to png  ** do on the console **
 ggsave("multi_plot.png",full,device="png",width=6,height=4, units="in", dpi=300)
 ```
 
-View the help documentation for ggsave, what other 
+View the help documentation for ggsave, what other
 
 With any remaining time (or homework), use the ggplot cheat sheet to further expand and modify the plots.
 
@@ -772,7 +764,7 @@ other attached packages:
 [13] knitr_1.21     
 
 loaded via a namespace (and not attached):
- [1] tidyselect_0.2.5 xfun_0.4         haven_2.0.0      lattice_0.20-38 
+ [1] tidyselect_0.2.5 xfun_0.4         haven_2.0.0      lattice_0.20-38
  [5] colorspace_1.4-0 generics_0.0.2   htmltools_0.3.6  yaml_2.2.0      
  [9] rlang_0.3.1      pillar_1.3.1     glue_1.3.0       withr_2.1.2     
 [13] modelr_0.1.2     readxl_1.2.0     bindr_0.1.1      plyr_1.8.4      
@@ -781,7 +773,7 @@ loaded via a namespace (and not attached):
 [25] Rcpp_1.0.0       scales_1.0.0     backports_1.1.3  jsonlite_1.6    
 [29] hms_0.4.2        digest_0.6.18    stringi_1.2.4    grid_3.5.2      
 [33] cli_1.0.1        tools_3.5.2      magrittr_1.5     lazyeval_0.2.1  
-[37] crayon_1.3.4     pkgconfig_2.0.2  xml2_1.2.0       lubridate_1.7.4 
+[37] crayon_1.3.4     pkgconfig_2.0.2  xml2_1.2.0       lubridate_1.7.4
 [41] assertthat_0.2.0 rmarkdown_1.11   httr_1.4.0       rstudioapi_0.9.0
 [45] R6_2.3.0         nlme_3.1-137     compiler_3.5.2
 </div>
