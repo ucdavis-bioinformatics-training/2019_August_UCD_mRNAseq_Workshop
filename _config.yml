@@ -12,6 +12,8 @@ navigation:
     url: pdfs/Genomics_a_perspective_March2019.pdf
   - title: Experimental Design and Cost Estimation
     url: pdfs/ExperimentalDesign.pdf
+  - title: Cheat Sheets
+    url: cheatSheetIndex
   - heading: Command-Line and the Cluster
   - title: Logging in and Transferring Files
     url: cli/logging-in
@@ -21,6 +23,15 @@ navigation:
     url: cli/advanced-command-line
   - title: Running jobs on the Cluster and using modules
     url: cli/cluster
+  - heading: Intro to R and Rstudio
+  - title: Getting Started
+    url: intro2R/RStudio
+  - title: Intro to R
+    url: intro2R/Intro2R
+  - title: Prepare Data in R (extra)
+    url: intro2R/data_in_R_prepare
+  - title: Data in R (extra)
+    url: intro2R/orig_data_in_R
   - heading: Data Reduction
   - title: Files and Filetypes for RNA-Seq
     url: data_reduction/filetypes
@@ -34,15 +45,6 @@ navigation:
     url: data_reduction/salmon
   - title: Generating Summarized Counts
     url: data_reduction/counts
-  - heading: Intro to R and Rstudio
-  - title: Getting Started
-    url: intro2R/RStudio
-  - title: Intro to R
-    url: intro2R/Intro2R
-  - title: Prepare Data in R (extra)
-    url: intro2R/data_in_R_prepare
-  - title: Data in R (extra)
-    url: intro2R/orig_data_in_R
   - heading: Differential Expression and Pathway Analysis
   - title: Prepare Differential Expression Analysis
     url: differential_expression/de_analysis_prepare
@@ -55,8 +57,6 @@ navigation:
   - heading: ETC
   - title: Closing thoughts
     url: closing
-  - title: Cheat Sheets
-    url: cheatSheetIndex
   - title: Github
     url: https://github.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop
   - title: Biocore website
