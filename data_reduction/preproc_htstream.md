@@ -123,6 +123,7 @@ Output Options [default: tab6 format to stdout]:
 
 
 Please report any issues, request for enhancement, or comments to <https://github.com/ibest/HTStream/issues>
+
 </div>
 
 
