@@ -11,11 +11,10 @@ The basic architecture of a compute cluster consists of a "head node", which is 
 ---
 **2\.** Now, let's look at a few slurm commands.
 
-First, log into the head node (tadpole.genomecenter.ucdavis.edu). The main commands we will be using are srun, sbatch, squeue, scancel, and sacct.
+The main commands we will be using are srun, sbatch, squeue, scancel, and sacct. First, log into the head node (tadpole.genomecenter.ucdavis.edu) and make a directory for yourself where you will be doing all your work.
 
-Lets make sure we are where we are supposed to be and that the References directory is available.
-
-    cd /share/workshop/$USER/cli
+    mkdir /share/workshop/$USER
+    cd /share/workshop/$USER
 
 **2a\.** ['srun'](https://slurm.schedmd.com/srun.html) is used to run a job interactively. We most often use it to start an interactive session on a compute node. Take a look at the options to srun:
 
