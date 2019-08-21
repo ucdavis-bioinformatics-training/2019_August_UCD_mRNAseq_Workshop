@@ -6,7 +6,7 @@ open ($fp, "<$ARGV[0]");
 while ($line=<$fp>) {
     chomp $line;
 
-    if ($line =~ /^```r/) {
+    if ($line =~ /^```\{r/) {
         $rb = 1;
     }
 

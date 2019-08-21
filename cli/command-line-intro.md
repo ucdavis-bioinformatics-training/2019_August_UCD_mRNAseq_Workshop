@@ -8,11 +8,8 @@
 
 <img src="figures/cli_figure1.png" alt="cli_figure1" width="800px"/>
 
-After opening, system messages are often displayed, followed by the "prompt".
-A prompt is a short text message at the start of the command line and ends with '$' in bash shell, commands are typed after the prompt.
-The prompt typically follows the form **username@server:location$**
 
-a greater than sign (>) instead of a prompt means the shell is expecting more input. Can Cntr-c to cancel the operation and return to a prompt.
+A greater than sign (>) instead of a prompt means the shell is expecting more input. Can Cntr-c to cancel the operation and return to a prompt.
 
 ## Directory Structure
 
@@ -60,6 +57,10 @@ Once you're done working on the command line, you can exit. Anything that follow
 
 Go ahead and log back into the server.
 
+After opening, system messages are often displayed, followed by the "prompt".
+A prompt is a short text message at the start of the command line and ends with '$' in bash shell, commands are typed after the prompt.
+The prompt typically follows the form **username@server:location$**
+
 ## Command Line Basics
 
 First some basics - how to look at your surroundings.
@@ -76,11 +77,19 @@ list files here ... you should see nothing since your homes are empty
 
 list files somewhere else, like /tmp/
 
+
+Because one of the first things that's good to know is *how to escape once you've started something you don't want*.
+
+    sleep 1000  # wait for 1000 seconds!
+
+Use Ctrl-c (shows as '^C' in screen) to exit (kill) a command. In some cases, a different key sequence is required (Ctrl-d).
+
+
 #### Options
 
 Each command can act as a basic tool, or you can add 'options' or 'flags' that modify the default behavior of the tool. These flags come in the form of '-v' ... or, when it's a more descriptive word, two dashes: '\-\-verbose' ... that's a common (but not universal) one that tells a tool that you want it to give you output with more detail. Sometimes, options require specifying amounts or strings, like '-o results.txt' or '\-\-output results.txt' ... or '-n 4' or '\-\-numCPUs 4'. Let's try some, and see what the man page for the 'list files' command 'ls' is like.
 
-    ls -R /run
+    ls -R /
 
 Lists directories and files *recursively*. how do I know which options do what?
 
@@ -107,12 +116,6 @@ Quick aside: what if I want to use same options repeatedly? and be lazy? You can
 
     alias ll='ls -lah'
     ll
-
-Because one of the first things that's good to know is *how to escape once you've started something you don't want*.
-
-    sleep 1000  # wait for 1000 seconds!
-
-Use Ctrl-c (shows as '^C' in screen) to exit (kill) a command. In some cases, a different key sequence is required (Ctrl-d).
 
 ## Getting Around
 
@@ -153,15 +156,6 @@ You can think of paths like addresses. You can tell your friend how to go to a p
     cd /share/workshop/
     pwd
 
-Note that the shell can be picky about how you describe a directory, or what's *in* a directory. The ls command lists a directory or file. The following two commands illustrate this difference, but just realize that you may have to experiment sometimes to get the behavior you want:
-
-    ls -l /share/workshop
-
-Tells you about the /share/workshop  directory itself
-
-    ls -l /share/workshop/
-
-Tells you what's *in* the /share/workshop  directory
 
 Now, because it can be a real pain to type out, or remember these long paths, we need to discuss ...
 
@@ -197,10 +191,8 @@ We already learned one command that will create a file, touch. Lets create a fol
 
     cd  # home again
     echo $USER # echo to screen the contents of the variable $USER
-    mkdir /share/workshop/$USER
-    cd /share/workshop/$USER
-    mkdir tmp
-    cd tmp
+    mkdir ~/cli
+    cd ~/cli
     echo 'Hello, world!' > first.txt
 
 echo text then redirect ('>') to a file.
@@ -235,9 +227,6 @@ So 'touch' creates empty files, or updates the 'last modified' time. Note that t
 
 Pipes ('\|') allow commands to hand output to other commands, and redirection characters ('>' and '>>') allow you to put output into files.
 
-    cd /share/workshop/$USER
-    mkdir cli
-    cd cli/
     echo 'first' > test.txt
     cat test.txt
     echo 'second' > test.txt
@@ -376,11 +365,6 @@ However, some commands try to be 'smarter' about this behavior, so it's a little
     newVRBL=`echo $VRBL`
     echo $newVRBL
 
-### CHALLENGE
-
-Many programs and data archives contain files named something like 'readme' or 'README' that contains important information for the user. How many of these files are there in the PhiX directory tree? How would you look at their contents? BONUS: Can you find out how many times the Illumina Adapter sequence (AGATCGGAAGAG) appears in fasta files?
-
-
 ## Manipulation of a FASTA File
 
 We just found the phiX-174 genome, so let's copy it to our current directory so we can play with it:
@@ -423,17 +407,18 @@ Combine successive identical sequences, but count them ('-c' option)
 
     grep --color  -o "ATG......" phix.fa | cut -c4-6 | sort | uniq -c
 
-Finally sort using only the 1st 'field' as a key ('-k1,1'), in reverse numeric order ('-rn')
+Finally sort using reverse numeric order ('-rn')
 
-    grep --color  -o "ATG......" phix.fa | cut -c4-6 | sort | uniq -c | sort -rn -k1,1
+    grep --color  -o "ATG......" phix.fa | cut -c4-6 | sort | uniq -c | sort -rn 
 
 ... which gives us the most common codons first
 
 This may not be a particularly useful thing to do with a genomic FASTA file, but it illustrates the process by which one can build up a string of operations, using pipes, in order to ask quantitative questions about sequence content. More generally than that, this process allows one to ask questions about files and file contents and the operating system, and verify at each step that the process so far is working as expected. The command line is, in this sense, really a modular workflow management system.
 
-#### CHALLENGE
+### CHALLENGE
 
-The commands above only find start codons on the forward strand. How would you find the most common *first codons* (after the ATG) on the reverse strand?
+Many programs and data archives contain files named something like 'readme' or 'README' that contains important information for the user. How many of these files are there in the PhiX directory tree? How would you look at their contents?
+
 
 ## Symbolic Links
 

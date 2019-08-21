@@ -1,9 +1,7 @@
 ---
 title: "Gene Ontology and KEGG Enrichment Analysis"
 author: "Bioinformatics Core"
-output:
-    html_document:
-      keep_md: TRUE
+output: html_document
 ---
 
 

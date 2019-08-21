@@ -1,9 +1,7 @@
 ---
 title: "Prepare Differential Expression"
 author: "Bioinformatics Core"
-output:
-    html_document:
-      keep_md: TRUE
+output: html_document
 ---
 
 ### Create a new RStudio project
@@ -22,35 +20,35 @@ In the R console run the following commands
 if (!any(rownames(installed.packages()) == "edgeR")){
   if (!requireNamespace("BiocManager", quietly = TRUE))
       install.packages("BiocManager")
-  BiocManager::install("edgeR", version = "3.8")
+  BiocManager::install("edgeR")
 }
 library(edgeR)
 
 if (!any(rownames(installed.packages()) == "topGO")){
   if (!requireNamespace("BiocManager", quietly = TRUE))
       install.packages("BiocManager")
-  BiocManager::install("topGO", version = "3.8")
+  BiocManager::install("topGO")
 }
 library(topGO)
 
 if (!any(rownames(installed.packages()) == "KEGGREST")){
   if (!requireNamespace("BiocManager", quietly = TRUE))
       install.packages("BiocManager")
-  BiocManager::install("KEGGREST", version = "3.8")
+  BiocManager::install("KEGGREST")
 }
 library(KEGGREST)
 
 if (!any(rownames(installed.packages()) == "Rgraphviz")){
   if (!requireNamespace("BiocManager", quietly = TRUE))
       install.packages("BiocManager")
-  BiocManager::install("Rgraphviz", version = "3.8")
+  BiocManager::install("Rgraphviz")
 }
 library(Rgraphviz)
 
 if (!any(rownames(installed.packages()) == "org.Hs.eg.db")){
   if (!requireNamespace("BiocManager", quietly = TRUE))
       install.packages("BiocManager")
-  BiocManager::install("org.Hs.eg.db", version = "3.8")
+  BiocManager::install("org.Hs.eg.db")
 }
 library(org.Hs.eg.db)
 

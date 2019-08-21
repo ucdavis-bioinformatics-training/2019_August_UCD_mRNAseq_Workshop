@@ -11,11 +11,8 @@ The basic architecture of a compute cluster consists of a "head node", which is 
 ---
 **2\.** Now, let's look at a few slurm commands.
 
-First, log into the head node (tadpole.genomecenter.ucdavis.edu). The main commands we will be using are srun, sbatch, squeue, scancel, and sacct.
+The main commands we will be using are srun, sbatch, squeue, scancel, and sacct. First, log into the head node (tadpole.genomecenter.ucdavis.edu) and make a directory for yourself where you will be doing all your work.
 
-Lets make sure we are where we are supposed to be and that the References directory is available.
-
-    cd
     mkdir /share/workshop/$USER
     cd /share/workshop/$USER
 
@@ -25,7 +22,7 @@ Lets make sure we are where we are supposed to be and that the References direct
 
 Our cluster requires that you specify a time limit for your job. If your job exceeds these limits, then it will be killed. So try running the following to create an interactive session on a node:
 
-    srun -t 00:30:00 -c 4 -n 1 --mem 2000 --account workshop --reservation workshop --pty /bin/bash
+    srun -t 00:30:00 -c 4 -n 1 --mem 2000 --partition production --account workshop --reservation workshop --pty /bin/bash
 
 This command is requesting a compute node with a time limit of 30 minutes (-t), one processor (-c), a max memory of 2Gb [2000] (--mem), using a compute account and reservation for this workshop (an option you would not normally use), and then finally, specifying a shell to run in a terminal ("--pty" option). Run this command to get to a compute node when you want to run jobs on the command-line directly.
 
