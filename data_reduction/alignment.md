@@ -205,15 +205,14 @@ echo $runtime
 1. Creates the star index directory [star.overlap100.gencode.v29].
 1. Change directory into the new star index directory. We run the star indexing command from inside the directory, for some reason star fails if you try to run it outside this directory.
 1. Run star in mode genomeGenerate.
-    ```
-    sbatch star_index.slurm
-    ```
+1. sbatch star_index.slurm
+
 
 This step will take a couple hours. You can look at the [STAR documentation](https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf) while you wait. All of the output files will be written to the star_index directory.
 
-**IF** for some reason it didn't finish, is corrupted, or you missed the session, you can copy over a completed copy.
+**IF** For the sake of time, or for some reason it didn't finish, is corrupted, or you missed the session, you can link over a completed copy.
 
-    cp -r /share/biocore/workshops/2019_August_RNAseq/References/star.overlap100.gencode.v29 /share/workshop/$USER/rnaseq_example/References/.
+    ln -s /share/biocore/workshops/2019_August_RNAseq/References/star.overlap100.gencode.v29 /share/workshop/$USER/rnaseq_example/References/.
 
 ## Alignments
 
