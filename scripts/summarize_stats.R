@@ -1,5 +1,12 @@
-if (!any(rownames(installed.packages()) == "rjson")) install.packages("rjson", repos='http://cran.us.r-project.org')
-require(rjson)
+## first need to install the R packages JSON
+
+#lets install to current working directory and then load
+suppressWarnings(dir.create("r_lib"))
+new_rlib = file.path(getwd(),"r_lib")
+
+if (!any(rownames(installed.packages()) == "rjson")) install.packages("rjson", repos='http://cran.us.r-project.org', lib=new_rlib)
+
+require(rjson, lib.loc=new_rlib)
 
 samples <- readLines("samples.txt")
 hts_dir <- "01-HTS_Preproc"

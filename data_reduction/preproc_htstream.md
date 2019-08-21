@@ -687,17 +687,17 @@ I've created a small R script to read in each json file, pull out some relevant 
     cd /share/workshop/$USER/rnaseq_example  # We'll run this from the main directory
     wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/scripts/summarize_stats.R
 
+    module load R
     R CMD BATCH summarize_stats.R
     cat summary_hts.txt
 
-
 **4\.** Transfer summarize_stats.txt to your computer using scp or winSCP, or copy/paste from cat [sometimes doesn't work],  
 
-In a new shell session on your laptop. **NOT logged into tadpole**.
+For scp try, In a new shell session on your laptop. **NOT logged into tadpole**.
 
     mkdir ~/rnaseq_workshop
     cd ~/rnaseq_workshop
-    scp msettles@tadpole.genomecenter.ucdavis.edu:/share/workshop/msettles/rnaseq_example/summary_hts.txt .
+    scp your_username@tadpole.genomecenter.ucdavis.edu:/share/workshop/your_username/rnaseq_example/summary_hts.txt .
 
 Open in excel (or excel like application), you may have to move the header column 1 cell to the right, and lets review.
 
