@@ -84,7 +84,7 @@ Finally, we want to combine all of these columns together using the 'paste' comm
 We take the samples.txt file and pipe that to the sort (to ensure they are in the same order) and then 'paste' command with the '-s' option, which takes a column of values and transposes them into a row, separated by the tab character. And finally, let's put everything together:
 
     cat <(cat samples.txt | sort | paste -s) 03-Counts/tmp/tmp.out > 03-Counts/rnaseq_workshop_counts.txt
-    rm -rf 03- Counts/tmp
+    rm -rf 03-Counts/tmp
     head 03-Counts/rnaseq_workshop_counts.txt
 
 <div class="output">msettles@tadpole:/share/workshop/msettles/rnaseq_example$ head 03-Counts/rnaseq_workshop_counts.txt
