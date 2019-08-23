@@ -6,9 +6,9 @@ output: html_document
 
 # Differential Gene Expression Analysis in R
 
-* Differential Expression between conditions is determined from count data 
-* Generally speaking differential expression analysis is performed in a very similar manner to DNA microarrays, once normalization and transformations have been performed. 
-A lot of RNA-seq analysis has been done in R and so there are many packages available to analyze and view this data. Two of the most commonly used are: 
+* Differential Expression between conditions is determined from count data
+* Generally speaking differential expression analysis is performed in a very similar manner to DNA microarrays, once normalization and transformations have been performed.
+A lot of RNA-seq analysis has been done in R and so there are many packages available to analyze and view this data. Two of the most commonly used are:
 * DESeq2, developed by Simon Anders (also created htseq) in Wolfgang Huber’s group at EMBL
 * edgeR and Voom (extension to Limma [microarrays] for RNA-seq), developed out of Gordon Smyth’s group from the Walter and Eliza Hall Institute of Medical Research in Australia
 http://bioconductor.org/packages/release/BiocViews.html#___RNASeq
@@ -32,7 +32,7 @@ Together they allow fast, flexible, and powerful analyses of RNA-Seq data.  Limm
 2. Filter genes (uninteresting genes, e.g. unexpressed)
 3. Calculate normalization factors (sample-specific adjustments)
 4. Account for expression-dependent variability by transformation, weighting, or modelling
-5. Fit a statistical model 
+5. Fit a statistical model
 6. Perform statistical on comparisons of interest (using contrasts)
 7. Adjust for multiple testing, Benjamini-Hochberg (BH) or q-value
 8. Check results for confidence
@@ -49,7 +49,7 @@ library("gplots")
 **1a./** Read in the counts table and preprocess
 ```{r}
 counts <- read.delim("rnaseq_workshop_counts.txt", row.names = 1)
-dim(counts) # number of genes 
+dim(counts) # number of genes
 head(counts)
 ```
 
@@ -75,7 +75,7 @@ The sample names are "Sample" followed by the factor1, followed by the factor2, 
 ```{r}
 snames <- colnames(counts) # Sample names
 snames
-factor1 <- substr(snames, 7, 7) 
+factor1 <- substr(snames, 7, 7)
 factor2 <- substr(snames, 8, 8)
 factor1
 factor2
@@ -121,13 +121,13 @@ Filter low-expressed genes, remove any row (gene) whose max value (for the row) 
 ```{r}
 cutoff <- 3
 drop <- which(apply(cpm(d0), 1, max) < cutoff)
-d <- d0[-drop,] 
+d <- d0[-drop,]
 dim(d) # number of genes left
 ```
 
 "Low-expressed" is subjective and depends on the dataset.
 
-Multidimensional scaling (MDS) plot 
+Multidimensional scaling (MDS) plot
 ```{r}
 plotMDS(d, col = as.numeric(group))
 ```
@@ -137,7 +137,7 @@ The MDS plot tells you A LOT about what to expect from your experiment.
 **3\.** Extracting normalized expression table
 
 ### RPKM vs. FPKM vs. CPM and Model Based
-* RPKM - Reads per kilobase per million mapped reads 
+* RPKM - Reads per kilobase per million mapped reads
 * FPKM - Fragments per kilobase per million mapped reads
 * logCPM – log Counts per million [ good for producing MDS plots, estimate of normalized values in model based ]
 * Model based - original read counts are not themselves transformed, but rather correction factors are used in the DE model itself.
@@ -217,9 +217,9 @@ What genes are most differentially expressed (show the top 30)?
 top.table <- topTable(tmp, sort.by = "P", n = Inf)
 head(top.table, 30)
 ```
-* logFC: log2 fold change of A.C/A.D 
+* logFC: log2 fold change of A.C/A.D
 * AveExpr: Average expression across all samples, in log2 CPM
-* t: logFC divided by its standard error 
+* t: logFC divided by its standard error
 * P.Value: Raw p-value (based on t) from test that logFC differs from 0
 * adj.P.Val: Benjamini-Hochberg false discovery rate adjusted p-value
 * B: log-odds that gene is DE (arguably less useful than the other columns)
@@ -311,7 +311,7 @@ tmp <- contrasts.fit(fit, coef = 4) # Test factor1B:factor2D
 tmp <- eBayes(tmp)
 top.table <- topTable(tmp, sort.by = "P", n = Inf)
 head(top.table, 20)
-length(which(top.table$adj.P.Val < 0.05)) 
+length(which(top.table$adj.P.Val < 0.05))
 ```
 
 The log fold change here is the difference between factor1 B and factor1 A in the log fold changes between factor2s D and C.
@@ -470,7 +470,12 @@ The limma users' guide has great details on model specification.
 
 * [edgeR](http://bioconductor.org/packages/release/bioc/vignettes/edgeR/inst/doc/edgeRUsersGuide.pdf)
 
+
+## Download the Enrichment Analysis R Markdown document
+```{r download1, results='hide', warning=F, error=F, message=FALSE}
+download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/differential_expression/enrichment.Rmd", "enrichment.Rmd")
+```
+
 ```{r}
 sessionInfo()
 ```
-

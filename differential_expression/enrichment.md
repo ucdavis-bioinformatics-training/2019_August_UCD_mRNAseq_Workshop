@@ -46,13 +46,12 @@ library(topGO)
 ## The following objects are masked from 'package:base':
 ## 
 ##     anyDuplicated, append, as.data.frame, basename, cbind,
-##     colMeans, colnames, colSums, dirname, do.call, duplicated,
-##     eval, evalq, Filter, Find, get, grep, grepl, intersect,
-##     is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
-##     paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
-##     Reduce, rowMeans, rownames, rowSums, sapply, setdiff, sort,
-##     table, tapply, union, unique, unsplit, which, which.max,
-##     which.min
+##     colnames, dirname, do.call, duplicated, eval, evalq, Filter,
+##     Find, get, grep, grepl, intersect, is.unsorted, lapply, Map,
+##     mapply, match, mget, order, paste, pmax, pmax.int, pmin,
+##     pmin.int, Position, rank, rbind, Reduce, rownames, sapply,
+##     setdiff, sort, table, tapply, union, unique, unsplit, which,
+##     which.max, which.min
 ```
 
 ```
@@ -148,7 +147,7 @@ library(org.Hs.eg.db)
 
 Files for examples created in the DE analysis
 
-## Gene Ontology (GO) Enrichment 
+## Gene Ontology (GO) Enrichment
 
 Gene ontology (http://www.geneontology.org/) provides a controlled vocabulary for describing biological processes (BP ontology), molecular functions (MF ontology) and cellular components (CC ontology)
 
@@ -159,12 +158,12 @@ Terms are related to other terms through parent-child relationships in a directe
 Enrichment analysis provides one way of drawing conclusions about a set of differential expression results.
 
 **1\.** topGO Example Using Kolmogorov-Smirnov Testing
-Our first example uses Kolmogorov-Smirnov Testing for enrichment testing of our human DE results, with GO annotation obtained from the Bioconductor database org.Hs.eg.db. 
+Our first example uses Kolmogorov-Smirnov Testing for enrichment testing of our human DE results, with GO annotation obtained from the Bioconductor database org.Hs.eg.db.
 
 The first step in each topGO analysis is to create a topGOdata object.  This contains the genes, the score for each gene (here we use the p-value from the DE test), the GO terms associated with each gene, and the ontology to be used (here we use the biological process ontology)
 
 ```r
-infile <- "A.C_v_B.C.txt" 
+infile <- "A.C_v_B.C.txt"
 tmp <- read.delim(infile)
 
 geneList <- tmp$P.Value
@@ -185,7 +184,7 @@ GOdata <- new("topGOdata",
 ```
 
 ```
-## 	( 11452 GO terms found. )
+## 	( 11330 GO terms found. )
 ```
 
 ```
@@ -194,7 +193,7 @@ GOdata <- new("topGOdata",
 ```
 
 ```
-## 	( 15569 GO terms and 36870 relations. )
+## 	( 15346 GO terms and 36423 relations. )
 ```
 
 ```
@@ -203,7 +202,7 @@ GOdata <- new("topGOdata",
 ```
 
 ```
-## 	( 11788 genes annotated to the GO terms. )
+## 	( 11714 genes annotated to the GO terms. )
 ```
 
 **2\.** The topGOdata object is then used as input for enrichment testing:
@@ -217,7 +216,7 @@ resultKS <- runTest(GOdata, algorithm = "weight01", statistic = "ks")
 ## 
 ## 			 -- Weight01 Algorithm -- 
 ## 
-## 		 the algorithm is scoring 15569 nontrivial nodes
+## 		 the algorithm is scoring 15346 nontrivial nodes
 ## 		 parameters: 
 ## 			 test statistic: ks
 ## 			 score order: increasing
@@ -240,87 +239,87 @@ resultKS <- runTest(GOdata, algorithm = "weight01", statistic = "ks")
 
 ```
 ## 
-## 	 Level 17:	48 nodes to be scored	(23 eliminated genes)
+## 	 Level 17:	47 nodes to be scored	(26 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 16:	117 nodes to be scored	(64 eliminated genes)
+## 	 Level 16:	118 nodes to be scored	(67 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 15:	239 nodes to be scored	(183 eliminated genes)
+## 	 Level 15:	242 nodes to be scored	(170 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 14:	480 nodes to be scored	(474 eliminated genes)
+## 	 Level 14:	475 nodes to be scored	(481 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 13:	871 nodes to be scored	(1172 eliminated genes)
+## 	 Level 13:	843 nodes to be scored	(1128 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 12:	1304 nodes to be scored	(2338 eliminated genes)
+## 	 Level 12:	1255 nodes to be scored	(2277 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 11:	1698 nodes to be scored	(4446 eliminated genes)
+## 	 Level 11:	1666 nodes to be scored	(4235 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 10:	2017 nodes to be scored	(6118 eliminated genes)
+## 	 Level 10:	1989 nodes to be scored	(5807 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 9:	2116 nodes to be scored	(7483 eliminated genes)
+## 	 Level 9:	2100 nodes to be scored	(7059 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 8:	2026 nodes to be scored	(8964 eliminated genes)
+## 	 Level 8:	1996 nodes to be scored	(8561 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 7:	1899 nodes to be scored	(9922 eliminated genes)
+## 	 Level 7:	1877 nodes to be scored	(9519 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 6:	1425 nodes to be scored	(10676 eliminated genes)
+## 	 Level 6:	1410 nodes to be scored	(10407 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 5:	772 nodes to be scored	(11084 eliminated genes)
+## 	 Level 5:	775 nodes to be scored	(10892 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 4:	370 nodes to be scored	(11442 eliminated genes)
+## 	 Level 4:	367 nodes to be scored	(11258 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 3:	135 nodes to be scored	(11585 eliminated genes)
+## 	 Level 3:	134 nodes to be scored	(11447 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 2:	24 nodes to be scored	(11637 eliminated genes)
+## 	 Level 2:	24 nodes to be scored	(11512 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 1:	1 nodes to be scored	(11674 eliminated genes)
+## 	 Level 1:	1 nodes to be scored	(11562 eliminated genes)
 ```
 
 ```r
@@ -337,52 +336,52 @@ head(tab, 15)
 ```
 ##         GO.ID
 ## 1  GO:0008150
-## 2  GO:0010469
-## 3  GO:0036092
-## 4  GO:0045597
-## 5  GO:0051775
-## 6  GO:0021549
-## 7  GO:0048678
-## 8  GO:0046854
-## 9  GO:0051897
-## 10 GO:0045665
-## 11 GO:0002876
-## 12 GO:0071363
-## 13 GO:0015701
-## 14 GO:0045599
-## 15 GO:0010971
-##                                                                          Term
-## 1                                                          biological_process
-## 2                                   regulation of signaling receptor activity
-## 3                       phosphatidylinositol-3-phosphate biosynthetic process
-## 4                                 positive regulation of cell differentiation
-## 5                                                     response to redox state
-## 6                                                      cerebellum development
-## 7                                                     response to axon injury
-## 8                                        phosphatidylinositol phosphorylation
-## 9                           positive regulation of protein kinase B signaling
-## 10                              negative regulation of neuron differentiation
-## 11 positive regulation of chronic inflammatory response to antigenic stimulus
-## 12                                cellular response to growth factor stimulus
-## 13                                                      bicarbonate transport
-## 14                            negative regulation of fat cell differentiation
-## 15               positive regulation of G2/M transition of mitotic cell cycle
+## 2  GO:0007165
+## 3  GO:0045787
+## 4  GO:0045104
+## 5  GO:0006909
+## 6  GO:0051057
+## 7  GO:0042058
+## 8  GO:0060088
+## 9  GO:0031016
+## 10 GO:2000503
+## 11 GO:0008285
+## 12 GO:0030177
+## 13 GO:0018108
+## 14 GO:0003215
+## 15 GO:0048739
+##                                                                Term
+## 1                                                biological_process
+## 2                                               signal transduction
+## 3                                 positive regulation of cell cycle
+## 4                   intermediate filament cytoskeleton organization
+## 5                                                      phagocytosis
+## 6  positive regulation of small GTPase mediated signal transduction
+## 7  regulation of epidermal growth factor receptor signaling pathway
+## 8                  auditory receptor cell stereocilium organization
+## 9                                              pancreas development
+## 10            positive regulation of natural killer cell chemotaxis
+## 11                        negative regulation of cell proliferation
+## 12                     positive regulation of Wnt signaling pathway
+## 13                                peptidyl-tyrosine phosphorylation
+## 14                            cardiac right ventricle morphogenesis
+## 15                                 cardiac muscle fiber development
 ##    Annotated Significant Expected raw.p.value
-## 1      11788       11788    11788     < 1e-30
-## 2        463         463      463     1.7e-05
-## 3         51          51       51     6.7e-05
-## 4        814         814      814     0.00012
-## 5         12          12       12     0.00026
-## 6         87          87       87     0.00036
-## 7         62          62       62     0.00043
-## 8         96          96       96     0.00050
-## 9        142         142      142     0.00057
-## 10       193         193      193     0.00066
-## 11         2           2        2     0.00067
-## 12       581         581      581     0.00072
-## 13        35          35       35     0.00074
-## 14        37          37       37     0.00080
-## 15        25          25       25     0.00081
+## 1      11714       11714    11714     < 1e-30
+## 2       4310        4310     4310     0.00030
+## 3        313         313      313     0.00058
+## 4         35          35       35     0.00148
+## 5        220         220      220     0.00161
+## 6         51          51       51     0.00166
+## 7         69          69       69     0.00212
+## 8          8           8        8     0.00274
+## 9         68          68       68     0.00290
+## 10         6           6        6     0.00320
+## 11       600         600      600     0.00364
+## 12       143         143      143     0.00402
+## 13       302         302      302     0.00410
+## 14        18          18       18     0.00410
+## 15         9           9        9     0.00415
 ```
 * Annotated: number of genes (in our gene list) that are annotated with the term
 * Significant: n/a for this example, same as Annotated here
@@ -456,11 +455,11 @@ showSigOfNodes(GOdata, score(resultKS), firstSigNodes = 3, useInfo = "def")
 ```
 ## $dag
 ## A graphNEL graph with directed edges
-## Number of Nodes = 39 
-## Number of Edges = 71 
+## Number of Nodes = 15 
+## Number of Edges = 27 
 ## 
 ## $complete.dag
-## [1] "A graph with 39 nodes."
+## [1] "A graph with 15 nodes."
 ```
 
 ```r
@@ -487,7 +486,7 @@ GOdata <- new("topGOdata",
 ```
 
 ```
-## 	( 11452 GO terms found. )
+## 	( 11330 GO terms found. )
 ```
 
 ```
@@ -496,7 +495,7 @@ GOdata <- new("topGOdata",
 ```
 
 ```
-## 	( 15569 GO terms and 36870 relations. )
+## 	( 15346 GO terms and 36423 relations. )
 ```
 
 ```
@@ -505,7 +504,7 @@ GOdata <- new("topGOdata",
 ```
 
 ```
-## 	( 11788 genes annotated to the GO terms. )
+## 	( 11714 genes annotated to the GO terms. )
 ```
 
 Run Fisher's Exact Test:
@@ -518,7 +517,7 @@ resultFisher <- runTest(GOdata, algorithm = "elim", statistic = "fisher")
 ## 
 ## 			 -- Elim Algorithm -- 
 ## 
-## 		 the algorithm is scoring 12792 nontrivial nodes
+## 		 the algorithm is scoring 12563 nontrivial nodes
 ## 		 parameters: 
 ## 			 test statistic: fisher
 ## 			 cutOff: 0.01
@@ -526,12 +525,12 @@ resultFisher <- runTest(GOdata, algorithm = "elim", statistic = "fisher")
 
 ```
 ## 
-## 	 Level 19:	4 nodes to be scored	(0 eliminated genes)
+## 	 Level 19:	1 nodes to be scored	(0 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 18:	16 nodes to be scored	(0 eliminated genes)
+## 	 Level 18:	15 nodes to be scored	(0 eliminated genes)
 ```
 
 ```
@@ -541,82 +540,82 @@ resultFisher <- runTest(GOdata, algorithm = "elim", statistic = "fisher")
 
 ```
 ## 
-## 	 Level 16:	85 nodes to be scored	(0 eliminated genes)
+## 	 Level 16:	82 nodes to be scored	(0 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 15:	182 nodes to be scored	(0 eliminated genes)
+## 	 Level 15:	183 nodes to be scored	(0 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 14:	362 nodes to be scored	(28 eliminated genes)
+## 	 Level 14:	370 nodes to be scored	(127 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 13:	645 nodes to be scored	(241 eliminated genes)
+## 	 Level 13:	644 nodes to be scored	(127 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 12:	974 nodes to be scored	(1726 eliminated genes)
+## 	 Level 12:	954 nodes to be scored	(1939 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 11:	1376 nodes to be scored	(2506 eliminated genes)
+## 	 Level 11:	1311 nodes to be scored	(2378 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 10:	1647 nodes to be scored	(3866 eliminated genes)
+## 	 Level 10:	1585 nodes to be scored	(3443 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 9:	1763 nodes to be scored	(4940 eliminated genes)
+## 	 Level 9:	1730 nodes to be scored	(4570 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 8:	1690 nodes to be scored	(6109 eliminated genes)
+## 	 Level 8:	1668 nodes to be scored	(5374 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 7:	1598 nodes to be scored	(7195 eliminated genes)
+## 	 Level 7:	1571 nodes to be scored	(7408 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 6:	1229 nodes to be scored	(8267 eliminated genes)
+## 	 Level 6:	1229 nodes to be scored	(8680 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 5:	681 nodes to be scored	(9956 eliminated genes)
+## 	 Level 5:	691 nodes to be scored	(10072 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 4:	347 nodes to be scored	(10904 eliminated genes)
+## 	 Level 4:	341 nodes to be scored	(11005 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 3:	133 nodes to be scored	(11228 eliminated genes)
+## 	 Level 3:	129 nodes to be scored	(11281 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 2:	23 nodes to be scored	(11437 eliminated genes)
+## 	 Level 2:	22 nodes to be scored	(11405 eliminated genes)
 ```
 
 ```
 ## 
-## 	 Level 1:	1 nodes to be scored	(11659 eliminated genes)
+## 	 Level 1:	1 nodes to be scored	(11488 eliminated genes)
 ```
 
 ```r
@@ -626,20 +625,20 @@ head(tab)
 ```
 
 ```
-##        GO.ID                                                      Term
-## 1 GO:0008150                                        biological_process
-## 2 GO:0009987                                          cellular process
-## 3 GO:0043066                  negative regulation of apoptotic process
-## 4 GO:0050789                          regulation of biological process
-## 5 GO:0045944 positive regulation of transcription by RNA polymerase II
-## 6 GO:0010469                 regulation of signaling receptor activity
-##   Annotated Significant Expected raw.p.value
-## 1     11788        4614  4426.67     < 1e-30
-## 2     10932        4295  4105.22     2.0e-11
-## 3       789         343   296.29     4.8e-08
-## 4      8125        3237  3051.13     1.0e-07
-## 5      1005         423   377.40     1.3e-07
-## 6       463         213   173.87     1.3e-07
+##        GO.ID                                     Term Annotated
+## 1 GO:0008150                       biological_process     11714
+## 2 GO:0009987                         cellular process     10689
+## 3 GO:0007165                      signal transduction      4310
+## 4 GO:0043066 negative regulation of apoptotic process       755
+## 5 GO:0044237               cellular metabolic process      7587
+## 6 GO:0043065 positive regulation of apoptotic process       548
+##   Significant Expected raw.p.value
+## 1        4612  4430.19     < 1e-30
+## 2        4213  4042.54     1.4e-11
+## 3        1756  1630.02     2.9e-07
+## 4         325   285.54     3.2e-06
+## 5        2973  2869.37     6.0e-06
+## 6         235   207.25     2.4e-05
 ```
 * Annotated: number of genes (in our gene list) that are annotated with the term
 * Significant: Number of significantly DE genes annotated with that term (i.e. genes where geneList = 1)
@@ -666,14 +665,14 @@ Disadvantages:
 * May be less useful if there are very few (or a large number of) significant genes
 
 ##. KEGG Pathway Enrichment Testing With KEGGREST
-KEGG, the Kyoto Encyclopedia of Genes and Genomes (https://www.genome.jp/kegg/), provides assignment of genes for many organisms into pathways. 
+KEGG, the Kyoto Encyclopedia of Genes and Genomes (https://www.genome.jp/kegg/), provides assignment of genes for many organisms into pathways.
 
 We will access KEGG pathway assignments for human through the KEGGREST Bioconductor package, and then use some homebrew code for enrichment testing.
 
 **1\.** Get all human pathways and their genes:
 
 ```r
-# Pull all pathways for AT	
+# Pull all pathways for AT
 pathways.list <- keggList("pathway", "hsa")
 head(pathways.list)
 ```
@@ -695,7 +694,7 @@ head(pathways.list)
 
 ```r
 # Pull all genes for each pathway
-pathway.codes <- sub("path:", "", names(pathways.list))	
+pathway.codes <- sub("path:", "", names(pathways.list))
 genes.by.pathway <- sapply(pathway.codes,
 	function(pwid){
 		pw <- keggGet(pwid)
@@ -710,50 +709,50 @@ head(genes.by.pathway)
 
 ```
 ## $hsa00010
-##  [1] "3101"   "3098"   "3099"   "80201"  "2645"   "2821"   "5213"  
-##  [8] "5214"   "5211"   "2203"   "8789"   "230"    "226"    "229"   
-## [15] "7167"   "2597"   "26330"  "5232"   "5230"   "5223"   "5224"  
-## [22] "441531" "2027"   "2026"   "2023"   "387712" "5315"   "5313"  
-## [29] "5161"   "5160"   "5162"   "1737"   "1738"   "160287" "92483" 
-## [36] "3939"   "3945"   "3948"   "124"    "125"    "126"    "131"   
-## [43] "127"    "128"    "130"    "10327"  "217"    "224"    "219"   
-## [50] "501"    "223"    "221"    "222"    "220"    "218"    "84532" 
-## [57] "55902"  "130589" "5236"   "55276"  "2538"   "57818"  "92579" 
-## [64] "83440"  "669"    "9562"   "5105"   "5106"  
+##  [1] "10327"  "124"    "125"    "126"    "127"    "128"    "130"   
+##  [8] "130589" "131"    "160287" "1737"   "1738"   "2023"   "2026"  
+## [15] "2027"   "217"    "218"    "219"    "220"    "2203"   "221"   
+## [22] "222"    "223"    "224"    "226"    "229"    "230"    "2538"  
+## [29] "2597"   "26330"  "2645"   "2821"   "3098"   "3099"   "3101"  
+## [36] "387712" "3939"   "3945"   "3948"   "441531" "501"    "5105"  
+## [43] "5106"   "5160"   "5161"   "5162"   "5211"   "5213"   "5214"  
+## [50] "5223"   "5224"   "5230"   "5232"   "5236"   "5313"   "5315"  
+## [57] "55276"  "55902"  "57818"  "669"    "7167"   "80201"  "83440" 
+## [64] "84532"  "8789"   "92483"  "92579"  "9562"  
 ## 
 ## $hsa00020
-##  [1] "1431"  "47"    "50"    "48"    "3417"  "3418"  "3420"  "3421" 
-##  [9] "3419"  "55753" "4967"  "1743"  "1738"  "8802"  "8801"  "8803" 
-## [17] "6389"  "6390"  "6391"  "6392"  "2271"  "4190"  "4191"  "5091" 
-## [25] "5105"  "5106"  "5161"  "5160"  "5162"  "1737" 
+##  [1] "1431"  "1737"  "1738"  "1743"  "2271"  "3417"  "3418"  "3419" 
+##  [9] "3420"  "3421"  "4190"  "4191"  "47"    "48"    "4967"  "50"   
+## [17] "5091"  "5105"  "5106"  "5160"  "5161"  "5162"  "55753" "6389" 
+## [25] "6390"  "6391"  "6392"  "8801"  "8802"  "8803" 
 ## 
 ## $hsa00030
-##  [1] "2821"   "2539"   "25796"  "9563"   "5226"   "6120"   "729020"
-##  [8] "7086"   "84076"  "8277"   "6888"   "22934"  "51071"  "64080" 
-## [15] "5236"   "55276"  "221823" "5634"   "5631"   "9104"   "414328"
-## [22] "132158" "230"    "226"    "229"    "2203"   "8789"   "5213"  
-## [29] "5214"   "5211"  
+##  [1] "132158" "2203"   "221823" "226"    "229"    "22934"  "230"   
+##  [8] "2539"   "25796"  "2821"   "414328" "51071"  "5211"   "5213"  
+## [15] "5214"   "5226"   "5236"   "55276"  "5631"   "5634"   "6120"  
+## [22] "64080"  "6888"   "7086"   "729020" "8277"   "84076"  "8789"  
+## [29] "9104"   "9563"  
 ## 
 ## $hsa00040
-##  [1] "2990"   "9365"   "10941"  "79799"  "7367"   "10720"  "54490" 
-##  [8] "54578"  "54657"  "54658"  "54659"  "7365"   "54600"  "7364"  
-## [15] "54575"  "54576"  "54579"  "7366"   "54577"  "7363"   "574537"
-## [22] "7358"   "7360"   "10327"  "51084"  "6120"   "729020" "9942"  
-## [29] "231"    "57016"  "51181"  "6652"   "27294"  "729920"
+##  [1] "10327"  "10720"  "10941"  "231"    "27294"  "2990"   "51084" 
+##  [8] "51181"  "54490"  "54575"  "54576"  "54577"  "54578"  "54579" 
+## [15] "54600"  "54657"  "54658"  "54659"  "57016"  "574537" "6120"  
+## [22] "6652"   "729020" "729920" "7358"   "7360"   "7363"   "7364"  
+## [29] "7365"   "7366"   "7367"   "79799"  "9365"   "9942"  
 ## 
 ## $hsa00051
-##  [1] "4351"   "5373"   "5372"   "29925"  "29926"  "2762"   "7264"  
-##  [8] "8790"   "197258" "55556"  "3101"   "3098"   "3099"   "80201" 
-## [15] "5213"   "5214"   "5211"   "2203"   "8789"   "5207"   "5208"  
-## [22] "5209"   "5210"   "57103"  "3795"   "6652"   "231"    "57016" 
-## [29] "230"    "226"    "229"    "7167"   "26007" 
+##  [1] "197258" "2203"   "226"    "229"    "230"    "231"    "26007" 
+##  [8] "2762"   "29925"  "29926"  "3098"   "3099"   "3101"   "3795"  
+## [15] "4351"   "5207"   "5208"   "5209"   "5210"   "5211"   "5213"  
+## [22] "5214"   "5372"   "5373"   "55556"  "57016"  "57103"  "6652"  
+## [29] "7167"   "7264"   "80201"  "8789"   "8790"  
 ## 
 ## $hsa00052
-##  [1] "130589" "2584"   "2592"   "2582"   "7360"   "5236"   "55276" 
-##  [8] "3101"   "3098"   "3099"   "80201"  "2645"   "2538"   "57818" 
-## [15] "92579"  "2720"   "3938"   "3906"   "2683"   "8704"   "2717"  
-## [22] "231"    "57016"  "5213"   "5214"   "5211"   "8972"   "93432" 
-## [29] "2548"   "2595"   "6476"
+##  [1] "130589" "231"    "2538"   "2548"   "2582"   "2584"   "2592"  
+##  [8] "2595"   "2645"   "2683"   "2717"   "2720"   "3098"   "3099"  
+## [15] "3101"   "3906"   "3938"   "5211"   "5213"   "5214"   "5236"  
+## [22] "55276"  "57016"  "57818"  "6476"   "7360"   "80201"  "8704"  
+## [29] "8972"   "92579"  "93432"
 ```
 
 Read in DE file to be used in enrichment testing:
@@ -763,9 +762,9 @@ head(geneList)
 ```
 
 ```
-##         2260        57017         3920         3695         6234 
+##         2268        57188         3964         3744         6286 
 ## 6.496525e-09 1.440800e-08 2.552955e-08 4.106524e-08 4.463872e-08 
-##         8600 
+##         8659 
 ## 9.412370e-08
 ```
 
@@ -800,26 +799,26 @@ head(outdat)
 
 ```
 ##     pathway.code
-## 324     hsa05332
-## 177     hsa04612
-## 174     hsa04550
-## 291     hsa05169
-## 143     hsa04145
-## 323     hsa05330
-##                                                                        pathway.name
-## 324                                Graft-versus-host disease - Homo sapiens (human)
-## 177                      Antigen processing and presentation - Homo sapiens (human)
-## 174 Signaling pathways regulating pluripotency of stem cells - Homo sapiens (human)
-## 291                             Epstein-Barr virus infection - Homo sapiens (human)
-## 143                                                Phagosome - Homo sapiens (human)
-## 323                                      Allograft rejection - Homo sapiens (human)
+## 179     hsa04612
+## 329     hsa05332
+## 188     hsa04650
+## 328     hsa05330
+## 242     hsa04940
+## 327     hsa05323
+##                                                         pathway.name
+## 179       Antigen processing and presentation - Homo sapiens (human)
+## 329                 Graft-versus-host disease - Homo sapiens (human)
+## 188 Natural killer cell mediated cytotoxicity - Homo sapiens (human)
+## 328                       Allograft rejection - Homo sapiens (human)
+## 242                  Type I diabetes mellitus - Homo sapiens (human)
+## 327                      Rheumatoid arthritis - Homo sapiens (human)
 ##          p.value Annotated
-## 324 1.782281e-08        39
-## 177 2.622320e-08        73
-## 174 1.077765e-05       127
-## 291 1.569229e-05       198
-## 143 2.335727e-05       126
-## 323 2.625612e-05        36
+## 179 1.840993e-08        74
+## 329 2.009811e-08        40
+## 188 8.400982e-07       118
+## 328 9.050700e-06        36
+## 242 2.435849e-05        42
+## 327 2.827471e-05        84
 ```
 * p.value: P-value for Wilcoxon rank-sum testing, testing that p-values from DE analysis for genes in the pathway are smaller than those not in the pathway
 * Annotated: Number of genes in the pathway (regardless of DE p-value)
@@ -832,13 +831,13 @@ sessionInfo()
 ```
 
 ```
-## R version 3.5.2 (2018-12-20)
+## R version 3.6.1 (2019-07-05)
 ## Platform: x86_64-apple-darwin15.6.0 (64-bit)
-## Running under: macOS Mojave 10.14.3
+## Running under: macOS Mojave 10.14.6
 ## 
 ## Matrix products: default
-## BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
-## LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib
+## BLAS:   /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
 ## 
 ## locale:
 ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -848,20 +847,22 @@ sessionInfo()
 ##  [8] datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] Rgraphviz_2.26.0     org.Hs.eg.db_3.7.0   KEGGREST_1.22.0     
-##  [4] topGO_2.34.0         SparseM_1.77         GO.db_3.7.0         
-##  [7] AnnotationDbi_1.44.0 IRanges_2.16.0       S4Vectors_0.20.1    
-## [10] Biobase_2.42.0       graph_1.60.0         BiocGenerics_0.28.0 
+##  [1] Rgraphviz_2.28.0     org.Hs.eg.db_3.8.2   KEGGREST_1.24.0     
+##  [4] topGO_2.36.0         SparseM_1.77         GO.db_3.8.2         
+##  [7] AnnotationDbi_1.46.1 IRanges_2.18.1       S4Vectors_0.22.0    
+## [10] Biobase_2.44.0       graph_1.62.0         BiocGenerics_0.30.0 
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_1.0.0         compiler_3.5.2     XVector_0.22.0    
-##  [4] tools_3.5.2        zlibbioc_1.28.0    digest_0.6.18     
-##  [7] bit_1.1-14         RSQLite_2.1.1      evaluate_0.12     
-## [10] memoise_1.1.0      lattice_0.20-38    pkgconfig_2.0.2   
-## [13] png_0.1-7          DBI_1.0.0          curl_3.3          
-## [16] yaml_2.2.0         xfun_0.4           stringr_1.3.1     
-## [19] httr_1.4.0         knitr_1.21         Biostrings_2.50.2 
-## [22] bit64_0.9-7        R6_2.3.0           rmarkdown_1.11    
-## [25] blob_1.1.1         magrittr_1.5       htmltools_0.3.6   
-## [28] matrixStats_0.54.0 stringi_1.2.4
+##  [1] Rcpp_1.0.2         XVector_0.24.0     compiler_3.6.1    
+##  [4] pillar_1.4.2       zlibbioc_1.30.0    tools_3.6.1       
+##  [7] zeallot_0.1.0      digest_0.6.20      bit_1.1-14        
+## [10] RSQLite_2.1.2      evaluate_0.14      memoise_1.1.0     
+## [13] tibble_2.1.3       lattice_0.20-38    png_0.1-7         
+## [16] pkgconfig_2.0.2    rlang_0.4.0        DBI_1.0.0         
+## [19] curl_4.0           yaml_2.2.0         xfun_0.9          
+## [22] httr_1.4.1         stringr_1.4.0      knitr_1.24        
+## [25] Biostrings_2.52.0  vctrs_0.2.0        bit64_0.9-7       
+## [28] R6_2.4.0           rmarkdown_1.15     blob_1.2.0        
+## [31] magrittr_1.5       backports_1.1.4    htmltools_0.3.6   
+## [34] matrixStats_0.54.0 stringi_1.4.3      crayon_1.3.4
 ```

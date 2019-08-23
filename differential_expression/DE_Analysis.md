@@ -135,13 +135,13 @@ head(anno)
 ```
 
 ```
-##   Gene.stable.ID.version
-## 1      ENSG00000210049.1
-## 2      ENSG00000211459.2
-## 3      ENSG00000210077.1
-## 4      ENSG00000210082.2
-## 5      ENSG00000209082.1
-## 6      ENSG00000198888.2
+##   Gene.stable.ID.version Gene.name
+## 1      ENSG00000210049.1     MT-TF
+## 2      ENSG00000211459.2   MT-RNR1
+## 3      ENSG00000210077.1     MT-TV
+## 4      ENSG00000210082.2   MT-RNR2
+## 5      ENSG00000209082.1    MT-TL1
+## 6      ENSG00000198888.2    MT-ND1
 ##                                                                                           Gene.description
 ## 1                              mitochondrially encoded tRNA-Phe (UUU/C) [Source:HGNC Symbol;Acc:HGNC:7481]
 ## 2                                      mitochondrially encoded 12S rRNA [Source:HGNC Symbol;Acc:HGNC:7470]
@@ -149,20 +149,20 @@ head(anno)
 ## 4                                      mitochondrially encoded 16S rRNA [Source:HGNC Symbol;Acc:HGNC:7471]
 ## 5                            mitochondrially encoded tRNA-Leu (UUA/G) 1 [Source:HGNC Symbol;Acc:HGNC:7490]
 ## 6 mitochondrially encoded NADH:ubiquinone oxidoreductase core subunit 1 [Source:HGNC Symbol;Acc:HGNC:7455]
-##   Chromosome.scaffold.name Gene.start..bp. Gene.end..bp. Strand Gene.name
-## 1                       MT             577           647      1     MT-TF
-## 2                       MT             648          1601      1   MT-RNR1
-## 3                       MT            1602          1670      1     MT-TV
-## 4                       MT            1671          3229      1   MT-RNR2
-## 5                       MT            3230          3304      1    MT-TL1
-## 6                       MT            3307          4262      1    MT-ND1
-##   Transcript.count Gene...GC.content      Gene.type
-## 1                1             40.85        Mt_tRNA
-## 2                1             45.49        Mt_rRNA
-## 3                1             42.03        Mt_tRNA
-## 4                1             42.81        Mt_rRNA
-## 5                1             38.67        Mt_tRNA
-## 6                1             47.70 protein_coding
+##        Gene.type Transcript.count Gene...GC.content
+## 1        Mt_tRNA                1             40.85
+## 2        Mt_rRNA                1             45.49
+## 3        Mt_tRNA                1             42.03
+## 4        Mt_rRNA                1             42.81
+## 5        Mt_tRNA                1             38.67
+## 6 protein_coding                1             47.70
+##   Chromosome.scaffold.name Gene.start..bp. Gene.end..bp. Strand
+## 1                       MT             577           647      1
+## 2                       MT             648          1601      1
+## 3                       MT            1602          1670      1
+## 4                       MT            1671          3229      1
+## 5                       MT            3230          3304      1
+## 6                       MT            3307          4262      1
 ```
 
 ```r
@@ -170,13 +170,13 @@ tail(anno)
 ```
 
 ```
-##       Gene.stable.ID.version
-## 66827      ENSG00000285208.1
-## 66828      ENSG00000285430.2
-## 66829     ENSG00000185988.13
-## 66830      ENSG00000250447.5
-## 66831      ENSG00000125304.9
-## 66832      ENSG00000280710.3
+##       Gene.stable.ID.version  Gene.name
+## 66827      ENSG00000285208.1 AP005057.2
+## 66828      ENSG00000285430.2 AP005230.2
+## 66829     ENSG00000185988.13       PLK5
+## 66830      ENSG00000250447.5  LINC02105
+## 66831      ENSG00000125304.9     TM9SF2
+## 66832      ENSG00000280710.3 AL139035.1
 ##                                                                      Gene.description
 ## 66827                                                                novel transcript
 ## 66828                                                                novel transcript
@@ -184,6 +184,13 @@ tail(anno)
 ## 66830 long intergenic non-protein coding RNA 2105 [Source:HGNC Symbol;Acc:HGNC:52960]
 ## 66831        transmembrane 9 superfamily member 2 [Source:HGNC Symbol;Acc:HGNC:11865]
 ## 66832                                                                novel transcript
+##            Gene.type Transcript.count Gene...GC.content
+## 66827         lncRNA                1             31.34
+## 66828         lncRNA                8             37.73
+## 66829 protein_coding                5             60.25
+## 66830         lncRNA                2             42.30
+## 66831 protein_coding                6             40.68
+## 66832         lncRNA                1             46.66
 ##       Chromosome.scaffold.name Gene.start..bp. Gene.end..bp. Strand
 ## 66827       CHR_HSCHR18_1_CTG1         1780329       1782064      1
 ## 66828       CHR_HSCHR18_1_CTG1         1906054       2511956     -1
@@ -191,13 +198,6 @@ tail(anno)
 ## 66830                        5        53776644      53819686     -1
 ## 66831                       13        99446311      99564006      1
 ## 66832                       13        99498737      99501250      1
-##        Gene.name Transcript.count Gene...GC.content      Gene.type
-## 66827 AP005057.2                1             31.34         lncRNA
-## 66828 AP005230.2                8             37.73         lncRNA
-## 66829       PLK5                5             60.25 protein_coding
-## 66830  LINC02105                2             42.30         lncRNA
-## 66831     TM9SF2                6             40.68 protein_coding
-## 66832 AL139035.1                1             46.66         lncRNA
 ```
 
 ```r
@@ -1258,23 +1258,28 @@ The limma users' guide has great details on model specification.
 * [edgeR](http://bioconductor.org/packages/release/bioc/vignettes/edgeR/inst/doc/edgeRUsersGuide.pdf)
 
 
+## Download the Enrichment Analysis R Markdown document
+
+```r
+download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/differential_expression/enrichment.Rmd", "enrichment.Rmd")
+```
+
+
 ```r
 sessionInfo()
 ```
 
 ```
 ## R version 3.6.1 (2019-07-05)
-## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 10 x64 (build 17134)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS Mojave 10.14.6
 ## 
 ## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
 ## 
 ## locale:
-## [1] LC_COLLATE=English_United States.1252 
-## [2] LC_CTYPE=English_United States.1252   
-## [3] LC_MONETARY=English_United States.1252
-## [4] LC_NUMERIC=C                          
-## [5] LC_TIME=English_United States.1252    
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
@@ -1288,8 +1293,8 @@ sessionInfo()
 ##  [4] gtools_3.8.1       digest_0.6.20      bitops_1.0-6      
 ##  [7] grid_3.6.1         magrittr_1.5       evaluate_0.14     
 ## [10] KernSmooth_2.23-15 stringi_1.4.3      gdata_2.18.0      
-## [13] rmarkdown_1.14     tools_3.6.1        stringr_1.4.0     
-## [16] xfun_0.8           yaml_2.2.0         compiler_3.6.1    
+## [13] rmarkdown_1.15     tools_3.6.1        stringr_1.4.0     
+## [16] xfun_0.9           yaml_2.2.0         compiler_3.6.1    
 ## [19] caTools_1.17.1.2   htmltools_0.3.6    knitr_1.24
 ```
 
