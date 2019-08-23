@@ -14,6 +14,8 @@ navigation:
     url: pdfs/ExperimentalDesign.pdf
   - title: Cheat Sheets
     url: cheatSheetIndex
+  - title: Software and Links
+    url: software
   - heading: Command-Line and the Cluster
   - title: Logging in and Transferring Files
     url: cli/logging-in

@@ -19,191 +19,26 @@ Set some options and make sure the packages edgeR, gplots, RColorBrewer, topGO, 
 In the R console run the following commands
 
 ```r
+
 if (!any(rownames(installed.packages()) == "edgeR")){
   if (!requireNamespace("BiocManager", quietly = TRUE))
       install.packages("BiocManager")
   BiocManager::install("edgeR")
 }
 library(edgeR)
-```
 
-```
-## Loading required package: limma
-```
-
-```r
 if (!any(rownames(installed.packages()) == "topGO")){
   if (!requireNamespace("BiocManager", quietly = TRUE))
       install.packages("BiocManager")
   BiocManager::install("topGO")
 }
 library(topGO)
-```
 
-```
-## Loading required package: BiocGenerics
-```
-
-```
-## Loading required package: parallel
-```
-
-```
-## 
-## Attaching package: 'BiocGenerics'
-```
-
-```
-## The following objects are masked from 'package:parallel':
-## 
-##     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
-##     clusterExport, clusterMap, parApply, parCapply, parLapply,
-##     parLapplyLB, parRapply, parSapply, parSapplyLB
-```
-
-```
-## The following object is masked from 'package:limma':
-## 
-##     plotMA
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     IQR, mad, sd, var, xtabs
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     anyDuplicated, append, as.data.frame, basename, cbind,
-##     colnames, dirname, do.call, duplicated, eval, evalq, Filter,
-##     Find, get, grep, grepl, intersect, is.unsorted, lapply, Map,
-##     mapply, match, mget, order, paste, pmax, pmax.int, pmin,
-##     pmin.int, Position, rank, rbind, Reduce, rownames, sapply,
-##     setdiff, sort, table, tapply, union, unique, unsplit, which,
-##     which.max, which.min
-```
-
-```
-## Loading required package: graph
-```
-
-```
-## Loading required package: Biobase
-```
-
-```
-## Welcome to Bioconductor
-## 
-##     Vignettes contain introductory material; view with
-##     'browseVignettes()'. To cite Bioconductor, see
-##     'citation("Biobase")', and for packages 'citation("pkgname")'.
-```
-
-```
-## Loading required package: GO.db
-```
-
-```
-## Loading required package: AnnotationDbi
-```
-
-```
-## Loading required package: stats4
-```
-
-```
-## Loading required package: IRanges
-```
-
-```
-## Loading required package: S4Vectors
-```
-
-```
-## 
-## Attaching package: 'S4Vectors'
-```
-
-```
-## The following object is masked from 'package:base':
-## 
-##     expand.grid
-```
-
-```
-## 
-## Attaching package: 'IRanges'
-```
-
-```
-## The following object is masked from 'package:grDevices':
-## 
-##     windows
-```
-
-```
-## 
-```
-
-```
-## Loading required package: SparseM
-```
-
-```
-## 
-## Attaching package: 'SparseM'
-```
-
-```
-## The following object is masked from 'package:base':
-## 
-##     backsolve
-```
-
-```
-## 
-## groupGOTerms: 	GOBPTerm, GOMFTerm, GOCCTerm environments built.
-```
-
-```
-## 
-## Attaching package: 'topGO'
-```
-
-```
-## The following object is masked from 'package:IRanges':
-## 
-##     members
-```
-
-```r
 if (!any(rownames(installed.packages()) == "KEGGREST")){
   if (!requireNamespace("BiocManager", quietly = TRUE))
       install.packages("BiocManager")
   BiocManager::install("KEGGREST")
 }
-```
-
-```
-## Bioconductor version 3.9 (BiocManager 1.30.4), R 3.6.1 (2019-07-05)
-```
-
-```
-## Installing package(s) 'KEGGREST'
-```
-
-```
-## also installing the dependencies 'zlibbioc', 'XVector', 'Biostrings'
-```
-
-```
-## installation path not writeable, unable to update packages: boot, foreign,
-##   nlme
-```
-
-```r
 library(KEGGREST)
 
 if (!any(rownames(installed.packages()) == "Rgraphviz")){
@@ -212,85 +47,20 @@ if (!any(rownames(installed.packages()) == "Rgraphviz")){
   BiocManager::install("Rgraphviz")
 }
 library(Rgraphviz)
-```
 
-```
-## Loading required package: grid
-```
-
-```
-## 
-## Attaching package: 'grid'
-```
-
-```
-## The following object is masked from 'package:topGO':
-## 
-##     depth
-```
-
-```
-## 
-## Attaching package: 'Rgraphviz'
-```
-
-```
-## The following objects are masked from 'package:IRanges':
-## 
-##     from, to
-```
-
-```
-## The following objects are masked from 'package:S4Vectors':
-## 
-##     from, to
-```
-
-```r
 if (!any(rownames(installed.packages()) == "org.Hs.eg.db")){
   if (!requireNamespace("BiocManager", quietly = TRUE))
       install.packages("BiocManager")
   BiocManager::install("org.Hs.eg.db")
 }
 library(org.Hs.eg.db)
-```
 
-```
-## 
-```
-
-```r
 library(edgeR)
 if (!any(rownames(installed.packages()) == "gplots")){
 install.packages("gplots")
 }
 library(gplots)
-```
 
-```
-## 
-## Attaching package: 'gplots'
-```
-
-```
-## The following object is masked from 'package:IRanges':
-## 
-##     space
-```
-
-```
-## The following object is masked from 'package:S4Vectors':
-## 
-##     space
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     lowess
-```
-
-```r
 if (!any(rownames(installed.packages()) == "RColorBrewer")){
 install.packages("RColorBrewer")
 }
@@ -308,7 +78,7 @@ download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training
 
 ### Download the data file for the workshop document and preview/open it
 
-This is the the counts file generated after running [Generating Summarized Counts](https://ucdavis-bioinformatics-training.github.io/2019_August_UCD_mRNAseq_Workshop/data_reduction/counts.html). I've also uploaded to the github pages 
+This is the the counts file generated after running [Generating Summarized Counts](https://ucdavis-bioinformatics-training.github.io/2019_August_UCD_mRNAseq_Workshop/data_reduction/counts.html). I've also uploaded to the github pages
 
 In the R console run the following command.
 
@@ -328,4 +98,3 @@ output:
     html_notebook: default
     html_document: default
 ---</code></pre>
-
