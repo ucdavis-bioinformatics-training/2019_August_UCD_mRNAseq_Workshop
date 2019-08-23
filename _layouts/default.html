@@ -100,7 +100,7 @@
 <body>
 
     <div class="header sticky" id="myHeader" style="width:100%; top:0; position:fixed">
-      <a href="{{ site.github.url }}" class="logo">
+      <a href="{{ https://bioinformatics.ucdavis.edu/training/ }}" class="logo">
           <img src="{{ '/assets/img/biocore_banner.png' | relative_url }}">
           </img></a>
             <h2 style="padding-left:10px; padding-top:10px">{{ site.title | default: site.github.repository_name }}</h2>
@@ -112,7 +112,7 @@
                     <table>
                         {% for nav in site.navigation %}
                             {% if nav.heading %}
-                              <th style="font-size:24px;">{{ nav.heading }}</th>
+                              <th style="font-size:22px;">{{ nav.heading }}</th>
                               {% continue %}
                             {% endif %}
                             {% if nav.url contains "://" %}
@@ -124,9 +124,9 @@
                     </table>
                 </div>
 
-                <h1 style="display:flex;justify-content:space-between;background-color:white;margin:10">
-                    <div style="font-size:25px;cursor:pointer;margin:10;position:fixed;padding-top:20px" onclick="doNav()">&#9776; Menu</div>
-                </h1>
+                <h2 style="display:flex;justify-content:space-between;background-color:white;margin:10">
+                    <div style="font-size:22px;cursor:pointer;margin:10;position:fixed;padding-top:5px" onclick="doNav()">&#9776; Menu</div>
+                </h2>
                     <div style="height: 5px; background-color: darkgrey"></div>
                     <div style="height: 5px"></div>
             </div>
