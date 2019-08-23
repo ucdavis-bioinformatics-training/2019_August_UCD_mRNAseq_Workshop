@@ -10,7 +10,7 @@ body {
   margin:20px 0px 30px 0px;
   padding:0px 0px 0px 20px;
   font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
-  font-size: 18px
+  font-size: 10px
   white-space: pre;
   color: #333333;
 }
@@ -19,7 +19,7 @@ body {
   margin:20px 0px 30px 0px;
   padding:0px 0px 0px 20px;
   font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
-  font-size: 18px
+  font-size: 10px
   white-space: pre;
   color: black;
 }
