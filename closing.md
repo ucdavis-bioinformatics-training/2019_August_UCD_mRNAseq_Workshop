@@ -28,13 +28,13 @@
 
 ## Workshop Week 2 reservation
 
-**workshop       ACTIVE  2019-03-09T10:46:16  2019-03-22T00:00:00  12-12:13:44  drove-[4,13,18]**
+**workshop       ACTIVE  2019-08-19T00:00:00  2019-08-31T00:00:00  12-00:00:00  rafter-[0,2,8,14,18]**
 
 My recommendation is to follow all of the instructions again, from the beginning on your own and send emails to
 
 bioinformatics.training@ucdavis.edu
 
-And we will be responsive to answering questions
+And we will be responsive to answering questions.
 
 
 ##  Upcoming Workshops
@@ -47,7 +47,7 @@ For more information on these and other events, and to register, go to https://r
 
 This workshop covers amplicon-based microbial analysis and methodology using high throughput sequencing technologies.  Topics will include:
 
-* Differences between communty analysis with amplicons versus shotgun metagenomics and metatranscriptomics
+* Differences between community analysis with amplicons versus shotgun metagenomics and metatranscriptomics
 * Experimental design
 * Sequence data quality assurance and expectations
 * Processing of amplicon reads (using the python application dbcAmplicons)
@@ -63,7 +63,8 @@ For more information and to register, go to https://registration.genomecenter.uc
 
 This workshop will cover the basic prerequisites required before performing bioinformatics analysis, including basic command line and high performance computing concepts, how to install software, use help, run applications, and advanced command line (shell scripting, pipes, etc.). Also covered will be basic R programming, basic statistical concepts, and model building. There are no prerequisites for this workshop other than an interest in bioinformatics!
 
-If you would like to take a look at the documentation from previous workshops, see https://bioinformatics.ucdavis.edu/training/documentation/.
+## Contact and Notifications
 
-Questions?  Contact us at training.bioinformatics@ucdavis.edu
-Email List Note:  If you received this email directly from training.bioinformatics@ucdavis.edu, you are currently subscribed to one of our announcements lists. To subscribe / unsubscribe from the Bioinformatics Core email lists, please follow the instructions at the bottom of http://bioinformatics.ucdavis.edu/contact-us/.
+Questions about training?  Contact us at training.bioinformatics@ucdavis.edu
+
+To subscribe / unsubscribe from the Bioinformatics Core email lists, please follow the instructions at the bottom of http://bioinformatics.ucdavis.edu/contact-us/.

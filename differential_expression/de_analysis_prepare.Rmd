@@ -1,7 +1,9 @@
 ---
 title: "Prepare Differential Expression"
 author: "Bioinformatics Core"
-output: html_document
+output:
+    html_document:
+      keep_md: TRUE
 ---
 
 ### Create a new RStudio project
@@ -15,7 +17,7 @@ Learn more about packrat see <https://rstudio.github.io/packrat/>
 Set some options and make sure the packages edgeR, gplots, RColorBrewer, topGO, KEGGREST, Rgraphviz and org.Hs.eg.db are installed (if not install it), and then load
 
 In the R console run the following commands
-```{r setup, results='hide', warning=F, error=F}
+```{r setup, results='hide', warning=FALSE, error=FALSE, message=FALSE, collapse=TRUE}
 
 if (!any(rownames(installed.packages()) == "edgeR")){
   if (!requireNamespace("BiocManager", quietly = TRUE))
@@ -69,16 +71,16 @@ library(RColorBrewer)
 ### Download the template Markdown workshop document and open it
 
 In the R console run the following command
-```{r download2, results='hide', warning=F, error=F}
+```{r download2, results='hide', warning=F, error=F, message=FALSE}
 download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/differential_expression/DE_Analysis.Rmd", "DE_Analysis.Rmd")
 ```
 
 ### Download the data file for the workshop document and preview/open it
 
-This is the the counts file generated after running [Generating Summarized Counts](https://ucdavis-bioinformatics-training.github.io/2019_August_UCD_mRNAseq_Workshop/data_reduction/counts.html). I've also uploaded to the github pages 
+This is the the counts file generated after running [Generating Summarized Counts](https://ucdavis-bioinformatics-training.github.io/2019_August_UCD_mRNAseq_Workshop/data_reduction/counts.html). I've also uploaded to the github pages
 
 In the R console run the following command.
-```{r download1, results='hide', warning=F, error=F}
+```{r download1, results='hide', warning=F, error=F, message=FALSE}
 download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/differential_expression/de_data/rnaseq_workshop_counts.txt", "rnaseq_workshop_counts.txt")
 ```
 
@@ -94,4 +96,3 @@ output:
     html_notebook: default
     html_document: default
 ---</code></pre>
-
