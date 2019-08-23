@@ -4,7 +4,7 @@
 
 First, what is a cluster?
 
-<img src="figures/cluster_diagram.png" alt="figures/cluster_diagram" width="600px"/>
+<img src="figures/cluster_diagram.png" alt="figures/cluster_diagram" width="800px"/>
 
 The basic architecture of a compute cluster consists of a "head node", which is the computer from which a user submits jobs to run, and "compute nodes", which are a large number of computers on which the jobs can be run. It is also possible to log into a compute node and run jobs directly from there. **In general you should never run a job directly on the head node!**
 
@@ -132,7 +132,7 @@ To view the same information for all jobs of a user (replace username with your 
 
     module avail
 
-<img src="figures/modules_figure1.png" alt="modules_figure1" width="600px"/>
+<img src="figures/modules_figure1.png" alt="modules_figure1" width="800px"/>
 
 This is a list of all the software (with different versions) that you can access. The format of 'modules' is software/version here you can see htstream has 3 different versions installed with the latest being 1.0.0. When you load a module without specifying a version, it will load the default (generally the latest) version. If you need an older version, you need to use the cooresponding version number:
 

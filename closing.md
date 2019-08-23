@@ -2,7 +2,7 @@
 
 **The forest through the trees.**
 
-<img src="base_figures/closing_figure1.png" alt="closing_figure1" width="600px"/>
+<img src="base_figures/closing_figure1.png" alt="closing_figure1" width="800px"/>
 
 ## Be Consistent
 

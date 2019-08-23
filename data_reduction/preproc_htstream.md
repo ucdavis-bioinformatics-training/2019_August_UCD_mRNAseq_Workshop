@@ -31,7 +31,7 @@ Preprocessing also produces a number of statistics that are technical in nature 
 
 ** Many technical things happen between original sample and data, preprocessing is working backwards through that process to get as close as we can to original sample **
 
-<img src="preproc_figures/preproc_flowchart.png" alt="preproc_flowchart" width="600px"/>
+<img src="preproc_figures/preproc_flowchart.png" alt="preproc_flowchart" width="800px"/>
 
 ## RNAseq preprocessing workflow
 
@@ -202,29 +202,29 @@ We will use these sequences to identify rRNA in our reads, which are from human.
 
 *1.) First, go to NCBI and in the Search dropdown select "Taxonomy" and search for "human".*
 
-<img src="preproc_figures/ncbi01.png" alt="ncbi1" width="600px"/>
+<img src="preproc_figures/ncbi01.png" alt="ncbi1" width="800px"/>
 
 *2.) Click on "Homo sapiens".*
 
-<img src="preproc_figures/ncbi02.png" alt="ncbi2" width="600px"/>
+<img src="preproc_figures/ncbi02.png" alt="ncbi2" width="800px"/>
 
 *3.) Click on "Homo sapiens" again.*
 
-<img src="preproc_figures/ncbi03.png" alt="ncbi3" width="600px"/>
+<img src="preproc_figures/ncbi03.png" alt="ncbi3" width="800px"/>
 
 *4.) Click on the "Subtree links" for Nucleotide*
 
-<img src="preproc_figures/ncbi04.png" alt="ncbi4" width="600px"/>
+<img src="preproc_figures/ncbi04.png" alt="ncbi4" width="800px"/>
 
 *5.) Under Molecule Types, click on "rRNA" (left hand side).*
 
-<img src="preproc_figures/ncbi05.png" alt="ncbi5" width="600px"/>
+<img src="preproc_figures/ncbi05.png" alt="ncbi5" width="800px"/>
 
 *6.) Click on "Send", choose "File", choose Format "FASTA", and click on "Create File".*
 
-<img src="preproc_figures/ncbi06.png" alt="ncbi6" width="600px"/>
+<img src="preproc_figures/ncbi06.png" alt="ncbi6" width="800px"/>
 
-<img src="preproc_figures/ncbi07.png" alt="ncbi7" width="600px"/>
+<img src="preproc_figures/ncbi07.png" alt="ncbi7" width="800px"/>
 
 Save this file to your computer, and rename it to 'human_rrna.fasta'.
 
@@ -465,11 +465,11 @@ Removing PCR duplicates can be **controversial** for RNAseq, but I'm in favor of
 
 __**However, I would never do PCR duplicate removal on single-end reads!**__
 
-<img src="preproc_figures/SD_eval.png" alt="SD_eval" width="600px"/>
+<img src="preproc_figures/SD_eval.png" alt="SD_eval" width="800px"/>
 
 Super Deduper only uses a small portion of the reads to identify duplicates.
 
-<img src="preproc_figures/SD_performance.png" alt="SD_performance" width="600px"/>
+<img src="preproc_figures/SD_performance.png" alt="SD_performance" width="800px"/>
 
 We calculated the Youden Index for every combination tested and the point that acquired the highest index value (as compared to Picard MarkDuplicates) occurred at a start position at basepair 5 and a length of 10bp (20bp total over both reads). Though defaults in hts_SuperDeduper are start position at basepair 10 and a length of 10bp.
 
@@ -479,7 +479,7 @@ Consider the three scenarios below
 
 **Insert size > length of the number of cycles**
 
-<img src="preproc_figures/overlap_pairs.png" alt="overlap_pairs" width="600px"/>
+<img src="preproc_figures/overlap_pairs.png" alt="overlap_pairs" width="800px"/>
 
 hts_AdapterTrimmer product: original pairs
 
@@ -487,7 +487,7 @@ hts_Overlapper product: original pairs
 
 **Insert size < length of the number of cycles (10bp min)**
 
-<img src="preproc_figures/overlap_single.png" alt="overlap_single" width="600px"/>
+<img src="preproc_figures/overlap_single.png" alt="overlap_single" width="800px"/>
 
 hts_AdapterTrimmer product: original pairs
 
@@ -495,7 +495,7 @@ hts_Overlapper product: extended, single
 
 **Insert size < length of the read length**
 
-<img src="preproc_figures/overlap_adapter.png" alt="overlap_adapter" width="600px"/>
+<img src="preproc_figures/overlap_adapter.png" alt="overlap_adapter" width="800px"/>
 
 hts_AdapterTrimmer product: adapter trimmed, pairs
 
@@ -507,7 +507,7 @@ Both hts_AdapterTrimmer and hts_Overlapper employ this principle to identify and
 
 As a sequencing run progresses the quality scores tend to get worse, so its common to trim of the worst quality bases.
 
-<img src="preproc_figures/Qwindowtrim.png" alt="Qwindowtrim" width="600px"/>
+<img src="preproc_figures/Qwindowtrim.png" alt="Qwindowtrim" width="800px"/>
 
 This is how reads commonly look, the start at "good" quality, increase to "excellent" and degrade to "poor", with R2 always looking worse (except when they don't) than R1 and get worse as the number of cycles increases.
 

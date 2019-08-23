@@ -16,7 +16,7 @@ library(org.Hs.eg.db)
 
 Files for examples created in the DE analysis
 
-## Gene Ontology (GO) Enrichment 
+## Gene Ontology (GO) Enrichment
 
 Gene ontology (http://www.geneontology.org/) provides a controlled vocabulary for describing biological processes (BP ontology), molecular functions (MF ontology) and cellular components (CC ontology)
 
@@ -27,11 +27,11 @@ Terms are related to other terms through parent-child relationships in a directe
 Enrichment analysis provides one way of drawing conclusions about a set of differential expression results.
 
 **1\.** topGO Example Using Kolmogorov-Smirnov Testing
-Our first example uses Kolmogorov-Smirnov Testing for enrichment testing of our human DE results, with GO annotation obtained from the Bioconductor database org.Hs.eg.db. 
+Our first example uses Kolmogorov-Smirnov Testing for enrichment testing of our human DE results, with GO annotation obtained from the Bioconductor database org.Hs.eg.db.
 
 The first step in each topGO analysis is to create a topGOdata object.  This contains the genes, the score for each gene (here we use the p-value from the DE test), the GO terms associated with each gene, and the ontology to be used (here we use the biological process ontology)
 ```{r}
-infile <- "A.C_v_B.C.txt" 
+infile <- "A.C_v_B.C.txt"
 tmp <- read.delim(infile)
 
 geneList <- tmp$P.Value
@@ -134,18 +134,18 @@ Disadvantages:
 * May be less useful if there are very few (or a large number of) significant genes
 
 ##. KEGG Pathway Enrichment Testing With KEGGREST
-KEGG, the Kyoto Encyclopedia of Genes and Genomes (https://www.genome.jp/kegg/), provides assignment of genes for many organisms into pathways. 
+KEGG, the Kyoto Encyclopedia of Genes and Genomes (https://www.genome.jp/kegg/), provides assignment of genes for many organisms into pathways.
 
 We will access KEGG pathway assignments for human through the KEGGREST Bioconductor package, and then use some homebrew code for enrichment testing.
 
 **1\.** Get all human pathways and their genes:
 ```{r}
-# Pull all pathways for AT	
+# Pull all pathways for AT
 pathways.list <- keggList("pathway", "hsa")
 head(pathways.list)
 
 # Pull all genes for each pathway
-pathway.codes <- sub("path:", "", names(pathways.list))	
+pathway.codes <- sub("path:", "", names(pathways.list))
 genes.by.pathway <- sapply(pathway.codes,
 	function(pwid){
 		pw <- keggGet(pwid)

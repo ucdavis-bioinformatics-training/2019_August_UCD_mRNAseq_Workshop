@@ -17,7 +17,7 @@ Sequence based files first started out as fasta with paired qual files (Sanger a
 ### fasta
 The fasta format uses the '>' to indicate a new sequence followed by the name of the sequence on the same line. The following line(s) are the DNA sequence and may be split on multiple lines (wrapped), until the next '>' is reached. Genome and transcriptome files are most often in fasta format.
 
-<img src="filetypes_figures/filetypes_figure2.png" alt="figure2" width="600px"/>
+<img src="filetypes_figures/filetypes_figure2.png" alt="figure2" width="800px"/>
 
 
 Qual files are so rarely used these days and so are not discussed.
@@ -25,7 +25,7 @@ Qual files are so rarely used these days and so are not discussed.
 ### fastq
 fastq files combine the sequence and quality scores into 1 file. Each sequence here has 4 lines (should be enforced strictly), header, sequence, historical '+', and quality.
 
-<img src="filetypes_figures/filetypes_figure3.png" alt="figure3" width="600px"/>
+<img src="filetypes_figures/filetypes_figure3.png" alt="figure3" width="800px"/>
 
 CASAVA 1.8 Read IDs
 
@@ -47,7 +47,7 @@ Quality scores are paired 1 to 1 with sequence characters.
 
 Each quality character has a numerical value associated with it (ASCII value). In Illumina 1.8+ you subtract 33 from the ascii value associated with the quality character to get the quality score.
 
-<img src="filetypes_figures/filetypes_figure5.png" alt="figure5" width="600px"/>
+<img src="filetypes_figures/filetypes_figure5.png" alt="figure5" width="800px"/>
 
 <img src="filetypes_figures/filetypes_figure4b.png" alt="figure4b" width="400px"/>
 
@@ -74,7 +74,7 @@ Strand: Defined as ‘+’ (forward),or ‘-’ (reverse)
 * Frame: One of ‘0’, ‘1’, ‘2’, ‘0’ represents the first base of a codon.
 * Attribute: A semicolon-separated list of tag-value pairs, providing additional information about each feature.
 
-<img src="filetypes_figures/filetypes_figure6.png" alt="figure6" width="600px"/>
+<img src="filetypes_figures/filetypes_figure6.png" alt="figure6" width="800px"/>
 
 #### Sources
 * Ensembl genomes ( http://ensemblgenomes.org/ ) and annotation at Biomart ( http://www.ensembl.org/biomart/martview/ )
@@ -145,7 +145,7 @@ Read IDs are truncated at first whitespace (spaces / tabs), which can make them 
 
 **FLAG: Alignment flags**
 
-<img src="filetypes_figures/filetypes_figure8.png" alt="figure8" width="600px"/>
+<img src="filetypes_figures/filetypes_figure8.png" alt="figure8" width="800px"/>
 
 Tool to help explain flags
 
