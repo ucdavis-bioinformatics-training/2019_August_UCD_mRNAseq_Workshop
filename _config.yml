@@ -9,7 +9,7 @@ navigation:
   - title: Intro to the Workshop and Core
     url: welcome
   - title: What is Bioinformatics?
-    url: pdfs/Genomics_a_perspective_March2019.pdf
+    url: pdfs/Genomics_a_perspective.pdf
   - title: Experimental Design and Cost Estimation
     url: pdfs/ExperimentalDesign.pdf
   - title: Cheat Sheets

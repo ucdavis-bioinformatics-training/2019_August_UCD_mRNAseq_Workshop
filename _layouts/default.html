@@ -23,7 +23,7 @@
 /* Style the header */
 .header {
   background: white;
-  margin-left: 400px;
+  margin-left: 300px;
 }
 
 /* The sticky class is added to the header with JS when it reaches its scroll position */
@@ -94,7 +94,7 @@
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav {padding-left: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav a {font-size: 12px;}
 }
 </style>
 <body>
@@ -112,7 +112,7 @@
                     <table>
                         {% for nav in site.navigation %}
                             {% if nav.heading %}
-                              <th style="font-size:30px;">{{ nav.heading }}</th>
+                              <th style="font-size:24px;">{{ nav.heading }}</th>
                               {% continue %}
                             {% endif %}
                             {% if nav.url contains "://" %}
@@ -136,7 +136,7 @@
 </body>
 
 
-<div id="main" style="padding-left: 150px; padding-right: 100px; margin-left: 400px; padding-top:180px">
+<div id="main" style="padding-left: 150px; padding-right: 100px; margin-left: 300px; padding-top:180px">
 
 {{ content }}
 
@@ -167,9 +167,9 @@ function doNav() {
     document.getElementById("myHeader").style.marginLeft = "0px";
     navopen = 0;
   } else {
-    document.getElementById("mySidenav").style.width = "400px";
-    document.getElementById("main").style.marginLeft = "400px";
-    document.getElementById("myHeader").style.marginLeft = "400px";
+    document.getElementById("mySidenav").style.width = "300px";
+    document.getElementById("main").style.marginLeft = "300px";
+    document.getElementById("myHeader").style.marginLeft = "300px";
     navopen = 1;
   }
 }
