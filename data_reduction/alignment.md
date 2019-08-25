@@ -171,16 +171,16 @@ outpath="References"
 [[ -d ${outpath} ]] || mkdir ${outpath}
 
 cd ${outpath}
-wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/GRCh38.primary_assembly.genome.fa.gz
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/GRCh38.primary_assembly.genome.fa.gz
 gunzip GRCh38.primary_assembly.genome.fa.gz
 FASTA="../GRCh38.primary_assembly.genome.fa"
 
-wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.primary_assembly.annotation.gtf.gz
-gunzip gencode.v29.primary_assembly.annotation.gtf.gz
-GTF="../gencode.v29.primary_assembly.annotation.gtf"
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/gencode.v31.primary_assembly.annotation.gtf.gz
+gunzip gencode.v31.primary_assembly.annotation.gtf.gz
+GTF="../gencode.v31.primary_assembly.annotation.gtf"
 
-mkdir star.overlap100.gencode.v29
-cd star.overlap100.gencode.v29
+mkdir star.overlap100.gencode.v31
+cd star.overlap100.gencode.v31
 
 module load star/2.7.0e
 
@@ -202,7 +202,7 @@ echo $runtime
 
 1. The script uses wget to download the fasta and GTF files from GENCODE using the links you found earlier.
 1. Uncompresses them using gunzip.
-1. Creates the star index directory [star.overlap100.gencode.v29].
+1. Creates the star index directory [star.overlap100.gencode.v31].
 1. Change directory into the new star index directory. We run the star indexing command from inside the directory, for some reason star fails if you try to run it outside this directory.
 1. Run star in mode genomeGenerate.
 1. sbatch star_index.slurm
@@ -212,7 +212,7 @@ This step will take a couple hours. You can look at the [STAR documentation](htt
 
 **IF** For the sake of time, or for some reason it didn't finish, is corrupted, or you missed the session, you can link over a completed copy.
 
-    ln -s /share/biocore/workshops/2019_August_RNAseq/References/star.overlap100.gencode.v29 /share/workshop/$USER/rnaseq_example/References/.
+    ln -s /share/biocore/workshops/2019_August_RNAseq/References/star.overlap100.gencode.v31 /share/workshop/$USER/rnaseq_example/References/.
 
 ## Alignments
 
@@ -239,7 +239,7 @@ Then run the star commands
     module load star/2.7.0e
     STAR \
     --runThreadN 8 \
-    --genomeDir ../References/star.overlap100.gencode.v29 \
+    --genomeDir ../References/star.overlap100.gencode.v31 \
     --outSAMtype BAM SortedByCoordinate \
     --quantMode GeneCounts \
     --outFileNamePrefix SampleAC1.streamed_ \
@@ -377,7 +377,7 @@ echo $HOSTNAME
 echo "My SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
 
 sample=`sed "${SLURM_ARRAY_TASK_ID}q;d" samples.txt`
-REF="References/star.overlap100.gencode.v29"
+REF="References/star.overlap100.gencode.v31"
 
 outpath='02-STAR_alignment'
 [[ -d ${outpath} ]] || mkdir ${outpath}

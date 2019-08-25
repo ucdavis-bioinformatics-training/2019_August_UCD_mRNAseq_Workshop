@@ -22,12 +22,12 @@ wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/GRCh38.p
 gunzip GRCh38.primary_assembly.genome.fa.gz
 FASTA="../GRCh38.primary_assembly.genome.fa"
 
-wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.primary_assembly.annotation.gtf.gz
-gunzip gencode.v29.primary_assembly.annotation.gtf.gz
-GTF="../gencode.v29.primary_assembly.annotation.gtf"
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencodev31.primary_assembly.annotation.gtf.gz
+gunzip gencodev31.primary_assembly.annotation.gtf.gz
+GTF="../gencodev31.primary_assembly.annotation.gtf"
 
-mkdir star.overlap100.gencode.v29
-cd star.overlap100.gencode.v29
+mkdir star.overlap100.gencodev31
+cd star.overlap100.gencodev31
 
 module load star/2.7.0e
 
