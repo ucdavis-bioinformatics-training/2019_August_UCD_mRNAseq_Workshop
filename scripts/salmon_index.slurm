@@ -17,12 +17,12 @@ echo $HOSTNAME
 outpath="References"
 
 cd ${outpath}
-wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.transcripts.fa.gz
-gunzip gencode.v29.transcripts.fa.gz
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/gencode.v31.pc_transcripts.fa.gz
+gunzip gencode.v31.pc_transcripts.fa.gz
+PC_FASTA= gencode.v31.pc_transcripts.fa
 
 module load salmon
-call="salmon index -i salmon_index -p 8 -t gencode.v29.transcripts.fa --gencode"
-
+call="salmon index -i salmon_gencode.v31.index -k 31 --gencode -p 8 -t ${PC_FASTA}
 echo $call
 eval $call
 
