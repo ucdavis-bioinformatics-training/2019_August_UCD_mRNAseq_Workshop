@@ -9,11 +9,11 @@ outpath="References"
 [[ -d ${outpath} ]] || mkdir ${outpath}
 
 cd ${outpath}
-wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/GRCh38.primary_assembly.genome.fa.gz
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/GRCh38.primary_assembly.genome.fa.gz
 gunzip GRCh38.primary_assembly.genome.fa.gz
 FASTA="../GRCh38.primary_assembly.genome.fa"
 
-wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencodev31.primary_assembly.annotation.gtf.gz
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/gencodev31.primary_assembly.annotation.gtf.gz
 gunzip gencodev31.primary_assembly.annotation.gtf.gz
 GTF="../gencodev31.primary_assembly.annotation.gtf"
 
