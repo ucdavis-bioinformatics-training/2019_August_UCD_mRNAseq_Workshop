@@ -12,10 +12,6 @@ navigation:
     url: pdfs/Genomics_a_perspective.pdf
   - title: Experimental Design and Cost Estimation
     url: pdfs/ExperimentalDesign.pdf
-  - title: Cheat Sheets
-    url: cheatSheetIndex
-  - title: Software and Links
-    url: software
   - heading: Command-Line and the Cluster
   - title: Logging in and Transferring Files
     url: cli/logging-in
@@ -58,12 +54,19 @@ navigation:
     url: differential_expression/enrichment
   - title: Comparison between STAR and Salmon
     url: differential_expression/compare_star_salmon
+  - heading: Support
+  - title: Cheat Sheets
+    url: cheatSheetIndex
+  - title: Software and Links
+    url: software
+  - title: Scripts
+    url: script_links
   - heading: ETC
   - title: Closing thoughts
     url: closing
+  - title: Workshop Photos
+    url: photos/photos
   - title: Github
     url: https://github.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop
   - title: Biocore website
     url: http://bioinformatics.ucdavis.edu
-  - title: Workshop Photos
-    url: photos/photos

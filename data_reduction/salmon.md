@@ -291,6 +291,6 @@ shell script for mapping using bash loop and star.
 
 [salmon.sh](../scripts/salmon.sh)
 
-shell script to produce summary mapping table
+R script to produce summary mapping table
 
 [salmon_stats.R](../scripts/salmon_stats.R)
