@@ -119,16 +119,10 @@ In the command, we are telling salmon to quantify reads with libtype 'auto' ([li
 
  When you are done, type "q" to exit.
 
-	cd /share/workshop/$USER/rnaseq_example
-	wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/scripts/salmon.slurm
-	less salmon.slurm
+<div class="script">#!/bin/bash
 
-Press 'q' to exit.
-
-<div class="script">
-#!/bin/bash
-#SBATCH --array=1-16  # NEED TO CHANGE THIS!
-#SBATCH --job-name=star # Job name
+#SBATCH --array=1-16
+#SBATCH --job-name=salmon # Job name
 #SBATCH --nodes=1
 #SBATCH --ntasks=8
 #SBATCH --time=1440
@@ -136,17 +130,17 @@ Press 'q' to exit.
 #SBATCH --partition=production
 #SBATCH --reservation=workshop
 #SBATCH --account=workshop
-#SBATCH --output=slurmout/star_%A_%a.out # File to which STDOUT will be written
-#SBATCH --error=slurmout/star_%A_%a.err # File to which STDERR will be written
+#SBATCH --output=slurmout/salmon_%A_%a.out # File to which STDOUT will be written
+#SBATCH --error=slurmout/salmon_%A_%a.err # File to which STDERR will be written
 
 
 start=`date +%s`
 hostname
 
-outdir="02-Salmon"
+outdir="02-Salmon_alignment"
 sampfile="samples.txt"
-REF="References/salmon_index"
-GTF="References/gencodev31.primary_assembly.annotation.gtf"
+REF="References/salmon_gencode.v31.index"
+GTF="References/gencode.v31.primary_assembly.annotation.gtf"
 
 SAMPLE=`head -n ${SLURM_ARRAY_TASK_ID} $sampfile | tail -1`
 R1="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R1.fastq.gz"
@@ -159,10 +153,16 @@ if [ ! -e $outdir ]; then
 fi
 
 module load salmon
-call="salmon quant -p 8 -i $REF -l A \
---validateMappings -g $GTF \
--1 $R1 -2 $R2 \
--o $outdir/$SAMPLE"
+
+call="salmon quant \
+      --threads 8 \
+      --index ${REF} \
+      --libType A \
+      --validateMappings \
+      --geneMap ${GTF} \
+      --output $outdir/$SAMPLE \
+      -1 $R1 \
+      -2 $R2"
 
 echo $call
 eval $call
