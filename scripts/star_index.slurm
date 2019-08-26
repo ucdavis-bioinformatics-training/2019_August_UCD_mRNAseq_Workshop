@@ -26,8 +26,8 @@ wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/gencodev
 gunzip gencodev31.primary_assembly.annotation.gtf.gz
 GTF="../gencodev31.primary_assembly.annotation.gtf"
 
-mkdir star.overlap100.gencodev31
-cd star.overlap100.gencodev31
+mkdir star.overlap100.gencode.v31
+cd star.overlap100.gencode.v31
 
 module load star/2.7.0e
 
