@@ -423,19 +423,19 @@ We can watch the progress of our task array using the 'squeue' command. Takes ab
     wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/scripts/star_stats.sh
     bash star_stats.sh
 
-**2\.** Transfer summary_alignments.txt to your computer using scp or winSCP, or copy/paste from cat [sometimes doesn't work],  
+**2\.** Transfer summary_star_alignments.txt to your computer using scp or winSCP, or copy/paste from cat [sometimes doesn't work],  
 
 In a new shell session on your laptop. **NOT logged into tadpole**.
 
     mkdir ~/rnaseq_workshop
     cd ~/rnaseq_workshop
-    scp msettles@tadpole.genomecenter.ucdavis.edu:/share/workshop/msettles/rnaseq_example/summary_alignments.txt .
+    scp [your_username]@tadpole.genomecenter.ucdavis.edu:/share/workshop/[your_username]/rnaseq_example/summary_star_alignments.txt .
 
 Its ok of the mkdir command fails ("File exists") because we aleady created the directory earlier.
 
 Open in excel (or excel like application), and lets review.
 
-The table that this script creates ("alignment_stats.txt") can be pulled to your laptop via 'scp', or WinSCP, etc., and imported into a spreadsheet. Are all samples behaving similarly? Discuss ...
+The table that this script creates ("summary_star_alignments.txt") can be pulled to your laptop via 'scp', or WinSCP, etc., and imported into a spreadsheet. Are all samples behaving similarly? Discuss ...
 
 ## Scripts
 

@@ -66,7 +66,7 @@ This command takes all the files that we listed in step 1 and loops through them
         cat 02-STAR_alignment/${sample}/${sample}_ReadsPerGene.out.tab | tail -n +5 | cut -f4 > 03-Counts/tmp/${sample}.count
     done
 
-After this command, there should be a counts file for every sample, in 03-Counts.
+After this command, there should be a counts file for every sample, in 03-Counts/tmp.
 
 ---
 **4\.** Next, we need to get the columns for the final table. Because all of these files are sorted in the exact same order (by gene ID), we can just use the columns from any of the files:
