@@ -14,7 +14,7 @@ Open RStudio and create a new project, for more info see <https://support.rstudi
 
 Learn more about packrat see <https://rstudio.github.io/packrat/>
 
-Set some options and make sure the packages 'knitr', 'tidyverse', 'reshape2', and 'gridExtra' are installed (if not install it), and then load
+Set some options and make sure the packages 'knitr', 'tidyverse', 'reshape2', and 'gr are installed (if not install it), and then load
 
 In the R console run the following commands
 
@@ -28,53 +28,17 @@ if (!any(rownames(installed.packages()) == "tidyverse")){
   install.packages("tidyverse")
 }
 library(tidyverse)
-```
 
-<div class="output">── Attaching packages ─────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
-</div>
-
-<div class="output">✔ ggplot2 3.1.0     ✔ purrr   0.2.5
-✔ tibble  2.0.1     ✔ dplyr   0.7.8
-✔ tidyr   0.8.2     ✔ stringr 1.3.1
-✔ readr   1.3.1     ✔ forcats 0.3.0
-</div>
-
-<div class="output">── Conflicts ────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-</div>
-
-```r
 if (!any(rownames(installed.packages()) == "reshape2")){
   install.packages("reshape2")
 }
 library(reshape2)
-```
 
-<div class="output">
-Attaching package: 'reshape2'
-</div>
-
-<div class="output">The following object is masked from 'package:tidyr':
-
-    smiths
-</div>
-
-```r
 if (!any(rownames(installed.packages()) == "gridExtra")){
   install.packages("gridExtra")
 }
 library(gridExtra)
 ```
-
-<div class="output">
-Attaching package: 'gridExtra'
-</div>
-
-<div class="output">The following object is masked from 'package:dplyr':
-
-    combine
-</div>
 
 Learn more about the tidyverse see <https://www.tidyverse.org>.
 
@@ -95,9 +59,7 @@ When you click the **preview** or **Knit** button a document will be generated t
 print('hello world!')
 ```</code></pre>
 
-TEST2
-
-Review the [R Markdown page]<https://rmarkdown.rstudio.com> and [R Markdown cheat sheets] <https://rmarkdown.rstudio.com/lesson-15.html>.
+Review the R Markdown page and R Markdown cheat sheets.
 
 Try 'knitting' to html, pdf, and doc as well as previewing the notebook. Open the resulting documents.
 
@@ -134,7 +96,6 @@ output:
     html_notebook: default
     html_document: default
 ---</code></pre>
-
 
 ### What are we going to do?
 
