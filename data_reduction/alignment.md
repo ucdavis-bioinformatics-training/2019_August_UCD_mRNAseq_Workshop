@@ -136,7 +136,7 @@ applications (like RNA-Seq ... would “cancel” out anyway).
 ---
 **2\.** To align our data we will need the genome (fasta) and annotation (gtf) for human. There are many places to find them, but we are going to get them from the [GENCODE](https://www.gencodegenes.org/human/).
 
-We need to first get the url for the annotation gtf. For RNAseq we want to use the PRI (primary) genome chromosome and corresponding annotation.
+We need to first get the url for the annotation gtf. For RNAseq we want to use the PRI (primary) genome chromosome and corresponding annotation. At the time of this workshop the current version of GENCODE is *31*. You will want to update the scripts to use the current version.
 
 <img src="alignment_figures/index_figure1.png" alt="index_figure1" width="800px"/>
 
