@@ -220,7 +220,7 @@ This step will take a couple hours. You can look at the [STAR documentation](htt
 
     cd /share/workshop/$USER/rnaseq_example/HTS_testing
 
-and let's run STAR (via srun) on the pair of streamed test files we created earlier. **The command is on multiple lines for readability**:
+and let's run STAR (via srun) on the pair of streamed test files we created earlier:
 
     srun --time=15:00:00 -n 8 --mem=32g --reservation=workshop --account=workshop --pty /bin/bash
 
@@ -315,7 +315,7 @@ Now your alignment is loaded. Any loaded bam file aligned to a genome is called 
 <img src="alignment_figures/index_igv7.png" alt="index_igv7" width="800px"/>
 
 ---
-**6\.** Lets take a look at the alignment associated with the gene __HBB__:
+**6\.** Lets take a look at the alignment associated with the gene __HBB__, and if for some reason it doesn't find HBB (web IGV can be fickle) go to position __chr11:5,224,466-5,228,071__
 
 <img src="alignment_figures/index_igv8.png" alt="index_igv8" width="800px"/>
 
