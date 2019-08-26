@@ -15,19 +15,7 @@ PC_FASTA="gencode.v31.pc_transcripts.fa"
 INDEX="salmon_gencode.v31.index"
 
 module load salmon
-call="salmon index -i ${INDEX} -k 31 --gencode -p 8 -t ${PC_FASTA}
-
-mkdir star.overlap100.gencodev31
-cd star.overlap100.gencodev31
-
-call="STAR
-     --runThreadN 8 \
-     --runMode genomeGenerate \
-     --genomeDir . \
-     --sjdbOverhang 100 \
-     --sjdbGTFfile ${GTF} \
-     --genomeFastaFiles ${FASTA}"
-
+call="salmon index -i ${INDEX} -k 31 --gencode -p 8 -t ${PC_FASTA}"
 echo $call
 eval $call
 
