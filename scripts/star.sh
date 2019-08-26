@@ -23,7 +23,7 @@ do
        --readFilesIn 01-HTS_Preproc/${sample}/${sample}_R1.fastq.gz 01-HTS_Preproc/${sample}/${sample}_R2.fastq.gz \
        --quantMode GeneCounts \
        --outFileNamePrefix ${outpath}/${sample}/${sample}_ \
-       ${outpath}/${sample}/${sample}-STAR.stdout 2> ${outpath}/${sample}/${sample}-STAR.stderr"
+       > ${outpath}/${sample}/${sample}-STAR.stdout 2> ${outpath}/${sample}/${sample}-STAR.stderr"
 
   echo $call
   eval $call

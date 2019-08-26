@@ -16,10 +16,10 @@
 start=`date +%s`
 hostname
 
-outdir="02-Salmon"
+outdir="02-Salmon_alignment"
 sampfile="samples.txt"
-REF="References/salmon_index"
-GTF="References/gencode.v29.primary_assembly.annotation.gtf"
+REF="References/salmon_gencode.v31.index"
+GTF="References/gencode.v31.primary_assembly.annotation.gtf"
 
 SAMPLE=`head -n ${SLURM_ARRAY_TASK_ID} $sampfile | tail -1`
 R1="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R1.fastq.gz"
@@ -32,10 +32,16 @@ if [ ! -e $outdir ]; then
 fi
 
 module load salmon
-call="salmon quant -p 8 -i $REF -l A \
---validateMappings -g $GTF \
--1 $R1 -2 $R2 \
--o $outdir/$SAMPLE"
+
+call="salmon quant \
+      --threads 8 \
+      --index ${REF} \
+      --libType A \
+      --validateMappings \
+      --geneMap ${GTF} \
+      --output $outdir/$SAMPLE \
+      -1 $R1 \
+      -2 $R2"
 
 echo $call
 eval $call

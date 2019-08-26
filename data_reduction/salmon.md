@@ -1,34 +1,41 @@
 # Alignment using Salmon
 
 ## Salmon Aligner
-[Salmon](https://salmon.readthedocs.io/en/latest/salmon.html) is an aligner that uses transcripts for getting raw counts from RNA-Seq data. We will align using salmon to compare count data with our STAR alignments.
+[Salmon](https://salmon.readthedocs.io/en/latest/salmon.html) is a tool for quantifying the expression of transcripts using RNA-seq data. Salmon uses new algorithms (specifically, coupling the concept of quasi-mapping with a two-phase inference procedure) to provide accurate expression estimates very quickly (i.e. wicked-fast) and while using little memory. Salmon performs its inference using an expressive and realistic model of RNA-seq data that takes into account experimental attributes and biases commonly observed in real RNA-seq data.
 
-### Indexing the transcripts
+## We first need to index the reference (In this case the transcriptome)
 
-**1\.** First go to your rnaseq_example directory, load the salmon module, and take a look at the options:
+**1\.** First lets make sure we are where we are supposed to be and that the References directory is available.
 
-	cd /share/workshop/$USER/rnaseq_example
+    cd /share/workshop/$USER/rnaseq_example
+
+---
+**2\.** To align our data we will need the transcriptome (fasta) and annotation (gtf) for human. There are many places to find them, but we are going to get it from the [GENCODE](https://www.gencodegenes.org/human/).
+
+We need to first get the urls for the and protein coding genes. For RNAseq we want to use the protein coding transcript sequences and basic gene annotation. At the time of this workshop the current version of GENCODE is *31*. You will want to update the scripts to use the current version.
+
+<img src="alignment_figures/index_figure1.png" alt="index_figure1" width="800px"/>
+
+
+<img src="alignment_figures/index_figure3.png" alt="index_figure1" width="800px"/>
+
+-----
+**3\.** Lets take a look at the help docs for salmon and its subcommands as well:
+
 	module load salmon
-	salmon -h
-
------
-
-**2\.** Look at the help docs for the salmon subcommands as well:
-
+	salamon -h
 	salmon index -h
-	salmon quant --help-reads
 
 -----
-
-**3\.** In order to align the data we first need to download and index the transcripts. Pull down a slurm script to do the downloading and indexing and take a look at it:
+**4\.** First we need to index the transcriptome for STAR. Lets pull down a slurm script to index the human GENCODE version of the transcriptome.
 
 	wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/scripts/salmon_index.slurm
 	less salmon_index.slurm
 
 Press 'q' to exit.
 
-<div class="script">
-#!/bin/bash
+<div class="script">#!/bin/bash
+
 #SBATCH --job-name=salmon_index # Job name
 #SBATCH --nodes=1
 #SBATCH --ntasks=8
@@ -46,12 +53,13 @@ echo $HOSTNAME
 outpath="References"
 
 cd ${outpath}
-wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.transcripts.fa.gz
-gunzip gencode.v29.transcripts.fa.gz
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/gencode.v31.pc_transcripts.fa.gz
+gunzip gencode.v31.pc_transcripts.fa.gz
+PC_FASTA="gencode.v31.pc_transcripts.fa"
+INDEX="salmon_gencode.v31.index"
 
 module load salmon
-call="salmon index -i salmon_index -p 8 -t gencode.v29.transcripts.fa --gencode"
-
+call="salmon index -i ${INDEX} -k 31 --gencode -p 8 -t ${PC_FASTA}"
 echo $call
 eval $call
 
@@ -63,25 +71,53 @@ echo $runtime
 1. The script changes into the References directory.
 1. It uses wget to download the transcript fasta file from GENCODE.
 1. Uncompresses it using gunzip.
-1. Run Salmon indexing, using the "gencode" flag to parse the GENCODE file properly, and outputting to a new directory called "salmon_index".
+1. Run Salmon indexing, using the "gencode" flag to parse the GENCODE file properly, and outputting to a new directory called "salmon_gencode.v31.index".
 
------
+Run salmon indexing when ready.
 
-**4\.** Submit the script:
 
 	sbatch salmon_index.slurm
 
-This step will take about 11 minutes to complete after the job actually starts running. Take a look at the [Salmon documentation](https://salmon.readthedocs.io/en/latest/salmon.html) while you wait. All of the output will be in the "salmon_index" directory.
+
+This step does not take long, about 15 minutes. You can look at the [salmon documentation](https://salmon.readthedocs.io/en/latest/salmon.html) while you wait. All of the output files will be written to the salmon_gencode.v31.index directory.
 
 **IF** for some reason it didn't finish, is corrupted, or you missed the session, you can copy over a completed copy.
 
-	cp -r /share/biocore/workshops/2019_August_RNAseq/References/salmon_index /share/workshop/$USER/rnaseq_example/References/
+	cp -r /share/biocore/workshops/2019_August_RNAseq/References/salmon_gencode.v31.index /share/workshop/$USER/rnaseq_example/References/
 
------
+## Alignments
 
-### Alignment
+**1\.** We are now ready to try an alignment:
 
-**5\.** Once your indexing is complete, then you can align all the samples. Go back to your rnaseq_example directory, download the slurm script for the alignment, and take a look at it:
+    cd /share/workshop/$USER/rnaseq_example/HTS_testing
+
+Then run the salmon quant (quantify transcripts) command
+
+    module load salmon
+		salmon quant --help-reads
+
+    salmon quant \
+    --threads 8 \
+    --index ../References/salmon_gencode.v31.index \
+		--libType A \
+		--validateMappings \
+		--geneMap ../References/gencode.v31.primary_assembly.annotation.gtf \
+		--output SampleAC1.salmon \
+    -1 SampleAC1.streamed_R1.fastq.gz \
+		-2 SampleAC1.streamed_R2.fastq.gz
+
+
+In the command, we are telling salmon to quantify reads with libtype 'auto' ([libtype](https://salmon.readthedocs.io/en/latest/salmon.html#what-s-this-libtype)) on a gene level ('--geneMap'), the folder for all the output files will be SampleAC1.salmon, and finally, the input file pair.
+
+## Running Salmon on the experiment
+
+**1\.** We can now run Salmon across all samples on the real data using a SLURM script, [salmon.slurm](../scripts/salmon.slurm), that we should take a look at now.
+
+    cd /share/workshop/$USER/rnaseq_example  # We'll run this from the main directory
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/scripts/salmon.slurm
+    less salmon.slurm
+
+ When you are done, type "q" to exit.
 
 	cd /share/workshop/$USER/rnaseq_example
 	wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/scripts/salmon.slurm
@@ -110,7 +146,7 @@ hostname
 outdir="02-Salmon"
 sampfile="samples.txt"
 REF="References/salmon_index"
-GTF="References/gencode.v29.primary_assembly.annotation.gtf"
+GTF="References/gencodev31.primary_assembly.annotation.gtf"
 
 SAMPLE=`head -n ${SLURM_ARRAY_TASK_ID} $sampfile | tail -1`
 R1="01-HTS_Preproc/$SAMPLE/${SAMPLE}_R1.fastq.gz"
