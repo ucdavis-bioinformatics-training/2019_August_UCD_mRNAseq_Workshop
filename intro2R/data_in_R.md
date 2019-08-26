@@ -18,68 +18,84 @@ library(knitr)
 library(tidyverse)
 ```
 
-<div class="output">── Attaching packages ─────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
-</div>
+```
+## ── Attaching packages ────────────────────────── tidyverse 1.2.1 ──
+```
 
-<div class="output">✔ ggplot2 3.1.0     ✔ purrr   0.2.5
-✔ tibble  2.0.1     ✔ dplyr   0.7.8
-✔ tidyr   0.8.2     ✔ stringr 1.3.1
-✔ readr   1.3.1     ✔ forcats 0.3.0
-</div>
+```
+## ✔ ggplot2 3.2.1     ✔ purrr   0.3.2
+## ✔ tibble  2.1.3     ✔ dplyr   0.8.3
+## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0
+```
 
-<div class="output">── Conflicts ────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-</div>
+```
+## ── Conflicts ───────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+```
 
 ```r
 library(reshape2)
 ```
 
-<div class="output">
-Attaching package: 'reshape2'
-</div>
+```
+## 
+## Attaching package: 'reshape2'
+```
 
-<div class="output">The following object is masked from 'package:tidyr':
-
-    smiths
-</div>
+```
+## The following object is masked from 'package:tidyr':
+## 
+##     smiths
+```
 
 ```r
 library(gridExtra)
 ```
 
-<div class="output">
-Attaching package: 'gridExtra'
-</div>
+```
+## 
+## Attaching package: 'gridExtra'
+```
 
-<div class="output">The following object is masked from 'package:dplyr':
+```
+## The following object is masked from 'package:dplyr':
+## 
+##     combine
+```
 
-    combine
-</div>
-
-This document assumes you have the file 'bwa_mem_Stats.log' in your current working directory, lets test to make sure it is.
+This document assumes you have the file 'bwa.samtools.stats' in your current working directory, lets test to make sure it is.
 
 ```r
 getwd()
 ```
 
-<div class="output">[1] "/Users/mattsettles/projects/src/github.com-ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/intro2R"
-</div>
+```
+## [1] "/Users/mattsettles/projects/src/github.com-ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/intro2R"
+```
 
 ```r
 dir()
 ```
 
-<div class="output">[1] "bwa_mem_Stats.log"    "Data_in_R_Test.Rproj"     "data_in_R.Rmd" 
-</div>
+```
+##  [1] "bwa_mem_Stats.log"      "Data_in_R_figures"     
+##  [3] "Data_in_R_files"        "data_in_R_prepare.html"
+##  [5] "data_in_R_prepare.md"   "data_in_R_prepare.Rmd" 
+##  [7] "data_in_R.Rmd"          "Intro2R_figures"       
+##  [9] "Intro2R_files"          "Intro2R.md"            
+## [11] "Intro2R.Rmd"            "README.md"             
+## [13] "RStudio_figures"        "RStudio.md"
+```
 
 ```r
 file.exists("bwa_mem_Stats.log")
 ```
 
-<div class="output">[1] TRUE
-</div>
+```
+## [1] TRUE
+```
 
 If it returned TRUE, great! If not return to the Prepare data_in_R doc and follow the directions to get the file.
 
@@ -90,32 +106,35 @@ data <- readLines("bwa_mem_Stats.log")
 head(data)
 ```
 
-<div class="output">[1] "# This file was produced by samtools stats (1.9+htslib-1.9) and can be plotted using plot-bamstats"
-[2] "# This file contains statistics for all reads."                                                    
-[3] "# The command line was:  stats -@ 32 bwa.bam"                                                      
-[4] "# CHK, Checksum\t[2]Read Names\t[3]Sequences\t[4]Qualities"                                        
-[5] "# CHK, CRC32 of reads which passed filtering followed by addition (32bit overflow)"                
-[6] "CHK\t77e64415\t5b47b901\t532fe148"
-</div>
+```
+## [1] "# This file was produced by samtools stats (1.6+htslib-1.6) and can be plotted using plot-bamstats"
+## [2] "# This file contains statistics for all reads."                                                    
+## [3] "# The command line was:  stats bwa_mem.sam"                                                        
+## [4] "# CHK, Checksum\t[2]Read Names\t[3]Sequences\t[4]Qualities"                                        
+## [5] "# CHK, CRC32 of reads which passed filtering followed by addition (32bit overflow)"                
+## [6] "CHK\t1822d9ff\t21e43765\ta76bc679"
+```
 
 ```r
 tail(data)
 ```
 
-<div class="output">[1] "GCD\t19.0\t58.824\t0.007\t0.007\t0.007\t0.007\t0.007"
-[2] "GCD\t36.0\t70.588\t0.007\t0.007\t0.007\t0.007\t0.007"
-[3] "GCD\t38.0\t76.471\t0.007\t0.007\t0.007\t0.007\t0.007"
-[4] "GCD\t41.0\t82.353\t0.007\t0.007\t0.007\t0.007\t0.007"
-[5] "GCD\t42.0\t88.235\t0.007\t0.007\t0.007\t0.007\t0.007"
-[6] "GCD\t48.0\t100.000\t0.007\t0.007\t0.007\t0.007\t0.007"
-</div>
+```
+## [1] "IC\t98\t0\t0\t1\t0"                                                                                                                                               
+## [2] "# Coverage distribution. Use `grep ^COV | cut -f 2-` to extract this part."                                                                                       
+## [3] "COV\t[1-1]\t1\t300"                                                                                                                                               
+## [4] "# GC-depth. Use `grep ^GCD | cut -f 2-` to extract this part. The columns are: GC%, unique sequence percentiles, 10th, 25th, 50th, 75th and 90th depth percentile"
+## [5] "GCD\t0.0\t66.667\t0.000\t0.000\t0.000\t0.000\t0.000"                                                                                                              
+## [6] "GCD\t0.6\t100.000\t0.005\t0.005\t0.005\t0.005\t0.005"
+```
 
 ```r
 length(data)
 ```
 
-<div class="output">[1] 1866
-</div>
+```
+## [1] 8692
+```
 
 There are many sections to the samtools stats output, each section begins with a two or three letter code.
 
@@ -165,49 +184,44 @@ sn <- separate(data.frame(sn),col=1, into=c("ID", "Name","Value"), sep="\t")[,-1
 kable(sn, caption="Summary numbers")
 ```
 
-<div class="output">Table: Summary numbers
 
-Name                                       Value        
------------------------------------------  -------------
-raw total sequences:                       913311962    
-filtered sequences:                        0            
-sequences:                                 913311962    
-is sorted:                                 0            
-1st fragments:                             456655981    
-last fragments:                            456655981    
-reads mapped:                              800365919    
-reads mapped and paired:                   748856756    
-reads unmapped:                            112946043    
-reads properly paired:                     306860552    
-reads paired:                              913311962    
-reads duplicated:                          0            
-reads MQ0:                                 439677889    
-reads QC failed:                           0            
-non-primary alignments:                    290462657    
-total length:                              127407018699
-total first fragment length:               58451965568  
-total last fragment length:                68955053131  
-bases mapped:                              111789284981
-bases mapped (cigar):                      53892754351  
-bases trimmed:                             0            
-bases duplicated:                          0            
-mismatches:                                1041917776   
-error rate:                                1.933317e-02
-average length:                            139          
-average first fragment length:             128          
-average last fragment length:              151          
-maximum length:                            151          
-maximum first fragment length:             128          
-maximum last fragment length:              151          
-average quality:                           26.6         
-insert size average:                       176.9        
-insert size standard deviation:            132.5        
-inward oriented pairs:                     122015428    
-outward oriented pairs:                    32504015     
-pairs with other orientation:              4311328      
-pairs on different chromosomes:            215597607    
-percentage of properly paired reads (%):   33.6         
-</div>
+
+Table: Summary numbers
+
+Name                              Value        
+--------------------------------  -------------
+raw total sequences:              5964242      
+filtered sequences:               0            
+sequences:                        5964242      
+is sorted:                        0            
+1st fragments:                    2982121      
+last fragments:                   2982121      
+reads mapped:                     5953492      
+reads mapped and paired:          5943876      
+reads unmapped:                   10750        
+reads properly paired:            5449340      
+reads paired:                     5964242      
+reads duplicated:                 0            
+reads MQ0:                        519301       
+reads QC failed:                  0            
+non-primary alignments:           0            
+total length:                     596424200    
+bases mapped:                     595349200    
+bases mapped (cigar):             568895918    
+bases trimmed:                    0            
+bases duplicated:                 0            
+mismatches:                       2455843      
+error rate:                       4.316858e-03 
+average length:                   100          
+maximum length:                   100          
+average quality:                  38.8         
+insert size average:              503.1        
+insert size standard deviation:   1301.3       
+inward oriented pairs:            2556576      
+outward oriented pairs:           161541       
+pairs with other orientation:     5914         
+pairs on different chromosomes:   49491        
+
 
 ```r
 ?kable
@@ -278,10 +292,10 @@ fq <- grep("^FFQ|^LFQ",data, value=TRUE)
 fq <- separate(data.frame(fq),col=1, into=c("Pair", "Cycle", seq(41)), sep="\t", convert=TRUE)
 ```
 
-<div class="output">Warning: Expected 43 pieces. Missing pieces filled with `NA` in 279
-rows [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-20, ...].
-</div>
+```
+## Warning: Expected 43 pieces. Additional pieces discarded in 202 rows [1, 2,
+## 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...].
+```
 
 We get a message here, saying data is missing. This is because there are no 38,39,40,41 quality scores (the typical range for Illumina qualities).
 
@@ -357,9 +371,10 @@ GC Coverage data
 summarize(is,low=min(`insert size`), max=max(`insert size`), average=mean(`all pairs`), noutward=sum(outward), ninward=sum(inward))
 ```
 
-<div class="output">  low max average noutward   ninward
-1   0 576  272522 32273430 120770240
-</div>
+```
+##   low  max  average noutward ninward
+## 1   0 8000 340.4613   161541 2556576
+```
 
 ```r
 new_is <- mutate(is,poutward=outward/`all pairs`, pinward=inward/`all pairs`)
@@ -412,12 +427,12 @@ A basic ggplot2 plot consists of the following components:
 
 The basic idea: independently specify plot building blocks and combine them (using '+') to create just about any kind of graphical display you want.
 
-ggplot (data = \<DATA\> ) +  
-  \<GEOM_FUNCTION\> (mapping = aes( \<MAPPINGS\> ), stat = \<STAT\> , position = \<POSITION\> ) +  
-  \<COORDINATE_FUNCTION\> +  
-  \<FACET_FUNCTION\> +  
-  \<SCALE_FUNCTION\> +  
-  \<THEME_FUNCTION\>
+ggplot (data = <DATA> ) +
+  <GEOM_FUNCTION> (mapping = aes( <MAPPINGS> ), stat = <STAT> , position = <POSITION> ) +
+  <COORDINATE_FUNCTION> +
+  <FACET_FUNCTION> +
+  <SCALE_FUNCTION> +
+  <THEME_FUNCTION>
 
 ### Our first plot, plotting the insert size of mapped fragments
 
@@ -429,7 +444,7 @@ g <- ggplot(data = is)
 g + geom_line( aes(x=get("insert size"), y=get("all pairs")))
 ```
 
-![](orig_data_in_R_files/figure-html/plot_is-1.png)<!-- -->
+![](data_in_R_files/figure-html/plot_is-1.png)<!-- -->
 
 
 Ok, now lets add some labels to the plot
@@ -440,7 +455,7 @@ g + geom_line( aes(x=get("insert size"), y=get("all pairs"))) +
   labs( x = "insert size", y = "all pairs", title ="Mapped insert sizes", subtitle = "All Pairs", caption = "all pairs insert size")
 ```
 
-![](orig_data_in_R_files/figure-html/plot_is_labels-1.png)<!-- -->
+![](data_in_R_files/figure-html/plot_is_labels-1.png)<!-- -->
 
 Ok, what about plotting multiple data objects on the same plot (multiple lines), in that case we can specifically set the y axis in geom_line and color, then call geom_lines twice (or more times).
 
@@ -452,7 +467,7 @@ g + geom_line(aes(y=get("inward")),color="blue") +
     labs( x = "insert size", y = "all pairs", title ="Mapped insert sizes", subtitle = "All Pairs", caption = "all pairs insert size")
 ```
 
-![](orig_data_in_R_files/figure-html/plot_is_mlines-1.png)<!-- -->
+![](data_in_R_files/figure-html/plot_is_mlines-1.png)<!-- -->
 
 lets try adjusting the x/y limits to 0,600 and 0,20000 respectively.
 
@@ -463,7 +478,7 @@ g + geom_line(aes(y=get("inward")),color="blue") +
   coord_cartesian(xlim=c(0,500), ylim=c(0,600000))
 ```
 
-![](orig_data_in_R_files/figure-html/plot_is_limits-1.png)<!-- -->
+![](data_in_R_files/figure-html/plot_is_limits-1.png)<!-- -->
 
 Ok so now put all these elements together into a single plot, save final plot as 'g'
 
@@ -485,7 +500,7 @@ g <- g + theme_light()
 plot(g)
 ```
 
-![](orig_data_in_R_files/figure-html/insert_length-1.png)<!-- -->
+![](data_in_R_files/figure-html/insert_length-1.png)<!-- -->
 
 ### Plotting GC content
 
@@ -496,14 +511,15 @@ In order to plot GC percentage we first need to convert the counts to proportion
 head(gc)
 ```
 
-<div class="output">  Pair   GC Count
-1  GCF 0.25  9986
-2  GCF 1.01  6442
-3  GCF 1.76  6816
-4  GCF 2.51  8029
-5  GCF 3.27  9586
-6  GCF 4.02 11557
-</div>
+```
+##   Pair   GC Count
+## 1  GCF 0.25    64
+## 2  GCF 1.01   166
+## 3  GCF 2.01   188
+## 4  GCF 3.02   251
+## 5  GCF 4.02   195
+## 6  GCF 5.03   170
+```
 
 ```r
 h <- ggplot(gc, aes(as.numeric(GC), Count/sum(Count),color=Pair))
@@ -511,7 +527,7 @@ h <- h + geom_line()
 h
 ```
 
-![](orig_data_in_R_files/figure-html/plot_gc-1.png)<!-- -->
+![](data_in_R_files/figure-html/plot_gc-1.png)<!-- -->
 
 ** On your own**: Finish the plot (add labels, etc.). Save the final graph object in h
 
@@ -533,7 +549,7 @@ i <- ic + geom_line() + coord_cartesian(ylim=c(0,100))
 i
 ```
 
-![](orig_data_in_R_files/figure-html/plot_base_comp-1.png)<!-- -->
+![](data_in_R_files/figure-html/plot_base_comp-1.png)<!-- -->
 
 ** On your own**: Using what you learned until now, finish the plot, save it as object i
 
@@ -545,7 +561,7 @@ i2 <- ic + geom_boxplot()
 i2
 ```
 
-![](orig_data_in_R_files/figure-html/actg_boxplot-1.png)<!-- -->
+![](data_in_R_files/figure-html/actg_boxplot-1.png)<!-- -->
 
 ** On your own**: Try some other geometries (Ex. bin2d, col, count, which generate an 'interpretable' plot)
 
@@ -566,7 +582,7 @@ j <- ggplot(fqm, aes(Cycle, variable))
 j + geom_tile(aes(fill = as.numeric(value)))
 ```
 
-![](orig_data_in_R_files/figure-html/plot_heatmap-1.png)<!-- -->
+![](data_in_R_files/figure-html/plot_heatmap-1.png)<!-- -->
 
 Now lets try changing the gradient colors and modify the legend, add labels. The ggplot2 'theme' function can be used to modify individual components of a theme.
 
@@ -590,7 +606,7 @@ j = j + geom_tile(aes(fill = as.numeric(value))) +
 j
 ```
 
-![](orig_data_in_R_files/figure-html/heatmap-1.png)<!-- -->
+![](data_in_R_files/figure-html/heatmap-1.png)<!-- -->
 
 ** On your own** Try modifying scale_fill_gradient to scale_fill_distiller.
 
@@ -608,7 +624,7 @@ k <- k + geom_line(aes(y=as.numeric(deletion_count)), color = "black", size=1.5)
 k
 ```
 
-![](orig_data_in_R_files/figure-html/indel_plot-1.png)<!-- -->
+![](data_in_R_files/figure-html/indel_plot-1.png)<!-- -->
 
 Lets try changing the Y axis to log scale
 
@@ -617,7 +633,7 @@ k <- k + scale_y_log10()
 k
 ```
 
-![](orig_data_in_R_files/figure-html/indel_plot2-1.png)<!-- -->
+![](data_in_R_files/figure-html/indel_plot2-1.png)<!-- -->
 
 Tweek the grid elments using theme
 
@@ -628,10 +644,11 @@ k <- k + theme(panel.grid.minor = element_blank(),
 k
 ```
 
-<div class="output">Warning: Transformation introduced infinite values in continuous y-axis
-</div>
+```
+## Warning: Transformation introduced infinite values in continuous y-axis
+```
 
-![](orig_data_in_R_files/figure-html/grid_tweek-1.png)<!-- -->
+![](data_in_R_files/figure-html/grid_tweek-1.png)<!-- -->
 
 ## update the axis labels
 
@@ -640,10 +657,11 @@ k <- k + xlab("indel length") + ylab("indel count (log10)")
 k
 ```
 
-<div class="output">Warning: Transformation introduced infinite values in continuous y-axis
-</div>
+```
+## Warning: Transformation introduced infinite values in continuous y-axis
+```
 
-![](orig_data_in_R_files/figure-html/new_axis_lables-1.png)<!-- -->
+![](data_in_R_files/figure-html/new_axis_lables-1.png)<!-- -->
 
 Now lets also plot the ratio of the 2, but first we need to create the object
 
@@ -655,7 +673,7 @@ l <- l + geom_line(aes(y=as.numeric(ratio)), color = "green", size=1.0)
 l
 ```
 
-![](orig_data_in_R_files/figure-html/ratio-1.png)<!-- -->
+![](data_in_R_files/figure-html/ratio-1.png)<!-- -->
 Tweek the grid
 
 ```r
@@ -665,7 +683,7 @@ l <- l + theme(panel.grid.minor = element_blank(),
 l
 ```
 
-![](orig_data_in_R_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+![](data_in_R_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 Update axis labels
 
 ```r
@@ -673,7 +691,7 @@ l <- l + xlab("indel length") + ylab("insertion/deletion ratio")
 l
 ```
 
-![](orig_data_in_R_files/figure-html/update_labels-1.png)<!-- -->
+![](data_in_R_files/figure-html/update_labels-1.png)<!-- -->
 
 Now lets use gridExtra to plot both in the same plat
 
@@ -681,10 +699,11 @@ Now lets use gridExtra to plot both in the same plat
 grid.arrange(k, l, nrow = 1)
 ```
 
-<div class="output">Warning: Transformation introduced infinite values in continuous y-axis
-</div>
+```
+## Warning: Transformation introduced infinite values in continuous y-axis
+```
 
-![](orig_data_in_R_files/figure-html/grid-1.png)<!-- -->
+![](data_in_R_files/figure-html/grid-1.png)<!-- -->
 
 ### Fancy Multiple plots in a grid
 The gridExtra package is great for plotting multiple object in one plot.
@@ -706,7 +725,7 @@ full <- grid.arrange(
 )
 ```
 
-![](orig_data_in_R_files/figure-html/cluster-1.png)<!-- -->
+![](data_in_R_files/figure-html/cluster-1.png)<!-- -->
 
 ** on your own**: Play with th grid.arrange function, using the plots you've created to create you own final combined plot.
 
@@ -743,37 +762,37 @@ Its always good to end any Notebook with Session info, records all the packages 
 sessionInfo()
 ```
 
-<div class="output">R version 3.5.2 (2018-12-20)
-Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS Mojave 10.14.3
-
-Matrix products: default
-BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib
-
-locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-other attached packages:
- [1] bindrcpp_0.2.2  gridExtra_2.3   reshape2_1.4.3  forcats_0.3.0  
- [5] stringr_1.3.1   dplyr_0.7.8     purrr_0.2.5     readr_1.3.1    
- [9] tidyr_0.8.2     tibble_2.0.1    ggplot2_3.1.0   tidyverse_1.2.1
-[13] knitr_1.21     
-
-loaded via a namespace (and not attached):
- [1] tidyselect_0.2.5 xfun_0.4         haven_2.0.0      lattice_0.20-38
- [5] colorspace_1.4-0 generics_0.0.2   htmltools_0.3.6  yaml_2.2.0      
- [9] rlang_0.3.1      pillar_1.3.1     glue_1.3.0       withr_2.1.2     
-[13] modelr_0.1.2     readxl_1.2.0     bindr_0.1.1      plyr_1.8.4      
-[17] munsell_0.5.0    gtable_0.2.0     cellranger_1.1.0 rvest_0.3.2     
-[21] evaluate_0.12    labeling_0.3     highr_0.7        broom_0.5.1     
-[25] Rcpp_1.0.0       scales_1.0.0     backports_1.1.3  jsonlite_1.6    
-[29] hms_0.4.2        digest_0.6.18    stringi_1.2.4    grid_3.5.2      
-[33] cli_1.0.1        tools_3.5.2      magrittr_1.5     lazyeval_0.2.1  
-[37] crayon_1.3.4     pkgconfig_2.0.2  xml2_1.2.0       lubridate_1.7.4
-[41] assertthat_0.2.0 rmarkdown_1.11   httr_1.4.0       rstudioapi_0.9.0
-[45] R6_2.3.0         nlme_3.1-137     compiler_3.5.2
-</div>
+```
+## R version 3.6.1 (2019-07-05)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS Mojave 10.14.6
+## 
+## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+##  [1] gridExtra_2.3   reshape2_1.4.3  forcats_0.4.0   stringr_1.4.0  
+##  [5] dplyr_0.8.3     purrr_0.3.2     readr_1.3.1     tidyr_0.8.3    
+##  [9] tibble_2.1.3    ggplot2_3.2.1   tidyverse_1.2.1 knitr_1.24     
+## 
+## loaded via a namespace (and not attached):
+##  [1] tidyselect_0.2.5 xfun_0.9         haven_2.1.1      lattice_0.20-38 
+##  [5] colorspace_1.4-1 generics_0.0.2   vctrs_0.2.0      htmltools_0.3.6 
+##  [9] yaml_2.2.0       rlang_0.4.0      pillar_1.4.2     glue_1.3.1      
+## [13] withr_2.1.2      modelr_0.1.5     readxl_1.3.1     plyr_1.8.4      
+## [17] munsell_0.5.0    gtable_0.3.0     cellranger_1.1.0 rvest_0.3.4     
+## [21] evaluate_0.14    labeling_0.3     highr_0.8        broom_0.5.2     
+## [25] Rcpp_1.0.2       scales_1.0.0     backports_1.1.4  jsonlite_1.6    
+## [29] hms_0.5.1        digest_0.6.20    stringi_1.4.3    grid_3.6.1      
+## [33] cli_1.1.0        tools_3.6.1      magrittr_1.5     lazyeval_0.2.2  
+## [37] crayon_1.3.4     pkgconfig_2.0.2  zeallot_0.1.0    xml2_1.2.2      
+## [41] lubridate_1.7.4  assertthat_0.2.1 rmarkdown_1.15   httr_1.4.1      
+## [45] rstudioapi_0.10  R6_2.4.0         nlme_3.1-141     compiler_3.6.1
+```

@@ -1,8 +1,7 @@
 ---
 title: "Data_in_R"
 author: "Matt Settles"
-output:
-    notebook: default
+output: notebook
 ---
 
 Recreating (and maybe improving on) some of the figures generated with plot-bamstats application in R.

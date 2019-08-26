@@ -29,7 +29,7 @@ navigation:
   - title: Prepare Data in R (extra)
     url: intro2R/data_in_R_prepare
   - title: Data in R (extra)
-    url: intro2R/orig_data_in_R
+    url: intro2R/data_in_R
   - heading: Data Reduction
   - title: Files and Filetypes for RNA-Seq
     url: data_reduction/filetypes
