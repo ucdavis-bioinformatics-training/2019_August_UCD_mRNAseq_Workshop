@@ -111,7 +111,7 @@
 <body>
 
     <div class="header sticky" id="myHeader" style="width:100%; top:0; position:fixed">
-      <a href="{{ https://bioinformatics.ucdavis.edu/training/ }}" class="logo">
+      <a href="https://bioinformatics.ucdavis.edu/training" class="logo">
           <img src="{{ '/assets/img/biocore_banner.png' | relative_url }}">
           </img></a>
             <h2 style="padding-left:10px; padding-top:10px">{{ site.title | default: site.github.repository_name }}</h2>
@@ -175,8 +175,10 @@ function doNav() {
 
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction()};
-//var scrollpos=0;
-//document.getElementById("mySidenav").onscroll = function() {scrollpos = document.getElementById("mySidenav").scrollTop;}
+sn = document.getElementById("mySidenav");
+sn.onscroll = function() {sessionStorage.setItem("scrollpos",sn.scrollTop);};
+
+window.onload = function() {sn.scrollTop = sessionStorage.getItem("scrollpos");};
 
 // Get the header
 var header = document.getElementById("myHeader");
