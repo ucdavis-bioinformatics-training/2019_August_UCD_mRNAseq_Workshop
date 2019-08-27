@@ -13,11 +13,11 @@ This workshop will include a rich collection of lectures and hands-on sessions, 
 
 A preliminary agenda for the week includes:
 
-* Monday	Introduction to the command line, cluster resources, and the R programming language (or advanced computing topics)
-* Tuesday	Introduction to sequence data and preprocessing
-* Wednesday        	Mapping data to a genome and transcript expression quantification
-* Thursday	Differential expression analysis
-* Friday	Post differential expression analysis, including gene set enrichment analysis, Gene Ontology/Pathway analysis, Generation of figures and tables
+* Monday: Introduction to the command line, cluster resources, and the R programming language (or advanced computing topics)
+* Tuesday: Introduction to sequence data and preprocessing
+* Wednesday: Mapping data to a genome and transcript expression quantification
+* Thursday: Differential expression analysis
+* Friday: Post differential expression analysis, including gene set enrichment analysis, Gene Ontology/Pathway analysis, Generation of figures and tables
 
 Lectures throughout the week will include topics such as:
 
