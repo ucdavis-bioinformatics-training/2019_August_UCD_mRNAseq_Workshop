@@ -165,7 +165,7 @@ Topic 2. Basic data types in R
 ### Simple variables: variables that have a numeric value, a character value (such as a string), or a logical value (True or False)
 
 Examples of numeric values.
-```{r, class.source = "colsel"}
+```{r}
 # assign number 150 to variable a.
 a <- 150
 a

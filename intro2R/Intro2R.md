@@ -442,7 +442,7 @@ friend_ages
 ```
 
 ```
-##  Mina  Ella  Anna Carla 
+##  Mina  Ella  Anna Carla
 ##    21    27    26    32
 ```
 
@@ -453,7 +453,7 @@ friend_ages
 ```
 
 ```
-## Mina Ella Anna Cora 
+## Mina Ella Anna Cora
 ##   21   27   26   32
 ```
 
@@ -465,7 +465,7 @@ friend_ages
 ```
 
 ```
-## Mina Ella Anna Cora 
+## Mina Ella Anna Cora
 ##   21   27   26   32
 ```
 
@@ -486,7 +486,7 @@ friend_ages[2]
 ```
 
 ```
-## Ella 
+## Ella
 ##   27
 ```
 
@@ -495,7 +495,7 @@ friend_ages["Ella"]
 ```
 
 ```
-## Ella 
+## Ella
 ##   27
 ```
 
@@ -504,7 +504,7 @@ friend_ages[c(1,3)]
 ```
 
 ```
-## Mina Anna 
+## Mina Anna
 ##   21   26
 ```
 
@@ -513,7 +513,7 @@ friend_ages[c("Mina", "Anna")]
 ```
 
 ```
-## Mina Anna 
+## Mina Anna
 ##   21   26
 ```
 
@@ -523,7 +523,7 @@ friend_ages[-3]
 ```
 
 ```
-## Mina Ella Cora 
+## Mina Ella Cora
 ##   21   27   32
 ```
 
@@ -656,7 +656,7 @@ my_matrix[1,]
 ```
 
 ```
-## col1 col2 col3 
+## col1 col2 col3
 ##    1    2    8
 ```
 
@@ -665,7 +665,7 @@ my_matrix[,3]
 ```
 
 ```
-## row1 row2 row3 row4 
+## row1 row2 row3 row4
 ##    8   37  267   19
 ```
 
@@ -715,7 +715,7 @@ rowSums(my_matrix)
 ```
 
 ```
-## row1 row2 row3 row4 
+## row1 row2 row3 row4
 ##   11   58  302   38
 ```
 
@@ -726,7 +726,7 @@ colSums(my_matrix)
 ```
 
 ```
-## col1 col2 col3 
+## col1 col2 col3
 ##   21   57  331
 ```
 
@@ -748,7 +748,7 @@ apply(my_matrix, 1, mean)
 ```
 
 ```
-##       row1       row2       row3       row4 
+##       row1       row2       row3       row4
 ##   3.666667  19.333333 100.666667  12.666667
 ```
 
@@ -760,7 +760,7 @@ apply(my_matrix, 1, median)
 ```
 
 ```
-## row1 row2 row3 row4 
+## row1 row2 row3 row4
 ##    2   18   27   10
 ```
 
@@ -849,7 +849,7 @@ summary(friend_groups)
 ```
 
 ```
-## not_best_friend     best_friend 
+## not_best_friend     best_friend
 ##               2               2
 ```
 
@@ -860,7 +860,7 @@ table(friend_groups)
 
 ```
 ## friend_groups
-## not_best_friend     best_friend 
+## not_best_friend     best_friend
 ##               2               2
 ```
 
@@ -1082,13 +1082,13 @@ my_list
 ```
 ## $mother
 ## [1] "Sophia"
-## 
+##
 ## $father
 ## [1] "John"
-## 
+##
 ## $sisters
 ## [1] "Anna" "Emma"
-## 
+##
 ## $sister_age
 ## [1]  5 10
 ```
@@ -1275,7 +1275,7 @@ ls()
 ```
 ##  [1] "a"             "age"           "b"             "col1"         
 ##  [5] "col2"          "col3"          "colFmt"        "data"         
-##  [9] "data2"         "friend_ages"   "friend_groups" "friend_names" 
+##  [9] "data2"         "friend_ages"   "friend_groups" "friend_names"
 ## [13] "friends"       "has_child"     "hello"         "is_adult"     
 ## [17] "is_female"     "is_male"       "my_data"       "my_friends"   
 ## [21] "my_list"       "my_matrix"     "title"
@@ -1352,22 +1352,22 @@ lapply(1:dim(data)[1], function(x){sum(data[x,])})
 ```
 ## [[1]]
 ## [1] 2.696972
-## 
+##
 ## [[2]]
 ## [1] 0.1402984
-## 
+##
 ## [[3]]
 ## [1] -3.111006
-## 
+##
 ## [[4]]
 ## [1] 0.1516168
-## 
+##
 ## [[5]]
 ## [1] 0.01941972
-## 
+##
 ## [[6]]
 ## [1] -2.913826
-## 
+##
 ## [[7]]
 ## [1] -1.392908
 ```
@@ -1396,22 +1396,22 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ```
 ## [[1]]
 ## [1] 0.4308764
-## 
+##
 ## [[2]]
 ## [1] -0.8529472
-## 
+##
 ## [[3]]
 ## [1] NaN
-## 
+##
 ## [[4]]
 ## [1] -0.8192526
-## 
+##
 ## [[5]]
 ## [1] -1.711757
-## 
+##
 ## [[6]]
 ## [1] NaN
-## 
+##
 ## [[7]]
 ## [1] NaN
 ```
@@ -1456,22 +1456,22 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ```
 ## [[1]]
 ## [1] 0.4308764
-## 
+##
 ## [[2]]
 ## [1] -0.8529472
-## 
+##
 ## [[3]]
 ## [1] NaN
-## 
+##
 ## [[4]]
 ## [1] -0.8192526
-## 
+##
 ## [[5]]
 ## [1] -1.711757
-## 
+##
 ## [[6]]
 ## [1] NaN
-## 
+##
 ## [[7]]
 ## [1] NaN
 ```
@@ -1540,9 +1540,9 @@ apply(data, 2, mean)
 ```
 
 ```
-##          V1          V2          V3          V4          V5          V6 
-## -0.64883337  0.41640650 -0.26557523 -0.06964068 -0.27446079  0.27862684 
-##          V7 
+##          V1          V2          V3          V4          V5          V6
+## -0.64883337  0.41640650 -0.26557523 -0.06964068 -0.27446079  0.27862684
+##          V7
 ## -0.06644240
 ```
 
@@ -1669,7 +1669,7 @@ dev.off()
 ```
 
 ```
-## null device 
+## null device
 ##           1
 ```
 
