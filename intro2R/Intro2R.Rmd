@@ -15,6 +15,7 @@ background-color: lightyellow;
 
 ```{r setup, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE}
 library(knitr)
+knitr::render_jekyll()
 knitr::opts_chunk$set(class.source = "colsel")
 
 colFmt = function(x,color){
