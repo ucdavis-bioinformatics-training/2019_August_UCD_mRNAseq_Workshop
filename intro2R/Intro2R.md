@@ -1,7 +1,7 @@
 ---
 title: "R for Biologist - An Introduction to R"
 author: "Bioinformatics Core"
-date: "2019-08-19"
+date: "2019-08-27"
 output:
   html_document:
     keep_md: TRUE
@@ -12,9 +12,6 @@ output:
 background-color: lightyellow;
 }
 </style>
-
-
-
 
 
 
@@ -268,7 +265,7 @@ Topic 2. Basic data types in R
 
 Examples of numeric values.
 
-```r
+```{.r .colsel}
 # assign number 150 to variable a.
 a <- 150
 a
@@ -278,7 +275,7 @@ a
 ## [1] 150
 ```
 
-```r
+```{.r .colsel}
 # assign a number in scientific format to variable b.
 b <- 3e-2
 b
@@ -290,7 +287,7 @@ b
 
 Examples of character values.
 
-```r
+```{.r .colsel}
 # assign a string "Professor" to variable title
 title <- "Professor"
 title
@@ -300,7 +297,7 @@ title
 ## [1] "Professor"
 ```
 
-```r
+```{.r .colsel}
 # assign a string "Hello World" to variable hello
 hello <- "Hello World"
 hello
@@ -312,7 +309,7 @@ hello
 
 Examples of logical values.
 
-```r
+```{.r .colsel}
 # assign logical value "TRUE" to variable is_female
 is_female <- TRUE
 is_female
@@ -322,7 +319,7 @@ is_female
 ## [1] TRUE
 ```
 
-```r
+```{.r .colsel}
 # assign logical value "FALSE" to variable is_male
 is_male <- FALSE
 is_male
@@ -332,7 +329,7 @@ is_male
 ## [1] FALSE
 ```
 
-```r
+```{.r .colsel}
 # assign logical value to a variable by logical operation
 age <- 20
 is_adult <- age > 18
@@ -345,7 +342,7 @@ is_adult
 
 To find out the type of variable.
 
-```r
+```{.r .colsel}
 class(is_female)
 ```
 
@@ -353,7 +350,7 @@ class(is_female)
 ## [1] "logical"
 ```
 
-```r
+```{.r .colsel}
 # To check whether the variable is a specific type
 is.numeric(hello)
 ```
@@ -362,7 +359,7 @@ is.numeric(hello)
 ## [1] FALSE
 ```
 
-```r
+```{.r .colsel}
 is.numeric(a)
 ```
 
@@ -370,7 +367,7 @@ is.numeric(a)
 ## [1] TRUE
 ```
 
-```r
+```{.r .colsel}
 is.character(hello)
 ```
 
@@ -380,7 +377,7 @@ is.character(hello)
 
 The rule to convert a logical variable to numeric: TRUE > 1, FALSE > 0
 
-```r
+```{.r .colsel}
 as.numeric(is_female)
 ```
 
@@ -388,7 +385,7 @@ as.numeric(is_female)
 ## [1] 1
 ```
 
-```r
+```{.r .colsel}
 as.numeric(is_male)
 ```
 
@@ -398,7 +395,7 @@ as.numeric(is_male)
 
 R does not know how to convert a numeric variable to a character variable.
 
-```r
+```{.r .colsel}
 b
 ```
 
@@ -406,7 +403,7 @@ b
 ## [1] 0.03
 ```
 
-```r
+```{.r .colsel}
 as.character(b)
 ```
 
@@ -418,7 +415,7 @@ as.character(b)
 ### Vectors: a vector is a combination of multiple values(numeric, character or logical) in the same object. A vector is created using the function c() (for concatenate).
 
 
-```r
+```{.r .colsel}
 friend_ages <- c(21, 27, 26, 32)
 friend_ages
 ```
@@ -427,7 +424,7 @@ friend_ages
 ## [1] 21 27 26 32
 ```
 
-```r
+```{.r .colsel}
 friend_names <- c("Mina", "Ella", "Anna", "Cora")
 friend_names
 ```
@@ -438,7 +435,7 @@ friend_names
 
 One can give names to the elements of a vector.
 
-```r
+```{.r .colsel}
 # assign names to a vector by specifying them
 names(friend_ages) <- c("Mina", "Ella", "Anna", "Carla")
 friend_ages
@@ -449,7 +446,7 @@ friend_ages
 ##    21    27    26    32
 ```
 
-```r
+```{.r .colsel}
 # assign names to a vector using another vector
 names(friend_ages) <- friend_names
 friend_ages
@@ -462,7 +459,7 @@ friend_ages
 
 Or One may create a vector with named elements from scratch.
 
-```r
+```{.r .colsel}
 friend_ages <- c(Mina=21, Ella=27, Anna=26, Cora=32)
 friend_ages
 ```
@@ -474,7 +471,7 @@ friend_ages
 
 To find out the length of a vector:
 
-```r
+```{.r .colsel}
 length(friend_ages)
 ```
 
@@ -484,7 +481,7 @@ length(friend_ages)
 
 To access elements of a vector: by index, or by name if it is a named vector.
 
-```r
+```{.r .colsel}
 friend_ages[2]
 ```
 
@@ -493,7 +490,7 @@ friend_ages[2]
 ##   27
 ```
 
-```r
+```{.r .colsel}
 friend_ages["Ella"]
 ```
 
@@ -502,7 +499,7 @@ friend_ages["Ella"]
 ##   27
 ```
 
-```r
+```{.r .colsel}
 friend_ages[c(1,3)]
 ```
 
@@ -511,7 +508,7 @@ friend_ages[c(1,3)]
 ##   21   26
 ```
 
-```r
+```{.r .colsel}
 friend_ages[c("Mina", "Anna")]
 ```
 
@@ -520,7 +517,7 @@ friend_ages[c("Mina", "Anna")]
 ##   21   26
 ```
 
-```r
+```{.r .colsel}
 # selecting elements of a vector by excluding some of them.
 friend_ages[-3]
 ```
@@ -532,7 +529,7 @@ friend_ages[-3]
 
 To select a subset of a vector can be done by logical vector.
 
-```r
+```{.r .colsel}
 my_friends <- c("Mina", "Ella", "Anna", "Cora")
 my_friends
 ```
@@ -541,7 +538,7 @@ my_friends
 ## [1] "Mina" "Ella" "Anna" "Cora"
 ```
 
-```r
+```{.r .colsel}
 has_child <- c("TRUE", "TRUE", "FALSE", "TRUE")
 has_child
 ```
@@ -550,7 +547,7 @@ has_child
 ## [1] "TRUE"  "TRUE"  "FALSE" "TRUE"
 ```
 
-```r
+```{.r .colsel}
 my_friends[has_child == "TRUE"]
 ```
 
@@ -558,7 +555,7 @@ my_friends[has_child == "TRUE"]
 ## [1] "Mina" "Ella" "Cora"
 ```
 
-   
+
 ##### <font color='red'>NOTE: a vector can only hold elements of the same type.</font>  
 
 
@@ -566,7 +563,7 @@ my_friends[has_child == "TRUE"]
 ### Matrices: A matrix is like an Excel sheet containing multiple rows and columns. It is used to combine vectors of the same type.
 
 
-```r
+```{.r .colsel}
 col1 <- c(1,3,8,9)
 col2 <- c(2,18,27,10)
 col3 <- c(8,37,267,19)
@@ -583,7 +580,7 @@ my_matrix
 ## [4,]    9   10   19
 ```
 
-```r
+```{.r .colsel}
 rownames(my_matrix) <- c("row1", "row2", "row3", "row4")
 my_matrix
 ```
@@ -596,7 +593,7 @@ my_matrix
 ## row4    9   10   19
 ```
 
-```r
+```{.r .colsel}
 t(my_matrix)
 ```
 
@@ -609,7 +606,7 @@ t(my_matrix)
 
 To find out the dimension of a matrix:
 
-```r
+```{.r .colsel}
 ncol(my_matrix)
 ```
 
@@ -617,7 +614,7 @@ ncol(my_matrix)
 ## [1] 3
 ```
 
-```r
+```{.r .colsel}
 nrow(my_matrix)
 ```
 
@@ -625,7 +622,7 @@ nrow(my_matrix)
 ## [1] 4
 ```
 
-```r
+```{.r .colsel}
 dim(my_matrix)
 ```
 
@@ -637,7 +634,7 @@ dim(my_matrix)
 Accessing elements of a matrix is done in similar ways to accessing elements of a vector.
 
 
-```r
+```{.r .colsel}
 my_matrix[1,3]
 ```
 
@@ -645,7 +642,7 @@ my_matrix[1,3]
 ## [1] 8
 ```
 
-```r
+```{.r .colsel}
 my_matrix["row1", "col3"]
 ```
 
@@ -654,7 +651,7 @@ my_matrix["row1", "col3"]
 ```
 
 
-```r
+```{.r .colsel}
 my_matrix[1,]
 ```
 
@@ -663,7 +660,7 @@ my_matrix[1,]
 ##    1    2    8
 ```
 
-```r
+```{.r .colsel}
 my_matrix[,3]
 ```
 
@@ -673,7 +670,7 @@ my_matrix[,3]
 ```
 
 
-```r
+```{.r .colsel}
 my_matrix[col3 > 20,]
 ```
 
@@ -687,7 +684,7 @@ my_matrix[col3 > 20,]
 Calculations with matrices.
 
 
-```r
+```{.r .colsel}
 my_matrix * 3
 ```
 
@@ -699,7 +696,7 @@ my_matrix * 3
 ## row4   27   30   57
 ```
 
-```r
+```{.r .colsel}
 log10(my_matrix)
 ```
 
@@ -713,7 +710,7 @@ log10(my_matrix)
 
 Total of each row.
 
-```r
+```{.r .colsel}
 rowSums(my_matrix)
 ```
 
@@ -724,7 +721,7 @@ rowSums(my_matrix)
 
 Total of each column.
 
-```r
+```{.r .colsel}
 colSums(my_matrix)
 ```
 
@@ -746,7 +743,7 @@ FUN: the function to apply on rows/columns
 To calculate the mean of each row.
 
 
-```r
+```{.r .colsel}
 apply(my_matrix, 1, mean)
 ```
 
@@ -758,7 +755,7 @@ apply(my_matrix, 1, mean)
 To calculate the median of each row
 
 
-```r
+```{.r .colsel}
 apply(my_matrix, 1, median)
 ```
 
@@ -771,7 +768,7 @@ apply(my_matrix, 1, median)
 ### Factors: a factor represents categorical or groups in data. The function factor() can be used to create a factor variable.
 
 
-```r
+```{.r .colsel}
 friend_groups <- factor(c(1,2,1,2))
 friend_groups
 ```
@@ -784,7 +781,7 @@ friend_groups
 In R, categories are called factor levels. The function levels() can be used to access the factor levels.
 
 
-```r
+```{.r .colsel}
 levels(friend_groups)
 ```
 
@@ -795,7 +792,7 @@ levels(friend_groups)
 Change the factor levels.
 
 
-```r
+```{.r .colsel}
 levels(friend_groups) <- c("best_friend", "not_best_friend")
 friend_groups
 ```
@@ -808,7 +805,7 @@ friend_groups
 Change the order of levels.
 
 
-```r
+```{.r .colsel}
 levels(friend_groups) <- c("not_best_friend", "best_friend")
 friend_groups
 ```
@@ -821,7 +818,7 @@ friend_groups
 By default, the order of factor levels is taken in the order of numeric or alphabetic.
 
 
-```r
+```{.r .colsel}
 friend_groups <- factor(c("not_best_friend", "best_friend", "not_best_friend", "best_friend"))
 friend_groups
 ```
@@ -834,7 +831,7 @@ friend_groups
 The factor levels can be specified when creating the factor, if the order does not follow the default rule.
 
 
-```r
+```{.r .colsel}
 friend_groups <- factor(c("not_best_friend", "best_friend", "not_best_friend", "best_friend"), levels=c("not_best_friend", "best_friend"))
 friend_groups
 ```
@@ -847,7 +844,7 @@ friend_groups
 If you want to know the number of individuals at each levels, there are two functions.
 
 
-```r
+```{.r .colsel}
 summary(friend_groups)
 ```
 
@@ -857,7 +854,7 @@ summary(friend_groups)
 ```
 
 
-```r
+```{.r .colsel}
 table(friend_groups)
 ```
 
@@ -873,7 +870,7 @@ table(friend_groups)
 A data frame can be created using the function data.frame().
 
 
-```r
+```{.r .colsel}
 # creating a data frame using previously defined vectors
 friends <- data.frame(name=friend_names, age=friend_ages, child=has_child)
 friends
@@ -890,7 +887,7 @@ friends
 To check whether a data is a data frame, use the function is.data.frame().
 
 
-```r
+```{.r .colsel}
 is.data.frame(friends)
 ```
 
@@ -899,7 +896,7 @@ is.data.frame(friends)
 ```
 
 
-```r
+```{.r .colsel}
 is.data.frame(my_matrix)
 ```
 
@@ -910,7 +907,7 @@ is.data.frame(my_matrix)
 One can convert a object to a data frame using the function as.data.frame().
 
 
-```r
+```{.r .colsel}
 class(my_matrix)
 ```
 
@@ -919,7 +916,7 @@ class(my_matrix)
 ```
 
 
-```r
+```{.r .colsel}
 my_data <- as.data.frame(my_matrix)
 class(my_data)
 ```
@@ -931,7 +928,7 @@ class(my_data)
 A data frame can be transposed in the similar way as a matrix.
 
 
-```r
+```{.r .colsel}
 my_data
 ```
 
@@ -944,7 +941,7 @@ my_data
 ```
 
 
-```r
+```{.r .colsel}
 t(my_data)
 ```
 
@@ -958,7 +955,7 @@ t(my_data)
 To obtain a subset of a data frame can be done in similar ways as we have discussed: by index, by row/column names, or by logical values.
 
 
-```r
+```{.r .colsel}
 friends["Mina",]
 ```
 
@@ -968,7 +965,7 @@ friends["Mina",]
 ```
 
 
-```r
+```{.r .colsel}
 # The columns of a data frame can be referred to by the names of the columns
 friends
 ```
@@ -981,7 +978,7 @@ friends
 ## Cora Cora  32  TRUE
 ```
 
-```r
+```{.r .colsel}
 friends$age
 ```
 
@@ -989,7 +986,7 @@ friends$age
 ## [1] 21 27 26 32
 ```
 
-```r
+```{.r .colsel}
 friends[friends$age > 26,]
 ```
 
@@ -1000,7 +997,7 @@ friends[friends$age > 26,]
 ```
 
 
-```r
+```{.r .colsel}
 friends[friends$child == "TRUE",]
 ```
 
@@ -1014,7 +1011,7 @@ friends[friends$child == "TRUE",]
 Function subset() can also be used to get a subset of a data frame.
 
 
-```r
+```{.r .colsel}
 # select friends that are older than 26
 subset(friends, age > 26)
 ```
@@ -1025,7 +1022,7 @@ subset(friends, age > 26)
 ## Cora Cora  32  TRUE
 ```
 
-```r
+```{.r .colsel}
 # select the information of the ages of friends
 subset(friends, select=age)
 ```
@@ -1042,7 +1039,7 @@ subset(friends, select=age)
 A data frame can be extended.
 
 
-```r
+```{.r .colsel}
 # add a column that has the information on the marrital status of friends
 friends$married <- c("YES", "YES", "NO", "YES")
 friends
@@ -1059,7 +1056,7 @@ friends
 A data frame can also be extended using the functions cbind() and rbind().
 
 
-```r
+```{.r .colsel}
 # add a column that has the information on the salaries of friends
 cbind(friends, salary=c(4000, 8000, 2000, 6000))
 ```
@@ -1077,7 +1074,7 @@ cbind(friends, salary=c(4000, 8000, 2000, 6000))
 A list can be created using the function list().
 
 
-```r
+```{.r .colsel}
 my_list <- list(mother="Sophia", father="John", sisters=c("Anna", "Emma"), sister_age=c(5, 10))
 my_list
 ```
@@ -1097,7 +1094,7 @@ my_list
 ```
 
 
-```r
+```{.r .colsel}
 # names of elements in the list
 names(my_list)
 ```
@@ -1107,7 +1104,7 @@ names(my_list)
 ```
 
 
-```r
+```{.r .colsel}
 # number of elements in the list
 length(my_list)
 ```
@@ -1119,7 +1116,7 @@ length(my_list)
 To access elements of a list can be done using its name or index.
 
 
-```r
+```{.r .colsel}
 my_list$mother
 ```
 
@@ -1128,7 +1125,7 @@ my_list$mother
 ```
 
 
-```r
+```{.r .colsel}
 my_list[["mother"]]
 ```
 
@@ -1137,7 +1134,7 @@ my_list[["mother"]]
 ```
 
 
-```r
+```{.r .colsel}
 my_list[[1]]
 ```
 
@@ -1146,7 +1143,7 @@ my_list[[1]]
 ```
 
 
-```r
+```{.r .colsel}
 my_list[[3]]
 ```
 
@@ -1155,7 +1152,7 @@ my_list[[3]]
 ```
 
 
-```r
+```{.r .colsel}
 my_list[[3]][2]
 ```
 
@@ -1171,17 +1168,17 @@ Topic 3. Import and export data in R
 R base function read.table() is a general funciton that can be used to read a file in table format. The data will be imported as a data frame.
 
 
-```r
-# To read a local file. If you have downloaded the raw_counts.txt file to your local machine, you may use the following command to read it in, by providing the full path for the file location. The way to specify the full path is the same as taught in the command line session.
-data <- read.table(file="/Users/jli/Downloads/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
+```{.r .colsel}
+# To read a local file. If you have downloaded the raw_counts.txt file to your local machine, you may use the following command to read it in, by providing the full path for the file location. The way to specify the full path is the same as taught in the command line session. Here we assume raw_counts.txt is in our current working directory
+data <- read.table(file="./Intro2R_files/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
 
 # There is a very convenient way to read files from the internet.
-data <- read.table(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2017-August-Variant-Analysis-Workshop/master/friday/Intro2R/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
+data <- read.table(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/intro2R/Intro2R_files/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
 ```
 
 Take a look at the beginning part of the data frame.
 
-```r
+```{.r .colsel}
 head(data)
 ```
 
@@ -1214,29 +1211,22 @@ read.delim(): for reading "tab separated value" files (".txt"). By default, poin
 read.delim2(): for reading "tab separated value" files (".txt"). By default, comma (",") is used as decimal point.
 
 
-```r
+```{.r .colsel}
 # We are going to read a file over the internet by providing the url of the file.
-data2 <- read.csv(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2017-August-Variant-Analysis-Workshop/master/friday/Intro2R/raw_counts.csv", stringsAsFactors=F)
+data2 <- read.csv(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/intro2R/Intro2R_files/raw_counts.txt", stringsAsFactors=F)
 
 # To look at the file:
 head(data2)
 ```
 
 ```
-##            C61  C62  C63  C64  C91  C92  C93 C94 I561 I562 I563 I564 I591
-## AT1G01010  322  346  256  396  372  506  361 342  638  488  440  479  770
-## AT1G01020  149   87  162  144  189  169  147 108  163  141  119  147  182
-## AT1G01030   15   32   35   22   24   33   21  35   18    8   54   35   23
-## AT1G01040  687  469  568  651  885  978  794 862  799  769  725  715  811
-## AT1G01046    1    1    5    4    5    3    0   2    4    3    1    0    2
-## AT1G01050 1447 1032 1083 1204 1413 1484 1138 938 1247 1516  984 1044 1374
-##           I592 I593 I594 I861 I862 I863 I864 I891 I892 I893 I894
-## AT1G01010  430  656  467  143  453  429  206  567  458  520  474
-## AT1G01020  156  153  177   43  144  114   50  161  195  157  144
-## AT1G01030    8   16   24   42   17   22   39   26   28   39   30
-## AT1G01040  567  831  694  345  575  605  404  735  651  725  591
-## AT1G01046    8    8    1    0    4    0    3    5    7    0    5
-## AT1G01050 1355 1437 1577  412 1338 1051  621 1434 1552 1248 1186
+##                                         C61.C62.C63.C64.C91.C92.C93.C94.I561.I562.I563.I564.I591.I592.I593.I594.I861.I862.I863.I864.I891.I892.I893.I894
+## 1                     AT1G01010\t322\t346\t256\t396\t372\t506\t361\t342\t638\t488\t440\t479\t770\t430\t656\t467\t143\t453\t429\t206\t567\t458\t520\t474
+## 2                        AT1G01020\t149\t87\t162\t144\t189\t169\t147\t108\t163\t141\t119\t147\t182\t156\t153\t177\t43\t144\t114\t50\t161\t195\t157\t144
+## 3                                               AT1G01030\t15\t32\t35\t22\t24\t33\t21\t35\t18\t8\t54\t35\t23\t8\t16\t24\t42\t17\t22\t39\t26\t28\t39\t30
+## 4                     AT1G01040\t687\t469\t568\t651\t885\t978\t794\t862\t799\t769\t725\t715\t811\t567\t831\t694\t345\t575\t605\t404\t735\t651\t725\t591
+## 5                                                                     AT1G01046\t1\t1\t5\t4\t5\t3\t0\t2\t4\t3\t1\t0\t2\t8\t8\t1\t0\t4\t0\t3\t5\t7\t0\t5
+## 6 AT1G01050\t1447\t1032\t1083\t1204\t1413\t1484\t1138\t938\t1247\t1516\t984\t1044\t1374\t1355\t1437\t1577\t412\t1338\t1051\t621\t1434\t1552\t1248\t1186
 ```
 
 
@@ -1244,7 +1234,7 @@ head(data2)
 R base function write.table() can be used to export data to a file.
 
 
-```r
+```{.r .colsel}
 # To write to a file called "output.txt" in your current working directory.
 write.table(data2[1:20,], file="output.txt", sep="\t", quote=F, row.names=T, col.names=T)
 ```
@@ -1265,16 +1255,16 @@ Topic 4. Functions in R
 ### Invoking a function by its name, followed by the parenthesis and zero or more arguments.
 
 
-```r
+```{.r .colsel}
 # to find out the current working directory
 getwd()
 ```
 
 ```
-## [1] "/Users/jli/Jessie/Research/BioInfo/Courses/2019_August_UCD_mRNAseq_Workshop/intro2R"
+## [1] "/Users/mattsettles/projects/src/github.com-ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/intro2R"
 ```
 
-```r
+```{.r .colsel}
 # to set a different working directory, use setwd
 #setwd("/Users/jli/Desktop")
 
@@ -1291,7 +1281,7 @@ ls()
 ## [21] "my_list"       "my_matrix"     "title"
 ```
 
-```r
+```{.r .colsel}
 # to create a vector from 2 to 3, using increment of 0.1
 seq(2, 3, by=0.1)
 ```
@@ -1300,7 +1290,7 @@ seq(2, 3, by=0.1)
 ##  [1] 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0
 ```
 
-```r
+```{.r .colsel}
 # to create a vector with repeated elements
 rep(1:3, times=3)
 ```
@@ -1309,7 +1299,7 @@ rep(1:3, times=3)
 ## [1] 1 2 3 1 2 3 1 2 3
 ```
 
-```r
+```{.r .colsel}
 rep(1:3, each=3)
 ```
 
@@ -1317,7 +1307,7 @@ rep(1:3, each=3)
 ## [1] 1 1 1 2 2 2 3 3 3
 ```
 
-```r
+```{.r .colsel}
 # to get help information on a function in R: ?function.name
 ?seq
 ?sort
@@ -1328,36 +1318,13 @@ rep(1:3, each=3)
 
 
 
-```r
+```{.r .colsel}
 str(data2)
 ```
 
 ```
-## 'data.frame':	33602 obs. of  24 variables:
-##  $ C61 : int  322 149 15 687 1 1447 2667 297 0 74 ...
-##  $ C62 : int  346 87 32 469 1 1032 2472 226 0 79 ...
-##  $ C63 : int  256 162 35 568 5 1083 2881 325 0 138 ...
-##  $ C64 : int  396 144 22 651 4 1204 2632 341 0 85 ...
-##  $ C91 : int  372 189 24 885 5 1413 5120 199 0 68 ...
-##  $ C92 : int  506 169 33 978 3 1484 6176 180 0 41 ...
-##  $ C93 : int  361 147 21 794 0 1138 7088 195 0 110 ...
-##  $ C94 : int  342 108 35 862 2 938 6810 107 0 81 ...
-##  $ I561: int  638 163 18 799 4 1247 2258 377 0 72 ...
-##  $ I562: int  488 141 8 769 3 1516 1808 534 0 76 ...
-##  $ I563: int  440 119 54 725 1 984 2279 300 0 184 ...
-##  $ I564: int  479 147 35 715 0 1044 2299 223 0 156 ...
-##  $ I591: int  770 182 23 811 2 1374 4755 298 0 96 ...
-##  $ I592: int  430 156 8 567 8 1355 3128 318 0 70 ...
-##  $ I593: int  656 153 16 831 8 1437 4419 397 0 77 ...
-##  $ I594: int  467 177 24 694 1 1577 3726 373 0 77 ...
-##  $ I861: int  143 43 42 345 0 412 1452 86 0 174 ...
-##  $ I862: int  453 144 17 575 4 1338 1516 266 0 113 ...
-##  $ I863: int  429 114 22 605 0 1051 1455 281 0 69 ...
-##  $ I864: int  206 50 39 404 3 621 1429 164 0 176 ...
-##  $ I891: int  567 161 26 735 5 1434 3867 230 0 69 ...
-##  $ I892: int  458 195 28 651 7 1552 4718 270 0 80 ...
-##  $ I893: int  520 157 39 725 0 1248 4580 220 0 81 ...
-##  $ I894: int  474 144 30 591 5 1186 3575 229 0 62 ...
+## 'data.frame':	33602 obs. of  1 variable:
+##  $ C61.C62.C63.C64.C91.C92.C93.C94.I561.I562.I563.I564.I591.I592.I593.I594.I861.I862.I863.I864.I891.I892.I893.I894: chr  "AT1G01010\t322\t346\t256\t396\t372\t506\t361\t342\t638\t488\t440\t479\t770\t430\t656\t467\t143\t453\t429\t206\t"| __truncated__ "AT1G01020\t149\t87\t162\t144\t189\t169\t147\t108\t163\t141\t119\t147\t182\t156\t153\t177\t43\t144\t114\t50\t161\t195\t157\t144" "AT1G01030\t15\t32\t35\t22\t24\t33\t21\t35\t18\t8\t54\t35\t23\t8\t16\t24\t42\t17\t22\t39\t26\t28\t39\t30" "AT1G01040\t687\t469\t568\t651\t885\t978\t794\t862\t799\t769\t725\t715\t811\t567\t831\t694\t345\t575\t605\t404\t"| __truncated__ ...
 ```
 
 
@@ -1367,7 +1334,7 @@ str(data2)
 
 ##### To check the syntax of using lapply():
 
-```r
+```{.r .colsel}
 #?lapply()
 
 data <- as.data.frame(matrix(rnorm(49), ncol=7), stringsAsFactors=F)
@@ -1378,43 +1345,43 @@ dim(data)
 ## [1] 7 7
 ```
 
-```r
+```{.r .colsel}
 lapply(1:dim(data)[1], function(x){sum(data[x,])})
 ```
 
 ```
 ## [[1]]
-## [1] 2.797147
+## [1] 2.696972
 ## 
 ## [[2]]
-## [1] -2.57662
+## [1] 0.1402984
 ## 
 ## [[3]]
-## [1] -5.633315
+## [1] -3.111006
 ## 
 ## [[4]]
-## [1] -1.501342
+## [1] 0.1516168
 ## 
 ## [[5]]
-## [1] -1.96601
+## [1] 0.01941972
 ## 
 ## [[6]]
-## [1] 0.2609106
+## [1] -2.913826
 ## 
 ## [[7]]
-## [1] -0.9416141
+## [1] -1.392908
 ```
 
-```r
+```{.r .colsel}
 apply(data, MARGIN=1, sum)
 ```
 
 ```
-## [1]  2.7971469 -2.5766204 -5.6333154 -1.5013418 -1.9660096  0.2609106
-## [7] -0.9416141
+## [1]  2.69697170  0.14029844 -3.11100645  0.15161683  0.01941972 -2.91382587
+## [7] -1.39290826
 ```
 
-```r
+```{.r .colsel}
 lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ```
 
@@ -1424,30 +1391,26 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] 0.4467153
+## [1] 0.4308764
 ## 
 ## [[2]]
-## [1] NaN
+## [1] -0.8529472
 ## 
 ## [[3]]
 ## [1] NaN
 ## 
 ## [[4]]
-## [1] NaN
+## [1] -0.8192526
 ## 
 ## [[5]]
-## [1] NaN
+## [1] -1.711757
 ## 
 ## [[6]]
-## [1] -0.5835083
+## [1] NaN
 ## 
 ## [[7]]
 ## [1] NaN
@@ -1456,7 +1419,7 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 #### The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
 
 
-```r
+```{.r .colsel}
 # To check the syntax of using sapply():
 #?sapply()
 
@@ -1469,20 +1432,16 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
-## [1]  0.4467153        NaN        NaN        NaN        NaN -0.5835083
+## [1]  0.4308764 -0.8529472        NaN -0.8192526 -1.7117570        NaN
 ## [7]        NaN
 ```
 
 #### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
 
-```r
+```{.r .colsel}
 sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ```
 
@@ -1492,30 +1451,26 @@ sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
 ## Warning in FUN(X[[i]], ...): NaNs produced
 
 ## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
-
-## Warning in FUN(X[[i]], ...): NaNs produced
 ```
 
 ```
 ## [[1]]
-## [1] 0.4467153
+## [1] 0.4308764
 ## 
 ## [[2]]
-## [1] NaN
+## [1] -0.8529472
 ## 
 ## [[3]]
 ## [1] NaN
 ## 
 ## [[4]]
-## [1] NaN
+## [1] -0.8192526
 ## 
 ## [[5]]
-## [1] NaN
+## [1] -1.711757
 ## 
 ## [[6]]
-## [1] -0.5835083
+## [1] NaN
 ## 
 ## [[7]]
 ## [1] NaN
@@ -1580,53 +1535,53 @@ Topic 5. Basic statistics in R
 Calculate the mean expression for each sample.
 
 
-```r
+```{.r .colsel}
 apply(data, 2, mean)
 ```
 
 ```
-##           V1           V2           V3           V4           V5 
-## -0.046242486 -0.901178217  0.001206076  0.233034518  0.196572970 
-##           V6           V7 
-## -0.185855184 -0.663372513
+##          V1          V2          V3          V4          V5          V6 
+## -0.64883337  0.41640650 -0.26557523 -0.06964068 -0.27446079  0.27862684 
+##          V7 
+## -0.06644240
 ```
 
 Calculate the range of expression for each sample.
 
 
-```r
+```{.r .colsel}
 apply(data, 2, range)
 ```
 
 ```
-##             V1          V2        V3         V4         V5        V6
-## [1,] -1.719891 -2.00386635 -2.062345 -0.6977833 -0.8794573 -2.734528
-## [2,]  1.456314  0.03653003  1.708492  1.4630865  2.4515872  1.618011
-##              V7
-## [1,] -2.1139800
-## [2,]  0.3181905
+##              V1         V2         V3        V4         V5        V6
+## [1,] -1.8921134 -0.5167689 -0.9437552 -1.037911 -1.1690234 -0.680934
+## [2,]  0.9787187  1.3551789  1.0341524  1.365358  0.7155543  1.286370
+##             V7
+## [1,] -1.027381
+## [2,]  1.845798
 ```
 
 Calculate the quantiles of each samples.
 
 
-```r
+```{.r .colsel}
 apply(data, 2, quantile)
 ```
 
 ```
-##              V1          V2         V3         V4         V5         V6
-## 0%   -1.7198915 -2.00386635 -2.0623449 -0.6977833 -0.8794573 -2.7345276
-## 25%  -0.4451307 -1.43887263 -0.4750176 -0.4889744 -0.7266466 -1.0346157
-## 50%  -0.2641436 -0.72922633  0.2595243  0.2541114 -0.2452111  0.1084158
-## 75%   0.5471427 -0.36696981  0.5264033  0.7948879  0.7511925  0.8881729
-## 100%  1.4563137  0.03653003  1.7084917  1.4630865  2.4515872  1.6180112
-##               V7
-## 0%   -2.11397998
-## 25%  -1.19843718
-## 50%  -0.31275326
-## 75%  -0.06909523
-## 100%  0.31819046
+##              V1         V2          V3          V4          V5         V6
+## 0%   -1.8921134 -0.5167689 -0.94375525 -1.03791140 -1.16902338 -0.6809340
+## 25%  -1.4150087 -0.0871726 -0.84136018 -0.57622027 -0.73619527 -0.2789512
+## 50%  -1.1195325  0.2051671 -0.34303930 -0.08251126 -0.07999668  0.2095695
+## 75%   0.1605554  1.0228068  0.03816795  0.21001020  0.04231540  0.8466422
+## 100%  0.9787187  1.3551789  1.03415239  1.36535801  0.71555429  1.2863702
+##              V7
+## 0%   -1.0273810
+## 25%  -0.5771931
+## 50%  -0.4228686
+## 75%   0.1468706
+## 100%  1.8457978
 ```
 
 ---
@@ -1637,30 +1592,30 @@ Topic 6. Simple data visulization in R
 Scatter plot and line plot can be produced using the function plot().
 
 
-```r
+```{.r .colsel}
 x <- c(1:50)
 y <- 1 + sqrt(x)/2
 plot(x,y)
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-69-1.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-68-1.png)<!-- -->
 
-```r
+```{.r .colsel}
 plot(x,y, type="l")
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-69-2.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-68-2.png)<!-- -->
 
-```r
+```{.r .colsel}
 # plot both the points and lines
 ## first plot points
 plot(x,y)
 lines(x,y, type="l")
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-69-3.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-68-3.png)<!-- -->
 
-```r
+```{.r .colsel}
 ## lines() can only be used to add information to a graph, while it cannot produce a graph on its own.
 ```
 
@@ -1668,47 +1623,47 @@ lines(x,y, type="l")
 boxplot() can be used to summarize data.
 
 
-```r
+```{.r .colsel}
 boxplot(data, xlab="Sample ID", ylab="Raw Counts")
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-70-1.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-69-1.png)<!-- -->
 
 add more details to the plot.
 
 
-```r
+```{.r .colsel}
 boxplot(data, xlab="Sample ID", ylab="Raw Counts", main="Expression levels", col="blue", border="black")
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-71-1.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-70-1.png)<!-- -->
 
 
 
-```r
+```{.r .colsel}
 x <- rnorm(1000)
 boxplot(x)
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-72-1.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-71-1.png)<!-- -->
 
 hist() can be used to create histograms of data.
 
-```r
+```{.r .colsel}
 hist(x)
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-73-1.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-72-1.png)<!-- -->
 
-```r
+```{.r .colsel}
 # use user defined break points
 hist(x, breaks=seq(range(x)[1]-1, range(x)[2]+1, by=0.5))
 ```
 
-![](Intro2R_files/figure-html/unnamed-chunk-73-2.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-72-2.png)<!-- -->
 
 
-```r
+```{.r .colsel}
 # clear plotting device/area
 dev.off()
 ```
@@ -1726,7 +1681,7 @@ Topic 7. Install packages in R
 Starting from Bioconductor version 3.8, the installation of packages is recommended to use BiocManager.
 
 
-```r
+```{.r .colsel}
 if (!requireNamespace("BiocManager"))
 	install.packages("BiocManager")
 ## install core packages
@@ -1745,7 +1700,7 @@ BiocManager::install(c("ggplot2", "ShortRead"))
 ##### <font color='red'>It is always recommended to update to the most current version of R and Bioconductor. If it is not possible and R < 3.5.0, please use the legacy approach to install Bioconductor packages</font>   
 
 
-```r
+```{.r .colsel}
 source("http://bioconductor.org/biocLite.R")
 ## install core packages
 biocLite()
@@ -1753,17 +1708,17 @@ biocLite()
 biocLite("RCircos")
 biocLite(c("IdeoViz", "devtools"))
 ```
-   
+
 The R function install.packages() can be used to install packages that are not part of Bioconductor.
 
 
-```r
+```{.r .colsel}
 install.packages("ggplot2", repos="http://cran.us.r-project.org")
 ```
 
 Install from source of github.
 
-```r
+```{.r .colsel}
 library(devtools)
 #install_github("stephenturner/qqman")
 ```
@@ -1777,7 +1732,7 @@ Topic 8. Save data in R session
 #### To save history in R session
 
 
-```r
+```{.r .colsel}
 #savehistory(file="March27.history")
 
 #loadhistory(file="March27.history")
@@ -1786,7 +1741,7 @@ Topic 8. Save data in R session
 #### To save objects in R session
 
 
-```r
+```{.r .colsel}
 save(list=c("x", "data"), file="March27.RData")
 
 #load("March27.RData")
@@ -1799,7 +1754,3 @@ Read in the reference fasta file for PhiX that you have downloaded this morning 
 
 <font color='blue'>Hint: please look into bioconductor package ShortRead.</font>
 <font color='blue'>The PhiX genome can be downloaded by following the instruction in Intro to Command-Line session. The link for the data is at ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/PhiX/Illumina/RTA/PhiX_Illumina_RTA.tar.gz</font>
-
-
-
-

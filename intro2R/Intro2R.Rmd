@@ -13,8 +13,10 @@ background-color: lightyellow;
 }
 ```
 
-```{r echo=FALSE}
+```{r setup, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE}
 library(knitr)
+knitr::opts_chunk$set(class.source = "colsel")
+
 colFmt = function(x,color){
   outputFormat = opts_knit$get("rmarkdown.pandoc.to")
   if(outputFormat == 'latex')
@@ -24,11 +26,6 @@ colFmt = function(x,color){
   else
     x
 }
-```
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(class.source = "colsel")
 ```
 
 R and RStudio
@@ -277,7 +274,7 @@ has_child
 my_friends[has_child == "TRUE"]
 ```  
 
-   
+
 ##### `r colFmt("NOTE: a vector can only hold elements of the same type.", 'red')`  
 
 
@@ -548,11 +545,11 @@ Topic 3. Import and export data in R
 R base function read.table() is a general funciton that can be used to read a file in table format. The data will be imported as a data frame.
 
 ```{r}
-# To read a local file. If you have downloaded the raw_counts.txt file to your local machine, you may use the following command to read it in, by providing the full path for the file location. The way to specify the full path is the same as taught in the command line session.
-data <- read.table(file="/Users/jli/Downloads/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
+# To read a local file. If you have downloaded the raw_counts.txt file to your local machine, you may use the following command to read it in, by providing the full path for the file location. The way to specify the full path is the same as taught in the command line session. Here we assume raw_counts.txt is in our current working directory
+data <- read.table(file="./Intro2R_files/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
 
 # There is a very convenient way to read files from the internet.
-data <- read.table(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2017-August-Variant-Analysis-Workshop/master/friday/Intro2R/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
+data <- read.table(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/intro2R/Intro2R_files/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
 
 ```
 
@@ -574,7 +571,7 @@ read.delim2(): for reading "tab separated value" files (".txt"). By default, com
 
 ```{r}
 # We are going to read a file over the internet by providing the url of the file.
-data2 <- read.csv(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2017-August-Variant-Analysis-Workshop/master/friday/Intro2R/raw_counts.csv", stringsAsFactors=F)
+data2 <- read.csv(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/intro2R/Intro2R_files/raw_counts.txt", stringsAsFactors=F)
 
 # To look at the file:
 head(data2)
@@ -782,7 +779,7 @@ biocLite()
 biocLite("RCircos")
 biocLite(c("IdeoViz", "devtools"))
 ```
-   
+
 The R function install.packages() can be used to install packages that are not part of Bioconductor.
 
 ```{r eval=FALSE}
@@ -824,7 +821,3 @@ Read in the reference fasta file for PhiX that you have downloaded this morning 
 
 `r colFmt("Hint: please look into bioconductor package ShortRead.", 'blue')`
 `r colFmt("The PhiX genome can be downloaded by following the instruction in Intro to Command-Line session. The link for the data is at ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/PhiX/Illumina/RTA/PhiX_Illumina_RTA.tar.gz", 'blue')`
-
-
-
-
