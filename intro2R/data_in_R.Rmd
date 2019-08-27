@@ -1,8 +1,31 @@
 ---
 title: "Data_in_R"
 author: "Matt Settles"
-output: notebook
+output:
+    html_document:
+      keep_md: TRUE
 ---
+
+```{css echo=FALSE}
+.colsel {
+background-color: lightyellow;
+}
+```
+
+```{r setup, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE}
+library(knitr)
+knitr::opts_chunk$set(class.source = "colsel")
+
+colFmt = function(x,color){
+  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
+  if(outputFormat == 'latex')
+    paste("\\textcolor{",color,"}{",x,"}",sep="")
+  else if(outputFormat == 'html')
+    paste("<font color='",color,"'>",x,"</font>",sep="")
+  else
+    x
+}
+```
 
 Recreating (and maybe improving on) some of the figures generated with plot-bamstats application in R.
 
@@ -17,18 +40,17 @@ library(reshape2)
 library(gridExtra)
 ```
 
-This document assumes you have the file 'bwa.samtools.stats' in your current working directory, lets test to make sure it is.
+This document assumes you have the file 'bwa_mem_Stats.log' in your current working directory, lets test to make sure it is.
 ```{r check_data}
 getwd()
-dir()
-file.exists("bwa_mem_Stats.log")
+file.exists("Data_in_R_files/bwa_mem_Stats.log")
 ```
 
 If it returned TRUE, great! If not return to the Prepare data_in_R doc and follow the directions to get the file.
 
 So lets read in the file and view the first few lines and get the length
 ```{r load_data}
-data <- readLines("bwa_mem_Stats.log")
+data <- readLines("Data_in_R_files/bwa_mem_Stats.log")
 head(data)
 tail(data)
 length(data)

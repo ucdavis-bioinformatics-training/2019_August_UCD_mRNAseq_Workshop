@@ -6,6 +6,14 @@ output:
       keep_md: TRUE
 ---
 
+<style type="text/css">
+.colsel {
+background-color: lightyellow;
+}
+</style>
+
+
+
 Recreating (and maybe improving on) some of the figures generated with plot-bamstats application in R.
 
 ## Lets start by making sure packages and data can be loaded and read in.
@@ -13,7 +21,7 @@ Recreating (and maybe improving on) some of the figures generated with plot-bams
 First lets load knitr, tidyverse, reshape2 and gridExtra packages.
 
 
-```r
+```{.r .colsel}
 library(knitr)
 library(tidyverse)
 ```
@@ -35,7 +43,7 @@ library(tidyverse)
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
 
-```r
+```{.r .colsel}
 library(reshape2)
 ```
 
@@ -50,7 +58,7 @@ library(reshape2)
 ##     smiths
 ```
 
-```r
+```{.r .colsel}
 library(gridExtra)
 ```
 
@@ -65,9 +73,9 @@ library(gridExtra)
 ##     combine
 ```
 
-This document assumes you have the file 'bwa.samtools.stats' in your current working directory, lets test to make sure it is.
+This document assumes you have the file 'bwa_mem_Stats.log' in your current working directory, lets test to make sure it is.
 
-```r
+```{.r .colsel}
 getwd()
 ```
 
@@ -75,22 +83,8 @@ getwd()
 ## [1] "/Users/mattsettles/projects/src/github.com-ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/intro2R"
 ```
 
-```r
-dir()
-```
-
-```
-##  [1] "bwa_mem_Stats.log"      "Data_in_R_figures"     
-##  [3] "Data_in_R_files"        "data_in_R_prepare.html"
-##  [5] "data_in_R_prepare.md"   "data_in_R_prepare.Rmd" 
-##  [7] "data_in_R.Rmd"          "Intro2R_figures"       
-##  [9] "Intro2R_files"          "Intro2R.md"            
-## [11] "Intro2R.Rmd"            "README.md"             
-## [13] "RStudio_figures"        "RStudio.md"
-```
-
-```r
-file.exists("bwa_mem_Stats.log")
+```{.r .colsel}
+file.exists("Data_in_R_files/bwa_mem_Stats.log")
 ```
 
 ```
@@ -101,8 +95,8 @@ If it returned TRUE, great! If not return to the Prepare data_in_R doc and follo
 
 So lets read in the file and view the first few lines and get the length
 
-```r
-data <- readLines("bwa_mem_Stats.log")
+```{.r .colsel}
+data <- readLines("Data_in_R_files/bwa_mem_Stats.log")
 head(data)
 ```
 
@@ -115,7 +109,7 @@ head(data)
 ## [6] "CHK\t1822d9ff\t21e43765\ta76bc679"
 ```
 
-```r
+```{.r .colsel}
 tail(data)
 ```
 
@@ -128,7 +122,7 @@ tail(data)
 ## [6] "GCD\t0.6\t100.000\t0.005\t0.005\t0.005\t0.005\t0.005"
 ```
 
-```r
+```{.r .colsel}
 length(data)
 ```
 
@@ -156,7 +150,7 @@ data tables, open the log file (in Rstudio is fine) and search for the term 'gre
 
 Lets take a quick look at the comments in the file
 
-```r
+```{.r .colsel}
 grep("^# ",data, value=TRUE)
 ```
 
@@ -173,12 +167,12 @@ First lets extract the Summary numbers and create a summary table
 * Print the table using kable from the knitr package (makes a pretty looking table)
 
 
-```r
+```{.r .colsel}
 ?separate
 ```
 
 
-```r
+```{.r .colsel}
 sn <- grep("^SN",data, value=TRUE)
 sn <- separate(data.frame(sn),col=1, into=c("ID", "Name","Value"), sep="\t")[,-1]
 kable(sn, caption="Summary numbers")
@@ -223,7 +217,7 @@ pairs with other orientation:     5914
 pairs on different chromosomes:   49491        
 
 
-```r
+```{.r .colsel}
 ?kable
 ```
 
@@ -240,7 +234,7 @@ First lets extract the read length data and create a table
   * and remove the first column '[,-1]', the IS
 
 
-```r
+```{.r .colsel}
 rl <- grep("^RL",data, value=TRUE)
 rl <- separate(data.frame(rl),col=1, into=c("ID", "read_length", "count"), sep="\t", convert = TRUE)[,-1]
 ```
@@ -256,7 +250,7 @@ First lets extract the insert sizes data and create a table
   * and remove the first column '[,-1]', the IS
 
 
-```r
+```{.r .colsel}
 is <- grep("^IS",data, value=TRUE)
 is <- separate(data.frame(is),col=1, into=c("ID", "insert size","all pairs", "inward", "outward", "other"), sep="\t", convert=TRUE)[,-1]
 ```
@@ -272,7 +266,7 @@ First lets extract the base composition of first and last pairs and create a tab
   * and remove the first column '[,-1]', the GCC
 
 
-```r
+```{.r .colsel}
 actg <- grep("^GCC",data, value=TRUE)
 actg <- separate(data.frame(actg),col=1, into=c("ID", "cycle", "A", "C", "G", "T", "N", "O"), sep="\t",  convert=TRUE)[,-1]
 ```
@@ -287,7 +281,7 @@ First lets extract the fragment qualities of first and last pairs and create a t
   * separate by the tab character "\t"
 
 
-```r
+```{.r .colsel}
 fq <- grep("^FFQ|^LFQ",data, value=TRUE)
 fq <- separate(data.frame(fq),col=1, into=c("Pair", "Cycle", seq(41)), sep="\t", convert=TRUE)
 ```
@@ -309,7 +303,7 @@ First lets extract the GC content of first and last pairs and create a table
   * separate by the tab character "\t"
 
 
-```r
+```{.r .colsel}
 gc <- grep("^GCF|^GCL",data, value=TRUE)
 gc <- separate(data.frame(gc),col=1, into=c("Pair", "GC", "Count"), sep="\t", convert=TRUE)
 ```
@@ -325,7 +319,7 @@ First lets extract the indel distribution data and create a table
   * and remove the first column '[,-1]', the ID
 
 
-```r
+```{.r .colsel}
 id <- grep("^ID",data, value=TRUE)
 id <- separate(data.frame(id),col=1, into=c("ID", "length", "insertion_count", "deletion_count"), sep="\t", covert=TRUE)[,-1]
 ```
@@ -341,7 +335,7 @@ First lets extract the indel by cycle data and create a table
   * and remove the first column '[,-1]', the IC
 
 
-```r
+```{.r .colsel}
 ic <- grep("^IC",data, value=TRUE)
 ic <- separate(data.frame(ic),col=1, into=c("ID", "cycle", "ins_fwd", "ins_rev", "del_fwd", "del_rev"), sep="\t", convert=TRUE)[,-1]
 ```
@@ -367,7 +361,7 @@ GC Coverage data
 ### Some Summary stats with
 
 
-```r
+```{.r .colsel}
 summarize(is,low=min(`insert size`), max=max(`insert size`), average=mean(`all pairs`), noutward=sum(outward), ninward=sum(inward))
 ```
 
@@ -376,7 +370,7 @@ summarize(is,low=min(`insert size`), max=max(`insert size`), average=mean(`all p
 ## 1   0 8000 340.4613   161541 2556576
 ```
 
-```r
+```{.r .colsel}
 new_is <- mutate(is,poutward=outward/`all pairs`, pinward=inward/`all pairs`)
 ```
 
@@ -439,7 +433,7 @@ ggplot (data = <DATA> ) +
 We use the ggplot function and define the data as 'is' and x, y as as.numeric(get("insert size")), as.numeric(get("all pairs")), respectively. We use "get" because they have spaces in the names, and as.numeric because the data are characters (due to the manner in which we readin the data.
 
 
-```r
+```{.r .colsel}
 g <- ggplot(data = is)
 g + geom_line( aes(x=get("insert size"), y=get("all pairs")))
 ```
@@ -450,7 +444,7 @@ g + geom_line( aes(x=get("insert size"), y=get("all pairs")))
 Ok, now lets add some labels to the plot
 
 
-```r
+```{.r .colsel}
 g + geom_line( aes(x=get("insert size"), y=get("all pairs"))) +
   labs( x = "insert size", y = "all pairs", title ="Mapped insert sizes", subtitle = "All Pairs", caption = "all pairs insert size")
 ```
@@ -460,7 +454,7 @@ g + geom_line( aes(x=get("insert size"), y=get("all pairs"))) +
 Ok, what about plotting multiple data objects on the same plot (multiple lines), in that case we can specifically set the y axis in geom_line and color, then call geom_lines twice (or more times).
 
 
-```r
+```{.r .colsel}
 g <- ggplot(data = is, aes(x=get("insert size")))
 g + geom_line(aes(y=get("inward")),color="blue") +  
     geom_line(aes(y=get("outward")),color="orange") +
@@ -472,7 +466,7 @@ g + geom_line(aes(y=get("inward")),color="blue") +
 lets try adjusting the x/y limits to 0,600 and 0,20000 respectively.
 
 
-```r
+```{.r .colsel}
 g + geom_line(aes(y=get("inward")),color="blue") +
   geom_line(aes(y=get("outward")),color="orange") +
   coord_cartesian(xlim=c(0,500), ylim=c(0,600000))
@@ -487,7 +481,7 @@ Ok so now put all these elements together into a single plot, save final plot as
 ** On your own**: Play with ggplot2 themes (ex. theme_classic() )
 
 
-```r
+```{.r .colsel}
 g <- ggplot(data = is, aes(x=get("insert size")))
 g <- g + geom_line(aes(y=get("all pairs")), color="black") +  
     geom_line(aes(y=get("inward")),color="blue") +  
@@ -507,7 +501,7 @@ plot(g)
 In order to plot GC percentage we first need to convert the counts to proportions, to do so we can divide the counts by the sum of counts.
 
 
-```r
+```{.r .colsel}
 head(gc)
 ```
 
@@ -521,7 +515,7 @@ head(gc)
 ## 6  GCF 5.03   170
 ```
 
-```r
+```{.r .colsel}
 h <- ggplot(gc, aes(as.numeric(GC), Count/sum(Count),color=Pair))
 h <- h + geom_line()
 h
@@ -536,14 +530,14 @@ h
 Sometimes we may need to transform our data before plotting. The melt funciton from reshape2 takes data in wide format (data are in columns) and stacks a set of columns into a single column of data. In the ACTG object we can stack bases values by cycle.
 
 
-```r
+```{.r .colsel}
 actgm <- melt(actg,id="cycle")
 ```
 
 now head the new actgm object. What did melt do?
 
 
-```r
+```{.r .colsel}
 ic <- ggplot(actgm, aes(as.numeric(cycle), as.numeric(value), by=variable, colour=variable))
 i <- ic + geom_line() + coord_cartesian(ylim=c(0,100))
 i
@@ -556,7 +550,7 @@ i
 ### Lets now do a boxplot of basepair
 
 
-```r
+```{.r .colsel}
 i2 <- ic + geom_boxplot()
 i2
 ```
@@ -570,14 +564,14 @@ i2
 First lets melt the quality scores
 
 
-```r
+```{.r .colsel}
 fqm <- melt(fq,id=c("Pair","Cycle"))
 ```
 
 Take a look at the new object
 
 
-```r
+```{.r .colsel}
 j <- ggplot(fqm, aes(Cycle, variable))
 j + geom_tile(aes(fill = as.numeric(value)))
 ```
@@ -587,12 +581,12 @@ j + geom_tile(aes(fill = as.numeric(value)))
 Now lets try changing the gradient colors and modify the legend, add labels. The ggplot2 'theme' function can be used to modify individual components of a theme.
 
 
-```r
+```{.r .colsel}
 ?theme
 ```
 
 
-```r
+```{.r .colsel}
 j = j + geom_tile(aes(fill = as.numeric(value))) +
   scale_fill_gradient(low = "red", high = "green") +
   ylab("Cycle") +
@@ -617,7 +611,7 @@ j
 ** On your own**  Recreate the indel lengths plot
 
 
-```r
+```{.r .colsel}
 k <- ggplot(id, aes(x=as.numeric(length)))
 k <- k + geom_line(aes(y=as.numeric(insertion_count)), color = "red", size=1.5)
 k <- k + geom_line(aes(y=as.numeric(deletion_count)), color = "black", size=1.5)
@@ -628,7 +622,7 @@ k
 
 Lets try changing the Y axis to log scale
 
-```r
+```{.r .colsel}
 k <- k + scale_y_log10()
 k
 ```
@@ -637,7 +631,7 @@ k
 
 Tweek the grid elments using theme
 
-```r
+```{.r .colsel}
 k <- k + theme(panel.grid.minor = element_blank(),
   panel.grid.major = element_line(color = "gray50", size = 0.5),
   panel.grid.major.x = element_blank())
@@ -652,7 +646,7 @@ k
 
 ## update the axis labels
 
-```r
+```{.r .colsel}
 k <- k + xlab("indel length") + ylab("indel count (log10)")
 k
 ```
@@ -666,7 +660,7 @@ k
 Now lets also plot the ratio of the 2, but first we need to create the object
 
 
-```r
+```{.r .colsel}
 id$ratio <- as.numeric(id$insertion_count)/as.numeric(id$deletion_count)
 l <- ggplot(id, aes(x=as.numeric(length)))
 l <- l + geom_line(aes(y=as.numeric(ratio)), color = "green", size=1.0)
@@ -676,17 +670,17 @@ l
 ![](data_in_R_files/figure-html/ratio-1.png)<!-- -->
 Tweek the grid
 
-```r
+```{.r .colsel}
 l <- l + theme(panel.grid.minor = element_blank(),
   panel.grid.major = element_line(color = "gray50", size = 0.5),
   panel.grid.major.x = element_blank())
 l
 ```
 
-![](data_in_R_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+![](data_in_R_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 Update axis labels
 
-```r
+```{.r .colsel}
 l <- l + xlab("indel length") + ylab("insertion/deletion ratio")
 l
 ```
@@ -695,7 +689,7 @@ l
 
 Now lets use gridExtra to plot both in the same plat
 
-```r
+```{.r .colsel}
 grid.arrange(k, l, nrow = 1)
 ```
 
@@ -709,14 +703,14 @@ grid.arrange(k, l, nrow = 1)
 The gridExtra package is great for plotting multiple object in one plot.
 
 
-```r
+```{.r .colsel}
 include_graphics("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/intro2R/Data_in_R_figures/grid_plot.png")
 ```
 
 ![](https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/intro2R/Data_in_R_figures/grid_plot.png)<!-- -->
 
 
-```r
+```{.r .colsel}
 full <- grid.arrange(
   g, h, i, i2,
   widths = c(2, 1, 1),
@@ -735,13 +729,13 @@ This must be done outside of the Notebook as the notebook expects you to plot in
 
 Saving plots to pdf ** do on the console **
 
-```r
+```{.r .colsel}
 ggsave("multi_plot.pdf",full,device="pdf",width=6,height=4, units="in", dpi=300)
 ```
 
 Saving plots to png  ** do on the console **
 
-```r
+```{.r .colsel}
 ggsave("multi_plot.png",full,device="png",width=6,height=4, units="in", dpi=300)
 ```
 
@@ -758,7 +752,7 @@ With any remaining time (or homework), use the ggplot cheat sheet to further exp
 Its always good to end any Notebook with Session info, records all the packages loaded and their versions
 
 
-```r
+```{.r .colsel}
 sessionInfo()
 ```
 
