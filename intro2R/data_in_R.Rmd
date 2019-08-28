@@ -6,15 +6,8 @@ output:
       keep_md: TRUE
 ---
 
-```{css echo=FALSE}
-.colsel {
-background-color: lightyellow;
-}
-```
-
 ```{r setup, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE}
 library(knitr)
-knitr::opts_chunk$set(class.source = "colsel")
 
 colFmt = function(x,color){
   outputFormat = opts_knit$get("rmarkdown.pandoc.to")

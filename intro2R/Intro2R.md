@@ -1,17 +1,12 @@
 ---
 title: "R for Biologist - An Introduction to R"
 author: "Bioinformatics Core"
-date: "2019-08-27"
+date: "2019-08-28"
 output:
   html_document:
     keep_md: TRUE
 ---
 
-<style type="text/css">
-.colsel {
-background-color: lightyellow;
-}
-</style>
 
 
 
@@ -265,387 +260,295 @@ Topic 2. Basic data types in R
 
 Examples of numeric values.
 
-{% highlight r %}
+```r
 # assign number 150 to variable a.
 a <- 150
 a
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 150
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 # assign a number in scientific format to variable b.
 b <- 3e-2
 b
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 0.03
-{% endhighlight %}
+```
 
 Examples of character values.
 
-{% highlight r %}
+```r
 # assign a string "Professor" to variable title
 title <- "Professor"
 title
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "Professor"
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 # assign a string "Hello World" to variable hello
 hello <- "Hello World"
 hello
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "Hello World"
-{% endhighlight %}
+```
 
 Examples of logical values.
 
-{% highlight r %}
+```r
 # assign logical value "TRUE" to variable is_female
 is_female <- TRUE
 is_female
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] TRUE
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 # assign logical value "FALSE" to variable is_male
 is_male <- FALSE
 is_male
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] FALSE
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 # assign logical value to a variable by logical operation
 age <- 20
 is_adult <- age > 18
 is_adult
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] TRUE
-{% endhighlight %}
+```
 
 To find out the type of variable.
 
-{% highlight r %}
+```r
 class(is_female)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "logical"
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 # To check whether the variable is a specific type
 is.numeric(hello)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] FALSE
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 is.numeric(a)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] TRUE
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 is.character(hello)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] TRUE
-{% endhighlight %}
+```
 
 The rule to convert a logical variable to numeric: TRUE > 1, FALSE > 0
 
-{% highlight r %}
+```r
 as.numeric(is_female)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 1
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 as.numeric(is_male)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 0
-{% endhighlight %}
+```
 
 R does not know how to convert a numeric variable to a character variable.
 
-{% highlight r %}
+```r
 b
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 0.03
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 as.character(b)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "0.03"
-{% endhighlight %}
+```
 
 
 ### Vectors: a vector is a combination of multiple values(numeric, character or logical) in the same object. A vector is created using the function c() (for concatenate).
 
 
-{% highlight r %}
+```r
 friend_ages <- c(21, 27, 26, 32)
 friend_ages
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 21 27 26 32
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 friend_names <- c("Mina", "Ella", "Anna", "Cora")
 friend_names
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "Mina" "Ella" "Anna" "Cora"
-{% endhighlight %}
+```
 
 One can give names to the elements of a vector.
 
-{% highlight r %}
+```r
 # assign names to a vector by specifying them
 names(friend_ages) <- c("Mina", "Ella", "Anna", "Carla")
 friend_ages
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##  Mina  Ella  Anna Carla 
 ##    21    27    26    32
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 # assign names to a vector using another vector
 names(friend_ages) <- friend_names
 friend_ages
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## Mina Ella Anna Cora 
 ##   21   27   26   32
-{% endhighlight %}
+```
 
 Or One may create a vector with named elements from scratch.
 
-{% highlight r %}
+```r
 friend_ages <- c(Mina=21, Ella=27, Anna=26, Cora=32)
 friend_ages
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## Mina Ella Anna Cora 
 ##   21   27   26   32
-{% endhighlight %}
+```
 
 To find out the length of a vector:
 
-{% highlight r %}
+```r
 length(friend_ages)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 4
-{% endhighlight %}
+```
 
 To access elements of a vector: by index, or by name if it is a named vector.
 
-{% highlight r %}
+```r
 friend_ages[2]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## Ella 
 ##   27
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 friend_ages["Ella"]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## Ella 
 ##   27
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 friend_ages[c(1,3)]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## Mina Anna 
 ##   21   26
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 friend_ages[c("Mina", "Anna")]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## Mina Anna 
 ##   21   26
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 # selecting elements of a vector by excluding some of them.
 friend_ages[-3]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## Mina Ella Cora 
 ##   21   27   32
-{% endhighlight %}
+```
 
 To select a subset of a vector can be done by logical vector.
 
-{% highlight r %}
+```r
 my_friends <- c("Mina", "Ella", "Anna", "Cora")
 my_friends
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "Mina" "Ella" "Anna" "Cora"
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 has_child <- c("TRUE", "TRUE", "FALSE", "TRUE")
 has_child
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "TRUE"  "TRUE"  "FALSE" "TRUE"
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 my_friends[has_child == "TRUE"]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "Mina" "Ella" "Cora"
-{% endhighlight %}
+```
 
 
 ##### <font color='red'>NOTE: a vector can only hold elements of the same type.</font>  
@@ -655,216 +558,172 @@ my_friends[has_child == "TRUE"]
 ### Matrices: A matrix is like an Excel sheet containing multiple rows and columns. It is used to combine vectors of the same type.
 
 
-{% highlight r %}
+```r
 col1 <- c(1,3,8,9)
 col2 <- c(2,18,27,10)
 col3 <- c(8,37,267,19)
 
 my_matrix <- cbind(col1, col2, col3)
 my_matrix
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      col1 col2 col3
 ## [1,]    1    2    8
 ## [2,]    3   18   37
 ## [3,]    8   27  267
 ## [4,]    9   10   19
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 rownames(my_matrix) <- c("row1", "row2", "row3", "row4")
 my_matrix
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      col1 col2 col3
 ## row1    1    2    8
 ## row2    3   18   37
 ## row3    8   27  267
 ## row4    9   10   19
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 t(my_matrix)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      row1 row2 row3 row4
 ## col1    1    3    8    9
 ## col2    2   18   27   10
 ## col3    8   37  267   19
-{% endhighlight %}
+```
 
 To find out the dimension of a matrix:
 
-{% highlight r %}
+```r
 ncol(my_matrix)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 3
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 nrow(my_matrix)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 4
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 dim(my_matrix)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 4 3
-{% endhighlight %}
+```
 
 
 Accessing elements of a matrix is done in similar ways to accessing elements of a vector.
 
 
-{% highlight r %}
+```r
 my_matrix[1,3]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 8
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 my_matrix["row1", "col3"]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 8
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 my_matrix[1,]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## col1 col2 col3 
 ##    1    2    8
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 my_matrix[,3]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## row1 row2 row3 row4 
 ##    8   37  267   19
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 my_matrix[col3 > 20,]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      col1 col2 col3
 ## row2    3   18   37
 ## row3    8   27  267
-{% endhighlight %}
+```
 
 
 Calculations with matrices.
 
 
-{% highlight r %}
+```r
 my_matrix * 3
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      col1 col2 col3
 ## row1    3    6   24
 ## row2    9   54  111
 ## row3   24   81  801
 ## row4   27   30   57
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 log10(my_matrix)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##           col1     col2     col3
 ## row1 0.0000000 0.301030 0.903090
 ## row2 0.4771213 1.255273 1.568202
 ## row3 0.9030900 1.431364 2.426511
 ## row4 0.9542425 1.000000 1.278754
-{% endhighlight %}
+```
 
 Total of each row.
 
-{% highlight r %}
+```r
 rowSums(my_matrix)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## row1 row2 row3 row4 
 ##   11   58  302   38
-{% endhighlight %}
+```
 
 Total of each column.
 
-{% highlight r %}
+```r
 colSums(my_matrix)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## col1 col2 col3 
 ##   21   57  331
-{% endhighlight %}
+```
 
 It is also possible to use the function apply() to apply any statistical functions to rows/columns of matrices. The advantage of using apply() is that it can take a function created by user.
 
@@ -879,146 +738,126 @@ FUN: the function to apply on rows/columns
 To calculate the mean of each row.
 
 
-{% highlight r %}
+```r
 apply(my_matrix, 1, mean)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##       row1       row2       row3       row4 
 ##   3.666667  19.333333 100.666667  12.666667
-{% endhighlight %}
+```
 
 To calculate the median of each row
 
 
-{% highlight r %}
+```r
 apply(my_matrix, 1, median)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## row1 row2 row3 row4 
 ##    2   18   27   10
-{% endhighlight %}
+```
 
 
 ### Factors: a factor represents categorical or groups in data. The function factor() can be used to create a factor variable.
 
 
-{% highlight r %}
+```r
 friend_groups <- factor(c(1,2,1,2))
 friend_groups
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 1 2 1 2
 ## Levels: 1 2
-{% endhighlight %}
+```
 
 In R, categories are called factor levels. The function levels() can be used to access the factor levels.
 
 
-{% highlight r %}
+```r
 levels(friend_groups)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "1" "2"
-{% endhighlight %}
+```
 
 Change the factor levels.
 
 
-{% highlight r %}
+```r
 levels(friend_groups) <- c("best_friend", "not_best_friend")
 friend_groups
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] best_friend     not_best_friend best_friend     not_best_friend
 ## Levels: best_friend not_best_friend
-{% endhighlight %}
+```
 
 Change the order of levels.
 
 
-{% highlight r %}
+```r
 levels(friend_groups) <- c("not_best_friend", "best_friend")
 friend_groups
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] not_best_friend best_friend     not_best_friend best_friend    
 ## Levels: not_best_friend best_friend
-{% endhighlight %}
+```
 
 By default, the order of factor levels is taken in the order of numeric or alphabetic.
 
 
-{% highlight r %}
+```r
 friend_groups <- factor(c("not_best_friend", "best_friend", "not_best_friend", "best_friend"))
 friend_groups
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] not_best_friend best_friend     not_best_friend best_friend    
 ## Levels: best_friend not_best_friend
-{% endhighlight %}
+```
 
 The factor levels can be specified when creating the factor, if the order does not follow the default rule.
 
 
-{% highlight r %}
+```r
 friend_groups <- factor(c("not_best_friend", "best_friend", "not_best_friend", "best_friend"), levels=c("not_best_friend", "best_friend"))
 friend_groups
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] not_best_friend best_friend     not_best_friend best_friend    
 ## Levels: not_best_friend best_friend
-{% endhighlight %}
+```
 
 If you want to know the number of individuals at each levels, there are two functions.
 
 
-{% highlight r %}
+```r
 summary(friend_groups)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## not_best_friend     best_friend 
 ##               2               2
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 table(friend_groups)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## friend_groups
 ## not_best_friend     best_friend 
 ##               2               2
-{% endhighlight %}
+```
 
 
 ### Data frames: a data frame is like a matrix but can have columns with different types (numeric, character, logical).
@@ -1026,256 +865,216 @@ table(friend_groups)
 A data frame can be created using the function data.frame().
 
 
-{% highlight r %}
+```r
 # creating a data frame using previously defined vectors
 friends <- data.frame(name=friend_names, age=friend_ages, child=has_child)
 friends
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      name age child
 ## Mina Mina  21  TRUE
 ## Ella Ella  27  TRUE
 ## Anna Anna  26 FALSE
 ## Cora Cora  32  TRUE
-{% endhighlight %}
+```
 
 To check whether a data is a data frame, use the function is.data.frame().
 
 
-{% highlight r %}
+```r
 is.data.frame(friends)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] TRUE
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 is.data.frame(my_matrix)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] FALSE
-{% endhighlight %}
+```
 
 One can convert a object to a data frame using the function as.data.frame().
 
 
-{% highlight r %}
+```r
 class(my_matrix)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "matrix"
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 my_data <- as.data.frame(my_matrix)
 class(my_data)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "data.frame"
-{% endhighlight %}
+```
 
 A data frame can be transposed in the similar way as a matrix.
 
 
-{% highlight r %}
+```r
 my_data
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      col1 col2 col3
 ## row1    1    2    8
 ## row2    3   18   37
 ## row3    8   27  267
 ## row4    9   10   19
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 t(my_data)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      row1 row2 row3 row4
 ## col1    1    3    8    9
 ## col2    2   18   27   10
 ## col3    8   37  267   19
-{% endhighlight %}
+```
 
 To obtain a subset of a data frame can be done in similar ways as we have discussed: by index, by row/column names, or by logical values.
 
 
-{% highlight r %}
+```r
 friends["Mina",]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      name age child
 ## Mina Mina  21  TRUE
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 # The columns of a data frame can be referred to by the names of the columns
 friends
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      name age child
 ## Mina Mina  21  TRUE
 ## Ella Ella  27  TRUE
 ## Anna Anna  26 FALSE
 ## Cora Cora  32  TRUE
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 friends$age
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 21 27 26 32
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 friends[friends$age > 26,]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      name age child
 ## Ella Ella  27  TRUE
 ## Cora Cora  32  TRUE
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 friends[friends$child == "TRUE",]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      name age child
 ## Mina Mina  21  TRUE
 ## Ella Ella  27  TRUE
 ## Cora Cora  32  TRUE
-{% endhighlight %}
+```
 
 Function subset() can also be used to get a subset of a data frame.
 
 
-{% highlight r %}
+```r
 # select friends that are older than 26
 subset(friends, age > 26)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      name age child
 ## Ella Ella  27  TRUE
 ## Cora Cora  32  TRUE
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 # select the information of the ages of friends
 subset(friends, select=age)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      age
 ## Mina  21
 ## Ella  27
 ## Anna  26
 ## Cora  32
-{% endhighlight %}
+```
 
 
 A data frame can be extended.
 
 
-{% highlight r %}
+```r
 # add a column that has the information on the marrital status of friends
 friends$married <- c("YES", "YES", "NO", "YES")
 friends
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      name age child married
 ## Mina Mina  21  TRUE     YES
 ## Ella Ella  27  TRUE     YES
 ## Anna Anna  26 FALSE      NO
 ## Cora Cora  32  TRUE     YES
-{% endhighlight %}
+```
 
 A data frame can also be extended using the functions cbind() and rbind().
 
 
-{% highlight r %}
+```r
 # add a column that has the information on the salaries of friends
 cbind(friends, salary=c(4000, 8000, 2000, 6000))
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##      name age child married salary
 ## Mina Mina  21  TRUE     YES   4000
 ## Ella Ella  27  TRUE     YES   8000
 ## Anna Anna  26 FALSE      NO   2000
 ## Cora Cora  32  TRUE     YES   6000
-{% endhighlight %}
+```
 
 ### Lists: a list is an ordered collection of objects, which can be any type of R objects (vectors, matrices, data frames).
 
 A list can be created using the function list().
 
 
-{% highlight r %}
+```r
 my_list <- list(mother="Sophia", father="John", sisters=c("Anna", "Emma"), sister_age=c(5, 10))
 my_list
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## $mother
 ## [1] "Sophia"
 ## 
@@ -1287,88 +1086,74 @@ my_list
 ## 
 ## $sister_age
 ## [1]  5 10
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 # names of elements in the list
 names(my_list)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "mother"     "father"     "sisters"    "sister_age"
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 # number of elements in the list
 length(my_list)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 4
-{% endhighlight %}
+```
 
 To access elements of a list can be done using its name or index.
 
 
-{% highlight r %}
+```r
 my_list$mother
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "Sophia"
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 my_list[["mother"]]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "Sophia"
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 my_list[[1]]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "Sophia"
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 my_list[[3]]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "Anna" "Emma"
-{% endhighlight %}
+```
 
 
-{% highlight r %}
+```r
 my_list[[3]][2]
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "Emma"
-{% endhighlight %}
+```
 
 ---
 
@@ -1378,23 +1163,21 @@ Topic 3. Import and export data in R
 R base function read.table() is a general funciton that can be used to read a file in table format. The data will be imported as a data frame.
 
 
-{% highlight r %}
+```r
 # To read a local file. If you have downloaded the raw_counts.txt file to your local machine, you may use the following command to read it in, by providing the full path for the file location. The way to specify the full path is the same as taught in the command line session. Here we assume raw_counts.txt is in our current working directory
 data <- read.table(file="./Intro2R_files/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
 
 # There is a very convenient way to read files from the internet.
 data <- read.table(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/intro2R/Intro2R_files/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
-{% endhighlight %}
+```
 
 Take a look at the beginning part of the data frame.
 
-{% highlight r %}
+```r
 head(data)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##            C61  C62  C63  C64  C91  C92  C93 C94 I561 I562 I563 I564 I591
 ## AT1G01010  322  346  256  396  372  506  361 342  638  488  440  479  770
 ## AT1G01020  149   87  162  144  189  169  147 108  163  141  119  147  182
@@ -1409,7 +1192,7 @@ head(data)
 ## AT1G01040  567  831  694  345  575  605  404  735  651  725  591
 ## AT1G01046    8    8    1    0    4    0    3    5    7    0    5
 ## AT1G01050 1355 1437 1577  412 1338 1051  621 1434 1552 1248 1186
-{% endhighlight %}
+```
 
 
 Depending on the format of the file, several variants of read.table() are available to make reading a file easier.
@@ -1423,17 +1206,15 @@ read.delim(): for reading "tab separated value" files (".txt"). By default, poin
 read.delim2(): for reading "tab separated value" files (".txt"). By default, comma (",") is used as decimal point.
 
 
-{% highlight r %}
+```r
 # We are going to read a file over the internet by providing the url of the file.
 data2 <- read.csv(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/master/intro2R/Intro2R_files/raw_counts.txt", stringsAsFactors=F)
 
 # To look at the file:
 head(data2)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##                                         C61.C62.C63.C64.C91.C92.C93.C94.I561.I562.I563.I564.I591.I592.I593.I594.I861.I862.I863.I864.I891.I892.I893.I894
 ## 1                     AT1G01010\t322\t346\t256\t396\t372\t506\t361\t342\t638\t488\t440\t479\t770\t430\t656\t467\t143\t453\t429\t206\t567\t458\t520\t474
 ## 2                        AT1G01020\t149\t87\t162\t144\t189\t169\t147\t108\t163\t141\t119\t147\t182\t156\t153\t177\t43\t144\t114\t50\t161\t195\t157\t144
@@ -1441,17 +1222,17 @@ head(data2)
 ## 4                     AT1G01040\t687\t469\t568\t651\t885\t978\t794\t862\t799\t769\t725\t715\t811\t567\t831\t694\t345\t575\t605\t404\t735\t651\t725\t591
 ## 5                                                                     AT1G01046\t1\t1\t5\t4\t5\t3\t0\t2\t4\t3\t1\t0\t2\t8\t8\t1\t0\t4\t0\t3\t5\t7\t0\t5
 ## 6 AT1G01050\t1447\t1032\t1083\t1204\t1413\t1484\t1138\t938\t1247\t1516\t984\t1044\t1374\t1355\t1437\t1577\t412\t1338\t1051\t621\t1434\t1552\t1248\t1186
-{% endhighlight %}
+```
 
 
 
 R base function write.table() can be used to export data to a file.
 
 
-{% highlight r %}
+```r
 # To write to a file called "output.txt" in your current working directory.
 write.table(data2[1:20,], file="output.txt", sep="\t", quote=F, row.names=T, col.names=T)
-{% endhighlight %}
+```
 
 It is also possible to export data to a csv file.
 
@@ -1469,99 +1250,77 @@ Topic 4. Functions in R
 ### Invoking a function by its name, followed by the parenthesis and zero or more arguments.
 
 
-{% highlight r %}
+```r
 # to find out the current working directory
 getwd()
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] "/Users/mattsettles/projects/src/github.com-ucdavis-bioinformatics-training/2019_August_UCD_mRNAseq_Workshop/intro2R"
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 # to set a different working directory, use setwd
 #setwd("/Users/jli/Desktop")
 
 # to list all variables in the environment
 ls()
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##  [1] "a"             "age"           "b"             "col1"         
 ##  [5] "col2"          "col3"          "colFmt"        "data"         
 ##  [9] "data2"         "friend_ages"   "friend_groups" "friend_names" 
 ## [13] "friends"       "has_child"     "hello"         "is_adult"     
 ## [17] "is_female"     "is_male"       "my_data"       "my_friends"   
 ## [21] "my_list"       "my_matrix"     "title"
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 # to create a vector from 2 to 3, using increment of 0.1
 seq(2, 3, by=0.1)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ##  [1] 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 # to create a vector with repeated elements
 rep(1:3, times=3)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 1 2 3 1 2 3 1 2 3
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 rep(1:3, each=3)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 1 1 1 2 2 2 3 3 3
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 # to get help information on a function in R: ?function.name
 ?seq
 ?sort
 ?rep
-{% endhighlight %}
+```
 
 #### <font color='red'>One useful function to find out information on a variable: str().</font>  
 
 
 
-{% highlight r %}
+```r
 str(data2)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## 'data.frame':	33602 obs. of  1 variable:
 ##  $ C61.C62.C63.C64.C91.C92.C93.C94.I561.I562.I563.I564.I591.I592.I593.I594.I861.I862.I863.I864.I891.I892.I893.I894: chr  "AT1G01010\t322\t346\t256\t396\t372\t506\t361\t342\t638\t488\t440\t479\t770\t430\t656\t467\t143\t453\t429\t206\t"| __truncated__ "AT1G01020\t149\t87\t162\t144\t189\t169\t147\t108\t163\t141\t119\t147\t182\t156\t153\t177\t43\t144\t114\t50\t161\t195\t157\t144" "AT1G01030\t15\t32\t35\t22\t24\t33\t21\t35\t18\t8\t54\t35\t23\t8\t16\t24\t42\t17\t22\t39\t26\t28\t39\t30" "AT1G01040\t687\t469\t568\t651\t885\t978\t794\t862\t799\t769\t725\t715\t811\t567\t831\t694\t345\t575\t605\t404\t"| __truncated__ ...
-{% endhighlight %}
+```
 
 
 ### Two special functions: lapply() and sapply()
@@ -1570,177 +1329,135 @@ str(data2)
 
 ##### To check the syntax of using lapply():
 
-{% highlight r %}
+```r
 #?lapply()
 
 data <- as.data.frame(matrix(rnorm(49), ncol=7), stringsAsFactors=F)
 dim(data)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [1] 7 7
-{% endhighlight %}
+```
 
-
-
-{% highlight r %}
+```r
 lapply(1:dim(data)[1], function(x){sum(data[x,])})
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## [[1]]
-## [1] 1.303342
+## [1] 0.9394493
 ## 
 ## [[2]]
-## [1] -0.4037936
+## [1] 3.498673
 ## 
 ## [[3]]
-## [1] 1.718868
+## [1] 2.140273
 ## 
 ## [[4]]
-## [1] 0.7168786
+## [1] 2.096878
 ## 
 ## [[5]]
-## [1] 3.117775
+## [1] 1.541112
 ## 
 ## [[6]]
-## [1] -3.751881
+## [1] 0.03483846
 ## 
 ## [[7]]
-## [1] 1.710735
-{% endhighlight %}
+## [1] -1.116205
+```
 
-
-
-{% highlight r %}
+```r
 apply(data, MARGIN=1, sum)
-{% endhighlight %}
+```
 
+```
+## [1]  0.93944927  3.49867295  2.14027334  2.09687822  1.54111165  0.03483846
+## [7] -1.11620494
+```
 
-
-{% highlight text %}
-## [1]  1.3033423 -0.4037936  1.7188683  0.7168786  3.1177748 -3.7518810
-## [7]  1.7107348
-{% endhighlight %}
-
-
-
-{% highlight r %}
+```r
 lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## Warning in FUN(X[[i]], ...): NaNs produced
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
-## Warning in FUN(X[[i]], ...): NaNs produced
-{% endhighlight %}
-
-
-
-{% highlight text %}
+```
 ## [[1]]
-## [1] 0.1150585
+## [1] -0.02712667
 ## 
 ## [[2]]
-## [1] NaN
+## [1] 0.5439033
 ## 
 ## [[3]]
-## [1] 0.2352426
+## [1] 0.3304692
 ## 
 ## [[4]]
-## [1] -0.1445544
+## [1] 0.3215732
 ## 
 ## [[5]]
-## [1] 0.4938447
+## [1] 0.1878341
 ## 
 ## [[6]]
-## [1] NaN
+## [1] -1.457941
 ## 
 ## [[7]]
-## [1] 0.2331827
-{% endhighlight %}
+## [1] NaN
+```
 
 #### The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
 
 
-{% highlight r %}
+```r
 # To check the syntax of using sapply():
 #?sapply()
 
 sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## Warning in FUN(X[[i]], ...): NaNs produced
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
-## Warning in FUN(X[[i]], ...): NaNs produced
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## [1]  0.1150585        NaN  0.2352426 -0.1445544  0.4938447        NaN
-## [7]  0.2331827
-{% endhighlight %}
+```
+## [1] -0.02712667  0.54390335  0.33046924  0.32157321  0.18783410 -1.45794110
+## [7]         NaN
+```
 
 #### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
 
-{% highlight r %}
+```r
 sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## Warning in FUN(X[[i]], ...): NaNs produced
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
-## Warning in FUN(X[[i]], ...): NaNs produced
-{% endhighlight %}
-
-
-
-{% highlight text %}
+```
 ## [[1]]
-## [1] 0.1150585
+## [1] -0.02712667
 ## 
 ## [[2]]
-## [1] NaN
+## [1] 0.5439033
 ## 
 ## [[3]]
-## [1] 0.2352426
+## [1] 0.3304692
 ## 
 ## [[4]]
-## [1] -0.1445544
+## [1] 0.3215732
 ## 
 ## [[5]]
-## [1] 0.4938447
+## [1] 0.1878341
 ## 
 ## [[6]]
-## [1] NaN
+## [1] -1.457941
 ## 
 ## [[7]]
-## [1] 0.2331827
-{% endhighlight %}
+## [1] NaN
+```
 
 ---
 
@@ -1801,60 +1518,54 @@ Topic 5. Basic statistics in R
 Calculate the mean expression for each sample.
 
 
-{% highlight r %}
+```r
 apply(data, 2, mean)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
-##           V1           V2           V3           V4           V5 
-## -0.107196821 -0.111204859 -0.188714173  0.453896768  0.504854265 
-##           V6           V7 
-##  0.086068676 -0.007428968
-{% endhighlight %}
+```
+##          V1          V2          V3          V4          V5          V6 
+##  0.38447484  0.49181913 -0.35523947 -0.44494529  0.08749222  0.21590775 
+##          V7 
+##  0.92549352
+```
 
 Calculate the range of expression for each sample.
 
 
-{% highlight r %}
+```r
 apply(data, 2, range)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
-##             V1         V2        V3         V4         V5         V6
-## [1,] -1.957380 -1.4860839 -1.975402 -0.4392384 -0.6908878 -0.7145256
-## [2,]  1.441062  0.4423916  1.169253  2.0299801  2.2454674  1.0065674
-##             V7
-## [1,] -1.281267
-## [2,]  1.371501
-{% endhighlight %}
+```
+##             V1        V2        V3         V4         V5         V6
+## [1,] -1.057522 -1.594726 -1.319862 -2.0252357 -0.9448364 -0.9075704
+## [2,]  2.195689  1.745992  1.236270  0.9487987  1.1573999  1.3134008
+##              V7
+## [1,] -0.1891506
+## [2,]  2.2566140
+```
 
 Calculate the quantiles of each samples.
 
 
-{% highlight r %}
+```r
 apply(data, 2, quantile)
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
-##             V1         V2         V3          V4         V5          V6
-## 0%   -1.957380 -1.4860839 -1.9754023 -0.43923844 -0.6908878 -0.71452564
-## 25%  -1.066311 -0.3223250 -0.7092645 -0.22912356 -0.2645138 -0.39185828
-## 50%   0.207785  0.2103508 -0.1579318  0.03466109 -0.1836923  0.01483785
-## 75%   0.845388  0.3497788  0.5308057  1.00506085  1.3460601  0.53965885
-## 100%  1.441062  0.4423916  1.1692526  2.02998014  2.2454674  1.00656738
+```
+##              V1         V2         V3         V4         V5         V6
+## 0%   -1.0575225 -1.5947263 -1.3198616 -2.0252357 -0.9448364 -0.9075704
+## 25%  -0.4041226  0.3554335 -0.8752390 -1.3243273 -0.5317714 -0.6560503
+## 50%  -0.2863864  0.8034528 -0.4286163 -0.4850001 -0.0371838  0.3668206
+## 75%   1.3238943  0.8885743 -0.1119954  0.5477373  0.7503043  1.0254019
+## 100%  2.1956895  1.7459918  1.2362704  0.9487987  1.1573999  1.3134008
 ##              V7
-## 0%   -1.2812671
-## 25%  -0.7798395
-## 50%  -0.2555290
-## 75%   0.8364857
-## 100%  1.3715011
-{% endhighlight %}
+## 0%   -0.1891506
+## 25%   0.2454125
+## 50%   1.0015498
+## 75%   1.4593082
+## 100%  2.2566140
+```
 
 ---
 
@@ -1864,88 +1575,86 @@ Topic 6. Simple data visulization in R
 Scatter plot and line plot can be produced using the function plot().
 
 
-{% highlight r %}
+```r
 x <- c(1:50)
 y <- 1 + sqrt(x)/2
 plot(x,y)
-{% endhighlight %}
+```
 
-![](Intro2R_files/figure-html/unnamed-chunk-68-1.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-67-1.png)<!-- -->
 
-{% highlight r %}
+```r
 plot(x,y, type="l")
-{% endhighlight %}
+```
 
-![](Intro2R_files/figure-html/unnamed-chunk-68-2.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-67-2.png)<!-- -->
 
-{% highlight r %}
+```r
 # plot both the points and lines
 ## first plot points
 plot(x,y)
 lines(x,y, type="l")
-{% endhighlight %}
+```
 
-![](Intro2R_files/figure-html/unnamed-chunk-68-3.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-67-3.png)<!-- -->
 
-{% highlight r %}
+```r
 ## lines() can only be used to add information to a graph, while it cannot produce a graph on its own.
-{% endhighlight %}
+```
 
 
 boxplot() can be used to summarize data.
 
 
-{% highlight r %}
+```r
 boxplot(data, xlab="Sample ID", ylab="Raw Counts")
-{% endhighlight %}
+```
 
-![](Intro2R_files/figure-html/unnamed-chunk-69-1.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-68-1.png)<!-- -->
 
 add more details to the plot.
 
 
-{% highlight r %}
+```r
 boxplot(data, xlab="Sample ID", ylab="Raw Counts", main="Expression levels", col="blue", border="black")
-{% endhighlight %}
+```
+
+![](Intro2R_files/figure-html/unnamed-chunk-69-1.png)<!-- -->
+
+
+
+```r
+x <- rnorm(1000)
+boxplot(x)
+```
 
 ![](Intro2R_files/figure-html/unnamed-chunk-70-1.png)<!-- -->
 
+hist() can be used to create histograms of data.
 
-
-{% highlight r %}
-x <- rnorm(1000)
-boxplot(x)
-{% endhighlight %}
+```r
+hist(x)
+```
 
 ![](Intro2R_files/figure-html/unnamed-chunk-71-1.png)<!-- -->
 
-hist() can be used to create histograms of data.
-
-{% highlight r %}
-hist(x)
-{% endhighlight %}
-
-![](Intro2R_files/figure-html/unnamed-chunk-72-1.png)<!-- -->
-
-{% highlight r %}
+```r
 # use user defined break points
 hist(x, breaks=seq(range(x)[1]-1, range(x)[2]+1, by=0.5))
-{% endhighlight %}
+```
 
-![](Intro2R_files/figure-html/unnamed-chunk-72-2.png)<!-- -->
+![](Intro2R_files/figure-html/unnamed-chunk-71-2.png)<!-- -->
 
 
-{% highlight r %}
+```r
 # clear plotting device/area
 dev.off()
-{% endhighlight %}
+```
 
-
-
-{% highlight text %}
+```
 ## null device 
 ##           1
-{% endhighlight %}
+```
 
 ---
 
@@ -1955,14 +1664,14 @@ Topic 7. Install packages in R
 Starting from Bioconductor version 3.8, the installation of packages is recommended to use BiocManager.
 
 
-{% highlight r %}
+```r
 if (!requireNamespace("BiocManager"))
 	install.packages("BiocManager")
 ## install core packages
 BiocManager::install()
 ## install specific packages
 BiocManager::install(c("ggplot2", "ShortRead"))
-{% endhighlight %}
+```
 
 * Bioconductor has a repository and release schedule that differ from R (Bioconductor has a ‘devel’ branch to which new packages and updates are introduced, and a stable ‘release’ branch emitted once every 6 months to which bug fixes but not new features are introduced). This mismatch causes that the version detected by install.packages() is sometimes not the most recent 'release'.
 
@@ -1974,28 +1683,28 @@ BiocManager::install(c("ggplot2", "ShortRead"))
 ##### <font color='red'>It is always recommended to update to the most current version of R and Bioconductor. If it is not possible and R < 3.5.0, please use the legacy approach to install Bioconductor packages</font>   
 
 
-{% highlight r %}
+```r
 source("http://bioconductor.org/biocLite.R")
 ## install core packages
 biocLite()
 ## install specific packages
 biocLite("RCircos")
 biocLite(c("IdeoViz", "devtools"))
-{% endhighlight %}
+```
 
 The R function install.packages() can be used to install packages that are not part of Bioconductor.
 
 
-{% highlight r %}
+```r
 install.packages("ggplot2", repos="http://cran.us.r-project.org")
-{% endhighlight %}
+```
 
 Install from source of github.
 
-{% highlight r %}
+```r
 library(devtools)
 #install_github("stephenturner/qqman")
-{% endhighlight %}
+```
 
 
 ---
@@ -2006,20 +1715,20 @@ Topic 8. Save data in R session
 #### To save history in R session
 
 
-{% highlight r %}
+```r
 #savehistory(file="March27.history")
 
 #loadhistory(file="March27.history")
-{% endhighlight %}
+```
 
 #### To save objects in R session
 
 
-{% highlight r %}
+```r
 save(list=c("x", "data"), file="March27.RData")
 
 #load("March27.RData")
-{% endhighlight %}
+```
 
 Challenge
 ====================================================
