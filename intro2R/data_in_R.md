@@ -1,6 +1,6 @@
 ---
 title: "Data_in_R"
-author: "Matt Settles"
+author: "Bioinformatics Core"
 output:
     html_document:
       keep_md: TRUE
@@ -415,12 +415,13 @@ A basic ggplot2 plot consists of the following components:
 
 The basic idea: independently specify plot building blocks and combine them (using '+') to create just about any kind of graphical display you want.
 
-ggplot (data = <DATA> ) +
-  <GEOM_FUNCTION> (mapping = aes( <MAPPINGS> ), stat = <STAT> , position = <POSITION> ) +
-  <COORDINATE_FUNCTION> +
-  <FACET_FUNCTION> +
-  <SCALE_FUNCTION> +
-  <THEME_FUNCTION>
+
+    ggplot (data = <DATA> ) +
+      <GEOM_FUNCTION> (mapping = aes( <MAPPINGS> ), stat = <STAT> , position = <POSITION> ) +
+      <COORDINATE_FUNCTION> +
+      <FACET_FUNCTION> +
+      <SCALE_FUNCTION> +
+      <THEME_FUNCTION>
 
 ### Our first plot, plotting the insert size of mapped fragments
 
