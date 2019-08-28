@@ -433,7 +433,7 @@ g <- ggplot(data = is)
 g + geom_line( aes(x=get("insert size"), y=get("all pairs")))
 ```
 
-![](data_in_R_files/figure-html/plot_is-1.png)<!-- -->
+![](Data_in_R_files/figure-html/plot_is-1.png)<!-- -->
 
 
 Ok, now lets add some labels to the plot
@@ -444,7 +444,7 @@ g + geom_line( aes(x=get("insert size"), y=get("all pairs"))) +
   labs( x = "insert size", y = "all pairs", title ="Mapped insert sizes", subtitle = "All Pairs", caption = "all pairs insert size")
 ```
 
-![](data_in_R_files/figure-html/plot_is_labels-1.png)<!-- -->
+![](Data_in_R_files/figure-html/plot_is_labels-1.png)<!-- -->
 
 Ok, what about plotting multiple data objects on the same plot (multiple lines), in that case we can specifically set the y axis in geom_line and color, then call geom_lines twice (or more times).
 
@@ -456,7 +456,7 @@ g + geom_line(aes(y=get("inward")),color="blue") +
     labs( x = "insert size", y = "all pairs", title ="Mapped insert sizes", subtitle = "All Pairs", caption = "all pairs insert size")
 ```
 
-![](data_in_R_files/figure-html/plot_is_mlines-1.png)<!-- -->
+![](Data_in_R_files/figure-html/plot_is_mlines-1.png)<!-- -->
 
 lets try adjusting the x/y limits to 0,600 and 0,20000 respectively.
 
@@ -467,7 +467,7 @@ g + geom_line(aes(y=get("inward")),color="blue") +
   coord_cartesian(xlim=c(0,500), ylim=c(0,600000))
 ```
 
-![](data_in_R_files/figure-html/plot_is_limits-1.png)<!-- -->
+![](Data_in_R_files/figure-html/plot_is_limits-1.png)<!-- -->
 
 Ok so now put all these elements together into a single plot, save final plot as 'g'
 
@@ -489,7 +489,7 @@ g <- g + theme_light()
 plot(g)
 ```
 
-![](data_in_R_files/figure-html/insert_length-1.png)<!-- -->
+![](Data_in_R_files/figure-html/insert_length-1.png)<!-- -->
 
 ### Plotting GC content
 
@@ -516,7 +516,7 @@ h <- h + geom_line()
 h
 ```
 
-![](data_in_R_files/figure-html/plot_gc-1.png)<!-- -->
+![](Data_in_R_files/figure-html/plot_gc-1.png)<!-- -->
 
 ** On your own**: Finish the plot (add labels, etc.). Save the final graph object in h
 
@@ -538,7 +538,7 @@ i <- ic + geom_line() + coord_cartesian(ylim=c(0,100))
 i
 ```
 
-![](data_in_R_files/figure-html/plot_base_comp-1.png)<!-- -->
+![](Data_in_R_files/figure-html/plot_base_comp-1.png)<!-- -->
 
 ** On your own**: Using what you learned until now, finish the plot, save it as object i
 
@@ -550,7 +550,7 @@ i2 <- ic + geom_boxplot()
 i2
 ```
 
-![](data_in_R_files/figure-html/actg_boxplot-1.png)<!-- -->
+![](Data_in_R_files/figure-html/actg_boxplot-1.png)<!-- -->
 
 ** On your own**: Try some other geometries (Ex. bin2d, col, count, which generate an 'interpretable' plot)
 
@@ -571,7 +571,7 @@ j <- ggplot(fqm, aes(Cycle, variable))
 j + geom_tile(aes(fill = as.numeric(value)))
 ```
 
-![](data_in_R_files/figure-html/plot_heatmap-1.png)<!-- -->
+![](Data_in_R_files/figure-html/plot_heatmap-1.png)<!-- -->
 
 Now lets try changing the gradient colors and modify the legend, add labels. The ggplot2 'theme' function can be used to modify individual components of a theme.
 
@@ -595,7 +595,7 @@ j = j + geom_tile(aes(fill = as.numeric(value))) +
 j
 ```
 
-![](data_in_R_files/figure-html/heatmap-1.png)<!-- -->
+![](Data_in_R_files/figure-html/heatmap-1.png)<!-- -->
 
 ** On your own** Try modifying scale_fill_gradient to scale_fill_distiller.
 
@@ -613,7 +613,7 @@ k <- k + geom_line(aes(y=as.numeric(deletion_count)), color = "black", size=1.5)
 k
 ```
 
-![](data_in_R_files/figure-html/indel_plot-1.png)<!-- -->
+![](Data_in_R_files/figure-html/indel_plot-1.png)<!-- -->
 
 Lets try changing the Y axis to log scale
 
@@ -622,7 +622,7 @@ k <- k + scale_y_log10()
 k
 ```
 
-![](data_in_R_files/figure-html/indel_plot2-1.png)<!-- -->
+![](Data_in_R_files/figure-html/indel_plot2-1.png)<!-- -->
 
 Tweek the grid elments using theme
 
@@ -637,7 +637,7 @@ k
 ## Warning: Transformation introduced infinite values in continuous y-axis
 ```
 
-![](data_in_R_files/figure-html/grid_tweek-1.png)<!-- -->
+![](Data_in_R_files/figure-html/grid_tweek-1.png)<!-- -->
 
 ## update the axis labels
 
@@ -650,7 +650,7 @@ k
 ## Warning: Transformation introduced infinite values in continuous y-axis
 ```
 
-![](data_in_R_files/figure-html/new_axis_lables-1.png)<!-- -->
+![](Data_in_R_files/figure-html/new_axis_lables-1.png)<!-- -->
 
 Now lets also plot the ratio of the 2, but first we need to create the object
 
@@ -662,7 +662,7 @@ l <- l + geom_line(aes(y=as.numeric(ratio)), color = "green", size=1.0)
 l
 ```
 
-![](data_in_R_files/figure-html/ratio-1.png)<!-- -->
+![](Data_in_R_files/figure-html/ratio-1.png)<!-- -->
 Tweek the grid
 
 ```r
@@ -672,7 +672,7 @@ l <- l + theme(panel.grid.minor = element_blank(),
 l
 ```
 
-![](data_in_R_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+![](Data_in_R_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 Update axis labels
 
 ```r
@@ -680,7 +680,7 @@ l <- l + xlab("indel length") + ylab("insertion/deletion ratio")
 l
 ```
 
-![](data_in_R_files/figure-html/update_labels-1.png)<!-- -->
+![](Data_in_R_files/figure-html/update_labels-1.png)<!-- -->
 
 Now lets use gridExtra to plot both in the same plat
 
@@ -692,7 +692,7 @@ grid.arrange(k, l, nrow = 1)
 ## Warning: Transformation introduced infinite values in continuous y-axis
 ```
 
-![](data_in_R_files/figure-html/grid-1.png)<!-- -->
+![](Data_in_R_files/figure-html/grid-1.png)<!-- -->
 
 ### Fancy Multiple plots in a grid
 The gridExtra package is great for plotting multiple object in one plot.
@@ -709,7 +709,7 @@ full <- grid.arrange(
 )
 ```
 
-![](data_in_R_files/figure-html/cluster-1.png)<!-- -->
+![](Data_in_R_files/figure-html/cluster-1.png)<!-- -->
 
 ** on your own**: Play with th grid.arrange function, using the plots you've created to create you own final combined plot.
 
