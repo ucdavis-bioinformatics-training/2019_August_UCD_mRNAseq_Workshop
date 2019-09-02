@@ -6,13 +6,25 @@ slurm script for preprocessing using slurm task array and htstream
 
 [hts_preproc.slurm](./scripts/hts_preproc.slurm)
 
+[hts_preproc_SE.slurm](./scripts/hts_preproc_SE.slurm)
+
+[hts_preproc_TagSeq.slurm](./scripts/hts_preproc_TagSeq.slurm)
+
 shell script for preprocessing using bash loop and htstream.
 
 [hts_preproc.sh](./scripts/hts_preproc.sh)
 
+[hts_preproc_SE.sh](./scripts/hts_preproc_SE.sh)
+
+[hts_preproc_TagSeq.sh](./scripts/hts_preproc_TagSeq.sh)
+
 R script to produce summary table, assumes exact htstream operations and order as described above.
 
 [summary_stats.R](./scripts/summarize_stats.R)
+
+[summary_stats_SE.R](./scripts/summarize_stats_SE.R)
+
+[summary_stats_TagSeq.R](./scripts/summarize_stats_TagSeq.R)
 
 ### Star alignment
 
@@ -28,9 +40,13 @@ slurm script for mapping using slurm task array and star
 
 [star.slurm](./scripts/star.slurm)
 
+[star_SE.slurm](./scripts/star_SE.slurm)
+
 shell script for mapping using bash loop and star.
 
 [star.sh](./scripts/star.sh)
+
+[star_SE.sh](./scripts/star_SE.sh)
 
 shell script to produce summary mapping table
 
